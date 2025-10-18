@@ -13,7 +13,7 @@
 
 **Transform your development process with spec-driven workflows, automated GitHub integration, and professional project management tools—all from your terminal.**
 
-[🚀 Quick Start](#-quick-start) • [📦 Installation](#-installation) • [🏗️ Architecture](#️-system-architecture) • [🔄 Workflow](#-development-workflow) • [✨ Features](#-features) • [🎯 Commands](#-commands) • [📚 Documentation](#-documentation)
+[🚀 Quick Start](#-quick-start) • [📦 Installation](#-installation) • [🏗️ Architecture](#-system-architecture) • [🔄 Workflow](#-development-workflow) • [✨ Features](#-features) • [🎯 Commands](#-commands) • [📚 Documentation](#-documentation)
 
 ---
 
