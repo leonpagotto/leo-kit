@@ -1,0 +1,71 @@
+graph TB
+    subgraph "User Environment"
+        CLI[LEO CLI Tool]
+        Terminal[Terminal/Shell]
+    end
+    
+    subgraph "LEO Workflow Kit Core"
+        Commands[Command Layer]
+        Init[Init Command]
+        Issue[Issue Command]
+        Labels[Labels Command]
+        VSCode[VS Code Command]
+        Utils[Utilities]
+    end
+    
+    subgraph "Templates & Configuration"
+        IssueTemplates[Issue Templates<br/>8 Templates]
+        LabelConfig[Label Configuration<br/>22+ Labels]
+        CopilotInstructions[Copilot Instructions]
+        DocsStructure[Docs Structure]
+    end
+    
+    subgraph "External Services"
+        GitHub[GitHub API]
+        GitHubCLI[GitHub CLI 'gh']
+        GitHubProjects[GitHub Projects]
+        GitHubIssues[GitHub Issues]
+    end
+    
+    subgraph "Local Project"
+        ProjectRepo[Project Repository]
+        VSCodeConfig[.vscode/copilot-instructions.md]
+        IssueTemplatesDir[.github/ISSUE_TEMPLATE/]
+        DocsDir[docs/ Directory]
+    end
+    
+    Terminal --> CLI
+    CLI --> Commands
+    
+    Commands --> Init
+    Commands --> Issue
+    Commands --> Labels
+    Commands --> VSCode
+    Commands --> Utils
+    
+    Init --> IssueTemplates
+    Init --> DocsStructure
+    Init --> LabelConfig
+    Init --> CopilotInstructions
+    
+    Issue --> GitHubCLI
+    Labels --> GitHubCLI
+    
+    GitHubCLI --> GitHub
+    GitHub --> GitHubProjects
+    GitHub --> GitHubIssues
+    
+    Init -.creates.-> IssueTemplatesDir
+    Init -.creates.-> DocsDir
+    VSCode -.creates.-> VSCodeConfig
+    Labels -.configures.-> GitHubIssues
+    Issue -.creates.-> GitHubIssues
+    
+    Utils -.supports.-> Commands
+    
+    style CLI fill:#f9d71c,stroke:#333,stroke-width:3px
+    style GitHub fill:#24292e,stroke:#333,stroke-width:2px,color:#fff
+    style GitHubCLI fill:#24292e,stroke:#333,stroke-width:2px,color:#fff
+    style Commands fill:#4a90e2,stroke:#333,stroke-width:2px
+    style IssueTemplates fill:#7cb342,stroke:#333,stroke-width:2px
+    style LabelConfig fill:#7cb342,stroke:#333,stroke-width:2px

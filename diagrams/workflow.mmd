@@ -1,0 +1,60 @@
+graph TB
+    Start([Start Development]) --> SpecFirst{Spec-Driven<br/>Workflow}
+    
+    subgraph "1. Specification Phase"
+        SpecFirst --> CreateIssue[Create Issue with Template<br/>leo issue]
+        CreateIssue --> SelectTemplate[Select Template:<br/>Bug/Feature/Docs/etc]
+        SelectTemplate --> FillDetails[Fill Details & Requirements]
+        FillDetails --> AddLabels[Add Labels & Priority]
+        AddLabels --> IssueCreated[Issue Created on GitHub]
+    end
+    
+    subgraph "2. Review & Planning"
+        IssueCreated --> Discussion[Team Discussion<br/>Review Requirements]
+        Discussion --> Refinement{Needs<br/>Refinement?}
+        Refinement -->|Yes| UpdateIssue[Update Issue]
+        UpdateIssue --> Discussion
+        Refinement -->|No| Approval[Stakeholder Approval]
+    end
+    
+    subgraph "3. Development"
+        Approval --> CreateBranch[Create Feature Branch<br/>git checkout -b feature/xyz]
+        CreateBranch --> WriteCode[Write Code]
+        WriteCode --> Commit[Commit with Reference<br/>git commit -m 'feat: xyz #123']
+        Commit --> LocalTest[Local Testing]
+        LocalTest --> MoreChanges{More<br/>Changes?}
+        MoreChanges -->|Yes| WriteCode
+        MoreChanges -->|No| PushBranch[Push Branch<br/>git push origin feature/xyz]
+    end
+    
+    subgraph "4. Pull Request & CI"
+        PushBranch --> CreatePR[Create Pull Request<br/>gh pr create]
+        CreatePR --> LinkIssue[Reference Issue<br/>'Closes #123']
+        LinkIssue --> CIChecks[CI/CD Checks Run]
+        CIChecks --> CIPassed{CI<br/>Passed?}
+        CIPassed -->|No| FixIssues[Fix CI Issues]
+        FixIssues --> WriteCode
+        CIPassed -->|Yes| CodeReview
+    end
+    
+    subgraph "5. Review & Merge"
+        CodeReview[Code Review] --> ReviewFeedback{Approved?}
+        ReviewFeedback -->|Changes Requested| AddressComments[Address Comments]
+        AddressComments --> WriteCode
+        ReviewFeedback -->|Approved| MergePR[Merge Pull Request]
+        MergePR --> CloseIssue[Issue Auto-Closed]
+    end
+    
+    subgraph "6. Verification"
+        CloseIssue --> VerifyAcceptance[Verify Acceptance Criteria]
+        VerifyAcceptance --> UpdateProject[Update Project Board]
+        UpdateProject --> Complete([Complete])
+    end
+    
+    style Start fill:#4caf50,stroke:#333,stroke-width:2px
+    style Complete fill:#4caf50,stroke:#333,stroke-width:2px
+    style CreateIssue fill:#f9d71c,stroke:#333,stroke-width:2px
+    style CreatePR fill:#2196f3,stroke:#333,stroke-width:2px
+    style MergePR fill:#8bc34a,stroke:#333,stroke-width:2px
+    style CIChecks fill:#ff9800,stroke:#333,stroke-width:2px
+    style CodeReview fill:#9c27b0,stroke:#333,stroke-width:2px,color:#fff
