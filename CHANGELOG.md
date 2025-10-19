@@ -1,3 +1,4 @@
+````markdown
 # Changelog
 
 All notable changes to LEO Workflow Kit will be documented in this file.
@@ -5,17 +6,50 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.2] - 2025-10-19
+
+### Added
+
+- **Smart AI Instruction Merging**: When existing AI instruction files are detected, LEO now intelligently merges content instead of skipping
+  - Detects existing `.github/copilot-instructions.md`, `.cursorrules`, `.clinerules`, or `.codeium/instructions.md`
+  - Preserves user's project-specific conventions and custom content
+  - Prepends LEO's workflow standards with clear section markers
+  - Creates backup files before merging (`.backup` extension)
+  - Prompts user for confirmation before merging
+  - Works with all supported AI assistants
+
+### Changed
+
+- **`leo init` behavior**: Now offers to merge with existing AI instructions instead of skipping generation
+- **`leo ai sync` behavior**: Intelligently merges updates while preserving custom sections
+- **File structure**: AI instruction files now have clear section markers:
+  - `<!-- LEO WORKFLOW STANDARDS (Auto-generated) -->` 
+  - `<!-- PROJECT-SPECIFIC INSTRUCTIONS -->`
+
+### Improved
+
+- **Onboarding experience**: Projects with existing AI instructions can now adopt LEO without losing customizations
+- **Documentation**: Updated guides with merging workflow examples
+
+### Fixed
+
+- Issue #15: LEO now merges existing AI instructions instead of skipping generation
+
+---
+
 ## [3.0.1] - 2025-10-19
 
 ### Changed
 
 - **Workflow Instructions**: Enhanced automatic status update enforcement
+
   - Added CRITICAL requirement for immediate status update when starting work
   - Updated Quick Reference Card with status update as first action
   - Added "Update Status FIRST" to Key Mantras
   - All AI assistants now receive explicit instructions to comment on issues and move to "In Progress" before coding
 
 - **Installation Banner**: Updated to highlight multi-AI support
+
   - Added multi-AI support as first feature
   - Updated feature descriptions to mention all 4 AI assistants
   - Improved messaging for AI-optimized workflow instructions

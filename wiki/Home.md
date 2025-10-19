@@ -14,11 +14,18 @@ LEO Workflow Kit is a powerful CLI tool that revolutionizes software development
 - **🎯 Spec-Driven Development**: Enforce best practices and documentation-first approach
 - **⚡ Zero Configuration**: Works out-of-the-box - literally just `npm install`
 
-**Current Version:** 3.0.0 🎉
-**Latest Stable:** 3.0.0
+**Current Version:** 3.0.1 🎉
+**Latest Stable:** 3.0.1
 **Released:** October 19, 2025
 
-**What's New in 3.0.0:** 🎉 MAJOR RELEASE
+**What's New in 3.0.1:** Enhanced Workflow Instructions
+
+- 🚨 **CRITICAL Status Updates**: Mandatory immediate status updates when starting work
+- 📝 **Enhanced Banner**: Multi-AI support highlighted in installation
+- 📚 **Updated Documentation**: Comprehensive v3.0.0 wiki updates
+- 🔧 **Better Workflow**: Explicit instructions for AI assistants on project status management
+
+**v3.0.0 Features:** 🎉 MAJOR RELEASE
 
 - 🤖 **Multi-AI Support**: 4 AI assistants (Copilot, Cursor, Cline, Codeium)
 - ⚡ **New `leo ai` Command**: Manage AI assistants (list, add, remove, sync)
@@ -151,21 +158,22 @@ leo init
 
 ## 📊 Current Status
 
-### Latest Release: v2.4.0 (October 19, 2025) ⭐ NEW
+### Latest Release: v3.0.1 (October 19, 2025) ⭐ CURRENT
 
 **Major Features:**
 
-- ✅ **Intelligent Spec-First Decision Making** - AI analyzes work complexity
-- ✅ Automatic spec creation for complex features in `docs/specs/`
-- ✅ User review workflow before breaking into issues
-- ✅ Smart breakdown of specs into focused issues
-- ✅ Automatic GitHub Projects integration
-- ✅ Intelligent status management (Todo → In Progress → Done)
-- ✅ GraphQL API for reliable updates
+- ✅ **Multi-AI Support** - Copilot, Cursor, Cline, Codeium (v3.0.0)
+- ✅ **New `leo ai` Command** - Manage AI assistants easily
+- ✅ **Enhanced Status Management** - Critical status update enforcement (v3.0.1)
+- ✅ **Intelligent Spec-First AI** - Auto-decides spec vs direct issue
+- ✅ **GitHub Projects Integration** - Auto-sync with smart status updates
+- ✅ **AI-Optimized Instructions** - ~40KB per AI assistant
+- ✅ **Zero Configuration** - Auto-init with `LEO_AUTO_INIT=true`
 
 **Stats:**
 
-- 📦 Package Size: 53 KB
+- 📦 Package Size: ~50 KB (optimized)
+- 🤖 AI Assistants: 4 supported
 - ⭐ GitHub Stars: Growing!
 - 🐛 Open Issues: Actively maintained
 - 🔄 Active Development: Yes
