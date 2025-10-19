@@ -53,42 +53,42 @@
 graph TB
     subgraph "LEO Workflow Kit Architecture"
         CLI[CLI Entry Point<br/>bin/cli.js]
-        
+
         subgraph "Core Commands"
             INIT[leo init<br/>Project Setup]
             ISSUE[leo issue<br/>Interactive Issue Creator]
             LABELS[leo labels<br/>Label Management]
             VSCODE[leo vscode<br/>VS Code Integration]
         end
-        
+
         subgraph "GitHub Copilot Integration"
             COPILOT_INST[Copilot Instructions<br/>AI Behavior Rules]
             AUTO_ISSUE[Auto Issue Creation<br/>Detects Work Intent]
             AUTO_PROJECT[Project Integration<br/>Auto-add to Boards]
             AUTO_STATUS[Status Management<br/>Todo → In Progress → Done]
         end
-        
+
         subgraph "External Services"
             GH[GitHub CLI]
             GHAPI[GitHub API]
             GHPROJECTS[GitHub Projects v2]
         end
     end
-    
+
     CLI --> INIT
     CLI --> ISSUE
     CLI --> LABELS
     CLI --> VSCODE
-    
+
     INIT --> COPILOT_INST
     COPILOT_INST --> AUTO_ISSUE
     AUTO_ISSUE --> AUTO_PROJECT
     AUTO_PROJECT --> AUTO_STATUS
-    
+
     LABELS --> GH
     GH --> GHAPI
     GHAPI --> GHPROJECTS
-    
+
     style CLI fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
     style AUTO_ISSUE fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
     style AUTO_PROJECT fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
@@ -112,7 +112,7 @@ graph TB
     H --> I[Status:<br/>In Progress]
     I --> J[Merge PR]
     J --> K[Status:<br/>Done]
-    
+
     style A fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#fff
     style B fill:#9C27B0,stroke:#4A148C,stroke-width:3px,color:#fff
     style D fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
@@ -125,6 +125,7 @@ graph TB
 > **View Full Workflow:** See [`diagrams/workflow.mmd`](./diagrams/workflow.mmd) for the complete development workflow including spec creation and CI/CD pipeline.
 
 **Key Points:**
+
 - � **AI decides:** Spec first for complex features, direct issues for simple tasks
 - 📝 **Spec creation:** Complex work gets structured planning document
 - � **User review:** Approve specs before implementation begins
@@ -135,6 +136,7 @@ graph TB
 **Examples:**
 
 **Simple (Direct Issue):**
+
 ```
 You: "Fix the login button on mobile"
 → Copilot: Creates issue #42 immediately
@@ -143,6 +145,7 @@ You: "Fix the login button on mobile"
 ```
 
 **Complex (Spec First):**
+
 ```
 You: "Add OAuth2 authentication system"
 → Copilot: Creates docs/specs/oauth2-auth.md
@@ -181,20 +184,53 @@ That's it! Your project now has:
 
 ## 📦 Installation
 
-### Option 1: Global Installation (Recommended)
+### Quick Install (Recommended)
+
+**Automatic Setup - One Command:**
+
+```bash
+LEO_AUTO_INIT=true npm install leo-workflow-kit
+```
+
+This installs LEO and automatically initializes your project with:
+
+- ✅ Documentation structure (`docs/specs/`)
+- ✅ Issue templates (8 professional templates)
+- ✅ GitHub Actions workflows
+- ✅ VS Code configuration with Copilot instructions
+- ✅ Standard labels (22+ configured)
+
+🎯 **Perfect for:** New projects, CI/CD, team onboarding
+
+**Manual Setup - Traditional Way:**
+
+```bash
+npm install leo-workflow-kit
+npx leo init
+```
+
+🎯 **Perfect for:** Custom configuration, first-time users, manual control
+
+[📖 Learn more about automatic initialization](./docs/guides/AUTO_INITIALIZATION.md)
+
+---
+
+### Global Installation
 
 ```bash
 npm install -g leo-workflow-kit
+leo --version
 leo init
 ```
 
-### Option 2: One-Time Use with npx
+### Local Installation (Project-Specific)
 
 ```bash
-npx leo-workflow-kit init
+npm install --save-dev leo-workflow-kit
+npx leo init
 ```
 
-### Option 3: From GitHub Source
+### From Source
 
 ```bash
 git clone https://github.com/leonpagotto/leo-kit.git
@@ -209,6 +245,31 @@ leo init
 - **Node.js** 16.0.0 or higher
 - **GitHub CLI** (`gh`) - [Install here](https://cli.github.com/)
 - **Git** - Already have it? Great!
+
+### Configuration Options
+
+**Environment Variables:**
+
+| Variable          | Purpose                    | Default  |
+| ----------------- | -------------------------- | -------- |
+| `LEO_AUTO_INIT`   | Auto-initialize on install | `false`  |
+| `LEO_POSTINSTALL` | Internal postinstall flag  | Auto-set |
+
+**Examples:**
+
+```bash
+# Auto-initialize with npm
+LEO_AUTO_INIT=true npm install leo-workflow-kit
+
+# Configure in .npmrc
+echo "LEO_AUTO_INIT=true" >> .npmrc
+npm install leo-workflow-kit
+
+# Use in CI/CD (GitHub Actions)
+env:
+  LEO_AUTO_INIT: true
+run: npm install
+```
 
 ---
 

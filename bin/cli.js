@@ -36,6 +36,7 @@ program
   .option('--skip-project', 'Skip GitHub Project setup entirely')
   .option('--skip-labels', 'Skip label setup')
   .option('--skip-vscode', 'Skip VS Code configuration')
+  .option('--non-interactive', 'Run in non-interactive mode with defaults (for CI/CD or postinstall)')
   .action((options) => {
     console.log(banner);
     initCommand(options);
@@ -84,7 +85,7 @@ program
   .action(() => {
     console.log(banner);
     console.log(chalk.cyan('\n📊 Checking workflow status...\n'));
-    
+
     const checks = [
       { name: 'GitHub CLI', check: () => require('../lib/utils/checks').checkGitHubCLI() },
       { name: 'Git Repository', check: () => require('../lib/utils/checks').checkGitRepo() },
@@ -98,7 +99,7 @@ program
       const icon = result ? chalk.green('✓') : chalk.red('✗');
       console.log(`${icon} ${name}`);
     });
-    
+
     console.log();
     console.log(chalk.gray('💡 Run `leo health` for comprehensive health check\n'));
   });
