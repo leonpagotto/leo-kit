@@ -5,6 +5,16 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.4] - 2025-10-19
+
+### Changed
+
+- **Golden gradient banner**: LEO_KIT ASCII art now features a beautiful golden gradient
+  - Transitions from bright gold (#FFD700) at top to darker orange-gold (#FF8C00) at bottom
+  - Creates a more visually striking and professional appearance
+  - Applied to both main banner and installation banner
+  - Improved border alignment for perfect box rendering
+
 ## [2.6.3] - 2025-10-19
 
 ### Fixed
