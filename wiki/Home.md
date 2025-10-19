@@ -19,6 +19,7 @@ LEO Workflow Kit is a powerful CLI tool that revolutionizes software development
 **Released:** October 19, 2025
 
 **What's New in 2.6.0:**
+
 - ⚙️ **Configuration System**: Control auto-resolution and workflow behavior
 - 📏 **Commit Message Guidelines**: Prevent pipeline issues with length limits
 
