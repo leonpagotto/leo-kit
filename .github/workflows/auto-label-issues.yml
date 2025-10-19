@@ -1,0 +1,82 @@
+name: Auto Label Issues
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  auto-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Auto-label based on title and body
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const title = issue.title.toLowerCase();
+            const body = (issue.body || '').toLowerCase();
+            const labels = [];
+
+            // Priority labels
+            if (title.includes('[p0]') || body.includes('priority: p0')) {
+              labels.push('P0 🔥');
+            } else if (title.includes('[p1]') || body.includes('priority: p1')) {
+              labels.push('P1 ⚠️');
+            } else if (title.includes('[p2]') || body.includes('priority: p2')) {
+              labels.push('P2 📋');
+            } else if (title.includes('[p3]') || body.includes('priority: p3')) {
+              labels.push('P3 💡');
+            }
+
+            // Type labels
+            if (title.includes('bug') || title.includes('fix')) {
+              labels.push('bug 🐛');
+            }
+            if (title.includes('feature') || title.includes('feat')) {
+              labels.push('enhancement ✨');
+            }
+            if (title.includes('docs') || title.includes('documentation')) {
+              labels.push('documentation 📝');
+            }
+            if (title.includes('test')) {
+              labels.push('testing ✅');
+            }
+            if (title.includes('refactor')) {
+              labels.push('refactoring ♻️');
+            }
+            if (title.includes('security')) {
+              labels.push('security 🔒');
+            }
+
+            // Component labels
+            if (body.includes('component: frontend') || body.includes('ui') || body.includes('interface')) {
+              labels.push('frontend 🎨');
+            }
+            if (body.includes('component: backend') || body.includes('api') || body.includes('server')) {
+              labels.push('backend ⚙️');
+            }
+            if (body.includes('component: database') || body.includes('db')) {
+              labels.push('database 🗄️');
+            }
+            if (body.includes('component: devops') || body.includes('ci/cd') || body.includes('deployment')) {
+              labels.push('devops 🚀');
+            }
+
+            // Add labels if any were found
+            if (labels.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                labels: labels
+              });
+              
+              console.log(`Added labels: ${labels.join(', ')}`);
+            }

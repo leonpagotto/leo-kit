@@ -1,0 +1,64 @@
+name: Stale Issues and PRs
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          
+          # Issues configuration
+          stale-issue-message: |
+            👋 This issue has been automatically marked as stale because it has not had recent activity.
+            
+            It will be closed in 7 days if no further activity occurs. Thank you for your contributions!
+            
+            If you believe this issue is still relevant, please:
+            - Comment on the issue to keep it open
+            - Remove the "stale" label
+            - Provide additional context or updates
+          
+          close-issue-message: |
+            🔒 This issue has been automatically closed due to inactivity.
+            
+            If you believe this issue is still relevant, feel free to reopen it with additional context.
+          
+          days-before-stale: 60
+          days-before-close: 7
+          stale-issue-label: 'stale 📦'
+          exempt-issue-labels: 'P0 🔥,P1 ⚠️,in-progress 🚧,blocked 🚫'
+          
+          # Pull Requests configuration
+          stale-pr-message: |
+            👋 This pull request has been automatically marked as stale because it has not had recent activity.
+            
+            It will be closed in 14 days if no further activity occurs.
+            
+            If you're still working on this, please:
+            - Rebase on the latest main branch
+            - Address any review comments
+            - Comment to indicate you're actively working on it
+          
+          close-pr-message: |
+            🔒 This pull request has been automatically closed due to inactivity.
+            
+            You can always reopen it if you want to continue working on it.
+          
+          days-before-pr-stale: 30
+          days-before-pr-close: 14
+          stale-pr-label: 'stale 📦'
+          exempt-pr-labels: 'P0 🔥,P1 ⚠️,in-progress 🚧,blocked 🚫,work-in-progress'
+          
+          # Labels
+          operations-per-run: 100

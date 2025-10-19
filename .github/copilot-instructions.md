@@ -1091,4 +1091,3 @@ Always provide sensible defaults and avoid requiring unnecessary configuration.
 **Remember**: Specifications are FILES. Tasks are GITHUB ISSUES.
 
 ```
-
