@@ -5,6 +5,34 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.1] - 2025-10-19
+
+### Changed
+
+- **Workflow Instructions**: Enhanced automatic status update enforcement
+  - Added CRITICAL requirement for immediate status update when starting work
+  - Updated Quick Reference Card with status update as first action
+  - Added "Update Status FIRST" to Key Mantras
+  - All AI assistants now receive explicit instructions to comment on issues and move to "In Progress" before coding
+
+- **Installation Banner**: Updated to highlight multi-AI support
+  - Added multi-AI support as first feature
+  - Updated feature descriptions to mention all 4 AI assistants
+  - Improved messaging for AI-optimized workflow instructions
+
+- **Documentation**: Comprehensive updates for v3.0.0
+  - Updated wiki Home.md with v3.0.0 release information
+  - Added full `leo ai` command documentation to Commands-Reference.md
+  - Updated navigation links for Multi-AI sections
+  - All documentation now reflects v3.0.0 multi-AI capabilities
+
+### Fixed
+
+- Issue status update workflow now more explicit and mandatory
+- Better guidance for AI assistants on when to update project board status
+
+---
+
 ## [3.0.0] - 2025-10-19
 
 ### 🎉 Major Release: Multi-AI Assistant Support
