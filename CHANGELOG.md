@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`leo init` behavior**: Now offers to merge with existing AI instructions instead of skipping generation
 - **`leo ai sync` behavior**: Intelligently merges updates while preserving custom sections
 - **File structure**: AI instruction files now have clear section markers:
-  - `<!-- LEO WORKFLOW STANDARDS (Auto-generated) -->` 
+  - `<!-- LEO WORKFLOW STANDARDS (Auto-generated) -->`
   - `<!-- PROJECT-SPECIFIC INSTRUCTIONS -->`
 
 ### Improved
@@ -693,3 +693,4 @@ For issues, questions, or suggestions:
 
 - GitHub Issues: https://github.com/leonpagotto/leo-kit/issues
 - Documentation: https://github.com/leonpagotto/leo-kit#readme
+````
