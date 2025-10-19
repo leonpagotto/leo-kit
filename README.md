@@ -685,12 +685,12 @@ leo ai diff copilot cursor
 
 **Available AI Assistants:**
 
-| Command | AI Assistant | File Generated | Description |
-|---------|--------------|----------------|-------------|
-| `copilot` | GitHub Copilot | `.github/copilot-instructions.md` | AI pair programmer from GitHub |
-| `cursor` | Cursor | `.cursorrules` | Claude-powered IDE with Composer Mode |
-| `cline` | Cline | `.clinerules` | Autonomous Claude-Dev VSCode extension |
-| `codeium` | Codeium | `.codeium/instructions.md` | Free AI code completion (70+ languages) |
+| Command   | AI Assistant   | File Generated                    | Description                             |
+| --------- | -------------- | --------------------------------- | --------------------------------------- |
+| `copilot` | GitHub Copilot | `.github/copilot-instructions.md` | AI pair programmer from GitHub          |
+| `cursor`  | Cursor         | `.cursorrules`                    | Claude-powered IDE with Composer Mode   |
+| `cline`   | Cline          | `.clinerules`                     | Autonomous Claude-Dev VSCode extension  |
+| `codeium` | Codeium        | `.codeium/instructions.md`        | Free AI code completion (70+ languages) |
 
 **Example Workflow:**
 

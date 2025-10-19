@@ -415,13 +415,23 @@ gh auth login
 
 ### Status Transition Rules
 
-**When work starts (Todo → In Progress):**
-- User explicitly says: "Let's work on #42" or "Starting #42"
+**⚠️ CRITICAL: When work starts (Todo → In Progress):**
+
+**IMMEDIATELY update issue status when you start working on it. NO EXCEPTIONS.**
+
+**Triggers:**
+- User explicitly says: "Let's work on #42" or "Starting #42" or "Work on issue #42"
+- User asks you to implement/fix something and references an issue
 - First commit referencing issue: `git commit -m "feat: start work on #42"`
 - Branch created for issue: `git checkout -b feature/issue-42`
+- **ANY indication that you're about to work on an issue**
 
-**Action:**
+**Action (EXECUTE THIS IMMEDIATELY):**
 ```bash
+# Step 1: Add a comment to the issue announcing you're starting
+gh issue comment ISSUE_NUMBER --body "🚀 Starting work on this issue..."
+
+# Step 2: Update status to "In Progress" (if project configured)
 # Find the project item ID
 gh project item-list PROJECT_NUMBER --owner OWNER --format json | jq -r '.items[] | select(.content.number==ISSUE_NUMBER) | .id'
 
@@ -442,6 +452,15 @@ gh api graphql -f query='
       }
     }
   }'
+
+# Step 3: Confirm to user
+echo "✓ Issue #ISSUE_NUMBER moved to In Progress"
+```
+
+**Simplified workflow (if GraphQL is complex):**
+```bash
+# At minimum, always comment when starting work
+gh issue comment ISSUE_NUMBER --body "🚀 Starting work on this issue..."
 ```
 
 **When work completes (In Progress → Done):**
@@ -1259,10 +1278,14 @@ Always provide sensible defaults and avoid requiring unnecessary configuration.
 2. **Simple work**: Create GitHub issue immediately with `gh issue create`
 3. **Complex work**: Create spec in `docs/specs/`, get approval, then create issues
 4. Add issue to project board (status: "Todo")
-5. Move to "In Progress" when starting work
+5. **🚨 CRITICAL**: When starting work on an issue, IMMEDIATELY:
+   - Comment on issue: `gh issue comment #42 --body "🚀 Starting work..."`
+   - Move to "In Progress" status (if project configured)
+   - Confirm: "✓ Issue #42 → In Progress"
 
 ### During Development
 
+- ✅ **FIRST ACTION**: Update issue status to "In Progress" when you start
 - ✅ Reference issue in ALL commits: `feat: add feature (#42)`
 - ✅ **Keep commit messages under 72 characters** (avoid pipeline issues)
 - ✅ **Keep issue comments under 3-4 lines** (avoid pipeline issues)
@@ -1271,7 +1294,6 @@ Always provide sensible defaults and avoid requiring unnecessary configuration.
 - ✅ Follow project code style (linting, formatting)
 - ✅ Handle errors gracefully with user-friendly messages
 - ✅ Keep UX and accessibility in mind
-- ✅ Update issue status to "In Progress"
 
 ### When Closing Issues
 
@@ -1294,6 +1316,7 @@ Always provide sensible defaults and avoid requiring unnecessary configuration.
 - **"Specifications are FILES. Tasks are GITHUB ISSUES."** - Plan in specs, execute in issues
 - **"Component-First"** - Build reusable components, never copy-paste
 - **"Auto-Create Issues"** - Detect work descriptions and create issues immediately
+- **"Update Status FIRST"** - 🚨 CRITICAL: Comment and move to "In Progress" before coding
 - **"Keep It Short"** - Commit messages < 72 chars, issue comments < 3-4 lines (avoid pipeline issues)
 - **"DRY Principle"** - Extract repeated code into functions, hooks, utilities
 - **"SEO Matters"** - Semantic HTML, meta tags, performance optimization
