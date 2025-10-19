@@ -26,6 +26,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Clear examples**: Good vs problematic commit message examples
 - **Quick reference**: Added to development workflow checklist
 
+#### Issue Comment Length Guidelines ⭐ NEW
+
+- **Pipeline protection**: Guidelines to prevent long issue comments from causing delays
+- **Best practices**: Keep comments under 3-4 lines or ~200 characters
+- **Applies to**: `gh issue close --comment` and `gh issue comment` commands
+- **Clear examples**: Good vs problematic comment examples
+- **Quick reference**: Added to development workflow and Key Mantras
+
 ### Added
 
 - `lib/commands/config.js` - Full configuration management command
@@ -34,6 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `~/.leorc.json` support - Global user configuration
 - Auto-resolution configuration in Copilot instructions template
 - Comprehensive commit message length section in template
+- **Issue comment length guidelines section** in template
 - Configuration keys:
   - `auto-resolve` (default: true) - Auto-work on issues
   - `auto-init` (default: false) - Auto-initialize on install
@@ -44,8 +53,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Copilot instructions template**:
   - Added auto-resolution config check workflow
   - Enhanced Git & Version Control section with commit length limits
+  - **Added Issue Comment Length Guidelines section (CRITICAL)**
   - Updated Table of Contents to highlight commit length guidelines
   - Updated Quick Reference Card with commit length reminder
+  - **Updated Quick Reference Card with issue comment length reminder**
+  - **Added "Keep It Short" to Key Mantras**
 - **.gitignore**: Added `.leorc.json` to exclude user configs
 - **CLI**: Registered `leo config` command with `cfg` alias
 
@@ -55,6 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added configuration priority explanation
 - Documented all available configuration keys
 - Added auto-resolution workflow to template
+- **Added issue comment best practices and examples**
 
 ## [2.5.0] - 2025-10-19
 
