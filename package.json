@@ -1,6 +1,6 @@
 {
   "name": "leo-workflow-kit",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "LEO Workflow Kit - AI-powered CLI tool with configurable auto-resolution, intelligent spec-first development, automatic GitHub Projects integration, smart issue creation, auto-initialization, and project-type optimized Copilot instructions",
   "main": "dist/index.js",
   "bin": {

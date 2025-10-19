@@ -5,6 +5,28 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.2] - 2025-10-19
+
+### Fixed
+
+- **Dynamic version display**: Banner and postinstall script now read version from `package.json` instead of hardcoded value
+  - Fixed `lib/banner.js` to dynamically read version
+  - Fixed `scripts/postinstall.js` to display correct version during installation
+  - Users now see accurate version number when installing or running `leo welcome`
+
+### Changed
+
+- **Banner version**: Now shows current package version (2.6.2) instead of outdated "2.2.0"
+
+## [2.6.1] - 2025-10-19
+
+### Changed
+
+- **Copilot instructions template**:
+  - Added issue comment length guidelines (prevent pipeline delays)
+  - Updated Quick Reference Card with comment length checklist
+  - Updated Key Mantras with "Keep It Short" principle
+
 ## [2.6.0] - 2025-10-19
 
 ### 🎉 Major Features

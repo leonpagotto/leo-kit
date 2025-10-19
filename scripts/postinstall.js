@@ -5,6 +5,16 @@ const path = require('path');
 const fs = require('fs');
 const { execSync } = require('child_process');
 
+// Read version from package.json
+const getVersion = () => {
+  try {
+    const packageJson = require(path.join(__dirname, '../package.json'));
+    return packageJson.version;
+  } catch (error) {
+    return '2.6.2'; // Fallback version
+  }
+};
+
 // Determine if this is a global or local install
 const isGlobalInstall = () => {
   const npmPrefix = process.env.npm_config_prefix || '';
@@ -29,6 +39,8 @@ const isLeoInitialized = () => {
          fs.existsSync('.github/copilot-instructions.md');
 };
 
+const version = getVersion();
+
 const simpleMessage = `
 ${chalk.yellow('╔═══════════════════════════════════════════════════════════════════╗')}
 ${chalk.yellow('║')}                                                                   ${chalk.yellow('║')}
@@ -40,7 +52,7 @@ ${chalk.yellow('║')}  ${chalk.yellow('███████╗█████�
 ${chalk.yellow('║')}  ${chalk.yellow('╚══════╝╚══════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝   ')}  ${chalk.yellow('║')}
 ${chalk.yellow('║')}                                                                   ${chalk.yellow('║')}
 ${chalk.yellow('║')}         ${chalk.cyan('🦁  GitHub Workflow Automation Toolkit  🦁')}         ${chalk.yellow('║')}
-${chalk.yellow('║')}                    ${chalk.gray('Version 2.2.0')}                            ${chalk.yellow('║')}
+${chalk.yellow('║')}                    ${chalk.gray(`Version ${version}`)}                            ${chalk.yellow('║')}
 ${chalk.yellow('║')}                                                                   ${chalk.yellow('║')}
 ${chalk.yellow('╚═══════════════════════════════════════════════════════════════════╝')}
 
@@ -85,7 +97,7 @@ try {
 
   const installFile = path.join(configDir, '.last-install');
   fs.writeFileSync(installFile, JSON.stringify({
-    version: '2.2.0',
+    version: version,
     installedAt: new Date().toISOString(),
     installType: isGlobal ? 'global' : 'local'
   }, null, 2));
