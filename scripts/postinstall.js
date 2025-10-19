@@ -77,11 +77,12 @@ ${chalk.yellow('╚════════════════════�
 ${chalk.green.bold('✨ Installation Complete! ✨')}
 
 ${chalk.white('Transform your development workflow with:')}
-  ${chalk.cyan('•')} Spec-driven development methodology
-  ${chalk.blue('•')} Automated GitHub Projects integration
-  ${chalk.magenta('•')} Comprehensive issue & PR templates
-  ${chalk.cyan('•')} Smart label management
-  ${chalk.blue('•')} Enhanced Copilot instructions
+  ${chalk.cyan('•')} Multi-AI support (Copilot, Cursor, Cline, Codeium)
+  ${chalk.blue('•')} Spec-driven development methodology
+  ${chalk.magenta('•')} Automated GitHub Projects integration
+  ${chalk.cyan('•')} Comprehensive issue & PR templates
+  ${chalk.blue('•')} Smart label management
+  ${chalk.magenta('•')} AI-optimized workflow instructions
 
 ${chalk.yellow('─────────────────────────────────────────────────────────────────────')}
 
@@ -133,7 +134,7 @@ try {
       console.log(chalk.gray('  • Issue & PR templates'));
       console.log(chalk.gray('  • GitHub Actions workflows'));
       console.log(chalk.gray('  • VS Code configuration'));
-      console.log(chalk.gray('  • Copilot instructions'));
+      console.log(chalk.gray('  • AI assistant instructions (Copilot by default)'));
       console.log(chalk.gray('  • GitHub labels\n'));
 
       try {
@@ -160,7 +161,7 @@ try {
       console.log(chalk.gray('  • Issue & PR templates'));
       console.log(chalk.gray('  • GitHub Actions workflows'));
       console.log(chalk.gray('  • VS Code configuration'));
-      console.log(chalk.gray('  • Copilot instructions'));
+      console.log(chalk.gray('  • AI assistant instructions (Copilot, Cursor, Cline, Codeium)'));
       console.log(chalk.gray('  • GitHub labels\n'));
 
       console.log(chalk.yellow('Options:\n'));

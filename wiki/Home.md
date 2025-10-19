@@ -6,22 +6,25 @@
 
 LEO Workflow Kit is a powerful CLI tool that revolutionizes software development project management through:
 
+- **🤖 Multi-AI Support**: Works with Copilot, Cursor, Cline, and Codeium
 - **🚀 Automatic Initialization**: Zero-config setup with `LEO_AUTO_INIT=true`
-- **🎯 Smart Project Types**: Optimized Copilot instructions for 6 project types
+- **🎯 AI-Optimized Instructions**: Each AI gets customized workflow guidance (~40KB)
 - **🧠 Intelligent Spec-First AI**: Automatically decides when to create specs vs direct issues
-- **� AI-Powered Automation**: GitHub Copilot automatically creates and manages issues
 - **📊 Intelligent Project Management**: Auto-sync with GitHub Projects with smart status updates
 - **🎯 Spec-Driven Development**: Enforce best practices and documentation-first approach
 - **⚡ Zero Configuration**: Works out-of-the-box - literally just `npm install`
 
-**Current Version:** 2.6.0 (unreleased)
-**Latest Stable:** 2.5.0
+**Current Version:** 3.0.0 🎉
+**Latest Stable:** 3.0.0
 **Released:** October 19, 2025
 
-**What's New in 2.6.0:**
+**What's New in 3.0.0:** 🎉 MAJOR RELEASE
 
-- ⚙️ **Configuration System**: Control auto-resolution and workflow behavior
-- 📏 **Commit Message Guidelines**: Prevent pipeline issues with length limits
+- 🤖 **Multi-AI Support**: 4 AI assistants (Copilot, Cursor, Cline, Codeium)
+- ⚡ **New `leo ai` Command**: Manage AI assistants (list, add, remove, sync)
+- 🎯 **AI Selection During Init**: Choose your AI tools during setup
+- 📝 **AI-Specific Instructions**: Optimized for each tool's strengths
+- 🔄 **Backward Compatible**: Existing Copilot setups continue working
 
 ---
 
@@ -35,11 +38,13 @@ LEO Workflow Kit is a powerful CLI tool that revolutionizes software development
 
 ### Core Features
 
-- [Automatic Initialization](./Automatic-Initialization) - Zero-config setup ⭐ NEW v2.5.0
-- [Smart Project Types](./Smart-Project-Types) - Optimized instructions per project type ⭐ NEW v2.5.0
-- [Workflow Configuration](./Configuration) - Control auto-resolution & behavior ⭐ NEW v2.6.0
+- [Multi-AI Support](./Multi-AI-Support) - Use Copilot, Cursor, Cline, or Codeium 🎉 NEW v3.0.0
+- [AI Assistant Management](./AI-Commands) - `leo ai` command reference 🎉 NEW v3.0.0
+- [Automatic Initialization](./Automatic-Initialization) - Zero-config setup
+- [Smart Project Types](./Smart-Project-Types) - Optimized instructions per project type
+- [Workflow Configuration](./Configuration) - Control auto-resolution & behavior
 - [Intelligent Spec-First Decision Making](./Spec-First-Decision-Making) - AI chooses spec vs direct issue
-- [Automatic Issue Creation](./Automatic-Issue-Creation) - Let Copilot handle your issues
+- [Automatic Issue Creation](./Automatic-Issue-Creation) - Let AI handle your issues
 - [GitHub Projects Integration](./GitHub-Projects-Integration) - Automated project management
 - [Status Management](./Status-Management) - Smart status updates based on work
 - [Spec-Driven Development](./Spec-Driven-Development) - Write specs, then code
