@@ -5,6 +5,93 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] - 2025-10-19
+
+### 🎉 Major Release: Multi-AI Assistant Support
+
+LEO Workflow Kit now supports **4 AI coding assistants** beyond GitHub Copilot! This major release enables teams to use their preferred AI tools while maintaining consistent LEO workflow standards.
+
+### Added
+
+- **🤖 Multi-AI Support**: 4 AI assistants with optimized instruction generation
+
+  - **GitHub Copilot** (.github/copilot-instructions.md) - Original supported AI
+  - **Cursor** (.cursorrules) - Claude-powered IDE with Composer Mode
+  - **Cline** (.clinerules) - Autonomous Claude-Dev VSCode extension
+  - **Codeium** (.codeium/instructions.md) - Free AI completion (70+ languages)
+
+- **📦 AI Instructions Architecture**:
+
+  - `lib/ai-instructions/` directory with adapter pattern design
+  - `BaseAIAdapter` abstract class defining AI adapter interface
+  - Individual adapters for each AI with optimized content
+  - `AIInstructionsBuilder` orchestrator for generation and management
+
+- **⚡ New `leo ai` Command**:
+
+  - `leo ai list` - Show configured AI assistants with file paths
+  - `leo ai add <name>` - Add new AI assistant and generate instructions
+  - `leo ai remove <name>` - Remove AI assistant and delete files
+  - `leo ai sync` - Regenerate all AI instruction files
+  - `leo ai diff <ai1> <ai2>` - Compare two AI configs (coming soon)
+
+- **🚀 Init Integration**:
+
+  - AI assistant selection during `leo init` (checkbox prompt)
+  - Generate instruction files for all selected AIs
+  - Set primary AI for multi-AI setups
+  - Non-interactive mode defaults to Copilot only
+
+- **📝 Configuration**:
+
+  - New `ai-assistants` section in `.leorc.json`
+  - `enabled`: Array of active AI assistants
+  - `primary`: Most-used AI assistant
+  - `sync-on-update`: Auto-sync all AI files on template updates
+
+- **📚 Documentation**:
+  - Comprehensive Migration Guide (v2.x → v3.0.0) in `docs/MIGRATION_V3.md`
+  - Multi-AI Support section in README
+  - `leo ai` command documentation
+  - AI assistant comparison table
+
+### Changed
+
+- **Refactored Copilot Instructions**: Existing template now serves as universal base for all AIs
+- **Enhanced Init Flow**: Now includes AI assistant selection step
+- **Updated README**: Added Multi-AI Support section before Features
+- **Success Messages**: Show configured AIs and primary AI after init
+
+### Technical Details
+
+- Each AI adapter generates ~40KB instruction file with:
+  - Full LEO workflow standards (spec-driven, issue creation, commit guidelines)
+  - AI-specific tips and keyboard shortcuts
+  - Best practices for that tool's strengths
+  - Component-first development patterns
+  - Performance optimization guidelines
+  - SEO best practices
+
+### Backward Compatibility
+
+- ✅ **Fully backward compatible** with v2.x
+- ✅ Existing `.github/copilot-instructions.md` files preserved
+- ✅ Default configuration is Copilot-only (no breaking changes)
+- ✅ All v2.x commands and workflows continue working
+- ✅ Migration is optional - add other AIs when ready
+
+### Migration
+
+Existing v2.x users can:
+
+1. **Do nothing**: Continue using Copilot-only setup (fully supported)
+2. **Add AIs**: Run `leo ai add <name>` to add more assistants
+3. **Fresh init**: Re-run `leo init` to select multiple AIs
+
+See [Migration Guide](docs/MIGRATION_V3.md) for detailed instructions.
+
+---
+
 ## [2.6.4] - 2025-10-19
 
 ### Changed
