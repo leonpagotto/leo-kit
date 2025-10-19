@@ -7,11 +7,13 @@
 Before installing LEO Workflow Kit, ensure you have:
 
 ### Required
+
 - ✅ **Node.js 16.0.0 or higher** - [Download here](https://nodejs.org/)
 - ✅ **Git** - [Install guide](https://git-scm.com/downloads)
 - ✅ **GitHub Account** - [Sign up](https://github.com/signup)
 
 ### Recommended
+
 - ✅ **GitHub CLI (`gh`)** - [Install here](https://cli.github.com/)
 - ✅ **VS Code** - [Download here](https://code.visualstudio.com/)
 - ✅ **GitHub Copilot** - [Get it here](https://github.com/features/copilot)
@@ -29,6 +31,7 @@ LEO_AUTO_INIT=true npm install leo-workflow-kit
 ```
 
 **What this does:**
+
 - ✅ Installs LEO Workflow Kit
 - ✅ Automatically initializes your project
 - ✅ Creates documentation structure (`docs/specs/`)
@@ -40,6 +43,7 @@ LEO_AUTO_INIT=true npm install leo-workflow-kit
 **⚡ Total time:** < 30 seconds
 
 **Perfect for:**
+
 - 🎯 New projects
 - 🎯 Team onboarding
 - 🎯 CI/CD automation
@@ -58,6 +62,7 @@ npm install -g leo-workflow-kit
 ```
 
 **Verify installation:**
+
 ```bash
 leo --version
 # Should show: 2.5.0 (or later)
@@ -67,6 +72,7 @@ leo --help
 ```
 
 **Benefits:**
+
 - ✅ Available everywhere via `leo` command
 - ✅ Easy to update
 - ✅ Single installation for all projects
@@ -83,11 +89,13 @@ npx leo-workflow-kit init
 ```
 
 **When to use:**
+
 - 🎯 Testing LEO before committing
 - 🎯 One-time project setup
 - 🎯 CI/CD pipelines
 
 **Limitations:**
+
 - ❌ Slower (downloads each time)
 - ❌ No persistent configuration
 
@@ -113,6 +121,7 @@ leo --version
 ```
 
 **When to use:**
+
 - 🔧 Contributing to LEO development
 - 🔧 Testing unreleased features
 - 🔧 Customizing for your needs
@@ -126,11 +135,13 @@ LEO requires GitHub CLI for GitHub operations.
 ### Install GitHub CLI
 
 **macOS:**
+
 ```bash
 brew install gh
 ```
 
 **Windows:**
+
 ```bash
 winget install --id GitHub.cli
 # or
@@ -138,6 +149,7 @@ choco install gh
 ```
 
 **Linux:**
+
 ```bash
 # Debian/Ubuntu
 sudo apt install gh
@@ -156,6 +168,7 @@ gh auth login
 ```
 
 Follow the prompts:
+
 1. Choose: **GitHub.com**
 2. Protocol: **HTTPS** (recommended)
 3. Authenticate: **Login with a web browser**
@@ -163,12 +176,14 @@ Follow the prompts:
 5. Complete authentication in browser
 
 **Required Scopes:**
+
 ```bash
 # Ensure these scopes are enabled:
 gh auth refresh -s repo -s project -s workflow
 ```
 
 **Verify:**
+
 ```bash
 gh auth status
 # Should show: ✓ Logged in to github.com account USERNAME
@@ -191,33 +206,40 @@ leo init
 ### What Happens During `leo init`
 
 1. **Welcome Banner** 🦁
+
    - Shows LEO ASCII art
    - Displays current version
 
 2. **Prerequisites Check** ✅
+
    - Verifies Node.js version
    - Checks for GitHub CLI
    - Tests git installation
 
 3. **GitHub Authentication** 🔐
+
    - Checks `gh auth status`
    - Prompts to authenticate if needed
 
 4. **Documentation Setup** 📁
+
    - Creates `docs/` structure
    - Adds `docs/README.md`
    - Creates subdirectories (specs, guides, development, archive)
 
 5. **GitHub Templates** 📋
+
    - Installs 8 issue templates
    - Creates PR template
    - Sets up `.github/` directory
 
 6. **VS Code Integration** 🎨
+
    - Creates `.github/copilot-instructions.md`
    - Enables AI-powered workflow automation
 
 7. **Labels Setup** 🏷️ (Optional)
+
    - Asks: "Would you like to configure GitHub labels?"
    - Creates 22+ standardized labels if yes
 
@@ -265,11 +287,13 @@ leo docs
 ### Issue: Command not found
 
 **Error:**
+
 ```
 zsh: command not found: leo
 ```
 
 **Solution:**
+
 ```bash
 # Check if installed globally
 npm list -g leo-workflow-kit
@@ -287,11 +311,13 @@ npm config get prefix
 ### Issue: Permission denied (macOS/Linux)
 
 **Error:**
+
 ```
 EACCES: permission denied
 ```
 
 **Solution:**
+
 ```bash
 # Option 1: Use sudo (not recommended)
 sudo npm install -g leo-workflow-kit
@@ -309,11 +335,13 @@ npm install -g leo-workflow-kit
 ### Issue: GitHub CLI not authenticated
 
 **Error:**
+
 ```
 gh: To authenticate, please run: gh auth login
 ```
 
 **Solution:**
+
 ```bash
 # Authenticate
 gh auth login
@@ -330,11 +358,13 @@ gh auth status
 ### Issue: Node.js version too old
 
 **Error:**
+
 ```
 Error: LEO requires Node.js 16.0.0 or higher
 ```
 
 **Solution:**
+
 ```bash
 # Check current version
 node --version
@@ -428,6 +458,6 @@ After installation:
 
 ---
 
-**Last Updated:** October 19, 2025  
-**Tested On:** macOS 14, Windows 11, Ubuntu 22.04  
+**Last Updated:** October 19, 2025
+**Tested On:** macOS 14, Windows 11, Ubuntu 22.04
 **Node.js:** 16.x, 18.x, 20.x

@@ -8,6 +8,9 @@ dist/
 *.swo
 *~
 
+# LEO config files (user preferences)
+.leorc.json
+
 # Test and verification scripts (development only)
 smoke-test.sh
 test-*.js

@@ -484,6 +484,41 @@ leo vscode --global
 leo vscode --project
 ```
 
+### `leo config` (alias: `leo cfg`) - Manage Configuration
+
+⭐ **NEW in v2.6.0**: Control workflow behavior and preferences
+
+```bash
+# View all configuration settings
+leo config list
+
+# Disable auto-resolution (create issues but wait for review)
+leo config set auto-resolve false
+
+# Enable auto-resolution (default - auto-work on issues)
+leo config set auto-resolve true
+
+# Set project type for smart instructions
+leo config set project-type frontend
+
+# Check a specific setting
+leo config get auto-resolve
+
+# Initialize config file with defaults
+leo config init
+
+# Set global defaults
+leo config set auto-resolve true --global
+```
+
+**Available Configuration Keys:**
+
+- **`auto-resolve`** (default: `true`): When `false`, Copilot creates issues but waits for your review before working on them. Perfect for teams that want more control.
+- **`auto-init`** (default: `false`): Auto-initialize on npm install without `LEO_AUTO_INIT` env var.
+- **`project-type`** (default: `auto`): Set project type for optimized Copilot instructions (auto, frontend, backend, fullstack, cli, mobile, library).
+
+**Configuration Priority:** Local (`.leorc.json`) > Global (`~/.leorc.json`) > Default
+
 ### `leo status` (alias: `leo s`) - Check Status
 
 ```bash
@@ -513,9 +548,21 @@ leo docs
 
 **Commit Messages:**
 
+⚠️ **Keep commit messages under 72 characters** to avoid pipeline issues!
+
 ```bash
+# ✅ GOOD - concise and clear
 git commit -m "feat: add dark mode (#42)"
 git commit -m "fix: resolve login bug (#23)"
+
+# ❌ TOO LONG - may cause pipeline delays
+git commit -m "feat: add dark mode with automatic theme detection, user preferences storage, and smooth transitions (#42)"
+```
+
+**Use commit body for details:**
+
+```bash
+git commit -m "feat: add dark mode (#42)" -m "Implements automatic theme detection, user preferences, and smooth transitions"
 ```
 
 **Pull Requests:**

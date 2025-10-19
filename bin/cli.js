@@ -11,6 +11,7 @@ const initCommand = require('../lib/commands/init');
 const issueCommand = require('../lib/commands/issue');
 const labelsCommand = require('../lib/commands/labels');
 const vscodeCommand = require('../lib/commands/vscode');
+const configCommand = require('../lib/commands/config');
 
 // Check if this is the first run and show welcome message
 if (isFirstRun()) {
@@ -75,6 +76,18 @@ program
   .option('--project', 'Install for project only')
   .action((options) => {
     vscodeCommand(options);
+  });
+
+// Config command - Manage workflow configuration
+program
+  .command('config')
+  .alias('cfg')
+  .description('Manage workflow configuration settings')
+  .allowUnknownOption()
+  .action(() => {
+    // Get all arguments after 'config'
+    const args = process.argv.slice(3);
+    configCommand(args);
   });
 
 // Status command - Check workflow setup status (simple)

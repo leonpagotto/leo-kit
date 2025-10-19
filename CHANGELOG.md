@@ -5,6 +5,57 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### 🎉 Major Features
+
+#### Workflow Configuration System
+
+- **`leo config` command**: Manage workflow settings via CLI
+- **Auto-resolution toggle**: Control whether Copilot automatically works on created issues
+  - `leo config set auto-resolve false` - Create issues but wait for review
+  - `leo config set auto-resolve true` - Auto-work on issues (default)
+- **Local and global config**: Project-specific (`.leorc.json`) or global (`~/.leorc.json`) settings
+- **Configuration priority**: Local > Global > Default
+- **Smart Copilot integration**: Template checks config before proceeding with work
+
+#### Commit Message Length Guidelines
+
+- **Pipeline protection**: Guidelines to prevent long commits from causing pipeline issues
+- **Best practices**: Keep subject lines under 72 characters
+- **Clear examples**: Good vs problematic commit message examples
+- **Quick reference**: Added to development workflow checklist
+
+### Added
+
+- `lib/commands/config.js` - Full configuration management command
+- `lib/utils/config-manager.js` - Config file read/write utilities
+- `.leorc.json` support - Local project configuration
+- `~/.leorc.json` support - Global user configuration
+- Auto-resolution configuration in Copilot instructions template
+- Comprehensive commit message length section in template
+- Configuration keys:
+  - `auto-resolve` (default: true) - Auto-work on issues
+  - `auto-init` (default: false) - Auto-initialize on install
+  - `project-type` (default: auto) - Project type for smart instructions
+
+### Changed
+
+- **Copilot instructions template**:
+  - Added auto-resolution config check workflow
+  - Enhanced Git & Version Control section with commit length limits
+  - Updated Table of Contents to highlight commit length guidelines
+  - Updated Quick Reference Card with commit length reminder
+- **.gitignore**: Added `.leorc.json` to exclude user configs
+- **CLI**: Registered `leo config` command with `cfg` alias
+
+### Documentation
+
+- Enhanced config command help with examples
+- Added configuration priority explanation
+- Documented all available configuration keys
+- Added auto-resolution workflow to template
+
 ## [2.5.0] - 2025-10-19
 
 ### 🎉 Major Features
