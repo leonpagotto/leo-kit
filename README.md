@@ -13,13 +13,15 @@
 
 **Transform your development process with AI-powered spec-first development, intelligent issue creation, automated GitHub Projects integration, automatic initialization, and project-type optimized Copilot instructions—all from your terminal.**
 
-✨ **New in v2.5.0:**
+🎉 **NEW in v3.0.0: Multi-AI Support!**
 
-- 🚀 **Automatic Initialization** - Zero-config setup with `LEO_AUTO_INIT=true`
-- 🎯 **Smart Copilot Instructions** - Project-type optimized instructions (foundation ready)
-- 📝 **Enhanced Templates** - Better organized with 81% less noise for specific project types
+- 🤖 **4 AI Assistants Supported** - Copilot, Cursor (Claude), Cline, Codeium
+- 🎯 **AI Selection During Init** - Choose your AI tools during `leo init`
+- 📝 **AI-Specific Instructions** - Each AI gets optimized LEO workflow guides
+- ⚡ **New `leo ai` Command** - Manage AI assistants (list, add, remove, sync)
+- � **Backward Compatible** - Existing Copilot setups continue working
 
-[🚀 Quick Start](#-quick-start) • [📦 Installation](#-installation) • [✨ Features](#-features) • [🎯 Commands](#-commands) • [📚 Documentation](#-documentation)
+[🚀 Quick Start](#-quick-start) • [📦 Installation](#-installation) • [🤖 Multi-AI Support](#-multi-ai-support-v30) • [✨ Features](#-features) • [🎯 Commands](#-commands)
 
 ---
 
@@ -331,6 +333,89 @@ run: npm install
 
 ---
 
+## 🤖 Multi-AI Support (v3.0.0)
+
+### Supported AI Assistants
+
+LEO Kit now supports **4 AI coding assistants**, generating optimized workflow instructions for each:
+
+| AI Assistant       | File Generated                    | Best For                                | Pricing           |
+| ------------------ | --------------------------------- | --------------------------------------- | ----------------- |
+| **GitHub Copilot** | `.github/copilot-instructions.md` | General completion, GitHub integration  | $10/mo            |
+| **Cursor**         | `.cursorrules`                    | Complex refactoring, Claude-powered IDE | $20/mo            |
+| **Cline**          | `.clinerules`                     | Autonomous tasks, multi-file changes    | Free (Claude API) |
+| **Codeium**        | `.codeium/instructions.md`        | Free alternative, 70+ languages         | Free forever      |
+
+### AI Selection During Init
+
+When running `leo init`, you'll be prompted to select your AI assistants:
+
+```bash
+leo init
+```
+
+```
+🤖 AI Assistant Configuration
+
+? Which AI assistants do you use?
+  ◉ 🤖 GitHub Copilot - AI pair programmer from GitHub
+  ◯ 🎯 Cursor - Claude-powered IDE with Composer Mode
+  ◯ 🚀 Cline - Autonomous Claude-Dev VSCode extension
+  ◯ ⚡ Codeium - Free AI code completion (70+ languages)
+```
+
+### Managing AI Assistants
+
+```bash
+# List configured AIs
+leo ai list
+
+# Add new AI assistant
+leo ai add cursor
+leo ai add cline
+leo ai add codeium
+
+# Remove AI assistant
+leo ai remove cursor
+
+# Regenerate all AI instruction files
+leo ai sync
+```
+
+### What Gets Generated?
+
+Each AI gets a comprehensive instruction file (~40KB) containing:
+
+- ✅ Full LEO workflow standards (spec-driven development, issue creation, commit guidelines)
+- ✅ AI-specific tips and keyboard shortcuts
+- ✅ Best practices for that tool's strengths
+- ✅ Component-first development patterns
+- ✅ Performance optimization guidelines
+- ✅ SEO best practices
+- ✅ Project-aware contextual instructions
+
+**Example: Cursor** gets additional sections on:
+
+- Composer Mode workflow
+- `@filename` referencing
+- Claude's strengths (context understanding, refactoring)
+- Multi-step task planning
+
+**Example: Codeium** gets additional sections on:
+
+- Comment-driven coding
+- Fast completion workflows
+- Multi-language support tips
+- Integration with other AI tools
+
+### Backward Compatibility
+
+**Existing v2.x users:** Your `.github/copilot-instructions.md` continues working! v3.0.0 is fully backward compatible.
+
+**Migrate to v3.0.0:** See [Migration Guide](docs/MIGRATION_V3.md)
+
+---
+
 ## ✨ Features
 
 ### 🎯 Spec-Driven Development
@@ -572,6 +657,65 @@ leo config set auto-resolve true --global
 - **`project-type`** (default: `auto`): Set project type for optimized Copilot instructions (auto, frontend, backend, fullstack, cli, mobile, library).
 
 **Configuration Priority:** Local (`.leorc.json`) > Global (`~/.leorc.json`) > Default
+
+### `leo ai` - Manage AI Assistants
+
+🆕 **NEW in v3.0.0**: Manage multiple AI coding assistants
+
+```bash
+# List configured AI assistants
+leo ai list
+leo ai ls
+
+# Add new AI assistant
+leo ai add cursor      # Add Cursor (Claude-powered IDE)
+leo ai add cline       # Add Cline (autonomous coding)
+leo ai add codeium     # Add Codeium (free alternative)
+
+# Remove AI assistant
+leo ai remove cursor
+leo ai rm cursor
+
+# Regenerate all AI instruction files
+leo ai sync
+
+# Compare two AI configurations (coming soon)
+leo ai diff copilot cursor
+```
+
+**Available AI Assistants:**
+
+| Command | AI Assistant | File Generated | Description |
+|---------|--------------|----------------|-------------|
+| `copilot` | GitHub Copilot | `.github/copilot-instructions.md` | AI pair programmer from GitHub |
+| `cursor` | Cursor | `.cursorrules` | Claude-powered IDE with Composer Mode |
+| `cline` | Cline | `.clinerules` | Autonomous Claude-Dev VSCode extension |
+| `codeium` | Codeium | `.codeium/instructions.md` | Free AI code completion (70+ languages) |
+
+**Example Workflow:**
+
+```bash
+# Start with Copilot (default)
+leo init  # Select Copilot during setup
+
+# Later, add Cursor for complex refactoring
+leo ai add cursor
+
+# Check what's configured
+leo ai list
+# Output:
+# 📦 Configured AI Assistants:
+#   ✓ GitHub Copilot
+#     .github/copilot-instructions.md
+#   ✓ Cursor
+#     .cursorrules
+#   Primary AI: copilot
+
+# Update all AI instruction files after LEO Kit upgrade
+leo ai sync
+```
+
+**See [Multi-AI Support](#-multi-ai-support-v30) for details and [Migration Guide](docs/MIGRATION_V3.md) for upgrading from v2.x.**
 
 ### `leo status` (alias: `leo s`) - Check Status
 
