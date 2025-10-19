@@ -14,8 +14,13 @@ LEO Workflow Kit is a powerful CLI tool that revolutionizes software development
 - **🎯 Spec-Driven Development**: Enforce best practices and documentation-first approach
 - **⚡ Zero Configuration**: Works out-of-the-box - literally just `npm install`
 
-**Current Version:** 2.5.0
+**Current Version:** 2.6.0 (unreleased)
+**Latest Stable:** 2.5.0
 **Released:** October 19, 2025
+
+**What's New in 2.6.0:**
+- ⚙️ **Configuration System**: Control auto-resolution and workflow behavior
+- 📏 **Commit Message Guidelines**: Prevent pipeline issues with length limits
 
 ---
 
@@ -31,6 +36,7 @@ LEO Workflow Kit is a powerful CLI tool that revolutionizes software development
 
 - [Automatic Initialization](./Automatic-Initialization) - Zero-config setup ⭐ NEW v2.5.0
 - [Smart Project Types](./Smart-Project-Types) - Optimized instructions per project type ⭐ NEW v2.5.0
+- [Workflow Configuration](./Configuration) - Control auto-resolution & behavior ⭐ NEW v2.6.0
 - [Intelligent Spec-First Decision Making](./Spec-First-Decision-Making) - AI chooses spec vs direct issue
 - [Automatic Issue Creation](./Automatic-Issue-Creation) - Let Copilot handle your issues
 - [GitHub Projects Integration](./GitHub-Projects-Integration) - Automated project management
@@ -77,7 +83,26 @@ LEO_AUTO_INIT=true npm install leo-workflow-kit
 # Start working immediately!
 ```
 
-### Example 2: Simple Task (Direct Issue)
+### Example 2: Configure Auto-Resolution (v2.6.0) ⭐ NEW
+
+```bash
+# For teams - disable auto-resolution for review workflow
+leo config set auto-resolve false
+
+# Now when Copilot creates issues:
+# ✅ Issue #42 created
+# ⏸️ Waits for your review
+# 👤 You approve when ready
+# ✅ Copilot proceeds with implementation
+
+# Check current config
+leo config list
+
+# Re-enable for solo fast-paced work
+leo config set auto-resolve true
+```
+
+### Example 3: Simple Task (Direct Issue)
 
 ```bash
 # Traditional manual setup
@@ -91,12 +116,13 @@ leo init
 # Copilot automatically:
 # ✅ Analyzes: This is a simple bug fix
 # ✅ Creates issue #42 directly
+# ✅ Checks auto-resolve config
 # ✅ Adds to GitHub Project (status: Todo)
-# ✅ Updates status as you work
-# ✅ Closes issue when PR merges
+# ✅ If enabled: Starts work immediately
+# ✅ If disabled: Waits for your approval
 ```
 
-### Example 3: Complex Feature (Spec First)
+### Example 4: Complex Feature (Spec First)
 
 ```bash
 # Describe a complex feature to Copilot:

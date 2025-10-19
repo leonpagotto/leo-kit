@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🦁 LEO Workflow Kit
+# 🦁 LEO Workflow Kit 🦁
 
 ### **Complete GitHub Workflow Automation with Intelligent Project Management**
 
@@ -63,11 +63,21 @@ graph TB
             ISSUE[leo issue<br/>Interactive Issue Creator]
             LABELS[leo labels<br/>Label Management]
             VSCODE[leo vscode<br/>VS Code Integration]
+            CONFIG[leo config<br/>⭐ Configuration Manager]
+        end
+
+        subgraph "Configuration System ⭐ NEW"
+            CONFIG_MGR[Config Manager<br/>Local & Global]
+            LOCAL_CFG[.leorc.json<br/>Project Config]
+            GLOBAL_CFG[~/.leorc.json<br/>User Config]
+            CONFIG_MGR --> LOCAL_CFG
+            CONFIG_MGR --> GLOBAL_CFG
         end
 
         subgraph "GitHub Copilot Integration"
             COPILOT_INST[Copilot Instructions<br/>AI Behavior Rules]
             AUTO_ISSUE[Auto Issue Creation<br/>Detects Work Intent]
+            AUTO_RESOLVE[Auto Resolution<br/>⭐ Optional]
             AUTO_PROJECT[Project Integration<br/>Auto-add to Boards]
             AUTO_STATUS[Status Management<br/>Todo → In Progress → Done]
         end
@@ -83,20 +93,31 @@ graph TB
     CLI --> ISSUE
     CLI --> LABELS
     CLI --> VSCODE
+    CLI --> CONFIG
+
+    CONFIG --> CONFIG_MGR
 
     INIT --> COPILOT_INST
     COPILOT_INST --> AUTO_ISSUE
-    AUTO_ISSUE --> AUTO_PROJECT
+    AUTO_ISSUE --> AUTO_RESOLVE
+    AUTO_RESOLVE -->|Enabled| AUTO_PROJECT
+    AUTO_RESOLVE -->|Disabled| WAIT[Wait for Review]
     AUTO_PROJECT --> AUTO_STATUS
+
+    CONFIG_MGR -.->|Checks Config| AUTO_RESOLVE
 
     LABELS --> GH
     GH --> GHAPI
     GHAPI --> GHPROJECTS
 
     style CLI fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
+    style CONFIG fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
+    style CONFIG_MGR fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
     style AUTO_ISSUE fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    style AUTO_RESOLVE fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
     style AUTO_PROJECT fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
     style AUTO_STATUS fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    style WAIT fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
 ```
 
 > **View Full Architecture:** See [`diagrams/architecture.mmd`](./diagrams/architecture.mmd) for the complete system architecture with all components and data flows.
@@ -105,37 +126,70 @@ graph TB
 
 ```mermaid
 graph TB
-    A[Describe Work] --> B{AI Analyzes<br/>Complexity}
-    B -->|Simple| C[Create Issue<br/>Directly]
-    B -->|Complex| D[Create Spec<br/>First]
-    D --> E[User Reviews<br/>Spec]
-    E --> F[Break into<br/>Multiple Issues]
-    C --> G[Add to Project:<br/>Todo]
+    A[User Describes Work] --> B{Copilot Analyzes<br/>Complexity}
+
+    B -->|Simple Task| C[Create GitHub Issue<br/>Directly]
+    B -->|Complex Feature| D[Create Spec File<br/>docs/specs/]
+
+    D --> E{User Reviews<br/>& Approves?}
+    E -->|Yes| F[Break into<br/>Multiple Issues]
+    E -->|No| D
+
+    C --> G{Check Config:<br/>auto-resolve}
     F --> G
-    G --> H[Start Work]
-    H --> I[Status:<br/>In Progress]
-    I --> J[Merge PR]
-    J --> K[Status:<br/>Done]
+
+    G -->|Enabled<br/>default| H[Auto-Start Work]
+    G -->|Disabled<br/>⭐ optional| I[Wait for<br/>User Review]
+
+    I --> J{User Approves?}
+    J -->|Yes| H
+    J -->|Changes Needed| K[Update Issue]
+    K --> I
+
+    H --> L[Add to Project:<br/>Todo → In Progress]
+    L --> M[Implement Solution]
+    M --> N[Create Pull Request]
+    N --> O[Merge PR]
+    O --> P[Status: Done ✓<br/>Issue Auto-Closed]
 
     style A fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#fff
     style B fill:#9C27B0,stroke:#4A148C,stroke-width:3px,color:#fff
     style D fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
     style C fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
-    style G fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
-    style I fill:#2196F3,stroke:#0D47A1,stroke-width:2px,color:#fff
-    style K fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#fff
+    style G fill:#2196F3,stroke:#0D47A1,stroke-width:3px,color:#fff
+    style I fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
+    style H fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#fff
+    style L fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
+    style M fill:#2196F3,stroke:#0D47A1,stroke-width:2px,color:#fff
+    style P fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#fff
 ```
 
 > **View Full Workflow:** See [`diagrams/workflow.mmd`](./diagrams/workflow.mmd) for the complete development workflow including spec creation and CI/CD pipeline.
 
 **Key Points:**
 
-- � **AI decides:** Spec first for complex features, direct issues for simple tasks
+- 🤖 **AI decides:** Spec first for complex features, direct issues for simple tasks
 - 📝 **Spec creation:** Complex work gets structured planning document
-- � **User review:** Approve specs before implementation begins
+- 👤 **User review:** Approve specs before implementation begins
 - 🔄 **Smart breakdown:** Approved specs become multiple focused issues
+- ⚙️ **Optional auto-resolution:** ⭐ NEW - Configure if Copilot auto-works or waits for review
 - 📊 **Auto-tracking:** All issues sync with GitHub Projects
 - ✅ **Zero overhead:** Right process for the right complexity
+
+**Auto-Resolution Configuration:** ⭐ NEW in v2.6.0
+
+Control whether Copilot automatically works on created issues or waits for your review:
+
+```bash
+# Disable auto-work (team review workflow)
+leo config set auto-resolve false
+
+# Enable auto-work (default - fast-paced workflow)
+leo config set auto-resolve true
+
+# Check current setting
+leo config get auto-resolve
+```
 
 **Examples:**
 

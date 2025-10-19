@@ -1,22 +1,22 @@
 ```mermaid
 graph TB
-    START([Developer Describes Work])
+    START([User Describes Work])
     DESCRIBE[Copilot Analyzes Request]
-    
+
     subgraph "AI Decision: Spec or Issue?"
-        ANALYZE{Is it a complex<br/>feature/architecture?}
+        ANALYZE{Is it complex<br/>feature/architecture?}
         SIMPLE[Simple Task/Bug<br/>Quick Fix]
         COMPLEX[Complex Feature<br/>Needs Design]
     end
-    
+
     subgraph "Spec Creation Path"
         CREATE_SPEC[Create Spec File<br/>docs/specs/feature-name.md]
         SPEC_CONTENT[Include: Problem, Solution,<br/>Technical Details, Criteria]
         ASK_REVIEW[Ask User to Review Spec]
-        USER_REVIEWS[User Reviews & Approves]
+        USER_REVIEWS{User Reviews<br/>& Approves?}
         BREAK_DOWN[Break Down into Issues]
     end
-    
+
     subgraph "Direct Issue Creation"
         DETECT[Extract Info]
         CREATE[gh issue create --title --body --label]
@@ -24,11 +24,18 @@ graph TB
         SET_STATUS[Set Status: Todo]
         CONFIRM[✓ Issue Created]
     end
-    
+
+    subgraph "Auto-Resolution Check ⭐ NEW v2.6.0"
+        CHECK_CONFIG{Check Config:<br/>auto-resolve?}
+        AUTO_START[Auto-Start Work<br/>Enabled by Default]
+        WAIT_REVIEW[Wait for Review<br/>Optional: User Approval]
+        USER_APPROVES{User<br/>Approves?}
+    end
+
     subgraph "Development Workflow"
         START_WORK[Start Working]
         BRANCH[Create Branch]
-        COMMIT[Commit Code]
+        COMMIT[Commit Code<br/>⚠️ Keep message < 72 chars]
         AUTO_STATUS_IP[Status: In Progress]
         PUSH[Push Changes]
         PR[Create PR]
@@ -37,34 +44,44 @@ graph TB
         AUTO_STATUS_DONE[Status: Done]
         CLOSE[Auto-Close Issue]
     end
-    
+
     subgraph "GitHub Projects Board"
         TODO[📋 Todo]
         INPROGRESS[🚧 In Progress]
         DONE[✅ Done]
     end
-    
+
     START --> DESCRIBE
     DESCRIBE --> ANALYZE
-    
+
     ANALYZE -->|Simple: Bug, Task,<br/>Quick Fix| SIMPLE
     ANALYZE -->|Complex: Feature,<br/>Architecture| COMPLEX
-    
+
     SIMPLE --> DETECT
     DETECT --> CREATE
     CREATE --> ADD_PROJECT
     ADD_PROJECT --> SET_STATUS
     SET_STATUS --> TODO
     SET_STATUS --> CONFIRM
-    
+
     COMPLEX --> CREATE_SPEC
     CREATE_SPEC --> SPEC_CONTENT
     SPEC_CONTENT --> ASK_REVIEW
     ASK_REVIEW --> USER_REVIEWS
-    USER_REVIEWS --> BREAK_DOWN
+    USER_REVIEWS -->|Yes| BREAK_DOWN
+    USER_REVIEWS -->|No, needs changes| CREATE_SPEC
     BREAK_DOWN --> CREATE
-    
-    CONFIRM --> START_WORK
+
+    CONFIRM --> CHECK_CONFIG
+    CHECK_CONFIG -->|Enabled| AUTO_START
+    CHECK_CONFIG -->|Disabled| WAIT_REVIEW
+
+    WAIT_REVIEW --> USER_APPROVES
+    USER_APPROVES -->|Yes| START_WORK
+    USER_APPROVES -->|Changes needed| UPDATE[Update Issue]
+    UPDATE --> WAIT_REVIEW
+
+    AUTO_START --> START_WORK
     START_WORK --> BRANCH
     BRANCH --> COMMIT
     COMMIT --> AUTO_STATUS_IP
@@ -76,11 +93,14 @@ graph TB
     MERGE --> AUTO_STATUS_DONE
     AUTO_STATUS_DONE --> DONE
     MERGE --> CLOSE
-    
+
     style START fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#fff
     style ANALYZE fill:#9C27B0,stroke:#4A148C,stroke-width:3px,color:#fff
     style CREATE_SPEC fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
     style ASK_REVIEW fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    style CHECK_CONFIG fill:#2196F3,stroke:#0D47A1,stroke-width:3px,color:#fff
+    style AUTO_START fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#fff
+    style WAIT_REVIEW fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
     style DETECT fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
     style CREATE fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
     style AUTO_STATUS_IP fill:#2196F3,stroke:#0D47A1,stroke-width:2px,color:#fff

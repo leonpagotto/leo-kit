@@ -2,29 +2,40 @@
 graph TB
     subgraph "LEO Workflow Kit Architecture"
         CLI[CLI Entry Point<br/>bin/cli.js]
-        
+
         subgraph "Core Commands"
             INIT[leo init<br/>Project Setup]
             ISSUE[leo issue<br/>Interactive Issue Creator]
             LABELS[leo labels<br/>Label Management]
             VSCODE[leo vscode<br/>VS Code Integration]
+            CONFIG[leo config<br/>⭐ Configuration Manager]
             STATUS[leo status<br/>Workflow Status]
             HEALTH[leo health<br/>System Health Check]
         end
-        
+
+        subgraph "Configuration System ⭐ NEW v2.6.0"
+            CONFIG_MGR[Config Manager<br/>lib/utils/config-manager.js]
+            LOCAL_CFG[.leorc.json<br/>Project Config]
+            GLOBAL_CFG[~/.leorc.json<br/>User Config]
+            CONFIG_KEYS[Config Keys:<br/>auto-resolve, auto-init, project-type]
+            CONFIG_MGR --> LOCAL_CFG
+            CONFIG_MGR --> GLOBAL_CFG
+            CONFIG_MGR --> CONFIG_KEYS
+        end
+
         subgraph "Core Libraries"
             BANNER[banner.js<br/>Welcome Banner]
             COPILOT[copilot-instructions-template.js<br/>AI Instructions Generator]
             CHECKS[utils/checks.js<br/>Prerequisites Validation]
             FIRSTRUN[utils/first-run.js<br/>First-Time Setup]
         end
-        
+
         subgraph "Templates"
             ISSUES[Issue Templates<br/>8 Types]
             WORKFLOWS[GitHub Workflows<br/>CI/CD Templates]
             DOCS[Documentation<br/>Templates]
         end
-        
+
         subgraph "External Dependencies"
             GH[GitHub CLI<br/>gh]
             GHAPI[GitHub API<br/>REST & GraphQL]
@@ -32,53 +43,65 @@ graph TB
             NODE[Node.js ≥16<br/>Runtime]
             NPM[npm Registry<br/>Package Distribution]
         end
-        
+
         subgraph "GitHub Copilot Integration"
             COPILOT_INST[.github/copilot-instructions.md<br/>AI Behavior Rules]
             AUTO_ISSUE[Automatic Issue Creation<br/>Detects Work Intent]
+            AUTO_RESOLVE[Auto Resolution<br/>⭐ Configurable]
             AUTO_PROJECT[Project Integration<br/>Auto-add to Boards]
             AUTO_STATUS[Status Management<br/>Todo → In Progress → Done]
         end
     end
-    
+
     CLI --> INIT
     CLI --> ISSUE
     CLI --> LABELS
     CLI --> VSCODE
+    CLI --> CONFIG
     CLI --> STATUS
     CLI --> HEALTH
-    
+
+    CONFIG --> CONFIG_MGR
+
     INIT --> BANNER
     INIT --> COPILOT
     INIT --> CHECKS
     INIT --> FIRSTRUN
     INIT --> TEMPLATES
-    
+
     VSCODE --> COPILOT
     LABELS --> GH
     ISSUE --> GH
-    
+
     COPILOT --> COPILOT_INST
     COPILOT_INST --> AUTO_ISSUE
-    AUTO_ISSUE --> AUTO_PROJECT
+    AUTO_ISSUE --> AUTO_RESOLVE
+    AUTO_RESOLVE -->|Enabled| AUTO_PROJECT
+    AUTO_RESOLVE -->|Disabled| WAIT[Wait for User Review]
     AUTO_PROJECT --> AUTO_STATUS
-    
+
+    CONFIG_MGR -.->|Checks Config| AUTO_RESOLVE
+
     INIT --> GH
     GH --> GHAPI
     GHAPI --> GHPROJECTS
-    
+
     TEMPLATES --> ISSUES
     TEMPLATES --> WORKFLOWS
     TEMPLATES --> DOCS
-    
+
     CLI -.-> NODE
     NPM -.-> NODE
-    
+
     style CLI fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
+    style CONFIG fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
+    style CONFIG_MGR fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
     style COPILOT_INST fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
     style AUTO_ISSUE fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    style AUTO_RESOLVE fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
     style AUTO_PROJECT fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
     style AUTO_STATUS fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    style WAIT fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
     style GHPROJECTS fill:#1976D2,stroke:#0D47A1,stroke-width:2px,color:#fff
     style GH fill:#1976D2,stroke:#0D47A1,stroke-width:2px,color:#fff
 ```
