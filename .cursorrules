@@ -1,6 +1,6 @@
-# GitHub Copilot Instructions - LEO Workflow Kit
+# Cursor AI Rules - LEO Workflow Kit
 
-> **AI Assistant:** GitHub Copilot
+> **AI Assistant:** Cursor (Claude-powered)
 > **Purpose:** Follow LEO's workflow standards for consistent, high-quality development
 > **Last Updated:** 2025-10-19
 
@@ -1294,28 +1294,31 @@ Always provide sensible defaults and avoid requiring unnecessary configuration.
 
 ---
 
-## 🎯 GitHub Copilot-Specific Tips
+## 🎯 Cursor-Specific Tips
 
-### Working with Copilot
+### Working with Claude in Cursor
 
-- **Use inline suggestions** - Accept with Tab, partial with Ctrl+→
-- **Write clear comments** - Copilot uses comments as prompts
-- **Start with function signatures** - Define interfaces first
-- **Use descriptive variable names** - Helps Copilot understand intent
-- **Leverage Copilot Chat** - Ask questions about code
+- **Use Composer Mode** for complex, multi-file changes
+- **Reference files explicitly** with @filename when needed
+- **Ask for explanations** - Claude excels at explaining reasoning
+- **Iterate incrementally** - Make changes step-by-step for best results
+- **Use Cursor's native features**:
+  - Cmd+K for inline edits
+  - Cmd+L for chat
+  - @codebase for project-wide context
 
-### Copilot's Strengths
+### Claude's Strengths
 
-- **Code completion**: Excellent at completing functions and patterns
-- **Test generation**: Strong at generating test cases
-- **Documentation**: Good at writing JSDoc comments
-- **Boilerplate**: Excels at repetitive code patterns
+- **Contextual understanding**: Claude reads and understands large codebases well
+- **Long conversations**: Can maintain context across lengthy sessions
+- **Code explanations**: Excellent at explaining complex code
+- **Refactoring**: Strong at suggesting architectural improvements
 
-### Best Practices with Copilot
+### Best Practices with Cursor
 
-1. **Write descriptive comments** before code
-2. **Review all suggestions** before accepting
-3. **Use Copilot Chat** for complex queries
-4. **Provide context** through file structure
-5. **Iterate on suggestions** - regenerate if not ideal
+1. **Start broad, then narrow**: Let Claude understand the big picture first
+2. **Provide context**: Reference related files when making changes
+3. **Review suggestions**: Always review Claude's code suggestions
+4. **Use chat history**: Reference previous conversations for consistency
+5. **Leverage @workspace**: Use @workspace to give Claude full project context
 

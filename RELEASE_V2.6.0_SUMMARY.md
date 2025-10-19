@@ -1,7 +1,7 @@
 # 🎉 v2.6.0 Release Summary
 
-**Release Date:** October 19, 2025  
-**Package:** leo-workflow-kit@2.6.0  
+**Release Date:** October 19, 2025
+**Package:** leo-workflow-kit@2.6.0
 **Status:** Ready for Testing & Deployment
 
 ---
@@ -37,11 +37,13 @@ leo config init
 #### Configuration Keys
 
 - **`auto-resolve`** (default: `true`)
+
   - `true`: Copilot creates issues and starts working immediately
   - `false`: Copilot creates issues but waits for user review before proceeding
   - Perfect for teams that want more control over work prioritization
 
 - **`auto-init`** (default: `false`)
+
   - `true`: Auto-initialize on npm install without LEO_AUTO_INIT env var
   - `false`: Requires explicit LEO_AUTO_INIT=true or manual leo init
 
@@ -255,17 +257,20 @@ npm run deploy:wiki
 ## 📊 Release Stats
 
 **Package Information:**
+
 - Version: 2.6.0
 - Size: ~65 kB (estimated)
 - Files: 31+ (2 new)
 - Dependencies: Unchanged (stable)
 
 **Development:**
+
 - Issues Closed: #10, #11
 - Commits: 2 main feature commits
 - Lines Changed: ~900+ additions, ~70 deletions
 
 **Documentation:**
+
 - README: Enhanced architecture & workflow
 - CHANGELOG: Complete v2.6.0 entry
 - Wiki: 2 pages updated
@@ -321,6 +326,7 @@ npm run deploy:wiki
 Thanks to all users who requested these features and provided feedback!
 
 **Special Features Requested:**
+
 - Auto-resolution toggle for team workflows
 - Commit message length guidelines to prevent pipeline issues
 

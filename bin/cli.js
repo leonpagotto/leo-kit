@@ -12,6 +12,7 @@ const issueCommand = require('../lib/commands/issue');
 const labelsCommand = require('../lib/commands/labels');
 const vscodeCommand = require('../lib/commands/vscode');
 const configCommand = require('../lib/commands/config');
+const aiCommand = require('../lib/commands/ai');
 
 // Check if this is the first run and show welcome message
 if (isFirstRun()) {
@@ -88,6 +89,14 @@ program
     // Get all arguments after 'config'
     const args = process.argv.slice(3);
     configCommand(args);
+  });
+
+// AI command - Manage AI assistant configurations
+program
+  .command('ai [subcommand] [args...]')
+  .description('Manage AI assistant configurations (list, add, remove, sync)')
+  .action((subcommand, args) => {
+    aiCommand(subcommand, ...args);
   });
 
 // Status command - Check workflow setup status (simple)
