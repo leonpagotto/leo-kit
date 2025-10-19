@@ -1,6 +1,6 @@
 # Copilot Instructions - Clarification Document
 
-**Date**: October 19, 2025  
+**Date**: October 19, 2025
 **Context**: Resolved confusion about which file to optimize
 
 ---
@@ -17,9 +17,10 @@ After understanding the distinction, we now have the CORRECT setup:
 
 ### 1. `.github/copilot-instructions.md` (THIS PROJECT - LEO CLI Kit)
 
-**Purpose**: Guide GitHub Copilot when developing the LEO CLI kit itself  
-**Size**: 242 lines (workflow-focused)  
+**Purpose**: Guide GitHub Copilot when developing the LEO CLI kit itself
+**Size**: 242 lines (workflow-focused)
 **Content**:
+
 - ✅ Automatic issue creation (CRITICAL - this is what we're building!)
 - ✅ Spec-first development
 - ✅ Issue creation commands
@@ -27,12 +28,14 @@ After understanding the distinction, we now have the CORRECT setup:
 - ✅ Quick reference
 
 **What's NOT included** (and WHY):
+
 - ❌ UI Development Standards - Not needed (this is a CLI, not a web app)
 - ❌ SEO Optimization - Not applicable (no website)
 - ❌ Component-First - Not relevant (no UI components)
 - ❌ Responsive Design - Not applicable (CLI tool)
 
 **Why this is PERFECT**:
+
 - This project IS about the workflow - we're "eating our own dog food"
 - Focused instructions are better for specific project contexts
 - No unnecessary noise about UI/SEO for a CLI tool
@@ -40,9 +43,10 @@ After understanding the distinction, we now have the CORRECT setup:
 
 ### 2. `lib/copilot-instructions-template.js` (USER PROJECTS)
 
-**Purpose**: Template that gets installed into user projects when they run `leo init`  
-**Size**: 1,143 lines (comprehensive)  
+**Purpose**: Template that gets installed into user projects when they run `leo init`
+**Size**: 1,143 lines (comprehensive)
 **Content**:
+
 - ✅ Automatic issue creation (CRITICAL)
 - ✅ Spec-first development
 - ✅ User Experience First principles
@@ -57,6 +61,7 @@ After understanding the distinction, we now have the CORRECT setup:
 - ✅ Quick Reference Card
 
 **Why this is COMPREHENSIVE**:
+
 - User projects might be web apps, mobile apps, APIs, etc.
 - Need comprehensive guidance for all scenarios
 - SEO/UI/Components ARE valuable for user projects
@@ -66,16 +71,16 @@ After understanding the distinction, we now have the CORRECT setup:
 
 ## 📊 File Comparison
 
-| Aspect | `.github/copilot-instructions.md` | `lib/copilot-instructions-template.js` |
-|--------|-----------------------------------|----------------------------------------|
-| **Audience** | LEO CLI developers | LEO Kit users |
-| **Context** | Developing the CLI tool | Any project type |
-| **Size** | 242 lines (focused) | 1,143 lines (comprehensive) |
-| **UI Standards** | ❌ Not needed | ✅ Included |
-| **SEO Standards** | ❌ Not applicable | ✅ Included |
-| **Components** | ❌ Not relevant | ✅ Included |
-| **Workflow** | ✅ Core focus | ✅ Included |
-| **Philosophy** | Focused > Complete | Complete > Focused |
+| Aspect            | `.github/copilot-instructions.md` | `lib/copilot-instructions-template.js` |
+| ----------------- | --------------------------------- | -------------------------------------- |
+| **Audience**      | LEO CLI developers                | LEO Kit users                          |
+| **Context**       | Developing the CLI tool           | Any project type                       |
+| **Size**          | 242 lines (focused)               | 1,143 lines (comprehensive)            |
+| **UI Standards**  | ❌ Not needed                     | ✅ Included                            |
+| **SEO Standards** | ❌ Not applicable                 | ✅ Included                            |
+| **Components**    | ❌ Not relevant                   | ✅ Included                            |
+| **Workflow**      | ✅ Core focus                     | ✅ Included                            |
+| **Philosophy**    | Focused > Complete                | Complete > Focused                     |
 
 ---
 
@@ -84,11 +89,13 @@ After understanding the distinction, we now have the CORRECT setup:
 ### October 19, 2025
 
 **Issue #6**: Optimize Copilot instructions from 1,282 to 242 lines
+
 - ❌ **WRONG**: Optimized `.github/copilot-instructions.md` (this project)
 - ❌ **WRONG**: Removed SEO, UI, Components thinking they were noise
 - ✅ **RESULT**: Actually worked out well for THIS project (CLI doesn't need UI/SEO)
 
 **Issue #7**: Optimize Copilot instructions TEMPLATE for clarity
+
 - ✅ **CORRECT**: Optimized `lib/copilot-instructions-template.js` (user template)
 - ✅ **CORRECT**: Preserved ALL standards (SEO, UI, Components, Quality)
 - ✅ **CORRECT**: Added TOC, visual markers, better organization
@@ -96,11 +103,13 @@ After understanding the distinction, we now have the CORRECT setup:
 
 ### Key Learnings
 
-1. **Context Matters**: 
+1. **Context Matters**:
+
    - CLI project = Focused instructions (no UI/SEO)
    - User template = Comprehensive (might need UI/SEO)
 
 2. **Not All "Optimization" Means Smaller**:
+
    - For specific projects (CLI) = Remove irrelevant content
    - For templates (universal) = Keep everything, improve organization
 
@@ -131,6 +140,7 @@ workflow-cli/
 ## ✅ Current State (CORRECT)
 
 ### `.github/copilot-instructions.md` (This Project)
+
 - [x] Workflow-focused (242 lines)
 - [x] Automatic issue creation prominent
 - [x] No UI/SEO content (not needed for CLI)
@@ -138,6 +148,7 @@ workflow-cli/
 - [x] "Eating our own dog food" - using the workflow we teach
 
 ### `lib/copilot-instructions-template.js` (User Template)
+
 - [x] Comprehensive (1,143 lines)
 - [x] Table of contents added
 - [x] Visual markers for sections
@@ -157,6 +168,7 @@ By optimizing `.github/copilot-instructions.md` first (removing UI/SEO), we crea
 Then, by optimizing `lib/copilot-instructions-template.js` properly (keeping UI/SEO, improving organization), we created a comprehensive template perfect for USER projects.
 
 **Final setup is ideal**:
+
 - ✅ CLI project instructions = Focused on workflow (what we need)
 - ✅ User template = Comprehensive with UI/SEO/Components (what they need)
 - ✅ Both optimized for their specific contexts

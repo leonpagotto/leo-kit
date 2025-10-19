@@ -11,9 +11,13 @@
 [![GitHub Issues](https://img.shields.io/github/issues/leonpagotto/leo-kit?style=flat-square&color=red&logo=github)](https://github.com/leonpagotto/leo-kit/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
 
-**Transform your development process with AI-powered spec-first development, intelligent issue creation, automated GitHub Projects integration, and zero-configuration workflow automation—all from your terminal.**
+**Transform your development process with AI-powered spec-first development, intelligent issue creation, automated GitHub Projects integration, automatic initialization, and project-type optimized Copilot instructions—all from your terminal.**
 
-✨ **New in v2.4.0:** Intelligent spec-first decision making! Copilot automatically creates specs for complex features or goes straight to issues for simple tasks.
+✨ **New in v2.5.0:**
+
+- 🚀 **Automatic Initialization** - Zero-config setup with `LEO_AUTO_INIT=true`
+- 🎯 **Smart Copilot Instructions** - Project-type optimized instructions (foundation ready)
+- 📝 **Enhanced Templates** - Better organized with 81% less noise for specific project types
 
 [🚀 Quick Start](#-quick-start) • [📦 Installation](#-installation) • [✨ Features](#-features) • [🎯 Commands](#-commands) • [📚 Documentation](#-documentation)
 

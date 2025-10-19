@@ -1,7 +1,7 @@
 # Smart Project-Type Based Copilot Instructions - Implementation Plan
 
-**Issue**: #8  
-**Date**: October 19, 2025  
+**Issue**: #8
+**Date**: October 19, 2025
 **Status**: In Progress
 
 ---
@@ -15,11 +15,13 @@ Create a smart system that generates customized Copilot instructions based on pr
 ## ✅ Phase 1: Foundation (COMPLETE)
 
 ### Created Files
+
 - ✅ `lib/copilot-instructions/config.js` - Project types and section definitions
 - ✅ `lib/copilot-instructions/builder.js` - Smart builder that assembles sections
 - ✅ `lib/copilot-instructions/index.js` - Main API
 
 ### Project Types Defined
+
 1. ✅ **Full Stack** (~1,200 lines) - Everything
 2. ✅ **Frontend** (~900 lines) - UI, Components, SEO
 3. ✅ **Backend** (~600 lines) - API, Testing, Security
@@ -28,6 +30,7 @@ Create a smart system that generates customized Copilot instructions based on pr
 6. ✅ **Library** (~500 lines) - API design, versioning
 
 ### Sections Defined
+
 - ✅ 15 sections identified with metadata
 - ✅ Auto-detection rules from package.json
 - ✅ Validation functions
@@ -42,8 +45,10 @@ Create a smart system that generates customized Copilot instructions based on pr
 Break `lib/copilot-instructions-template.js` into separate section files in `lib/copilot-instructions/sections/`:
 
 #### 1. Core Workflow (ALWAYS included)
-**File**: `core-workflow.js`  
+
+**File**: `core-workflow.js`
 **Content**:
+
 - 🚨 CRITICAL: Automatic Issue Creation
 - Mandatory workflow
 - Detection patterns
@@ -55,8 +60,10 @@ Break `lib/copilot-instructions-template.js` into separate section files in `lib
 **Lines**: ~350 (from template lines 1-350)
 
 #### 2. UX Principles
-**File**: `ux-principles.js`  
+
+**File**: `ux-principles.js`
 **Content**:
+
 - User Experience First
 - Audience Awareness
 - Complete Solutions
@@ -64,8 +71,10 @@ Break `lib/copilot-instructions-template.js` into separate section files in `lib
 **Lines**: ~50 (from template lines 430-480)
 
 #### 3. UI Development
-**File**: `ui-development.js`  
+
+**File**: `ui-development.js`
 **Content**:
+
 - Design Consistency
 - Accessibility (WCAG 2.1 AA)
 - Responsive Design
@@ -74,8 +83,10 @@ Break `lib/copilot-instructions-template.js` into separate section files in `lib
 **Lines**: ~100 (from template lines 490-590)
 
 #### 4. Component-First
-**File**: `component-first.js`  
+
+**File**: `component-first.js`
 **Content**:
+
 - Component Philosophy
 - Atomic Design Hierarchy
 - Component Composition Rules
@@ -89,8 +100,10 @@ Break `lib/copilot-instructions-template.js` into separate section files in `lib
 **Lines**: ~200 (from template lines 520-720)
 
 #### 5. SEO Optimization
-**File**: `seo-optimization.js`  
+
+**File**: `seo-optimization.js`
 **Content**:
+
 - HTML Semantic Structure
 - Meta Tags (OG, Twitter)
 - Image Optimization
@@ -107,8 +120,10 @@ Break `lib/copilot-instructions-template.js` into separate section files in `lib
 **Lines**: ~300 (from template lines 720-1020)
 
 #### 6. Backend API (NEW - to be written)
-**File**: `backend-api.js`  
+
+**File**: `backend-api.js`
 **Content**:
+
 - API Design Principles (REST, GraphQL)
 - Request/Response Patterns
 - Error Handling
@@ -121,8 +136,10 @@ Break `lib/copilot-instructions-template.js` into separate section files in `lib
 **Lines**: ~150 (new content)
 
 #### 7. API Design (for libraries)
-**File**: `api-design.js`  
+
+**File**: `api-design.js`
 **Content**:
+
 - Public API Design
 - Function Signatures
 - TypeScript Types
@@ -133,8 +150,10 @@ Break `lib/copilot-instructions-template.js` into separate section files in `lib
 **Lines**: ~100 (new content)
 
 #### 8. CLI Patterns (NEW - to be written)
-**File**: `cli-patterns.js`  
+
+**File**: `cli-patterns.js`
 **Content**:
+
 - Command Structure
 - Argument Parsing
 - Interactive Prompts
@@ -147,8 +166,10 @@ Break `lib/copilot-instructions-template.js` into separate section files in `lib
 **Lines**: ~80 (new content, can reference our own CLI)
 
 #### 9. Mobile Patterns (NEW - to be written)
-**File**: `mobile-patterns.js`  
+
+**File**: `mobile-patterns.js`
 **Content**:
+
 - Touch Interactions (44x44px targets)
 - Gestures
 - Performance Optimization
@@ -160,8 +181,10 @@ Break `lib/copilot-instructions-template.js` into separate section files in `lib
 **Lines**: ~100 (new content)
 
 #### 10. Documentation Organization
-**File**: `documentation.js`  
+
+**File**: `documentation.js`
 **Content**:
+
 - docs/ folder structure
 - Where to place files
 - Markdown standards
@@ -171,8 +194,10 @@ Break `lib/copilot-instructions-template.js` into separate section files in `lib
 **Lines**: ~80 (from template + existing docs standards)
 
 #### 11. Versioning (for libraries)
-**File**: `versioning.js`  
+
+**File**: `versioning.js`
 **Content**:
+
 - Semantic Versioning
 - Changelog Standards
 - Release Process
@@ -182,8 +207,10 @@ Break `lib/copilot-instructions-template.js` into separate section files in `lib
 **Lines**: ~60 (new content)
 
 #### 12. Testing
-**File**: `testing.js`  
+
+**File**: `testing.js`
 **Content**:
+
 - Testing Requirements
 - Unit Tests
 - Integration Tests
@@ -194,8 +221,10 @@ Break `lib/copilot-instructions-template.js` into separate section files in `lib
 **Lines**: ~80 (from template lines 960-1040)
 
 #### 13. Security
-**File**: `security.js`  
+
+**File**: `security.js`
 **Content**:
+
 - Authentication & Authorization
 - Input Validation
 - SQL Injection Prevention
@@ -208,8 +237,10 @@ Break `lib/copilot-instructions-template.js` into separate section files in `lib
 **Lines**: ~80 (from template + expanded)
 
 #### 14. Git Workflow
-**File**: `git-workflow.js`  
+
+**File**: `git-workflow.js`
 **Content**:
+
 - Commit Messages (Conventional Commits)
 - Pull Request Guidelines
 - Branching Strategy
@@ -220,8 +251,10 @@ Break `lib/copilot-instructions-template.js` into separate section files in `lib
 **Lines**: ~120 (from template lines 1020-1140)
 
 #### 15. Team Collaboration
-**File**: `team-collaboration.js`  
+
+**File**: `team-collaboration.js`
 **Content**:
+
 - Working with Designers
 - Working with Product Managers
 - Working with Developers
@@ -243,16 +276,16 @@ const { getProjectTypes } = require('../copilot-instructions');
 
 // Add to prompts
 const projectTypeQuestion = {
-  type: 'list',
-  name: 'projectType',
-  message: 'What type of project is this?',
-  choices: getProjectTypes().map(pt => ({
-    name: \`\${pt.name} - \${pt.description}\`,
-    value: pt.value,
-    short: pt.name
-  })),
-  default: 'fullstack',
-  when: !options.nonInteractive
+type: 'list',
+name: 'projectType',
+message: 'What type of project is this?',
+choices: getProjectTypes().map(pt => ({
+name: \`\${pt.name} - \${pt.description}\`,
+value: pt.value,
+short: pt.name
+})),
+default: 'fullstack',
+when: !options.nonInteractive
 };
 \`\`\`
 
@@ -265,12 +298,12 @@ const { detectProjectType } = require('../copilot-instructions');
 // Try to detect from package.json
 let suggestedType = 'fullstack';
 if (fs.existsSync('package.json')) {
-  const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-  const detected = detectProjectType(pkg);
-  if (detected) {
-    suggestedType = detected;
-    console.log(\`📊 Detected project type: \${PROJECT_TYPES[detected].name}\`);
-  }
+const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+const detected = detectProjectType(pkg);
+if (detected) {
+suggestedType = detected;
+console.log(\`📊 Detected project type: \${PROJECT_TYPES[detected].name}\`);
+}
 }
 \`\`\`
 
@@ -281,9 +314,9 @@ const { generate } = require('../copilot-instructions');
 
 // Generate instructions based on project type
 const instructions = generate({
-  projectType: answers.projectType || suggestedType,
-  packageJson: pkg,
-  autoDetect: true
+projectType: answers.projectType || suggestedType,
+packageJson: pkg,
+autoDetect: true
 });
 
 // Write to .github/copilot-instructions.md
@@ -295,10 +328,10 @@ fs.writeFileSync('.github/copilot-instructions.md', instructions);
 \`\`\`javascript
 // Save to .leorc.json
 const leoConfig = {
-  projectType: answers.projectType,
-  copilotSections: getSectionsForType(answers.projectType),
-  initialized: true,
-  version: '2.5.0'
+projectType: answers.projectType,
+copilotSections: getSectionsForType(answers.projectType),
+initialized: true,
+version: '2.5.0'
 };
 
 fs.writeFileSync('.leorc.json', JSON.stringify(leoConfig, null, 2));
@@ -316,34 +349,40 @@ const inquirer = require('inquirer');
 const { generate, getProjectTypes, getSections } = require('../copilot-instructions');
 
 program
-  .command('config')
-  .description('Configure LEO Kit settings')
-  .option('--project-type <type>', 'Change project type')
-  .option('--add-section <section>', 'Add a Copilot instruction section')
-  .option('--remove-section <section>', 'Remove a Copilot instruction section')
-  .option('--list-types', 'List available project types')
-  .option('--list-sections', 'List available sections')
-  .action(async (options) => {
-    // Implementation here
-  });
+.command('config')
+.description('Configure LEO Kit settings')
+.option('--project-type <type>', 'Change project type')
+.option('--add-section <section>', 'Add a Copilot instruction section')
+.option('--remove-section <section>', 'Remove a Copilot instruction section')
+.option('--list-types', 'List available project types')
+.option('--list-sections', 'List available sections')
+.action(async (options) => {
+// Implementation here
+});
 \`\`\`
 
 ### Usage Examples
 
 \`\`\`bash
+
 # Change project type
+
 leo config --project-type frontend
 
 # Add SEO section to backend project
+
 leo config --add-section seo
 
 # Remove UI section
+
 leo config --remove-section ui
 
 # List available types
+
 leo config --list-types
 
 # Interactive configuration
+
 leo config
 \`\`\`
 
@@ -355,7 +394,9 @@ leo config
 
 \`\`\`bash
 leo copilot:refresh
+
 # Reads .leorc.json and regenerates .github/copilot-instructions.md
+
 \`\`\`
 
 ---
@@ -363,6 +404,7 @@ leo copilot:refresh
 ## 📋 Implementation Checklist
 
 ### Phase 1: Foundation ✅
+
 - [x] Create config.js with project types and sections
 - [x] Create builder.js for assembling instructions
 - [x] Create index.js as main API
@@ -370,6 +412,7 @@ leo copilot:refresh
 - [x] Commit foundation code
 
 ### Phase 2: Extract Sections 🔨
+
 - [ ] Create sections/ directory structure
 - [ ] Extract core-workflow.js from template
 - [ ] Extract ux-principles.js from template
@@ -389,6 +432,7 @@ leo copilot:refresh
 - [ ] Test each section loads correctly
 
 ### Phase 3: Update Init Command
+
 - [ ] Add project type prompt to init.js
 - [ ] Implement auto-detection logic
 - [ ] Update instruction generation to use new system
@@ -397,6 +441,7 @@ leo copilot:refresh
 - [ ] Update non-interactive mode handling
 
 ### Phase 4: Config Command
+
 - [ ] Create lib/commands/config.js
 - [ ] Implement --project-type option
 - [ ] Implement --add-section option
@@ -407,6 +452,7 @@ leo copilot:refresh
 - [ ] Test all options
 
 ### Phase 5: Copilot Refresh Command
+
 - [ ] Create lib/commands/copilot.js
 - [ ] Implement refresh subcommand
 - [ ] Read .leorc.json configuration
@@ -414,6 +460,7 @@ leo copilot:refresh
 - [ ] Confirm to user
 
 ### Phase 6: Documentation
+
 - [ ] Update README.md with new features
 - [ ] Create docs/guides/PROJECT_TYPES.md
 - [ ] Update AUTO_INITIALIZATION.md
@@ -422,6 +469,7 @@ leo copilot:refresh
 - [ ] Add migration guide from v2.4.0
 
 ### Phase 7: Testing
+
 - [ ] Test fullstack project type
 - [ ] Test frontend project type
 - [ ] Test backend project type
@@ -451,11 +499,13 @@ leo copilot:refresh
 ## 📦 Release Plan
 
 ### v2.5.0 Features
+
 - ✅ Auto-initialization (already complete)
 - 🔨 Smart project-type based Copilot instructions
 - ✅ Optimized template organization
 
 ### Release Checklist
+
 - [ ] Complete all implementation phases
 - [ ] Update CHANGELOG.md
 - [ ] Update package.json version

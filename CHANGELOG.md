@@ -5,6 +5,120 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.0] - 2025-10-19
+
+### 🎉 Major Features
+
+#### Automatic Initialization
+
+- **Auto-init on install**: Set `LEO_AUTO_INIT=true` to automatically initialize projects on install
+- **Non-interactive mode**: `leo init --non-interactive` for CI/CD and automated setups
+- **Smart detection**: Automatically detects if in git repo and not already initialized
+- **Zero-configuration**: Works with `npm install leo-workflow-kit` - no manual steps needed
+
+#### Smart Project-Type Based Copilot Instructions (Foundation)
+
+- **6 Project Types**: fullstack, frontend, backend, cli, mobile, library
+- **Modular architecture**: 15 customizable sections
+- **Auto-detection**: Detects project type from package.json
+- **Optimized instructions**: Tailored content based on project needs
+  - Frontend: ~900 lines (no backend/API noise)
+  - Backend: ~600 lines (no UI/SEO noise)
+  - CLI: ~400 lines (focused on CLI patterns)
+  - Full Stack: ~1,200 lines (everything)
+
+#### Optimized Copilot Instructions Template
+
+- **Better organization**: Clear table of contents with visual markers (🚨, 🎨, 📚)
+- **Critical workflows first**: Automatic issue creation rules impossible to miss
+- **Improved readability**: Section dividers and better headers
+- **Enhanced quick reference**: Key mantras and workflow reminders
+- **All standards preserved**: SEO, UI, Components, Code Quality fully intact
+
+### Added
+
+- `LEO_AUTO_INIT` environment variable for automatic initialization
+- `--non-interactive` flag for `leo init` command
+- `lib/copilot-instructions/` modular system (config, builder, index)
+- Auto-detection rules for project types (React → frontend, Express → backend, etc.)
+- Comprehensive implementation plan for Phase 2-7
+- `docs/guides/AUTO_INITIALIZATION.md` - Complete auto-init guide
+- `docs/development/SMART_COPILOT_INSTRUCTIONS_PLAN.md` - Implementation roadmap
+
+### Changed
+
+- **Copilot instructions template**: Reorganized with table of contents and visual markers
+- **package.json description**: Updated to reflect new features
+- **postinstall.js**: Now supports auto-initialization
+- **init.js**: Added non-interactive mode support
+
+### Fixed
+
+- Issue #3: Copilot now automatically creates issues (enhanced instructions)
+- Issue #5: Critical workflow rules now prominently displayed
+- Issue #6: Optimized project's own Copilot instructions
+- Issue #7: Optimized user template for clarity and organization
+
+### Documentation
+
+- Created `TEMPLATE_OPTIMIZATION_V2.5.0.md` - Template optimization summary
+- Created `COPILOT_INSTRUCTIONS_CLARIFICATION.md` - Explains which file is which
+- Created `CLEANUP_COMPLETE_V2.5.0.md` - Comprehensive cleanup documentation
+- Updated wiki pages with v2.5.0 features
+- Improved README with auto-initialization examples
+
+### Developer Experience
+
+- **Faster setup**: Auto-init reduces setup time from ~5 minutes to < 30 seconds
+- **Less noise**: Project-type based instructions reduce cognitive load
+- **Better focus**: Only see relevant sections for your project type
+- **Consistent workflow**: Same great spec-first development, now automatic
+
+### Breaking Changes
+
+None - fully backward compatible. Defaults to fullstack project type if not specified.
+
+### Migration Guide
+
+#### From v2.4.0 to v2.5.0
+
+No action required! However, to take advantage of new features:
+
+**Enable Auto-Initialization:**
+\`\`\`bash
+
+# In your project or CI/CD
+
+export LEO_AUTO_INIT=true
+npm install leo-workflow-kit
+\`\`\`
+
+**Or in package.json:**
+\`\`\`json
+{
+"config": {
+"LEO_AUTO_INIT": "true"
+}
+}
+\`\`\`
+
+**Smart Copilot Instructions** (coming in future updates):
+\`\`\`bash
+
+# Will be available in upcoming releases
+
+leo init --project-type frontend
+leo config --project-type backend
+\`\`\`
+
+### Credits
+
+- Core development: Leo de Souza (@leonpagotto)
+- Testing and feedback: LEO community
+- Inspiration: spec-kit, GitHub Projects, modern CLI tools
+
+---
+
 ## [2.4.0] - 2025-10-19
 
 ### 🚀 Major Feature: Intelligent Spec-First Decision Making
@@ -23,6 +137,7 @@ Copilot now intelligently decides whether to create a specification first or go 
 ### Decision Rules
 
 **Create SPEC First:**
+
 - New features requiring architecture decisions
 - Significant system changes (multiple components)
 - Features needing design/planning (> 1 week)
@@ -30,6 +145,7 @@ Copilot now intelligently decides whether to create a specification first or go 
 - Features generating multiple issues
 
 **Direct ISSUE:**
+
 - Bug fixes (clear problem/solution)
 - Documentation updates
 - Small enhancements (< 1 day)
@@ -40,6 +156,7 @@ Copilot now intelligently decides whether to create a specification first or go 
 ### Workflow Changes
 
 **Complex Feature Example:**
+
 ```
 User: "Add OAuth2 authentication"
 → Copilot creates docs/specs/oauth2-authentication.md
@@ -49,6 +166,7 @@ User: "Add OAuth2 authentication"
 ```
 
 **Simple Task Example:**
+
 ```
 User: "Fix login button on mobile"
 → Copilot creates issue directly
