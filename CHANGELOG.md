@@ -5,6 +5,16 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.3] - 2025-10-19
+
+### Fixed
+
+- **Banner alignment**: All text now properly centered with dynamic padding
+  - Added `centerText()` helper function in `lib/banner.js`
+  - Added `centerInBox()` helper function in `scripts/postinstall.js`
+  - Version text, title, and subtitle now perfectly aligned regardless of version number length
+  - Improved visual consistency across all banner displays
+
 ## [2.6.2] - 2025-10-19
 
 ### Fixed

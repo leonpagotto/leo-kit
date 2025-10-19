@@ -15,6 +15,16 @@ const getVersion = () => {
   }
 };
 
+// Helper function to center text within box (67 chars wide inside border)
+const centerInBox = (text) => {
+  const boxWidth = 67;
+  const strippedLength = text.replace(/\u001b\[[0-9;]*m/g, '').length; // Remove ANSI codes
+  const totalPadding = boxWidth - strippedLength;
+  const leftPadding = Math.floor(totalPadding / 2);
+  const rightPadding = totalPadding - leftPadding;
+  return ' '.repeat(leftPadding) + text + ' '.repeat(rightPadding);
+};
+
 // Determine if this is a global or local install
 const isGlobalInstall = () => {
   const npmPrefix = process.env.npm_config_prefix || '';
@@ -43,17 +53,17 @@ const version = getVersion();
 
 const simpleMessage = `
 ${chalk.yellow('╔═══════════════════════════════════════════════════════════════════╗')}
-${chalk.yellow('║')}                                                                   ${chalk.yellow('║')}
+${chalk.yellow('║')}${centerInBox('')}${chalk.yellow('║')}
 ${chalk.yellow('║')}  ${chalk.yellow('██╗     ███████╗ ██████╗         ██╗  ██╗██╗████████╗')}  ${chalk.yellow('║')}
 ${chalk.yellow('║')}  ${chalk.yellow('██║     ██╔════╝██╔═══██╗        ██║ ██╔╝██║╚══██╔══╝')}  ${chalk.yellow('║')}
 ${chalk.yellow('║')}  ${chalk.yellow('██║     █████╗  ██║   ██║        █████╔╝ ██║   ██║   ')}  ${chalk.yellow('║')}
 ${chalk.yellow('║')}  ${chalk.yellow('██║     ██╔══╝  ██║   ██║        ██╔═██╗ ██║   ██║   ')}  ${chalk.yellow('║')}
 ${chalk.yellow('║')}  ${chalk.yellow('███████╗███████╗╚██████╔╝███████╗██║  ██╗██║   ██║   ')}  ${chalk.yellow('║')}
 ${chalk.yellow('║')}  ${chalk.yellow('╚══════╝╚══════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝   ')}  ${chalk.yellow('║')}
-${chalk.yellow('║')}                                                                   ${chalk.yellow('║')}
-${chalk.yellow('║')}         ${chalk.cyan('🦁  GitHub Workflow Automation Toolkit  🦁')}         ${chalk.yellow('║')}
-${chalk.yellow('║')}                    ${chalk.gray(`Version ${version}`)}                            ${chalk.yellow('║')}
-${chalk.yellow('║')}                                                                   ${chalk.yellow('║')}
+${chalk.yellow('║')}${centerInBox('')}${chalk.yellow('║')}
+${chalk.yellow('║')}${centerInBox(chalk.cyan('🦁  GitHub Workflow Automation Toolkit  🦁'))}${chalk.yellow('║')}
+${chalk.yellow('║')}${centerInBox(chalk.gray(`Version ${version}`))}${chalk.yellow('║')}
+${chalk.yellow('║')}${centerInBox('')}${chalk.yellow('║')}
 ${chalk.yellow('╚═══════════════════════════════════════════════════════════════════╝')}
 
 ${chalk.green.bold('✨ Installation Complete! ✨')}
