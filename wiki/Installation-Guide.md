@@ -1,6 +1,6 @@
 # 📦 Installation Guide
 
-> **Get LEO Workflow Kit up and running in 5 minutes**
+> **Get LEO Workflow Kit up and running in < 30 seconds**
 
 ## 🎯 Prerequisites
 
@@ -20,7 +20,36 @@ Before installing LEO Workflow Kit, ensure you have:
 
 ## 🚀 Installation Methods
 
-### Method 1: Global Installation (Recommended)
+### Method 1: Automatic Installation (NEW v2.5.0 - Recommended)
+
+**One command - complete setup!**
+
+```bash
+LEO_AUTO_INIT=true npm install leo-workflow-kit
+```
+
+**What this does:**
+- ✅ Installs LEO Workflow Kit
+- ✅ Automatically initializes your project
+- ✅ Creates documentation structure (`docs/specs/`)
+- ✅ Installs issue templates (8 professional templates)
+- ✅ Configures GitHub Actions workflows
+- ✅ Sets up VS Code with Copilot instructions
+- ✅ Configures standard labels (22+)
+
+**⚡ Total time:** < 30 seconds
+
+**Perfect for:**
+- 🎯 New projects
+- 🎯 Team onboarding
+- 🎯 CI/CD automation
+- 🎯 Quick prototypes
+
+[📖 Learn more about automatic initialization](../docs/guides/AUTO_INITIALIZATION.md)
+
+---
+
+### Method 2: Global Installation (Traditional)
 
 Install LEO globally to use across all projects:
 
@@ -31,7 +60,7 @@ npm install -g leo-workflow-kit
 **Verify installation:**
 ```bash
 leo --version
-# Should show: 2.3.0 (or later)
+# Should show: 2.5.0 (or later)
 
 leo --help
 # Shows all available commands
@@ -41,10 +70,11 @@ leo --help
 - ✅ Available everywhere via `leo` command
 - ✅ Easy to update
 - ✅ Single installation for all projects
+- ✅ Manual control over initialization
 
 ---
 
-### Method 2: npx (One-Time Use)
+### Method 3: npx (One-Time Use)
 
 Use LEO without installing:
 

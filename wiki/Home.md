@@ -6,13 +6,15 @@
 
 LEO Workflow Kit is a powerful CLI tool that revolutionizes software development project management through:
 
-- **� Intelligent Spec-First AI**: Automatically decides when to create specs vs direct issues
-- **�🤖 AI-Powered Automation**: GitHub Copilot automatically creates and manages issues
+- **🚀 Automatic Initialization**: Zero-config setup with `LEO_AUTO_INIT=true`
+- **🎯 Smart Project Types**: Optimized Copilot instructions for 6 project types
+- **🧠 Intelligent Spec-First AI**: Automatically decides when to create specs vs direct issues
+- **� AI-Powered Automation**: GitHub Copilot automatically creates and manages issues
 - **📊 Intelligent Project Management**: Auto-sync with GitHub Projects with smart status updates
 - **🎯 Spec-Driven Development**: Enforce best practices and documentation-first approach
-- **🔧 Zero Configuration**: Works out-of-the-box with sensible defaults
+- **⚡ Zero Configuration**: Works out-of-the-box - literally just `npm install`
 
-**Current Version:** 2.4.0  
+**Current Version:** 2.5.0
 **Released:** October 19, 2025
 
 ---
@@ -20,30 +22,37 @@ LEO Workflow Kit is a powerful CLI tool that revolutionizes software development
 ## 📚 Quick Navigation
 
 ### Getting Started
+
 - [Installation Guide](./Installation-Guide) - Get up and running in 5 minutes
 - [Quick Start Tutorial](./Quick-Start) - Your first LEO project
 - [Configuration](./Configuration) - Customize LEO for your workflow
 
 ### Core Features
-- [Intelligent Spec-First Decision Making](./Spec-First-Decision-Making) - AI chooses spec vs direct issue ⭐ NEW
+
+- [Automatic Initialization](./Automatic-Initialization) - Zero-config setup ⭐ NEW v2.5.0
+- [Smart Project Types](./Smart-Project-Types) - Optimized instructions per project type ⭐ NEW v2.5.0
+- [Intelligent Spec-First Decision Making](./Spec-First-Decision-Making) - AI chooses spec vs direct issue
 - [Automatic Issue Creation](./Automatic-Issue-Creation) - Let Copilot handle your issues
 - [GitHub Projects Integration](./GitHub-Projects-Integration) - Automated project management
 - [Status Management](./Status-Management) - Smart status updates based on work
 - [Spec-Driven Development](./Spec-Driven-Development) - Write specs, then code
 
 ### Advanced Usage
+
 - [Copilot Instructions](./Copilot-Instructions) - Understanding AI behavior
 - [Custom Templates](./Custom-Templates) - Create your own templates
 - [Multi-Project Setup](./Multi-Project-Setup) - Manage multiple projects
 - [CI/CD Integration](./CICD-Integration) - Automate your pipeline
 
 ### Reference
+
 - [Commands Reference](./Commands-Reference) - Complete command documentation
 - [Architecture](./Architecture) - System design and components
 - [Troubleshooting](./Troubleshooting) - Common issues and solutions
 - [FAQ](./FAQ) - Frequently asked questions
 
 ### Contributing
+
 - [Development Guide](./Development-Guide) - Contributing to LEO
 - [Release Process](./Release-Process) - How releases are made
 - [Roadmap](./Roadmap) - Future plans and features
@@ -52,13 +61,27 @@ LEO Workflow Kit is a powerful CLI tool that revolutionizes software development
 
 ## 🚀 Quick Examples
 
-### Example 1: Simple Task (Direct Issue)
+### Example 1: Automatic Setup (v2.5.0)
 
 ```bash
-# Install LEO
-npm install -g leo-workflow-kit
+# One command - complete setup!
+LEO_AUTO_INIT=true npm install leo-workflow-kit
 
-# Initialize in your project
+# That's it! Your project now has:
+# ✅ Documentation structure (docs/specs/)
+# ✅ Issue templates (8 professional templates)
+# ✅ GitHub Actions workflows
+# ✅ VS Code Copilot instructions (optimized for your project type)
+# ✅ Standard labels (22+ configured)
+
+# Start working immediately!
+```
+
+### Example 2: Simple Task (Direct Issue)
+
+```bash
+# Traditional manual setup
+npm install -g leo-workflow-kit
 cd your-project
 leo init
 
@@ -73,7 +96,7 @@ leo init
 # ✅ Closes issue when PR merges
 ```
 
-### Example 2: Complex Feature (Spec First)
+### Example 3: Complex Feature (Spec First)
 
 ```bash
 # Describe a complex feature to Copilot:
@@ -99,6 +122,7 @@ leo init
 ### Latest Release: v2.4.0 (October 19, 2025) ⭐ NEW
 
 **Major Features:**
+
 - ✅ **Intelligent Spec-First Decision Making** - AI analyzes work complexity
 - ✅ Automatic spec creation for complex features in `docs/specs/`
 - ✅ User review workflow before breaking into issues
@@ -108,6 +132,7 @@ leo init
 - ✅ GraphQL API for reliable updates
 
 **Stats:**
+
 - 📦 Package Size: 53 KB
 - ⭐ GitHub Stars: Growing!
 - 🐛 Open Issues: Actively maintained
@@ -118,12 +143,14 @@ leo init
 ## 🗺️ Roadmap
 
 ### v2.4.0 (October 2025) - ✅ Released
+
 - ✅ **Intelligent spec-first decision making**
 - ✅ Automatic spec creation for complex features
 - ✅ User review workflow
 - ✅ Smart issue breakdown from specs
 
 ### v2.5.0 (Q4 2025) - Planned
+
 - [ ] Auto-create projects during `leo init`
 - [ ] Multiple project support
 - [ ] Custom status field names
@@ -131,6 +158,7 @@ leo init
 - [ ] Sprint planning automation
 
 ### v3.0.0 (Q1 2026) - Vision
+
 - [ ] Web dashboard for project visualization
 - [ ] Advanced analytics and reporting
 - [ ] Team collaboration features
@@ -144,20 +172,26 @@ See [Roadmap](./Roadmap) for detailed plans.
 ## 💡 Key Concepts
 
 ### Intelligent Decision Making ⭐ NEW
+
 AI analyzes work complexity to choose the right approach:
+
 - **Simple work** (bugs, quick fixes) → Direct issue creation
 - **Complex work** (architecture, multi-component) → Create spec → Review → Break into issues
 
 ### Spec-Driven Development
+
 Write specifications before code. Specs live in `docs/specs/`, issues track execution. Complex features automatically get specs created for review.
 
 ### Automatic Issue Creation
+
 Copilot detects when you describe work and creates issues automatically using `gh issue create`. Smart enough to know when a spec is needed first.
 
 ### Status Management
+
 Issues transition through states (Todo → In Progress → Done) based on commits, branches, and PR actions.
 
 ### Project Integration
+
 Issues are automatically added to GitHub Projects and kept in sync throughout their lifecycle.
 
 ---
@@ -189,8 +223,8 @@ Issues are automatically added to GitHub Projects and kept in sync throughout th
 
 ---
 
-**Last Updated:** October 19, 2025  
-**Wiki Version:** 1.0  
+**Last Updated:** October 19, 2025
+**Wiki Version:** 1.0
 **Maintainer:** [@leonpagotto](https://github.com/leonpagotto)
 
 ---
