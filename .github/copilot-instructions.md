@@ -6,7 +6,7 @@
 
 ---
 
-```instructions
+````instructions
 # GitHub Copilot Instructions - LEO Workflow Kit
 
 > **Purpose**: This file guides GitHub Copilot to follow LEO's workflow standards, ensuring consistent development practices, automatic issue creation, and high-quality code.
@@ -54,9 +54,10 @@
 const fs = require('fs');
 const config = fs.existsSync('.leorc.json') ? JSON.parse(fs.readFileSync('.leorc.json')) : {};
 const autoResolve = config['auto-resolve'] !== false; // Default: true
-```
+````
 
 **If auto-resolve is disabled:**
+
 - ✅ Still create the GitHub issue immediately
 - ✅ Confirm: "Issue #X created - waiting for your review"
 - ⏸️ **STOP** - Do not start implementation
@@ -64,11 +65,13 @@ const autoResolve = config['auto-resolve'] !== false; // Default: true
 - 💡 Suggest: "Review the issue and let me know when you're ready to proceed"
 
 **If auto-resolve is enabled (default):**
+
 - ✅ Create the GitHub issue immediately
 - ✅ Confirm: "Issue #X created"
 - ✅ Proceed with implementation automatically
 
 **Users can toggle this setting:**
+
 - Disable: `leo config set auto-resolve false`
 - Enable: `leo config set auto-resolve true`
 - Check: `leo config get auto-resolve`
@@ -136,6 +139,7 @@ const autoResolve = config['auto-resolve'] !== false; // Default: true
 **BEFORE creating issues, analyze the work complexity:**
 
 #### Create SPEC First (Complex Work):
+
 - 🏗️ New features requiring architecture decisions
 - 🔧 Significant system changes affecting multiple components
 - 📐 Features needing design/planning (> 1 week effort)
@@ -143,6 +147,7 @@ const autoResolve = config['auto-resolve'] !== false; // Default: true
 - 🎯 Features that will generate multiple issues
 
 **Examples needing SPEC:**
+
 - "Add OAuth2 authentication system"
 - "Redesign the database schema"
 - "Implement real-time collaboration"
@@ -150,6 +155,7 @@ const autoResolve = config['auto-resolve'] !== false; // Default: true
 - "Build admin dashboard"
 
 #### Create ISSUE Directly (Simple Work):
+
 - 🐛 Bug fixes (clear problem, clear solution)
 - 📝 Documentation updates
 - ✨ Small enhancements (< 1 day effort)
@@ -158,6 +164,7 @@ const autoResolve = config['auto-resolve'] !== false; // Default: true
 - 🔧 Refactoring single components
 
 **Examples for direct ISSUE:**
+
 - "Fix login button not working on mobile"
 - "Update README with installation steps"
 - "Add dark mode toggle"
@@ -168,6 +175,7 @@ const autoResolve = config['auto-resolve'] !== false; // Default: true
 **When work needs a SPEC:**
 
 1. **Create Spec File:**
+
    ```bash
    # Create in docs/specs/ with descriptive name
    cat > docs/specs/oauth2-authentication.md << 'EOF'
@@ -214,6 +222,7 @@ const autoResolve = config['auto-resolve'] !== false; // Default: true
    ```
 
 2. **Ask User to Review:**
+
    ```
    ✓ Created specification: docs/specs/oauth2-authentication.md
 
@@ -259,12 +268,14 @@ const autoResolve = config['auto-resolve'] !== false; // Default: true
 ### 🎯 Project Configuration
 
 **This repository uses GitHub Project #4:**
+
 - **URL**: https://github.com/users/leonpagotto/projects/4
 - **Owner**: leonpagotto
 - **Project Number**: 4
 - **Auto-add issues**: ✅ Enabled
 
 **ALWAYS add new issues to this project:**
+
 ```bash
 # After creating issue, get the URL from response
 gh project item-add 4 --owner leonpagotto --url ISSUE_URL
@@ -275,6 +286,7 @@ gh project item-add 4 --owner leonpagotto --url ISSUE_URL
 **User says:** "We need to fix the login button not working on mobile"
 
 **Copilot should:**
+
 ```bash
 gh issue create \
   --title "Fix login button not working on mobile" \
@@ -295,6 +307,7 @@ gh issue create \
 **User says:** "Let's add dark mode support"
 
 **Copilot should:**
+
 ```bash
 gh issue create \
   --title "Add dark mode support" \
@@ -316,6 +329,7 @@ gh issue create \
 **User says:** "The search is too slow, we should optimize it"
 
 **Copilot should:**
+
 ```bash
 gh issue create \
   --title "Optimize search performance" \
@@ -332,11 +346,12 @@ gh issue create \
 - [ ] Achieve < 200ms response time
 - [ ] Add performance monitoring" \
    --label "enhancement,p1,performance,backend,search"
-   ```
+```
 
 ### Key Rules for Issue Creation
 
 ✅ **DO:**
+
 - Create issues immediately when user describes work
 - Use `gh issue create` command (not interactive `leo issue`)
 - Infer priority, type, and component from context
@@ -348,6 +363,7 @@ gh issue create \
 - Reference the issue number in any related code changes
 
 ❌ **DON'T:**
+
 - Ask user to manually run commands and fill out forms
 - Create markdown files for tasks in the repo (use GitHub issues!)
 - Skip issue creation for described work
@@ -370,6 +386,7 @@ gh issue create \
 **Examples:**
 
 ✅ **GOOD** (concise and clear):
+
 ```bash
 gh issue close 42 --comment "Fixed in #43. Tested locally."
 
@@ -381,11 +398,13 @@ Docs updated."
 ```
 
 ❌ **TOO LONG** (causes pipeline delays):
+
 ```bash
 gh issue close 42 --comment "Completed implementation of OAuth2 authentication system with Google and GitHub providers. Tested all authentication flows including token refresh, session management, and error handling. Updated documentation in README.md and added comprehensive test coverage."
 ```
 
 **Structure for closing with details:**
+
 ```bash
 # ✅ Short closing comment
 gh issue close 42 --comment "Released in v2.6.0. See release notes for details."
@@ -400,6 +419,7 @@ gh issue close 42 --comment "Released in v2.6.0. See release notes for details."
 ### GitHub Authentication Required
 
 Before creating issues, ensure GitHub CLI is authenticated:
+
 ```bash
 gh auth status
 # If not authenticated:
@@ -425,6 +445,7 @@ gh auth login
 **IMMEDIATELY update issue status when you start working on it. NO EXCEPTIONS.**
 
 **Triggers:**
+
 - User explicitly says: "Let's work on #42" or "Starting #42" or "Work on issue #42"
 - User asks you to implement/fix something and references an issue
 - First commit referencing issue: `git commit -m "feat: start work on #42"`
@@ -432,6 +453,7 @@ gh auth login
 - **ANY indication that you're about to work on an issue**
 
 **Action (EXECUTE THIS IMMEDIATELY):**
+
 ```bash
 # Step 1: Add a comment to the issue announcing you're starting
 gh issue comment ISSUE_NUMBER --body "🚀 Starting work on this issue..."
@@ -463,17 +485,20 @@ echo "✓ Issue #ISSUE_NUMBER moved to In Progress"
 ```
 
 **Simplified workflow (if GraphQL is complex):**
+
 ```bash
 # At minimum, always comment when starting work
 gh issue comment ISSUE_NUMBER --body "🚀 Starting work on this issue..."
 ```
 
 **When work completes (In Progress → Done):**
+
 - PR merged with "Closes #42"
 - Issue manually closed: `gh issue close 42`
 - User says: "Issue #42 is done" or "Completed #42"
 
 **Action:**
+
 ```bash
 # Update status to "Done"
 gh api graphql -f query='
@@ -496,6 +521,7 @@ gh api graphql -f query='
 ### Status Update Examples
 
 **Example 1: User starts work**
+
 ```bash
 # User: "Let's start working on issue #5"
 # Copilot detects intent → Update to "In Progress"
@@ -505,6 +531,7 @@ echo "✓ Moving issue #5 to In Progress..."
 ```
 
 **Example 2: Issue completed**
+
 ```bash
 # After merging PR that closes #5
 # Copilot detects merge → Update to "Done"
@@ -514,7 +541,9 @@ echo "✓ Issue #5 completed, moving to Done"
 ```
 
 ### Key Rules for Status Updates
+
 ✅ **DO:**
+
 - Monitor for work progress indicators (commits, branches, user statements)
 - Update status automatically when state changes
 - Confirm status updates with user ("✓ Issue #42 → In Progress")
@@ -522,6 +551,7 @@ echo "✓ Issue #5 completed, moving to Done"
 - Use GraphQL API for reliable status updates
 
 ❌ **DON'T:**
+
 - Wait for manual status updates
 - Update status without clear work indicators
 - Leave issues in wrong status when closed
@@ -530,13 +560,16 @@ echo "✓ Issue #5 completed, moving to Done"
 ## 📋 GitHub Project View Configuration
 
 ### Required Project Fields
+
 When creating or configuring GitHub Projects, ensure these fields are visible:
+
 - **Status** (Single select: Todo, In Progress, Done)
 - **Title** (Default field)
 - **Assignees** (Default field)
 - **Labels** (Default field)
 
 ### Board View Setup
+
 ```bash
 # Projects should have Board view with columns by Status:
 # - Todo (leftmost)
@@ -545,6 +578,7 @@ When creating or configuring GitHub Projects, ensure these fields are visible:
 ```
 
 ### Recommended Project Configuration
+
 1. **Create project:** `gh project create --owner OWNER --title "Project Name"`
 2. **Add Status field** with options: Todo, In Progress, Done
 3. **Add Board view** grouped by Status
@@ -579,18 +613,23 @@ All documentation files must be organized within the `docs/` folder structure. *
 ### Structure
 
 - **`docs/specs/`** - Specification files (planning artifacts)
+
   - Feature specifications, technical proposals, architecture decisions (PRE-DEVELOPMENT)
 
 - **`docs/guides/`** - User guides and tutorials
+
   - Feature guides, user instructions, how-to documents, user manuals
 
 - **`docs/setup/`** - Installation and configuration
+
   - Installation guides, environment setup, deployment checklists, configuration references
 
 - **`docs/development/`** - Development documentation
+
   - API documentation, technical specifications, active development notes, architecture
 
 - **`docs/archive/`** - Completed/historical work
+
   - Implementation completion reports, old schemas, deprecated features, historical decisions
 
 - **GitHub Issues** - All tasks, bugs, features (execution artifacts)
@@ -617,6 +656,7 @@ When building UIs, always prioritize these principles:
 - Use design tokens or CSS variables for consistency
 
 ### Accessibility (WCAG 2.1 AA Minimum)
+
 - Ensure proper color contrast ratios
 - Include meaningful alt text for all images
 - Support keyboard navigation (Tab, Enter, Escape, Arrow keys)
@@ -625,6 +665,7 @@ When building UIs, always prioritize these principles:
 - Provide focus indicators for interactive elements
 
 ### Responsive Design
+
 - **Default to mobile-first layouts** - start with mobile, enhance for desktop
 - Use flexible units (rem, em, %, vh/vw) over fixed pixels
 - Test at multiple breakpoints (320px, 768px, 1024px, 1440px+)
@@ -632,6 +673,7 @@ When building UIs, always prioritize these principles:
 - Consider landscape and portrait orientations
 
 ### Code Quality
+
 - Write modular and scalable code, easy to extend or adapt later
 - Use meaningful, descriptive variable and function names
 - Include comments and inline guidance in plain language
@@ -643,6 +685,7 @@ When building UIs, always prioritize these principles:
 ## 🧩 Component-First Development (CRITICAL)
 
 ### The Component Philosophy
+
 **Build reusable components FIRST, then compose them into features.**
 
 Never copy-paste code. If you need similar UI twice, extract a component.
@@ -650,6 +693,7 @@ Never copy-paste code. If you need similar UI twice, extract a component.
 ### Component Structure Best Practices
 
 #### 1. Atomic Design Hierarchy
+
 ```
 components/
 ├── atoms/          # Basic building blocks (Button, Input, Icon, Label)
@@ -660,6 +704,7 @@ components/
 ```
 
 #### 2. Component Composition Rules
+
 - **Single Responsibility**: Each component does ONE thing well
 - **Composition over Inheritance**: Build complex UIs by combining simple components
 - **Props over State**: Prefer props for data flow, use state only when needed
@@ -667,13 +712,16 @@ components/
 - **Render Props & Children**: Use for flexible, reusable patterns
 
 #### 3. Component Creation Checklist
+
 Before creating a component, ask:
+
 - ✅ Does this already exist in the codebase? (Search first!)
 - ✅ Can I use an existing component with different props?
 - ✅ Is this truly reusable, or just abstracting too early?
 - ✅ Will this be used in 2+ places? (If not, keep it local)
 
 #### 4. Naming Conventions
+
 ```typescript
 // Good - Descriptive, purposeful names
 <Button variant="primary" size="lg" />
@@ -687,11 +735,12 @@ Before creating a component, ask:
 ```
 
 #### 5. Props Design
+
 ```typescript
 // ✅ Good: Clear, typed, with defaults
 interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'danger';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: "primary" | "secondary" | "danger";
+  size?: "sm" | "md" | "lg";
   disabled?: boolean;
   loading?: boolean;
   onClick?: () => void;
@@ -699,20 +748,26 @@ interface ButtonProps {
 }
 
 const Button = ({
-  variant = 'primary',
-  size = 'md',
+  variant = "primary",
+  size = "md",
   disabled = false,
   loading = false,
   onClick,
-  children
-}: ButtonProps) => { /* ... */ }
+  children,
+}: ButtonProps) => {
+  /* ... */
+};
 
 // ❌ Bad: Unclear, untyped, no defaults
-const Button = (props: any) => { /* ... */ }
+const Button = (props: any) => {
+  /* ... */
+};
 ```
 
 #### 6. Component Documentation
+
 Every reusable component should have:
+
 - **JSDoc comment** explaining purpose
 - **TypeScript types** for all props
 - **Default props** for optional values
@@ -733,18 +788,20 @@ Every reusable component should have:
 ### DRY Principle (Don't Repeat Yourself)
 
 #### When to Extract
+
 - **3+ Similar Code Blocks**: Extract to function/component
 - **Repeated Logic**: Extract to utility function
 - **Repeated Styles**: Extract to CSS class or styled component
 - **Repeated Patterns**: Create a hook or HOC
 
 #### What to Extract
+
 ```typescript
 // ❌ Bad: Repeated logic
 const handleUserClick = () => {
   if (!user) {
-    toast.error('Please log in');
-    router.push('/login');
+    toast.error("Please log in");
+    router.push("/login");
     return;
   }
   // ... user logic
@@ -752,8 +809,8 @@ const handleUserClick = () => {
 
 const handleCommentClick = () => {
   if (!user) {
-    toast.error('Please log in');
-    router.push('/login');
+    toast.error("Please log in");
+    router.push("/login");
     return;
   }
   // ... comment logic
@@ -766,8 +823,8 @@ const useRequireAuth = () => {
 
   const requireAuth = (callback: () => void) => {
     if (!user) {
-      toast.error('Please log in');
-      router.push('/login');
+      toast.error("Please log in");
+      router.push("/login");
       return;
     }
     callback();
@@ -778,8 +835,14 @@ const useRequireAuth = () => {
 
 // Usage
 const { requireAuth } = useRequireAuth();
-const handleUserClick = () => requireAuth(() => { /* user logic */ });
-const handleCommentClick = () => requireAuth(() => { /* comment logic */ });
+const handleUserClick = () =>
+  requireAuth(() => {
+    /* user logic */
+  });
+const handleCommentClick = () =>
+  requireAuth(() => {
+    /* comment logic */
+  });
 ```
 
 #### Utility Functions
@@ -789,17 +852,18 @@ Extract repeated calculations, validations, formatters:
 ```typescript
 // utils/formatters.ts
 export const formatCurrency = (value: number) =>
-  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+  new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(
+    value
+  );
 
 export const formatDate = (date: Date) =>
-  new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' }).format(date);
+  new Intl.DateTimeFormat("en-US", { dateStyle: "medium" }).format(date);
 
 // utils/validators.ts
 export const isValidEmail = (email: string) =>
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-export const isValidPhone = (phone: string) =>
-  /^[\d\s()+-]+$/.test(phone);
+export const isValidPhone = (phone: string) => /^[\d\s()+-]+$/.test(phone);
 ```
 
 #### Custom Hooks
@@ -839,6 +903,7 @@ export const useDebounce = <T>(value: T, delay: number = 500) => {
 ## 🔍 SEO Optimization (MANDATORY for Public Sites)
 
 ### HTML Semantic Structure
+
 ```html
 <!-- ✅ Good: Semantic HTML -->
 <header>
@@ -868,82 +933,86 @@ export const useDebounce = <T>(value: T, delay: number = 500) => {
 ```
 
 ### Meta Tags (Every Page Must Have)
+
 ```html
 <!-- Primary Meta Tags -->
 <title>Page Title - Max 60 characters</title>
-<meta name="title" content="Page Title">
-<meta name="description" content="Compelling description 150-160 chars">
-<meta name="keywords" content="keyword1, keyword2, keyword3">
+<meta name="title" content="Page Title" />
+<meta name="description" content="Compelling description 150-160 chars" />
+<meta name="keywords" content="keyword1, keyword2, keyword3" />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://yoursite.com/page">
-<meta property="og:title" content="Page Title">
-<meta property="og:description" content="Description">
-<meta property="og:image" content="https://yoursite.com/image.jpg">
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://yoursite.com/page" />
+<meta property="og:title" content="Page Title" />
+<meta property="og:description" content="Description" />
+<meta property="og:image" content="https://yoursite.com/image.jpg" />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://yoursite.com/page">
-<meta property="twitter:title" content="Page Title">
-<meta property="twitter:description" content="Description">
-<meta property="twitter:image" content="https://yoursite.com/image.jpg">
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://yoursite.com/page" />
+<meta property="twitter:title" content="Page Title" />
+<meta property="twitter:description" content="Description" />
+<meta property="twitter:image" content="https://yoursite.com/image.jpg" />
 
 <!-- Mobile -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#000000">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#000000" />
 
 <!-- Canonical URL -->
-<link rel="canonical" href="https://yoursite.com/page">
+<link rel="canonical" href="https://yoursite.com/page" />
 ```
 
 ### Image Optimization for SEO
+
 ```html
 <!-- ✅ Perfect: WebP with fallback, lazy loading, alt text, dimensions -->
 <picture>
-  <source srcset="image.webp" type="image/webp">
+  <source srcset="image.webp" type="image/webp" />
   <img
     src="image.jpg"
     alt="Descriptive alt text for SEO and accessibility"
     width="800"
     height="600"
     loading="lazy"
-  >
+  />
 </picture>
 
 <!-- ✅ Good: Next.js Image component (auto-optimizes) -->
-<Image
+<image
   src="/image.jpg"
   alt="Descriptive alt text"
-  width={800}
-  height={600}
+  width="{800}"
+  height="{600}"
   loading="lazy"
   placeholder="blur"
 />
 
 <!-- ❌ Bad: No alt, no lazy loading, no dimensions -->
-<img src="image.png">
+<img src="image.png" />
 ```
 
 ### Performance for SEO (Core Web Vitals)
 
 #### 1. Lazy Loading
+
 ```typescript
 // Lazy load routes
-const Dashboard = lazy(() => import('./pages/Dashboard'));
-const Settings = lazy(() => import('./pages/Settings'));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Settings = lazy(() => import("./pages/Settings"));
 
 // Lazy load heavy components
-const Chart = lazy(() => import('./components/Chart'));
-const VideoPlayer = lazy(() => import('./components/VideoPlayer'));
+const Chart = lazy(() => import("./components/Chart"));
+const VideoPlayer = lazy(() => import("./components/VideoPlayer"));
 
 // Usage with Suspense
 <Suspense fallback={<LoadingSpinner />}>
   <Chart data={data} />
-</Suspense>
+</Suspense>;
 ```
 
 #### 2. Code Splitting
+
 ```typescript
 // Split by route (automatic with React Router/Next.js)
 // Split by feature
@@ -965,64 +1034,84 @@ optimization: {
 ```
 
 #### 3. Resource Hints
+
 ```html
 <!-- Preconnect to external domains -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://api.example.com">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://api.example.com" />
 
 <!-- Prefetch next likely page -->
-<link rel="prefetch" href="/dashboard">
+<link rel="prefetch" href="/dashboard" />
 
 <!-- Preload critical resources -->
-<link rel="preload" href="/fonts/main.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/critical.css" as="style">
+<link
+  rel="preload"
+  href="/fonts/main.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link rel="preload" href="/critical.css" as="style" />
 ```
 
 #### 4. Font Optimization
+
 ```css
 /* Use system fonts first, web fonts as fallback */
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
 
 /* Optimize web font loading */
 @font-face {
-  font-family: 'CustomFont';
-  src: url('/fonts/custom.woff2') format('woff2');
+  font-family: "CustomFont";
+  src: url("/fonts/custom.woff2") format("woff2");
   font-display: swap; /* Show fallback while loading */
   font-weight: 400;
 }
 ```
 
 #### 5. Critical CSS
+
 ```html
 <!-- Inline critical CSS in <head> -->
 <style>
   /* Only above-the-fold styles here */
-  .header { /* ... */ }
-  .hero { /* ... */ }
+  .header {
+    /* ... */
+  }
+  .hero {
+    /* ... */
+  }
 </style>
 
 <!-- Load rest of CSS async -->
-<link rel="stylesheet" href="/styles.css" media="print" onload="this.media='all'">
+<link
+  rel="stylesheet"
+  href="/styles.css"
+  media="print"
+  onload="this.media='all'"
+/>
 ```
 
 ### Structured Data (Schema.org)
+
 ```html
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Article Title",
-  "author": {
-    "@type": "Person",
-    "name": "Author Name"
-  },
-  "datePublished": "2025-01-01",
-  "image": "https://yoursite.com/image.jpg"
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Article Title",
+    "author": {
+      "@type": "Person",
+      "name": "Author Name"
+    },
+    "datePublished": "2025-01-01",
+    "image": "https://yoursite.com/image.jpg"
+  }
 </script>
 ```
 
 ### URL Structure
+
 ```
 ✅ Good URLs:
 /blog/how-to-optimize-react-performance
@@ -1036,6 +1125,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif
 ```
 
 ### Sitemap & Robots.txt
+
 ```xml
 <!-- sitemap.xml -->
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1060,18 +1150,21 @@ Sitemap: https://yoursite.com/sitemap.xml
 ## 📋 GitHub Projects Integration
 
 ### Project Board Management
+
 - All issues must be added to project board immediately
 - Use standard status columns: Backlog, Ready, In Progress, Review, Done
 - Update status as work progresses (don't let issues go stale)
 - Use draft PRs for work in progress
 
 ### Priority System
+
 - **P0 (Critical)**: Production down, security issues, data loss risk
 - **P1 (High)**: Major features, significant bugs affecting many users
 - **P2 (Medium)**: Standard features, minor bugs, improvements
 - **P3 (Low)**: Nice-to-have features, polish, tech debt
 
 ### Label Strategy
+
 - **Type**: bug, enhancement, documentation, refactoring, deployment, integration, testing
 - **Component**: frontend, backend, database, devops, design, api
 - **Status**: blocked, needs-review, in-progress, ready-to-merge
@@ -1081,6 +1174,7 @@ Sitemap: https://yoursite.com/sitemap.xml
 ## ✅ Code Quality Standards
 
 ### Testing Requirements
+
 - Write tests for all new features and bug fixes
 - Unit tests for business logic and utilities
 - Integration tests for API endpoints and workflows
@@ -1089,6 +1183,7 @@ Sitemap: https://yoursite.com/sitemap.xml
 - Aim for meaningful coverage, not just high percentages
 
 ### Error Handling
+
 - Always handle errors gracefully
 - Provide user-friendly error messages
 - Log errors with sufficient context for debugging
@@ -1096,6 +1191,7 @@ Sitemap: https://yoursite.com/sitemap.xml
 - Implement retry logic for transient failures
 
 ### Performance Optimization
+
 - Lazy load routes and heavy components
 - Optimize images and assets (WebP format, responsive images, lazy loading)
 - Minimize bundle size - tree shake and code split
@@ -1108,6 +1204,7 @@ Sitemap: https://yoursite.com/sitemap.xml
 - Prefetch/preload critical resources
 
 ### Security Best Practices
+
 - Never commit secrets, API keys, or credentials
 - Validate and sanitize all user inputs
 - Use parameterized queries to prevent SQL injection
@@ -1119,18 +1216,21 @@ Sitemap: https://yoursite.com/sitemap.xml
 ## Code Style & Conventions
 
 ### General Guidelines
+
 - **Be concise**: Remove redundant code, but never sacrifice clarity
 - **Consistent formatting**: Use project's linting rules (ESLint, Prettier, etc.)
 - **Self-documenting code**: Write code that explains itself through clear naming
 - **Comments for "why", not "what"**: Code shows what it does, comments explain why
 
 ### Naming Conventions
+
 - **Variables & Functions**: camelCase (`getUserData`, `isActive`)
 - **Classes & Components**: PascalCase (`UserProfile`, `DataService`)
 - **Constants**: UPPER_SNAKE_CASE (`MAX_RETRY_COUNT`, `API_BASE_URL`)
 - **Files**: Match component/class name or use kebab-case for utilities
 
 ### TypeScript/JavaScript Best Practices
+
 - Use `const` by default, `let` when reassignment needed, avoid `var`
 - Prefer named exports over default exports
 - Use async/await over raw promises for readability
@@ -1146,6 +1246,7 @@ Sitemap: https://yoursite.com/sitemap.xml
 **IMPORTANT:** Long commit messages can cause pipeline issues and processing delays.
 
 **Best Practices:**
+
 - **Keep subject line under 72 characters** (hard limit: 100 characters)
 - Use present tense: "Add feature" not "Added feature"
 - Be descriptive but concise
@@ -1153,6 +1254,7 @@ Sitemap: https://yoursite.com/sitemap.xml
 - If commit gets stuck in pipeline, it's likely too long - cancel and shorten
 
 **Structure:**
+
 ```
 type(scope): brief description under 72 chars
 
@@ -1165,6 +1267,7 @@ Refs: #123, #456
 **Examples:**
 
 ✅ **GOOD** (concise and clear):
+
 ```
 feat(auth): add OAuth2 support (#42)
 
@@ -1174,16 +1277,19 @@ Closes #42
 ```
 
 ❌ **TOO LONG** (causes pipeline issues):
+
 ```
 feat(auth): add OAuth2 support with Google and GitHub providers including token refresh, user profile sync, and automatic session management (#42)
 ```
 
 ✅ **GOOD** (short and focused):
+
 ```
 fix(ui): resolve button alignment issue (#89)
 ```
 
 ✅ **GOOD** (with body for context):
+
 ```
 docs(api): update endpoint documentation
 
@@ -1197,6 +1303,7 @@ docs(api): update endpoint documentation
 **Types**: feat, fix, docs, style, refactor, test, chore
 
 **More Examples**:
+
 - `feat(auth): add OAuth2 login support (#42)`
 - `fix(ui): resolve button alignment (#89)`
 - `docs(api): update endpoint docs`
@@ -1204,6 +1311,7 @@ docs(api): update endpoint documentation
 - `test(api): add integration tests`
 
 ### Pull Request Guidelines
+
 - Reference related issues: "Closes #42", "Fixes #89", "Relates to #100"
 - Include description of changes and why they were made
 - Add screenshots/videos for UI changes
@@ -1230,6 +1338,7 @@ Always provide sensible defaults and avoid requiring unnecessary configuration.
 ## 👥 Working with Teams
 
 ### For Designers
+
 - Ask clarifying questions about edge cases and states early
 - Provide feedback on technical constraints proactively
 - Suggest UX improvements backed by technical reasoning
@@ -1237,12 +1346,14 @@ Always provide sensible defaults and avoid requiring unnecessary configuration.
 - Document component variants and states in Storybook/similar
 
 ### For Product Managers
+
 - Break down large features into smaller, shippable increments
 - Provide realistic effort estimates with assumptions stated
 - Highlight technical risks and dependencies early
 - Suggest alternatives when requirements are technically challenging
 
 ### For Developers
+
 - Write clear documentation for APIs and complex logic
 - Leave helpful code review comments (suggest improvements, don't just criticize)
 - Share knowledge through pair programming and documentation
@@ -1253,6 +1364,7 @@ Always provide sensible defaults and avoid requiring unnecessary configuration.
 ## 🔄 Continuous Improvement
 
 ### Code Reviews
+
 - Review code promptly (within 24 hours)
 - Be respectful and constructive in feedback
 - Focus on logic, security, performance, and maintainability
@@ -1260,6 +1372,7 @@ Always provide sensible defaults and avoid requiring unnecessary configuration.
 - Use GitHub's suggestion feature for small improvements
 
 ### Refactoring
+
 - Leave code better than you found it (Boy Scout Rule)
 - Refactor in small, focused commits
 - Don't mix refactoring with feature work
@@ -1267,6 +1380,7 @@ Always provide sensible defaults and avoid requiring unnecessary configuration.
 - Document significant architectural changes
 
 ### Documentation
+
 - Keep documentation up-to-date with code changes
 - Document the "why" behind non-obvious decisions
 - Include examples in API documentation
@@ -1357,3 +1471,4 @@ Always provide sensible defaults and avoid requiring unnecessary configuration.
 4. **Provide context** through file structure
 5. **Iterate on suggestions** - regenerate if not ideal
 
+```

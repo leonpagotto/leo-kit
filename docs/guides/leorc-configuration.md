@@ -205,6 +205,278 @@ leo ai sync
 
 ---
 
+### `agents` (object) ⭐ NEW in v4.0.0
+
+**Configuration for multi-agent orchestration system.**
+
+```json
+{
+  "agents": {
+    "orchestrator": {
+      "enabled": true
+    },
+    "frontend": {
+      "enabled": true,
+      "frameworks": ["react", "next.js"],
+      "ui-library": "tailwindcss"
+    },
+    "backend": {
+      "enabled": true,
+      "framework": "express",
+      "database": "postgresql",
+      "orm": "prisma"
+    },
+    "devops": {
+      "enabled": false,
+      "platform": "railway",
+      "ci-cd": "github-actions"
+    },
+    "testing": {
+      "enabled": true,
+      "frameworks": ["jest", "playwright"],
+      "coverage-threshold": 80
+    },
+    "documentation": {
+      "enabled": true,
+      "style": "jsdoc"
+    }
+  }
+}
+```
+
+**Available Agents:**
+
+| Agent            | Purpose                                            | Can Disable? |
+| ---------------- | -------------------------------------------------- | ------------ |
+| **orchestrator** | Routes tasks to specialized agents                 | ❌ Required  |
+| **frontend**     | UI/UX, components, styling, accessibility          | ✅ Optional  |
+| **backend**      | APIs, databases, authentication, business logic    | ✅ Optional  |
+| **devops**       | Deployment, CI/CD, infrastructure, monitoring      | ✅ Optional  |
+| **testing**      | Unit tests, integration tests, E2E tests, coverage | ✅ Optional  |
+| **documentation** | README, API docs, user guides, code comments       | ✅ Optional  |
+
+#### Orchestrator Agent (Required)
+
+The orchestrator agent is always enabled and cannot be disabled. It analyzes user requests and routes to appropriate specialized agents.
+
+```json
+{
+  "agents": {
+    "orchestrator": {
+      "enabled": true
+    }
+  }
+}
+```
+
+#### Frontend Agent
+
+Specialized in UI/UX development, component architecture, and frontend performance.
+
+```json
+{
+  "agents": {
+    "frontend": {
+      "enabled": true,
+      "frameworks": ["react", "vue", "angular"],
+      "ui-library": "tailwindcss"
+    }
+  }
+}
+```
+
+**Configuration Options:**
+- `enabled` (boolean): Enable/disable frontend agent
+- `frameworks` (array): Frontend frameworks used (e.g., `["react", "next.js"]`)
+- `ui-library` (string): UI library or CSS framework (e.g., `"tailwindcss"`, `"mui"`, `"bootstrap"`)
+
+**Triggers Frontend Agent:**
+- Keywords: `component`, `UI`, `style`, `design`, `responsive`, `accessibility`
+- File patterns: `*.jsx`, `*.tsx`, `*.vue`, `*.css`, `*.scss`
+- User requests: "Add a button", "Style the header", "Make it responsive"
+
+#### Backend Agent
+
+Specialized in API development, database design, authentication, and server-side logic.
+
+```json
+{
+  "agents": {
+    "backend": {
+      "enabled": true,
+      "framework": "express",
+      "database": "postgresql",
+      "orm": "prisma"
+    }
+  }
+}
+```
+
+**Configuration Options:**
+- `enabled` (boolean): Enable/disable backend agent
+- `framework` (string): Backend framework (e.g., `"express"`, `"fastify"`, `"nest"`)
+- `database` (string): Database type (e.g., `"postgresql"`, `"mongodb"`, `"mysql"`)
+- `orm` (string): ORM/query builder (e.g., `"prisma"`, `"typeorm"`, `"sequelize"`)
+
+**Triggers Backend Agent:**
+- Keywords: `API`, `endpoint`, `database`, `auth`, `query`, `model`, `security`
+- File patterns: `*.controller.js`, `*.service.js`, `*.model.js`, `*.route.js`
+- User requests: "Create API endpoint", "Add authentication", "Query the database"
+
+#### DevOps Agent
+
+Specialized in deployment, CI/CD pipelines, infrastructure, and monitoring.
+
+```json
+{
+  "agents": {
+    "devops": {
+      "enabled": true,
+      "platform": "railway",
+      "ci-cd": "github-actions"
+    }
+  }
+}
+```
+
+**Configuration Options:**
+- `enabled` (boolean): Enable/disable devops agent
+- `platform` (string): Deployment platform (e.g., `"railway"`, `"vercel"`, `"aws"`, `"gcp"`)
+- `ci-cd` (string): CI/CD system (e.g., `"github-actions"`, `"gitlab-ci"`, `"jenkins"`)
+
+**Triggers DevOps Agent:**
+- Keywords: `deploy`, `CI/CD`, `Docker`, `pipeline`, `infrastructure`, `monitoring`
+- File patterns: `Dockerfile`, `docker-compose.yml`, `.github/workflows/*`
+- User requests: "Deploy to production", "Add CI/CD pipeline", "Setup monitoring"
+
+#### Testing Agent
+
+Specialized in test creation, coverage analysis, and quality assurance.
+
+```json
+{
+  "agents": {
+    "testing": {
+      "enabled": true,
+      "frameworks": ["jest", "playwright"],
+      "coverage-threshold": 80
+    }
+  }
+}
+```
+
+**Configuration Options:**
+- `enabled` (boolean): Enable/disable testing agent
+- `frameworks` (array): Testing frameworks (e.g., `["jest", "vitest", "mocha"]`)
+- `coverage-threshold` (number): Minimum test coverage percentage (default: 80)
+
+**Triggers Testing Agent:**
+- Keywords: `test`, `spec`, `coverage`, `mock`, `fixture`, `assertion`
+- File patterns: `*.test.js`, `*.spec.js`, `__tests__/*`, `*.e2e.js`
+- User requests: "Write tests", "Add test coverage", "Mock the API"
+
+#### Documentation Agent
+
+Specialized in technical writing, API documentation, and user guides.
+
+```json
+{
+  "agents": {
+    "documentation": {
+      "enabled": true,
+      "style": "jsdoc"
+    }
+  }
+}
+```
+
+**Configuration Options:**
+- `enabled` (boolean): Enable/disable documentation agent
+- `style` (string): Documentation style (e.g., `"jsdoc"`, `"typedoc"`, `"markdown"`)
+
+**Triggers Documentation Agent:**
+- Keywords: `documentation`, `README`, `guide`, `comment`, `explain`, `document`
+- File patterns: `*.md`, `docs/*`, `README*`, `CONTRIBUTING*`
+- User requests: "Update README", "Document the API", "Write a user guide"
+
+#### Managing Agents
+
+```bash
+# List enabled agents
+leo agent list
+
+# Enable an agent
+leo agent add frontend
+
+# Disable an agent (except orchestrator)
+leo agent remove devops
+
+# Get agent info
+leo agent info backend
+
+# Regenerate all agent instruction files
+leo agent sync
+```
+
+#### Recommended Agents by Project Type
+
+| Project Type | Recommended Agents                                               |
+| ------------ | ---------------------------------------------------------------- |
+| **fullstack** | Orchestrator, Frontend, Backend, Testing, Documentation          |
+| **frontend** | Orchestrator, Frontend, Testing, Documentation                   |
+| **backend**  | Orchestrator, Backend, Testing, DevOps, Documentation            |
+| **cli**      | Orchestrator, Backend, Testing, Documentation                    |
+| **mobile**   | Orchestrator, Frontend, Backend, Testing, Documentation          |
+| **library**  | Orchestrator, Backend, Testing, Documentation                    |
+
+**See Also:** [Multi-Agent Orchestration Spec](../specs/multi-agent-orchestration.md)
+
+---
+
+### `routing` (object) ⭐ NEW in v4.0.0
+
+**Configuration for agent routing behavior.**
+
+```json
+{
+  "routing": {
+    "multi-agent-threshold": 3,
+    "auto-handoff": true,
+    "fallback-agent": "orchestrator"
+  }
+}
+```
+
+**Configuration Options:**
+- `multi-agent-threshold` (number): Number of agents required to trigger special multi-agent coordination (default: 3)
+- `auto-handoff` (boolean): Automatically hand off between agents without user intervention (default: true)
+- `fallback-agent` (string): Agent to use when routing is unclear (default: "orchestrator")
+
+**How Routing Works:**
+
+1. **User describes work** → Orchestrator analyzes request
+2. **Task classified** → Determines which agent(s) are needed
+3. **Single-agent task** → Routes directly to specialist
+4. **Multi-agent task** → Coordinates multiple specialists sequentially
+5. **Unclear task** → Falls back to orchestrator or asks for clarification
+
+**Example Multi-Agent Routing:**
+
+```
+User: "Add OAuth2 login button"
+
+Orchestrator Analysis:
+  ✓ Primary: Backend (OAuth2 authentication)
+  ✓ Secondary: Frontend (login button UI)
+
+Execution:
+  Step 1: Backend Agent → Creates OAuth2 endpoints
+  Step 2: Frontend Agent → Creates login button UI
+  Step 3: Integration → Orchestrator verifies connection
+```
+
+---
+
 ### `deployment` (object)
 
 **Deployment platform and service configuration.**

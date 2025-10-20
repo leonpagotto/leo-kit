@@ -26,22 +26,38 @@
 
   "agents": {
     "orchestrator": {
-      "enabled": true
+      "enabled": true,
+      "_comment": "Orchestrator is always enabled (required)"
     },
     "frontend": {
-      "enabled": false
+      "enabled": false,
+      "frameworks": ["react", "next.js"],
+      "ui-library": "tailwindcss",
+      "_comment": "Enable for UI/UX, components, styling work"
     },
     "backend": {
-      "enabled": false
+      "enabled": false,
+      "framework": "express",
+      "database": "postgresql",
+      "orm": "prisma",
+      "_comment": "Enable for API, database, auth work"
     },
     "devops": {
-      "enabled": false
+      "enabled": false,
+      "platform": "railway",
+      "ci-cd": "github-actions",
+      "_comment": "Enable for deployment, CI/CD, infrastructure"
     },
     "testing": {
-      "enabled": false
+      "enabled": false,
+      "frameworks": ["jest", "playwright"],
+      "coverage-threshold": 80,
+      "_comment": "Enable for test creation and quality assurance"
     },
     "documentation": {
-      "enabled": false
+      "enabled": false,
+      "style": "jsdoc",
+      "_comment": "Enable for README, API docs, guides"
     }
   },
 
