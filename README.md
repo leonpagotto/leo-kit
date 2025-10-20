@@ -1,10 +1,10 @@
 <div align="center">
 
-# 🦁 LEO Workflow Kit
+<img src="docs/assets/leo_kit_logo.png" alt="LEO Kit Logo" width="600" />
 
-### GitHub Workflow Automation with Multi-Agent AI Orchestration
+<h3>GitHub Workflow Automation with Multi-Agent AI Orchestration</h3>
 
-**Transform your development workflow with intelligent task routing, spec-first development, and automated GitHub Projects integration—all from your terminal.**
+<p><strong>Transform your development workflow with intelligent task routing, spec-first development, and automated GitHub Projects integration—all from your terminal.</strong></p>
 
 [![npm version](https://img.shields.io/npm/v/leo-workflow-kit.svg?style=flat-square&color=blue&logo=npm)](https://www.npmjs.com/package/leo-workflow-kit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
