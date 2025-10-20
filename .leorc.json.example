@@ -1,0 +1,53 @@
+{
+  "version": "3.0.3",
+  "project-type": "fullstack",
+  "auto-resolve": true,
+
+  "github": {
+    "owner": "leonpagotto",
+    "repo": "leo-kit",
+    "project": {
+      "number": 4,
+      "url": "https://github.com/users/leonpagotto/projects/4",
+      "auto-add-issues": true
+    }
+  },
+
+  "ai-assistants": {
+    "enabled": [
+      "copilot",
+      "cursor",
+      "cline",
+      "codeium"
+    ],
+    "primary": "copilot",
+    "sync-on-update": true
+  },
+
+  "agents": {
+    "orchestrator": {
+      "enabled": true
+    },
+    "frontend": {
+      "enabled": false
+    },
+    "backend": {
+      "enabled": false
+    },
+    "devops": {
+      "enabled": false
+    },
+    "testing": {
+      "enabled": false
+    },
+    "documentation": {
+      "enabled": false
+    }
+  },
+
+  "routing": {
+    "multi-agent-threshold": 3,
+    "auto-handoff": true,
+    "fallback-agent": "orchestrator"
+  }
+}

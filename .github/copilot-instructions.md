@@ -249,11 +249,26 @@ const autoResolve = config['auto-resolve'] !== false; // Default: true
    ```bash
    gh issue create --title "..." --body "..." --label "bug,p1,component"
    ```
-4. **Add to GitHub Project (if configured):**
+4. **Add to GitHub Project:**
    ```bash
-   gh project item-add PROJECT_NUMBER --owner OWNER --url ISSUE_URL
+   # Read project config from .leorc.json
+   gh project item-add 4 --owner leonpagotto --url ISSUE_URL
    ```
 5. **Confirm to user** with issue number, link, and project status
+
+### 🎯 Project Configuration
+
+**This repository uses GitHub Project #4:**
+- **URL**: https://github.com/users/leonpagotto/projects/4
+- **Owner**: leonpagotto
+- **Project Number**: 4
+- **Auto-add issues**: ✅ Enabled
+
+**ALWAYS add new issues to this project:**
+```bash
+# After creating issue, get the URL from response
+gh project item-add 4 --owner leonpagotto --url ISSUE_URL
+```
 
 ### Example: User Requests → Auto Issue Creation
 
