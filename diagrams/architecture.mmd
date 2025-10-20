@@ -1,6 +1,7 @@
+````plaintext
 ```mermaid
 graph TB
-    subgraph "LEO Workflow Kit Architecture"
+    subgraph "LEO Workflow Kit Architecture v4.0.0"
         CLI[CLI Entry Point<br/>bin/cli.js]
 
         subgraph "Core Commands"
@@ -8,38 +9,84 @@ graph TB
             ISSUE[leo issue<br/>Interactive Issue Creator]
             LABELS[leo labels<br/>Label Management]
             VSCODE[leo vscode<br/>VS Code Integration]
-            CONFIG[leo config<br/>⭐ Configuration Manager]
+            CONFIG[leo config<br/>Configuration Manager]
             STATUS[leo status<br/>Workflow Status]
             HEALTH[leo health<br/>System Health Check]
+            AGENT[leo agent<br/>🆕 Agent Management]
+            GITHUB[leo github<br/>🆕 Repository Settings]
         end
 
-        subgraph "Configuration System ⭐ NEW v2.6.0"
+        subgraph "🤖 Multi-Agent Orchestration System 🆕 v4.0.0"
+            ORCHESTRATOR[Orchestrator Agent<br/>Task Routing & Coordination]
+
+            subgraph "Specialized Agents"
+                FRONTEND[Frontend Agent<br/>UI/UX, Components, Styling]
+                BACKEND[Backend Agent<br/>APIs, Database, Auth]
+                DEVOPS[DevOps Agent<br/>CI/CD, Infrastructure]
+                TESTING[Testing Agent<br/>Unit, E2E, Coverage]
+                DOCS[Documentation Agent<br/>Guides, API Docs]
+            end
+
+            AGENT_CONFIG[Agent Configuration<br/>.leorc.json → agents]
+            AGENT_ROUTING{Intelligent Routing<br/>Keywords, Files, Intent}
+
+            ORCHESTRATOR --> AGENT_ROUTING
+            AGENT_ROUTING -->|UI Task| FRONTEND
+            AGENT_ROUTING -->|API Task| BACKEND
+            AGENT_ROUTING -->|Deploy Task| DEVOPS
+            AGENT_ROUTING -->|Test Task| TESTING
+            AGENT_ROUTING -->|Docs Task| DOCS
+            AGENT_ROUTING -->|Multi-Agent| MULTI[Coordinate Multiple Agents]
+
+            AGENT_CONFIG -.->|Controls| FRONTEND
+            AGENT_CONFIG -.->|Controls| BACKEND
+            AGENT_CONFIG -.->|Controls| DEVOPS
+            AGENT_CONFIG -.->|Controls| TESTING
+            AGENT_CONFIG -.->|Controls| DOCS
+        end
+
+        subgraph "Configuration System"
             CONFIG_MGR[Config Manager<br/>lib/utils/config-manager.js]
             LOCAL_CFG[.leorc.json<br/>Project Config]
             GLOBAL_CFG[~/.leorc.json<br/>User Config]
-            CONFIG_KEYS[Config Keys:<br/>auto-resolve, auto-init, project-type]
+            CONFIG_KEYS[Config Keys:<br/>auto-resolve, auto-init,<br/>project-type, agents]
             CONFIG_MGR --> LOCAL_CFG
             CONFIG_MGR --> GLOBAL_CFG
             CONFIG_MGR --> CONFIG_KEYS
         end
 
+        subgraph "AI Instructions System 🆕 v4.0.0"
+            AI_BUILDER[AI Instructions Builder<br/>lib/ai-instructions/builder.js]
+            AI_CORE[Core Instructions<br/>Orchestrator Logic]
+            AI_ADAPTERS[Agent Adapters<br/>Per-Agent Instructions]
+            AI_OUTPUT[.github/copilot-instructions.md<br/>Combined AI Rules]
+
+            AI_BUILDER --> AI_CORE
+            AI_BUILDER --> AI_ADAPTERS
+            AI_BUILDER --> AI_OUTPUT
+            AGENT_CONFIG -.->|Configures| AI_BUILDER
+        end
+
         subgraph "Core Libraries"
             BANNER[banner.js<br/>Welcome Banner]
-            COPILOT[copilot-instructions-template.js<br/>AI Instructions Generator]
+            COPILOT[copilot-instructions-template.js<br/>Legacy AI Instructions]
             CHECKS[utils/checks.js<br/>Prerequisites Validation]
             FIRSTRUN[utils/first-run.js<br/>First-Time Setup]
+            PROJECT_DETECT[utils/project-detector.js<br/>Auto-Detect Project Type]
         end
 
         subgraph "Templates"
             ISSUES[Issue Templates<br/>8 Types]
             WORKFLOWS[GitHub Workflows<br/>CI/CD Templates]
-            DOCS[Documentation<br/>Templates]
+            DOCT[Documentation<br/>Templates]
+            SPECS[Spec Templates<br/>EXAMPLE_SPEC.md]
         end
 
         subgraph "External Dependencies"
             GH[GitHub CLI<br/>gh]
             GHAPI[GitHub API<br/>REST & GraphQL]
             GHPROJECTS[GitHub Projects v2<br/>Project Boards]
+            GHREPO[GitHub Repository<br/>Settings & Config]
             NODE[Node.js ≥16<br/>Runtime]
             NPM[npm Registry<br/>Package Distribution]
         end
@@ -47,7 +94,8 @@ graph TB
         subgraph "GitHub Copilot Integration"
             COPILOT_INST[.github/copilot-instructions.md<br/>AI Behavior Rules]
             AUTO_ISSUE[Automatic Issue Creation<br/>Detects Work Intent]
-            AUTO_RESOLVE[Auto Resolution<br/>⭐ Configurable]
+            SPEC_DECISION[Spec-First Decision<br/>Complex vs Simple]
+            AUTO_RESOLVE[Auto Resolution<br/>Configurable]
             AUTO_PROJECT[Project Integration<br/>Auto-add to Boards]
             AUTO_STATUS[Status Management<br/>Todo → In Progress → Done]
         end
@@ -60,48 +108,80 @@ graph TB
     CLI --> CONFIG
     CLI --> STATUS
     CLI --> HEALTH
+    CLI --> AGENT
+    CLI --> GITHUB
 
+    AGENT --> ORCHESTRATOR
+    AGENT --> AGENT_CONFIG
     CONFIG --> CONFIG_MGR
+    GITHUB --> GHREPO
 
     INIT --> BANNER
-    INIT --> COPILOT
+    INIT --> AI_BUILDER
     INIT --> CHECKS
     INIT --> FIRSTRUN
+    INIT --> PROJECT_DETECT
     INIT --> TEMPLATES
 
-    VSCODE --> COPILOT
+    VSCODE --> AI_BUILDER
     LABELS --> GH
     ISSUE --> GH
 
-    COPILOT --> COPILOT_INST
+    AI_OUTPUT --> COPILOT_INST
+    COPILOT_INST --> ORCHESTRATOR
     COPILOT_INST --> AUTO_ISSUE
-    AUTO_ISSUE --> AUTO_RESOLVE
+    AUTO_ISSUE --> SPEC_DECISION
+    SPEC_DECISION -->|Complex| SPECS
+    SPEC_DECISION -->|Simple| AUTO_RESOLVE
+    SPECS --> AUTO_RESOLVE
     AUTO_RESOLVE -->|Enabled| AUTO_PROJECT
     AUTO_RESOLVE -->|Disabled| WAIT[Wait for User Review]
     AUTO_PROJECT --> AUTO_STATUS
 
     CONFIG_MGR -.->|Checks Config| AUTO_RESOLVE
+    CONFIG_MGR --> AGENT_CONFIG
 
     INIT --> GH
+    GITHUB --> GH
     GH --> GHAPI
     GHAPI --> GHPROJECTS
+    GHAPI --> GHREPO
 
     TEMPLATES --> ISSUES
     TEMPLATES --> WORKFLOWS
-    TEMPLATES --> DOCS
+    TEMPLATES --> DOCT
+    TEMPLATES --> SPECS
 
     CLI -.-> NODE
     NPM -.-> NODE
 
     style CLI fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
+    style AGENT fill:#9C27B0,stroke:#4A148C,stroke-width:3px,color:#fff
+    style GITHUB fill:#9C27B0,stroke:#4A148C,stroke-width:3px,color:#fff
+    style ORCHESTRATOR fill:#E91E63,stroke:#880E4F,stroke-width:3px,color:#fff
+    style AGENT_ROUTING fill:#E91E63,stroke:#880E4F,stroke-width:2px,color:#fff
+    style FRONTEND fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style BACKEND fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style DEVOPS fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style TESTING fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style DOCS fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style MULTI fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    style AI_BUILDER fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
+    style AI_OUTPUT fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
     style CONFIG fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
     style CONFIG_MGR fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
+    style AGENT_CONFIG fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
     style COPILOT_INST fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
     style AUTO_ISSUE fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    style SPEC_DECISION fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
     style AUTO_RESOLVE fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
     style AUTO_PROJECT fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
     style AUTO_STATUS fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    style SPECS fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
     style WAIT fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
     style GHPROJECTS fill:#1976D2,stroke:#0D47A1,stroke-width:2px,color:#fff
+    style GHREPO fill:#1976D2,stroke:#0D47A1,stroke-width:2px,color:#fff
     style GH fill:#1976D2,stroke:#0D47A1,stroke-width:2px,color:#fff
 ```
+
+````
