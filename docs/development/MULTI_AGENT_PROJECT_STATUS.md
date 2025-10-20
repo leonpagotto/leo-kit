@@ -6,7 +6,7 @@
 
 ---
 
-## 📊 Overall Progress: 53.8% Complete (7 of 13 issues)
+## 📊 Overall Progress: 69.2% Complete (9 of 13 issues)
 
 ### ✅ Completed Issues
 
@@ -19,6 +19,8 @@
 | [#29](https://github.com/leonpagotto/leo-kit/issues/29) | Create DevOps Agent Template        | P1       | ✅ Done | 2025-10-20 |
 | [#30](https://github.com/leonpagotto/leo-kit/issues/30) | Create Testing Agent Template       | P1       | ✅ Done | 2025-10-20 |
 | [#31](https://github.com/leonpagotto/leo-kit/issues/31) | Create Documentation Agent Template | P1       | ✅ Done | 2025-10-20 |
+| [#33](https://github.com/leonpagotto/leo-kit/issues/33) | Update AI Adapters Multi-Agent      | P1       | ✅ Done | 2025-10-20 |
+| [#34](https://github.com/leonpagotto/leo-kit/issues/34) | Add Agent Selection to Init Command | P1       | ✅ Done | 2025-10-20 |
 
 ### 🚧 In Progress Issues
 
@@ -35,6 +37,10 @@ All Phase 1 issues completed!
 #### Phase 2: Specialized Agents ✅ COMPLETE
 
 All Phase 2 issues completed!
+
+#### Phase 3: AI Adapter Integration ✅ COMPLETE
+
+All Phase 3 issues completed!
 
 #### Phase 3: Init & Generation (2 issues)
 
