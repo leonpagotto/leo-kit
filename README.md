@@ -1,15 +1,10 @@
 <div align="center">
 
-```
-             ██╗     ███████╗ ██████╗         ██╗  ██╗██╗████████╗
-             ██║     ██╔════╝██╔═══██╗        ██║ ██╔╝██║╚══██╔══╝
-            ██║     █████╗  ██║   ██║        █████╔╝ ██║   ██║
-            ██║     ██╔══╝  ██║   ██║        ██╔═██╗ ██║   ██║
-            ███████╗███████╗╚██████╔╝███████╗██║  ██╗██║   ██║
-            ╚══════╝╚══════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝
+# 🦁 LEO Workflow Kit
 
-            🦁  GitHub Workflow Automation with AI Orchestration  🦁
-```
+### GitHub Workflow Automation with Multi-Agent AI Orchestration
+
+**Transform your development workflow with intelligent task routing, spec-first development, and automated GitHub Projects integration—all from your terminal.**
 
 [![npm version](https://img.shields.io/npm/v/leo-workflow-kit.svg?style=flat-square&color=blue&logo=npm)](https://www.npmjs.com/package/leo-workflow-kit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
@@ -17,8 +12,6 @@
 [![GitHub Stars](https://img.shields.io/github/stars/leonpagotto/leo-kit?style=flat-square&color=yellow&logo=github)](https://github.com/leonpagotto/leo-kit/stargazers)
 [![GitHub Issues](https://img.shields.io/github/issues/leonpagotto/leo-kit?style=flat-square&color=red&logo=github)](https://github.com/leonpagotto/leo-kit/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
-
-**Transform your development workflow with multi-agent AI orchestration, spec-first development, intelligent issue management, and automated GitHub Projects integration—all from your terminal.**
 
 [🚀 Quick Start](#-quick-start) • [📖 What is LEO?](#-what-is-leo-workflow-kit) • [✨ Features](#-core-features) • [🤖 Multi-Agent System](#-multi-agent-orchestration-system) • [📦 Installation](#-installation) • [🎯 Commands](#-command-reference)
 
