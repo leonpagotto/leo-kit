@@ -2,7 +2,9 @@
 
 <img src="docs/assets/leo_kit_logo.png" alt="LEO Kit Logo" width="600" />
 
-<h3>GitHub Workflow Automation with Multi-Agent AI Orchestration</h3>
+<h3 style="color: #FF9933; font-weight: 600;">
+  <span style="color: #FF9933;">GitHub Workflow Automation with Multi-Agent AI Orchestration</span>
+</h3>
 
 <p><strong>Transform your development workflow with intelligent task routing, spec-first development, and automated GitHub Projects integration—all from your terminal.</strong></p>
 
@@ -75,28 +77,24 @@ LEO transforms these pain points into strengths:
 LEO v4.0.0 introduces an intelligent orchestration system that routes tasks to specialized AI agents based on domain expertise:
 
 ```
-┌─────────────────────────────────────────────┐
-│         Your Development Request            │
-└──────────────────┬──────────────────────────┘
-                   │
-                   ▼
-       ┌───────────────────────┐
-       │   🎛️ Orchestrator     │
-       │   Analyzes & Routes   │
-       └───────────┬───────────┘
-                   │
-       ┌───────────┴───────────────────────┐
-       │                                   │
-       ▼              ▼              ▼     ▼
-┌──────────┐   ┌──────────┐   ┌──────────┐
-│ 🎨 Frontend │   │ ⚙️ Backend │   │ 🚀 DevOps │
-│ UI/UX Expert│   │ API Expert │   │ Infra Expert│
-└──────────┘   └──────────┘   └──────────┘
-       ▼              ▼
-┌──────────┐   ┌────────────────┐
-│ 🧪 Testing │   │ 📚 Documentation│
-│ QA Expert │   │ Writer Expert  │
-└──────────┘   └────────────────┘
+                                    Your Development Request
+                                              │
+                                              ▼
+                        ┌──────────────────────────────────────────┐
+                        │      🎛️  Orchestrator Agent             │
+                        │   Analyzes Keywords, Files & Intent      │
+                        └──────────┬───────────────────────────────┘
+                                   │
+        ┌──────────────┬───────────┼───────────┬──────────────┬──────────────┐
+        │              │           │           │              │              │
+        ▼              ▼           ▼           ▼              ▼              ▼
+   ┌─────────┐   ┌─────────┐ ┌─────────┐ ┌─────────┐   ┌──────────┐  ┌──────────┐
+   │ 🎨 Front│   │ ⚙️ Back │ │ 🚀 Dev  │ │ 🧪 Test │   │ � Docs  │  │ 🔧 Config│
+   │  -end   │   │  -end   │ │  Ops    │ │  -ing   │   │          │  │          │
+   │ Expert  │   │ Expert  │ │ Expert  │ │ Expert  │   │ Expert   │  │ Manager  │
+   └─────────┘   └─────────┘ └─────────┘ └─────────┘   └──────────┘  └──────────┘
+   UI/UX         APIs        CI/CD       Quality        Guides        Settings
+   Components    Database    Deploy      Coverage       API Docs      Projects
 ```
 
 **[📊 View Full Architecture Diagram](diagrams/architecture.mmd)**
@@ -107,40 +105,39 @@ LEO v4.0.0 introduces an intelligent orchestration system that routes tasks to s
 <summary><b>Click to view detailed architecture diagram</b></summary>
 
 ```mermaid
-graph TB
-    subgraph "LEO Workflow Kit Architecture v4.0.0"
-        CLI[CLI Entry Point<br/>bin/cli.js]
+graph LR
+    CLI[CLI Entry Point] --> COMMANDS[Core Commands]
 
-        subgraph "Core Commands"
-            INIT[leo init<br/>Project Setup]
-            ISSUE[leo issue<br/>Interactive Issue Creator]
-            AGENT[leo agent<br/>🆕 Agent Management]
-            GITHUB[leo github<br/>🆕 Repository Settings]
-            CONFIG[leo config<br/>Configuration Manager]
-        end
+    COMMANDS --> INIT[leo init]
+    COMMANDS --> ISSUE[leo issue]
+    COMMANDS --> AGENT[leo agent 🆕]
+    COMMANDS --> GITHUB[leo github 🆕]
+    COMMANDS --> CONFIG[leo config]
 
-        subgraph "🤖 Multi-Agent Orchestration System 🆕"
-            ORCHESTRATOR[Orchestrator Agent<br/>Task Routing & Coordination]
+    AGENT --> ORCHESTRATOR[🎛️ Orchestrator<br/>Task Router]
 
-            subgraph "Specialized Agents"
-                FRONTEND[Frontend Agent<br/>UI/UX, Components]
-                BACKEND[Backend Agent<br/>APIs, Database]
-                DEVOPS[DevOps Agent<br/>CI/CD, Infrastructure]
-                TESTING[Testing Agent<br/>Tests, Coverage]
-                DOCS[Documentation Agent<br/>Guides, API Docs]
-            end
+    ORCHESTRATOR --> ROUTING{Intelligent<br/>Routing}
 
-            AGENT_ROUTING{Intelligent Routing<br/>Keywords, Files, Intent}
+    ROUTING -->|UI Tasks| FRONTEND[🎨 Frontend<br/>UI/UX Expert]
+    ROUTING -->|API Tasks| BACKEND[⚙️ Backend<br/>API Expert]
+    ROUTING -->|Deploy Tasks| DEVOPS[🚀 DevOps<br/>Infrastructure]
+    ROUTING -->|Test Tasks| TESTING[🧪 Testing<br/>QA Expert]
+    ROUTING -->|Doc Tasks| DOCS[📚 Documentation<br/>Writer]
 
-            ORCHESTRATOR --> AGENT_ROUTING
-            AGENT_ROUTING -->|UI Task| FRONTEND
-            AGENT_ROUTING -->|API Task| BACKEND
-            AGENT_ROUTING -->|Deploy Task| DEVOPS
-            AGENT_ROUTING -->|Test Task| TESTING
-            AGENT_ROUTING -->|Docs Task| DOCS
-        end
+    INIT --> COPILOT[GitHub Copilot<br/>Instructions]
+    INIT --> GH_PROJECTS[GitHub Projects<br/>Integration]
+    INIT --> TEMPLATES[Templates &<br/>Labels]
 
-        subgraph "GitHub Copilot Integration"
+    ISSUE --> GH_PROJECTS
+    CONFIG --> SETTINGS[.leorc.json<br/>Configuration]
+
+    style ORCHESTRATOR fill:#ff69b4
+    style FRONTEND fill:#61dafb
+    style BACKEND fill:#68a063
+    style DEVOPS fill:#326ce5
+    style TESTING fill:#94c748
+    style DOCS fill:#f7931e
+    style ROUTING fill:#ffd700
             COPILOT_INST[.github/copilot-instructions.md<br/>AI Behavior Rules]
             AUTO_ISSUE[Automatic Issue Creation]
             SPEC_DECISION[Spec-First Decision]
@@ -184,51 +181,43 @@ graph TB
 LEO intelligently decides when to create specifications vs direct issues, then routes work to the appropriate specialized agents:
 
 ```mermaid
-graph TB
-    START([👤 User Describes Work])
-
-    START --> ORCHESTRATOR[🎛️ Orchestrator Analyzes]
-    ORCHESTRATOR --> CLASSIFY{Classify Task}
-
-    CLASSIFY -->|Frontend| ROUTE_FE[🎨 Route to Frontend Agent]
-    CLASSIFY -->|Backend| ROUTE_BE[⚙️ Route to Backend Agent]
-    CLASSIFY -->|Complex| ROUTE_MULTI[🔄 Multi-Agent Coordination]
-
-    ROUTE_FE --> COMPLEXITY{Estimate Complexity}
-    ROUTE_BE --> COMPLEXITY
-    ROUTE_MULTI --> COMPLEXITY
-
-    COMPLEXITY -->|< 1 day| SIMPLE[Direct Issue Creation]
-    COMPLEXITY -->|> 1 week| COMPLEX[📝 Create Spec File]
-
-    COMPLEX --> REVIEW{User Approves Spec?}
-    REVIEW -->|✅ Yes| BREAKDOWN[Break into Multiple Issues]
-    REVIEW -->|❌ No| COMPLEX
-
-    BREAKDOWN --> CREATE_ISSUE[Create GitHub Issue]
-    SIMPLE --> CREATE_ISSUE
-
-    CREATE_ISSUE --> CHECK_CONFIG{auto-resolve enabled?}
-    CHECK_CONFIG -->|✅ Yes| AUTO_START[🚀 Auto-Start Work]
-    CHECK_CONFIG -->|❌ No| WAIT[⏸️ Wait for Review]
-
-    AUTO_START --> IMPLEMENT[Agent Implements Solution]
-    WAIT --> USER_OK{User Approves?}
-    USER_OK -->|✅| IMPLEMENT
-
-    IMPLEMENT --> STATUS[📊 Status: In Progress]
-    STATUS --> PR[Create Pull Request]
-    PR --> MERGE[Merge & Auto-Close]
-    MERGE --> DONE[✅ Status: Done]
-
-    style START fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#fff
-    style ORCHESTRATOR fill:#E91E63,stroke:#880E4F,stroke-width:3px,color:#fff
-    style ROUTE_FE fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
-    style ROUTE_BE fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
-    style ROUTE_MULTI fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
-    style COMPLEX fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
-    style AUTO_START fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#fff
-    style DONE fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#fff
+graph LR
+    START([👤 User Request]) --> ORCH[🎛️ Orchestrator<br/>Analyzes Task]
+    
+    ORCH --> ROUTE{Route to<br/>Agent}
+    ROUTE -->|UI| FE[🎨 Frontend]
+    ROUTE -->|API| BE[⚙️ Backend]
+    ROUTE -->|Multi| MULTI[🔄 Coordinate]
+    
+    FE --> COMPLEX{Complexity?}
+    BE --> COMPLEX
+    MULTI --> COMPLEX
+    
+    COMPLEX -->|< 1 day| ISSUE[📝 Create Issue]
+    COMPLEX -->|> 1 week| SPEC[� Create Spec]
+    
+    SPEC --> APPROVE{Approved?}
+    APPROVE -->|Yes| BREAKDOWN[Split Issues]
+    APPROVE -->|No| SPEC
+    BREAKDOWN --> ISSUE
+    
+    ISSUE --> CONFIG{auto-resolve?}
+    CONFIG -->|Yes| WORK[🚀 Start Work]
+    CONFIG -->|No| WAIT[⏸️ Wait Review]
+    WAIT --> WORK
+    
+    WORK --> STATUS[📊 In Progress]
+    STATUS --> PR[Pull Request]
+    PR --> MERGE[✅ Done]
+    
+    style START fill:#4CAF50
+    style ORCH fill:#E91E63
+    style FE fill:#00BCD4
+    style BE fill:#00BCD4
+    style MULTI fill:#FF9800
+    style SPEC fill:#FF9800
+    style WORK fill:#4CAF50
+    style MERGE fill:#4CAF50
 ```
 
 **[🔄 View Complete Workflow Diagram](diagrams/workflow.mmd)**
