@@ -5,8 +5,10 @@ This directory contains architecture and workflow diagrams for the LEO Workflow 
 ## 📊 Available Diagrams
 
 ### 1. Architecture Diagram (v4.0.0)
-**File:** `architecture.mmd`  
-**Shows:** 
+
+**File:** `architecture.mmd`
+**Shows:**
+
 - System components and data flow
 - 🆕 Multi-agent orchestration system (6 specialized agents)
 - 🆕 AI instructions builder and agent adapters
@@ -16,14 +18,17 @@ This directory contains architecture and workflow diagrams for the LEO Workflow 
 - Copilot integration with spec-first decision making
 
 **Key Features:**
+
 - Orchestrator Agent → Routes tasks to specialists
 - Frontend, Backend, DevOps, Testing, Documentation agents
 - Agent configuration via `.leorc.json`
 - Intelligent routing based on keywords, files, and intent
 
 ### 2. Workflow Diagram (v4.0.0)
-**File:** `workflow.mmd`  
-**Shows:** 
+
+**File:** `workflow.mmd`
+**Shows:**
+
 - Complete development workflow from user request to deployment
 - 🆕 Multi-agent orchestration and task routing
 - 🆕 Enhanced spec-first decision making (complexity estimation)
@@ -33,6 +38,7 @@ This directory contains architecture and workflow diagrams for the LEO Workflow 
 - Development lifecycle with status management
 
 **Key Features:**
+
 - Orchestrator analyzes and classifies tasks
 - Routes to appropriate specialized agent(s)
 - Spec creation for complex work (> 1 week)
@@ -44,14 +50,18 @@ This directory contains architecture and workflow diagrams for the LEO Workflow 
 ## 🎨 Viewing Diagrams
 
 ### Option 1: GitHub (Recommended)
+
 GitHub automatically renders Mermaid diagrams in `.mmd` files and markdown code blocks.
 
 Simply view the files directly on GitHub:
+
 - [Architecture Diagram](./architecture.mmd)
 - [Workflow Diagram](./workflow.mmd)
 
 ### Option 2: VS Code
+
 Install the **Mermaid Preview** extension:
+
 ```bash
 code --install-extension bierner.markdown-mermaid
 ```
@@ -59,10 +69,12 @@ code --install-extension bierner.markdown-mermaid
 Then open any `.mmd` file and press `Ctrl+Shift+V` (or `Cmd+Shift+V` on Mac) to preview.
 
 ### Option 3: Mermaid Live Editor
+
 Copy the contents of any `.mmd` file and paste into:
 https://mermaid.live
 
 ### Option 4: Generate PNG/SVG Locally
+
 Install Mermaid CLI and generate images:
 
 ```bash
@@ -81,16 +93,18 @@ mmdc -i workflow.mmd -o workflow.png
 ## 📝 Editing Diagrams
 
 ### Mermaid Syntax
+
 All diagrams use [Mermaid](https://mermaid.js.org/) syntax - a markdown-like syntax for generating diagrams.
 
 **Example:**
 \`\`\`mermaid
 graph TB
-    A[Start] --> B[Process]
-    B --> C[End]
+A[Start] --> B[Process]
+B --> C[End]
 \`\`\`
 
 ### Quick Reference
+
 - `graph TB` - Top to Bottom flow
 - `graph LR` - Left to Right flow
 - `-->` - Arrow connection
@@ -100,6 +114,7 @@ graph TB
 - `subgraph` - Group related nodes
 
 ### Documentation
+
 - [Mermaid Documentation](https://mermaid.js.org/intro/)
 - [Flowchart Syntax](https://mermaid.js.org/syntax/flowchart.html)
 - [Styling Guide](https://mermaid.js.org/config/theming.html)
@@ -116,6 +131,7 @@ When updating diagrams:
 ## 📐 Diagram Guidelines
 
 ### Architecture Diagram Should Show:
+
 - ✅ Main CLI entry point
 - ✅ Core commands and their purpose (including v4.0.0 commands)
 - ✅ 🆕 Multi-agent orchestration system
@@ -129,6 +145,7 @@ When updating diagrams:
 - ✅ Data flow between components
 
 ### Workflow Diagram Should Show:
+
 - ✅ Complete developer workflow
 - ✅ 🆕 Multi-agent orchestration flow
 - ✅ 🆕 Task classification and routing
@@ -144,17 +161,21 @@ When updating diagrams:
 ## 🆕 v4.0.0 Diagram Updates
 
 ### What's New in Architecture Diagram:
+
 1. **Multi-Agent Orchestration System**
+
    - Orchestrator Agent (task routing & coordination)
    - 6 specialized agents with specific domains
    - Intelligent routing logic (keywords, files, intent)
    - Multi-agent coordination support
 
 2. **New Commands**
+
    - `leo agent` - Agent management (list, enable, disable, info, sync)
    - `leo github` - Repository settings automation
 
 3. **AI Instructions System**
+
    - AI instructions builder
    - Core instructions (orchestrator logic)
    - Agent adapters (per-agent instructions)
@@ -166,18 +187,22 @@ When updating diagrams:
    - Agent enable/disable controls
 
 ### What's New in Workflow Diagram:
+
 1. **Multi-Agent Orchestration**
+
    - Orchestrator analyzes and classifies tasks
    - Routes to appropriate specialized agent(s)
    - Multi-agent coordination example (4-step flow)
 
 2. **Enhanced Spec-First Decision Making**
+
    - Complexity estimation (< 1 day vs > 1 week)
    - Spec template usage (EXAMPLE_SPEC.md)
    - Detailed spec sections (problem, solution, technical, criteria, timeline)
    - User review and approval loop
 
 3. **Agent-Driven Implementation**
+
    - Specialized agents implement following domain guidelines
    - Agent-specific best practices enforced
    - Quality standards per domain
@@ -213,5 +238,5 @@ When updating diagrams:
 
 ---
 
-**Last Updated:** October 20, 2025  
+**Last Updated:** October 20, 2025
 **Diagrams Version:** 2.0 (v4.0.0 Multi-Agent System)

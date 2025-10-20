@@ -18,12 +18,14 @@ The Copilot instructions were not explicit enough about the automatic issue crea
 ### Enhanced Copilot Instructions
 
 **Before:**
+
 ```
 - Issue Creation: When user describes ANY work → Create GitHub issue IMMEDIATELY
 - No Asking Permission: NEVER ask "should I create an issue?" - JUST DO IT
 ```
 
 **After:**
+
 ```
 - 🚨 AUTOMATIC ISSUE CREATION: When user describes ANY work → Create GitHub issue IMMEDIATELY
 - 🚨 NO MANUAL CLI: NEVER ask user to run `leo issue` or manual commands
@@ -37,7 +39,7 @@ The Copilot instructions were not explicit enough about the automatic issue crea
 ```
 DETECTION TRIGGERS: Look for these patterns in user messages:
 - "Add [feature]" / "Create [component]" / "Build [feature]"
-- "Fix [bug]" / "Resolve [issue]" / "Debug [problem]"  
+- "Fix [bug]" / "Resolve [issue]" / "Debug [problem]"
 - "Update [docs]" / "Document [feature]" / "Write [guide]"
 - "Improve [performance]" / "Optimize [code]" / "Refactor [module]"
 - "I need..." / "Can you..." / "Let's..." / "We should..."
@@ -49,7 +51,7 @@ DETECTION TRIGGERS: Look for these patterns in user messages:
 ```
 Example User Messages That Trigger Auto-Issue Creation:
 ✅ "Add a search bar to the header" → IMMEDIATE issue creation
-✅ "Fix the button alignment on mobile" → IMMEDIATE issue creation  
+✅ "Fix the button alignment on mobile" → IMMEDIATE issue creation
 ✅ "I need OAuth2 authentication" → IMMEDIATE issue creation
 ✅ "Can you optimize the database queries?" → IMMEDIATE issue creation
 ✅ "Let's improve the error handling" → IMMEDIATE issue creation
@@ -69,22 +71,28 @@ Example User Messages That Trigger Auto-Issue Creation:
 ## Test Cases
 
 ### Test Case 1: Simple Feature Request
+
 **Input:** "Add a dark mode toggle to the header"
-**Expected:** 
+**Expected:**
+
 - GitHub issue created immediately
 - Routed to Frontend Agent
 - Implementation starts (if auto-resolve enabled)
 
 ### Test Case 2: Bug Report
+
 **Input:** "Fix the responsive layout on mobile devices"
 **Expected:**
+
 - GitHub issue created immediately
 - Routed to Frontend Agent
 - Bug fix implementation starts
 
 ### Test Case 3: Complex Feature
+
 **Input:** "Build a complete authentication system with OAuth2"
 **Expected:**
+
 - GitHub issue created immediately
 - Orchestrator detects complexity (> 1 week)
 - Spec file created first for review

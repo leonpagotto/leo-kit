@@ -183,33 +183,33 @@ LEO intelligently decides when to create specifications vs direct issues, then r
 ```mermaid
 graph LR
     START([👤 User Request]) --> ORCH[🎛️ Orchestrator<br/>Analyzes Task]
-    
+
     ORCH --> ROUTE{Route to<br/>Agent}
     ROUTE -->|UI| FE[🎨 Frontend]
     ROUTE -->|API| BE[⚙️ Backend]
     ROUTE -->|Multi| MULTI[🔄 Coordinate]
-    
+
     FE --> COMPLEX{Complexity?}
     BE --> COMPLEX
     MULTI --> COMPLEX
-    
+
     COMPLEX -->|< 1 day| ISSUE[📝 Create Issue]
     COMPLEX -->|> 1 week| SPEC[� Create Spec]
-    
+
     SPEC --> APPROVE{Approved?}
     APPROVE -->|Yes| BREAKDOWN[Split Issues]
     APPROVE -->|No| SPEC
     BREAKDOWN --> ISSUE
-    
+
     ISSUE --> CONFIG{auto-resolve?}
     CONFIG -->|Yes| WORK[🚀 Start Work]
     CONFIG -->|No| WAIT[⏸️ Wait Review]
     WAIT --> WORK
-    
+
     WORK --> STATUS[📊 In Progress]
     STATUS --> PR[Pull Request]
     PR --> MERGE[✅ Done]
-    
+
     style START fill:#4CAF50
     style ORCH fill:#E91E63
     style FE fill:#00BCD4

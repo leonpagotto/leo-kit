@@ -1,7 +1,7 @@
 # Architecture Diagrams Update - v4.0.0
 
-**Date:** October 20, 2025  
-**Commit:** 3801b25  
+**Date:** October 20, 2025
+**Commit:** 3801b25
 **Diagrams Version:** 2.0 (v4.0.0 Multi-Agent System)
 
 ---
@@ -13,33 +13,40 @@ Updated both architecture and workflow diagrams to reflect the v4.0.0 multi-agen
 ## 🎯 Files Updated
 
 ### 1. `diagrams/architecture.mmd`
+
 **Changes:**
+
 - ✅ Added Multi-Agent Orchestration System section
+
   - Orchestrator Agent (task routing & coordination)
   - 6 specialized agents: Frontend, Backend, DevOps, Testing, Documentation
   - Intelligent routing logic (keywords, files, intent analysis)
   - Multi-agent coordination support
-  
+
 - ✅ Added new commands
+
   - `leo agent` - Agent management (list, enable, disable, info, sync)
   - `leo github` - Repository settings automation
-  
+
 - ✅ Added AI Instructions System
+
   - AI instructions builder (`lib/ai-instructions/builder.js`)
   - Core instructions (orchestrator logic)
   - Agent adapters (per-agent instructions)
   - Combined output to `.github/copilot-instructions.md`
-  
+
 - ✅ Enhanced Configuration System
+
   - Agent configuration in `.leorc.json`
   - Project type detection
   - Agent enable/disable controls
-  
+
 - ✅ Added Spec-First Decision point
   - Complex vs Simple task routing
   - Spec templates integration
 
 **Visual Enhancements:**
+
 - Color-coded agent sections (cyan for specialized agents)
 - Pink/magenta for orchestrator and routing
 - Purple for configuration and AI systems
@@ -49,31 +56,37 @@ Updated both architecture and workflow diagrams to reflect the v4.0.0 multi-agen
 ---
 
 ### 2. `diagrams/workflow.mmd`
+
 **Changes:**
+
 - ✅ Added Multi-Agent Orchestration flow
+
   - User request → Orchestrator → Classification
   - Route to Frontend/Backend/DevOps/Testing/Docs agents
   - Multi-agent coordination example (4-step sequential flow)
-  
+
 - ✅ Enhanced Spec-First Decision Making
+
   - Complexity estimation (< 1 day vs > 1 week)
   - Simple path: Direct issue creation
   - Complex path: Spec creation with template
   - Spec sections: Problem, Solution, Technical Details, Acceptance Criteria, Timeline & Risks
   - User review and approval loop
   - Spec-to-multiple-issues breakdown
-  
+
 - ✅ Added Agent-Driven Implementation
+
   - Specialized agents implement following domain guidelines
   - Agent-specific best practices enforced
   - Quality standards per domain
-  
+
 - ✅ Improved Issue Flow
+
   - Clearer separation of simple vs complex paths
   - Auto-resolve configuration check
   - Status management throughout lifecycle (Todo → In Progress → Done)
   - GitHub Projects integration
-  
+
 - ✅ Added Multi-Agent Coordination Example
   - Step 1: Backend Agent creates API endpoints
   - Step 2: Frontend Agent builds UI components
@@ -82,6 +95,7 @@ Updated both architecture and workflow diagrams to reflect the v4.0.0 multi-agen
   - Integration: All agents' work combined
 
 **Visual Enhancements:**
+
 - Distinct color coding for each workflow stage
 - Multi-agent coordination shown in deep purple
 - Orchestrator in pink/magenta
@@ -91,19 +105,24 @@ Updated both architecture and workflow diagrams to reflect the v4.0.0 multi-agen
 ---
 
 ### 3. `diagrams/README.md`
+
 **Changes:**
+
 - ✅ Updated diagram descriptions with v4.0.0 features
 - ✅ Added "Key Features" sections for both diagrams
 - ✅ Added "🆕 v4.0.0 Diagram Updates" section
+
   - What's new in architecture diagram
   - What's new in workflow diagram
-  
+
 - ✅ Enhanced diagram guidelines
+
   - Updated architecture diagram checklist
   - Updated workflow diagram checklist
   - Added v4.0.0-specific items
-  
+
 - ✅ Added color coding legend
+
   - Pink/Magenta (#E91E63) - Orchestrator & routing
   - Cyan (#00BCD4) - Specialized agents
   - Purple (#9C27B0) - Configuration & AI system
@@ -111,13 +130,14 @@ Updated both architecture and workflow diagrams to reflect the v4.0.0 multi-agen
   - Green (#4CAF50) - Success & completion
   - Blue (#2196F3) - GitHub integration
   - Yellow (#FFC107) - Waiting states
-  
+
 - ✅ Added related documentation links
+
   - Multi-Agent System Guide
   - Spec-First Decision Making
   - EXAMPLE_SPEC.md
   - Commands Reference
-  
+
 - ✅ Updated version info
   - Last Updated: October 20, 2025
   - Diagrams Version: 2.0 (v4.0.0 Multi-Agent System)
@@ -127,13 +147,16 @@ Updated both architecture and workflow diagrams to reflect the v4.0.0 multi-agen
 ## 🎨 Key Visual Improvements
 
 ### Architecture Diagram
+
 **Before:**
+
 - Simple linear flow
 - Single AI instructions generator
 - Basic configuration system
 - 7 core commands
 
 **After:**
+
 - Multi-agent orchestration layer
 - 6 specialized agents with routing logic
 - AI instructions builder with adapters
@@ -142,12 +165,15 @@ Updated both architecture and workflow diagrams to reflect the v4.0.0 multi-agen
 - Spec-first decision making integration
 
 ### Workflow Diagram
+
 **Before:**
+
 - Simple "complex vs simple" decision
 - Basic spec creation path
 - Linear development workflow
 
 **After:**
+
 - Orchestrator-driven task classification
 - Multi-agent routing (6 possible routes)
 - Enhanced spec-first with complexity estimation
@@ -161,12 +187,14 @@ Updated both architecture and workflow diagrams to reflect the v4.0.0 multi-agen
 ## 📈 Diagram Complexity Metrics
 
 ### Architecture Diagram
+
 - **Nodes:** ~50 (was ~30)
 - **Subgraphs:** 10 (was 7)
 - **New Sections:** 3 (Multi-Agent Orchestration, AI Instructions, GitHub Repo Settings)
 - **Color Schemes:** 8 distinct colors (was 5)
 
 ### Workflow Diagram
+
 - **Nodes:** ~55 (was ~35)
 - **Subgraphs:** 7 (was 5)
 - **Decision Points:** 6 (was 3)
@@ -178,6 +206,7 @@ Updated both architecture and workflow diagrams to reflect the v4.0.0 multi-agen
 ## 🔍 Technical Details
 
 ### Mermaid Enhancements Used
+
 - `subgraph` for logical grouping
 - `{Diamond}` for decision nodes
 - `[Rectangle]` for process nodes
@@ -187,6 +216,7 @@ Updated both architecture and workflow diagrams to reflect the v4.0.0 multi-agen
 - `style` declarations for custom colors
 
 ### Color Palette
+
 ```css
 /* Orchestrator & Routing */
 #E91E63 (pink/magenta), stroke: #880E4F
@@ -218,6 +248,7 @@ Updated both architecture and workflow diagrams to reflect the v4.0.0 multi-agen
 ## 📚 Documentation Updates Needed
 
 ### ✅ Completed
+
 - [x] Update `diagrams/architecture.mmd`
 - [x] Update `diagrams/workflow.mmd`
 - [x] Update `diagrams/README.md`
@@ -225,6 +256,7 @@ Updated both architecture and workflow diagrams to reflect the v4.0.0 multi-agen
 - [x] Commit and push changes
 
 ### 🔄 Future Considerations
+
 - [ ] Generate SVG/PNG versions for offline use
 - [ ] Add diagrams to Wiki pages
 - [ ] Create animated versions showing workflow progression
@@ -236,16 +268,19 @@ Updated both architecture and workflow diagrams to reflect the v4.0.0 multi-agen
 ## 🎯 Impact Assessment
 
 ### For New Users
+
 - **Clearer Understanding:** Visual representation of multi-agent system
 - **Better Onboarding:** See how tasks are routed and handled
 - **Decision Guidance:** Understand when to create specs vs issues
 
 ### For Existing Users
+
 - **Migration Guide:** Visual aid for understanding v4.0.0 changes
 - **Feature Discovery:** See new commands and capabilities
 - **Workflow Optimization:** Understand how to leverage agents effectively
 
 ### For Contributors
+
 - **Architecture Reference:** Comprehensive system overview
 - **Development Guide:** Clear component relationships
 - **Extension Points:** Identify where to add new features
@@ -255,16 +290,19 @@ Updated both architecture and workflow diagrams to reflect the v4.0.0 multi-agen
 ## 🚀 Next Steps
 
 1. **Verify Rendering:**
+
    - View on GitHub to ensure proper display
    - Test in Mermaid Live Editor
    - Generate SVG/PNG versions
 
 2. **Integration:**
+
    - Link from main README.md
    - Add to Wiki navigation
    - Reference in Multi-Agent System Guide
 
 3. **Feedback:**
+
    - Gather user feedback on clarity
    - Iterate on color scheme if needed
    - Add more detail if confusion arises
@@ -335,6 +373,7 @@ Total: 3 files changed, 349 insertions(+), 92 deletions(-)
 ---
 
 **Related Documentation:**
+
 - [Multi-Agent System Guide](./multi-agent-system.md)
 - [v4.0.0 Release Summary](../../RELEASE_V4.0.0_SUMMARY.md)
 - [Spec-First Decision Making](../../wiki/Spec-First-Decision-Making.md)
