@@ -6,6 +6,118 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.3] - 2025-10-19
+
+### 🐛 Critical Bug Fixes
+
+#### AI Instruction Generation Fixed
+
+- **Fixed**: AI instruction files not being generated during `leo init`
+  - **Root Cause**: Missing `success: true` flag in result objects from `generateForAI()` method
+  - **Solution**: Added `success: true` to return value in `lib/ai-instructions/builder.js` (line 78)
+  - **Impact**: All users running `leo init` now correctly receive AI instruction files
+  - **Affected Commands**: `leo init`, `leo ai sync`
+
+### 🔒 Enhanced AI Enforcement
+
+#### Mandatory Instruction Reading
+
+- **Added**: "READ ALL INSTRUCTIONS FROM TOP TO BOTTOM" requirement to all AI adapters
+  - Forces AI assistants to read entire instruction file before responding
+  - Prevents skipping sections or assuming knowledge
+  - Added prominent header to all 4 AI adapters (Copilot, Cursor, Cline, Codeium)
+  - Explicit checklist: Read file → Understand rules → Apply rules → Verify compliance
+
+#### Strengthened Enforcement Language
+
+- **Enhanced**: All AI adapters with stronger imperative language
+  - Changed "should" to "MUST" throughout instructions
+  - Added "NO EXCEPTIONS" and "ALWAYS ACTIVE" markers
+  - Emphasized mandatory workflows (issue creation, status updates, commit format)
+  - 5-layer enforcement: Top header → Checklist → Content → Quick Reference → Final Reminder
+
+### 📚 New Documentation
+
+- **Added**: `docs/workflows/deployment-workflow.md` - Complete deployment guide
+
+  - Pre-deployment checklist (400+ lines)
+  - Monorepo vs single-package patterns
+  - Railway deployment guide with troubleshooting
+  - CI/CD integration examples
+  - Rollback procedures
+
+- **Added**: `docs/guides/leorc-configuration.md` - .leorc.json configuration reference
+
+  - All configuration options documented
+  - Examples for each setting
+  - Priority explanation (local > global > default)
+  - Common configuration patterns
+
+- **Added**: `docs/development/IMPLEMENTATION_V3.0.3.md` - Implementation summary
+
+  - Complete changelog of code modifications
+  - Testing recommendations
+  - Backward compatibility notes
+
+- **Added**: `docs/development/AI_INSTRUCTION_ENFORCEMENT.md` - Enforcement strategy
+  - Problem statement and solution
+  - Multi-layer enforcement approach
+  - Testing and validation guidelines
+  - Best practices for AI instructions
+
+### 🔧 Improved Verification
+
+- **Enhanced**: Post-generation verification in `leo init`
+  - Shows file size confirmation for each AI instruction file
+  - Provides VS Code reload instructions
+  - Better error messages when generation fails
+  - Explicit success confirmation with file paths
+
+### 📦 Files Modified
+
+- `lib/ai-instructions/builder.js` - Fixed success flag
+- `lib/commands/init.js` - Enhanced verification
+- `lib/copilot-instructions-template.js` - Added "READ ALL" sections
+- `lib/ai-instructions/adapters/copilot-adapter.js` - Enforcement header
+- `lib/ai-instructions/adapters/cursor-adapter.js` - Enforcement header
+- `lib/ai-instructions/adapters/cline-adapter.js` - Enforcement header
+- `lib/ai-instructions/adapters/codeium-adapter.js` - Enforcement header
+
+### 📦 Files Created
+
+- `docs/workflows/deployment-workflow.md`
+- `docs/guides/leorc-configuration.md`
+- `docs/development/IMPLEMENTATION_V3.0.3.md`
+- `docs/development/AI_INSTRUCTION_ENFORCEMENT.md`
+
+### ⚠️ Breaking Changes
+
+None - fully backward compatible with v3.0.2
+
+### 🔄 Migration Guide
+
+No action required! This is a bug fix and enhancement release.
+
+**To benefit from enhancements:**
+
+```bash
+# Update to latest version
+npm install -g leo-workflow-kit@latest
+
+# Regenerate AI instruction files (optional, recommended)
+cd your-project
+leo ai sync
+```
+
+**What's improved:**
+
+- AI instruction files will generate correctly during init
+- Stronger enforcement ensures AI follows workflows from first message
+- Better error messages and verification feedback
+- Comprehensive deployment and configuration documentation
+
+---
+
 ## [3.0.2] - 2025-10-19
 
 ### Added

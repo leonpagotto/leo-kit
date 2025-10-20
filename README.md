@@ -13,13 +13,23 @@
 
 **Transform your development process with AI-powered spec-first development, intelligent issue creation, automated GitHub Projects integration, automatic initialization, and project-type optimized Copilot instructions—all from your terminal.**
 
-🎉 **NEW in v3.0.0: Multi-AI Support!**
+🎉 **NEW in v3.0.3: Enhanced AI Enforcement!**
+
+- 🔒 **Fixed**: AI instruction files now generate correctly during `leo init`
+- 📖 **Mandatory Reading**: All AI adapters require reading instructions top-to-bottom
+- 💪 **Stronger Enforcement**: Enhanced language ensures AI follows workflows from first message
+- 📚 **Better Docs**: New deployment workflow and .leorc.json configuration guides
+- ✅ **Better Verification**: Post-generation checks confirm files created successfully
+
+---
+
+🎉 **v3.0.0: Multi-AI Support!**
 
 - 🤖 **4 AI Assistants Supported** - Copilot, Cursor (Claude), Cline, Codeium
 - 🎯 **AI Selection During Init** - Choose your AI tools during `leo init`
 - 📝 **AI-Specific Instructions** - Each AI gets optimized LEO workflow guides
 - ⚡ **New `leo ai` Command** - Manage AI assistants (list, add, remove, sync)
-- � **Backward Compatible** - Existing Copilot setups continue working
+- ✨ **Backward Compatible** - Existing Copilot setups continue working
 
 [🚀 Quick Start](#-quick-start) • [📦 Installation](#-installation) • [🤖 Multi-AI Support](#-multi-ai-support-v30) • [✨ Features](#-features) • [🎯 Commands](#-commands)
 
