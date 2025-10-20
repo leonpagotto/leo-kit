@@ -1,31 +1,43 @@
 # Welcome to the LEO Workflow Kit Wiki! 🦁
 
-> **Your comprehensive guide to mastering AI-powered workflow automation**
+> **Your comprehensive guide to mastering AI-powered workflow automation with multi-agent orchestration**
 
 ## 🌟 What is LEO Workflow Kit?
 
 LEO Workflow Kit is a powerful CLI tool that revolutionizes software development project management through:
 
+- **🎛️ Multi-Agent Orchestration**: Intelligent routing to specialized AI agents (v4.0.0) 🎉 NEW
 - **🤖 Multi-AI Support**: Works with Copilot, Cursor, Cline, and Codeium
 - **🚀 Automatic Initialization**: Zero-config setup with `LEO_AUTO_INIT=true`
-- **🎯 AI-Optimized Instructions**: Each AI gets customized workflow guidance (~40KB)
+- **🎯 Domain Expertise**: 6 specialized agents (Frontend, Backend, DevOps, Testing, Documentation, Orchestrator)
+- **⚙️ GitHub Settings Automation**: Configure repository best practices automatically
 - **🧠 Intelligent Spec-First AI**: Automatically decides when to create specs vs direct issues
 - **📊 Intelligent Project Management**: Auto-sync with GitHub Projects with smart status updates
-- **🎯 Spec-Driven Development**: Enforce best practices and documentation-first approach
 - **⚡ Zero Configuration**: Works out-of-the-box - literally just `npm install`
 
-**Current Version:** 3.0.1 🎉
-**Latest Stable:** 3.0.1
-**Released:** October 19, 2025
+**Current Version:** 4.0.0 🎉
+**Latest Stable:** 4.0.0
+**Released:** October 20, 2025
 
-**What's New in 3.0.1:** Enhanced Workflow Instructions
+**What's New in 4.0.0:** 🎉 MAJOR RELEASE - Multi-Agent Orchestration System
+
+- 🎛️ **Intelligent Task Routing**: Orchestrator analyzes and routes to specialized agents
+- 🎨 **6 Specialized Agents**: Frontend, Backend, DevOps, Testing, Documentation + Orchestrator
+- 🎯 **Domain Expertise**: Each agent expert in its field (~13-17KB specialized instructions)
+- ⚡ **Enable What You Need**: Configure agents based on your project type
+- 🔄 **Multi-Agent Coordination**: Complex tasks automatically coordinated across agents
+- 🛠️ **New `leo agent` Command**: Manage agents (list, enable, disable, info, sync)
+- ⚙️ **New `leo github` Command**: Configure repository settings with best practices
+- ✨ **Backward Compatible**: v3.x configurations continue working
+
+**v3.0.1 Features:**
 
 - 🚨 **CRITICAL Status Updates**: Mandatory immediate status updates when starting work
 - 📝 **Enhanced Banner**: Multi-AI support highlighted in installation
 - 📚 **Updated Documentation**: Comprehensive v3.0.0 wiki updates
 - 🔧 **Better Workflow**: Explicit instructions for AI assistants on project status management
 
-**v3.0.0 Features:** 🎉 MAJOR RELEASE
+**v3.0.0 Features:**
 
 - 🤖 **Multi-AI Support**: 4 AI assistants (Copilot, Cursor, Cline, Codeium)
 - ⚡ **New `leo ai` Command**: Manage AI assistants (list, add, remove, sync)
@@ -45,8 +57,11 @@ LEO Workflow Kit is a powerful CLI tool that revolutionizes software development
 
 ### Core Features
 
-- [Multi-AI Support](./Multi-AI-Support) - Use Copilot, Cursor, Cline, or Codeium 🎉 NEW v3.0.0
-- [AI Assistant Management](./AI-Commands) - `leo ai` command reference 🎉 NEW v3.0.0
+- [Multi-Agent Orchestration](./Multi-Agent-System) - Intelligent routing to specialized agents 🎉 NEW v4.0.0
+- [Agent Management](./Agent-Commands) - `leo agent` command reference 🎉 NEW v4.0.0
+- [GitHub Settings Automation](./GitHub-Commands) - `leo github` command reference 🎉 NEW v4.0.0
+- [Multi-AI Support](./Multi-AI-Support) - Use Copilot, Cursor, Cline, or Codeium
+- [AI Assistant Management](./AI-Commands) - `leo ai` command reference
 - [Automatic Initialization](./Automatic-Initialization) - Zero-config setup
 - [Smart Project Types](./Smart-Project-Types) - Optimized instructions per project type
 - [Workflow Configuration](./Configuration) - Control auto-resolution & behavior
@@ -158,22 +173,26 @@ leo init
 
 ## 📊 Current Status
 
-### Latest Release: v3.0.1 (October 19, 2025) ⭐ CURRENT
+### Latest Release: v4.0.0 (October 20, 2025) ⭐ CURRENT - MAJOR RELEASE
 
 **Major Features:**
 
+- ✅ **Multi-Agent Orchestration** - Intelligent routing to 6 specialized agents
+- ✅ **New `leo agent` Command** - Manage agents (list, enable, disable, info, sync)
+- ✅ **New `leo github` Command** - Automated repository settings configuration
+- ✅ **Domain Expertise** - Each agent specialized in its field (~13-17KB instructions)
+- ✅ **Flexible Configuration** - Enable only agents you need
 - ✅ **Multi-AI Support** - Copilot, Cursor, Cline, Codeium (v3.0.0)
-- ✅ **New `leo ai` Command** - Manage AI assistants easily
 - ✅ **Enhanced Status Management** - Critical status update enforcement (v3.0.1)
 - ✅ **Intelligent Spec-First AI** - Auto-decides spec vs direct issue
 - ✅ **GitHub Projects Integration** - Auto-sync with smart status updates
-- ✅ **AI-Optimized Instructions** - ~40KB per AI assistant
 - ✅ **Zero Configuration** - Auto-init with `LEO_AUTO_INIT=true`
 
 **Stats:**
 
-- 📦 Package Size: ~50 KB (optimized)
+- 📦 Package Size: ~60 KB (optimized)
 - 🤖 AI Assistants: 4 supported
+- 🎯 Specialized Agents: 6 available
 - ⭐ GitHub Stars: Growing!
 - 🐛 Open Issues: Actively maintained
 - 🔄 Active Development: Yes
@@ -263,8 +282,8 @@ Issues are automatically added to GitHub Projects and kept in sync throughout th
 
 ---
 
-**Last Updated:** October 19, 2025
-**Wiki Version:** 1.0
+**Last Updated:** October 20, 2025
+**Wiki Version:** 2.0
 **Maintainer:** [@leonpagotto](https://github.com/leonpagotto)
 
 ---

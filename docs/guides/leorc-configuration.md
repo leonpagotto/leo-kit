@@ -246,13 +246,13 @@ leo ai sync
 
 **Available Agents:**
 
-| Agent            | Purpose                                            | Can Disable? |
-| ---------------- | -------------------------------------------------- | ------------ |
-| **orchestrator** | Routes tasks to specialized agents                 | ❌ Required  |
-| **frontend**     | UI/UX, components, styling, accessibility          | ✅ Optional  |
-| **backend**      | APIs, databases, authentication, business logic    | ✅ Optional  |
-| **devops**       | Deployment, CI/CD, infrastructure, monitoring      | ✅ Optional  |
-| **testing**      | Unit tests, integration tests, E2E tests, coverage | ✅ Optional  |
+| Agent             | Purpose                                            | Can Disable? |
+| ----------------- | -------------------------------------------------- | ------------ |
+| **orchestrator**  | Routes tasks to specialized agents                 | ❌ Required  |
+| **frontend**      | UI/UX, components, styling, accessibility          | ✅ Optional  |
+| **backend**       | APIs, databases, authentication, business logic    | ✅ Optional  |
+| **devops**        | Deployment, CI/CD, infrastructure, monitoring      | ✅ Optional  |
+| **testing**       | Unit tests, integration tests, E2E tests, coverage | ✅ Optional  |
 | **documentation** | README, API docs, user guides, code comments       | ✅ Optional  |
 
 #### Orchestrator Agent (Required)
@@ -286,11 +286,13 @@ Specialized in UI/UX development, component architecture, and frontend performan
 ```
 
 **Configuration Options:**
+
 - `enabled` (boolean): Enable/disable frontend agent
 - `frameworks` (array): Frontend frameworks used (e.g., `["react", "next.js"]`)
 - `ui-library` (string): UI library or CSS framework (e.g., `"tailwindcss"`, `"mui"`, `"bootstrap"`)
 
 **Triggers Frontend Agent:**
+
 - Keywords: `component`, `UI`, `style`, `design`, `responsive`, `accessibility`
 - File patterns: `*.jsx`, `*.tsx`, `*.vue`, `*.css`, `*.scss`
 - User requests: "Add a button", "Style the header", "Make it responsive"
@@ -313,12 +315,14 @@ Specialized in API development, database design, authentication, and server-side
 ```
 
 **Configuration Options:**
+
 - `enabled` (boolean): Enable/disable backend agent
 - `framework` (string): Backend framework (e.g., `"express"`, `"fastify"`, `"nest"`)
 - `database` (string): Database type (e.g., `"postgresql"`, `"mongodb"`, `"mysql"`)
 - `orm` (string): ORM/query builder (e.g., `"prisma"`, `"typeorm"`, `"sequelize"`)
 
 **Triggers Backend Agent:**
+
 - Keywords: `API`, `endpoint`, `database`, `auth`, `query`, `model`, `security`
 - File patterns: `*.controller.js`, `*.service.js`, `*.model.js`, `*.route.js`
 - User requests: "Create API endpoint", "Add authentication", "Query the database"
@@ -340,11 +344,13 @@ Specialized in deployment, CI/CD pipelines, infrastructure, and monitoring.
 ```
 
 **Configuration Options:**
+
 - `enabled` (boolean): Enable/disable devops agent
 - `platform` (string): Deployment platform (e.g., `"railway"`, `"vercel"`, `"aws"`, `"gcp"`)
 - `ci-cd` (string): CI/CD system (e.g., `"github-actions"`, `"gitlab-ci"`, `"jenkins"`)
 
 **Triggers DevOps Agent:**
+
 - Keywords: `deploy`, `CI/CD`, `Docker`, `pipeline`, `infrastructure`, `monitoring`
 - File patterns: `Dockerfile`, `docker-compose.yml`, `.github/workflows/*`
 - User requests: "Deploy to production", "Add CI/CD pipeline", "Setup monitoring"
@@ -366,11 +372,13 @@ Specialized in test creation, coverage analysis, and quality assurance.
 ```
 
 **Configuration Options:**
+
 - `enabled` (boolean): Enable/disable testing agent
 - `frameworks` (array): Testing frameworks (e.g., `["jest", "vitest", "mocha"]`)
 - `coverage-threshold` (number): Minimum test coverage percentage (default: 80)
 
 **Triggers Testing Agent:**
+
 - Keywords: `test`, `spec`, `coverage`, `mock`, `fixture`, `assertion`
 - File patterns: `*.test.js`, `*.spec.js`, `__tests__/*`, `*.e2e.js`
 - User requests: "Write tests", "Add test coverage", "Mock the API"
@@ -391,10 +399,12 @@ Specialized in technical writing, API documentation, and user guides.
 ```
 
 **Configuration Options:**
+
 - `enabled` (boolean): Enable/disable documentation agent
 - `style` (string): Documentation style (e.g., `"jsdoc"`, `"typedoc"`, `"markdown"`)
 
 **Triggers Documentation Agent:**
+
 - Keywords: `documentation`, `README`, `guide`, `comment`, `explain`, `document`
 - File patterns: `*.md`, `docs/*`, `README*`, `CONTRIBUTING*`
 - User requests: "Update README", "Document the API", "Write a user guide"
@@ -420,14 +430,14 @@ leo agent sync
 
 #### Recommended Agents by Project Type
 
-| Project Type | Recommended Agents                                               |
-| ------------ | ---------------------------------------------------------------- |
-| **fullstack** | Orchestrator, Frontend, Backend, Testing, Documentation          |
-| **frontend** | Orchestrator, Frontend, Testing, Documentation                   |
-| **backend**  | Orchestrator, Backend, Testing, DevOps, Documentation            |
-| **cli**      | Orchestrator, Backend, Testing, Documentation                    |
-| **mobile**   | Orchestrator, Frontend, Backend, Testing, Documentation          |
-| **library**  | Orchestrator, Backend, Testing, Documentation                    |
+| Project Type  | Recommended Agents                                      |
+| ------------- | ------------------------------------------------------- |
+| **fullstack** | Orchestrator, Frontend, Backend, Testing, Documentation |
+| **frontend**  | Orchestrator, Frontend, Testing, Documentation          |
+| **backend**   | Orchestrator, Backend, Testing, DevOps, Documentation   |
+| **cli**       | Orchestrator, Backend, Testing, Documentation           |
+| **mobile**    | Orchestrator, Frontend, Backend, Testing, Documentation |
+| **library**   | Orchestrator, Backend, Testing, Documentation           |
 
 **See Also:** [Multi-Agent Orchestration Spec](../specs/multi-agent-orchestration.md)
 
@@ -448,6 +458,7 @@ leo agent sync
 ```
 
 **Configuration Options:**
+
 - `multi-agent-threshold` (number): Number of agents required to trigger special multi-agent coordination (default: 3)
 - `auto-handoff` (boolean): Automatically hand off between agents without user intervention (default: true)
 - `fallback-agent` (string): Agent to use when routing is unclear (default: "orchestrator")

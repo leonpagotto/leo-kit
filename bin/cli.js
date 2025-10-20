@@ -13,6 +13,8 @@ const labelsCommand = require('../lib/commands/labels');
 const vscodeCommand = require('../lib/commands/vscode');
 const configCommand = require('../lib/commands/config');
 const aiCommand = require('../lib/commands/ai');
+const agentCommand = require('../lib/commands/agent');
+const githubCommand = require('../lib/commands/github');
 
 // Check if this is the first run and show welcome message
 if (isFirstRun()) {
@@ -97,6 +99,24 @@ program
   .description('Manage AI assistant configurations (list, add, remove, sync)')
   .action((subcommand, args) => {
     aiCommand(subcommand, ...args);
+  });
+
+// Agent command - Manage specialized agents
+program
+  .command('agent <subcommand> [agent]')
+  .description('Manage specialized agents (list, enable, disable, info, sync)')
+  .option('--no-sync', 'Skip AI file sync when enabling/disabling')
+  .action((subcommand, agent, options) => {
+    agentCommand(subcommand, agent, options);
+  });
+
+// GitHub command - Configure repository settings
+program
+  .command('github <subcommand>')
+  .description('Configure GitHub repository settings (setup, status)')
+  .option('-y, --yes', 'Skip confirmation prompts')
+  .action((subcommand, options) => {
+    githubCommand(subcommand, options);
   });
 
 // Status command - Check workflow setup status (simple)

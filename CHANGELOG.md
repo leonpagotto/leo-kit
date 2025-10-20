@@ -6,6 +6,337 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0] - 2025-10-20
+
+### 🎛️ Major Feature: Multi-Agent Orchestration System
+
+#### Architecture Transformation
+
+- **NEW**: Intelligent orchestration layer with specialized AI agents
+  - **Orchestrator Agent** (always enabled): Analyzes requests and routes to specialists
+  - **Frontend Agent**: UI/UX, components, styling, accessibility, responsive design
+  - **Backend Agent**: APIs, databases, authentication, security, performance
+  - **DevOps Agent**: CI/CD, Docker, Kubernetes, deployment, monitoring
+  - **Testing Agent**: Unit/integration/E2E tests, TDD, code coverage
+  - **Documentation Agent**: README, API docs, guides, tutorials, JSDoc
+
+#### Benefits Over v3.x
+
+- ✅ **Higher Quality Output** - Domain specialists produce better code than generic AI
+- ✅ **Faster Responses** - Smaller, focused instruction sets (~13-17KB per agent)
+- ✅ **Flexibility** - Enable only agents you need for your project
+- ✅ **Maintainability** - Modular agent templates instead of monolithic instructions
+- ✅ **Scalability** - Easy to add new agent types in future versions
+
+### ⚡ New `leo agent` Command Suite
+
+Complete CLI for managing specialized agents:
+
+```bash
+# List all agents and their status
+leo agent list
+
+# Enable a specialized agent
+leo agent enable frontend
+leo agent enable backend
+
+# Disable an agent
+leo agent disable devops
+
+# Show detailed agent information
+leo agent info testing
+
+# Regenerate AI instruction files
+leo agent sync
+```
+
+#### Features
+
+- ✅ Interactive prompts for AI file sync after enable/disable
+- ✅ Clear status display with emojis and colors
+- ✅ Detailed agent information with responsibilities and routing triggers
+- ✅ Orchestrator always enabled (cannot be disabled - core routing layer)
+- ✅ Integration with config-manager for persistent configuration
+- ✅ Error handling for invalid agent names
+
+### 🔧 Enhanced Configuration System
+
+#### New `.leorc.json` Schema
+
+```json
+{
+  "project-type": "fullstack",
+  "agents": {
+    "frontend": { "enabled": true },
+    "backend": { "enabled": true },
+    "devops": { "enabled": false },
+    "testing": { "enabled": true },
+    "documentation": { "enabled": false }
+  }
+}
+```
+
+#### Agent Selection During `leo init`
+
+- **NEW**: Interactive agent selection based on project type
+- **Recommended Agents** shown for each project type:
+  - **fullstack**: frontend, backend, testing
+  - **frontend-only**: frontend, devops, testing, documentation
+  - **backend-only**: backend, devops, testing, documentation
+  - **cli-tool**: backend, testing, documentation
+- **Smart Defaults** based on project needs
+
+#### Config Manager Enhancements
+
+8 new functions for agent management:
+
+- `validateAgentsConfig()` - Validate agents configuration
+- `getEnabledAgents()` - Get list of enabled agents
+- `enableAgent(agent, config, skipSync)` - Enable an agent
+- `disableAgent(agent, skipSync)` - Disable an agent
+- `getAgentConfig(agent)` - Get configuration for specific agent
+- `getProjectType()` - Get project type from config
+- `getRecommendedAgents(projectType)` - Get recommended agents by type
+
+### 📝 Intelligent Routing System
+
+#### Single-Agent Tasks
+
+**Example: "Add a search bar to the header"**
+
+```
+Orchestrator analyzes:
+  - Keywords: "search bar", "header" → Frontend task
+  - Routes to: Frontend Agent
+
+Frontend Agent implements:
+  - Creates SearchBar component
+  - Adds styling and accessibility
+  - Updates Header component
+```
+
+#### Multi-Agent Coordination
+
+**Example: "Add OAuth2 login with Google"**
+
+```
+Orchestrator analyzes:
+  - "OAuth2" + "login" → Backend + Frontend
+  - Multi-agent coordination needed
+
+Step 1: Backend Agent
+  - Creates /api/auth/google endpoint
+  - Configures OAuth2 provider
+
+Step 2: Frontend Agent (with context from Backend)
+  - Creates LoginButton component
+  - Integrates with backend API
+
+Orchestrator: Verifies integration
+```
+
+#### Routing Triggers
+
+Each agent activates based on:
+
+- **Keywords** - Specific terms in user requests
+- **File Patterns** - Files being modified
+- **User Intent** - Desired outcome analysis
+
+### 📚 Comprehensive Documentation
+
+#### New Documentation Files
+
+- **`docs/guides/multi-agent-system.md`** (~3000 lines)
+
+  - Complete multi-agent system guide
+  - Architecture diagrams
+  - Agent descriptions with examples
+  - Configuration guide
+  - CLI command reference
+  - Routing logic explanation
+  - Best practices
+  - Troubleshooting
+  - Migration guide from v3.x
+
+- **`docs/development/E2E_TESTING_V4.0.0.md`**
+
+  - End-to-end testing report
+  - 13 test scenarios (6 automated, 7 manual)
+  - 100% pass rate on automated tests
+  - Test outputs and verification
+  - Recommendations for improvements
+
+- **`docs/specs/multi-agent-orchestration.md`**
+  - Complete architectural specification
+  - 50+ pages of design decisions
+  - Implementation phases
+  - Future vision (v5.0.0+)
+
+#### README Updates
+
+- Added v4.0.0 announcement section
+- Multi-Agent Orchestration overview with diagram
+- Agent table with roles and triggers
+- Example routing scenarios
+- Configuration examples
+- Links to full documentation
+
+### 🔧 AI Instruction Generation
+
+#### Builder Enhancements
+
+- **NEW**: Multi-agent content generation in `lib/ai-instructions/builder.js`
+  - `getAgentGenerators()` - Returns map of agent generator functions
+  - `getEnabledAgents()` - Gets enabled agents from config
+  - `generateMultiAgentContent()` - Generates all agent instructions
+  - Updated `getUniversalTemplate()` to call multi-agent generation
+
+#### Adapter Updates
+
+- **Cline Adapter**: Flexible validation supporting both traditional and multi-agent content
+- **Codeium Adapter**: Flexible validation supporting both traditional and multi-agent content
+- **Copilot/Cursor**: Already flexible, work with multi-agent content
+
+#### Generated File Sizes
+
+- **v3.x**: Single monolithic file (~500KB)
+- **v4.0.0**: Modular multi-agent files (~60-80KB with 2-3 agents, ~80-100KB with all 5)
+
+### 📦 New Files Created
+
+#### Agent Templates
+
+- `lib/agents/orchestrator-template.js` (644 lines, ~420 lines generated)
+- `lib/agents/frontend-template.js` (644 lines, ~13.2KB output)
+- `lib/agents/backend-template.js` (710 lines, ~16.5KB output)
+- `lib/agents/devops-template.js` (724 lines, ~14.8KB output)
+- `lib/agents/testing-template.js` (625 lines, ~15.3KB output)
+- `lib/agents/documentation-template.js` (765 lines, ~16.5KB output)
+
+#### Commands
+
+- `lib/commands/agent.js` (470 lines) - Complete agent management CLI
+
+#### Documentation
+
+- `docs/guides/multi-agent-system.md` - User guide
+- `docs/development/E2E_TESTING_V4.0.0.md` - Test report
+- `docs/specs/multi-agent-orchestration.md` - Technical spec
+- `docs/development/MULTI_AGENT_PROJECT_STATUS.md` - Implementation tracker
+
+### 📦 Modified Files
+
+- `lib/utils/config-manager.js` - Added 8 agent management functions
+- `lib/ai-instructions/builder.js` - Multi-agent generation support
+- `lib/ai-instructions/adapters/cline-adapter.js` - Flexible validation
+- `lib/ai-instructions/adapters/codeium-adapter.js` - Flexible validation
+- `lib/commands/init.js` - Agent selection prompts (~85 lines added)
+- `bin/cli.js` - Added `leo agent` command
+- `README.md` - v4.0.0 announcement and multi-agent section
+- `lib/copilot-instructions-template.js` - Fixed code block escaping
+
+### ⚠️ Breaking Changes
+
+#### AI Instruction File Structure
+
+- **Changed**: AI instruction files now use multi-agent template structure
+- **Impact**: Custom edits to `.github/copilot-instructions.md` will be overwritten
+- **Migration**: Back up custom changes before running `leo agent sync`
+
+#### Configuration Schema
+
+- **Added**: New `agents` section in `.leorc.json`
+- **Impact**: Minimal - v3.x configs work without agents section (all agents disabled)
+- **Migration**: Run `leo init` to add agent selection, or manually add agents section
+
+### 🔄 Backward Compatibility
+
+✅ **Mostly Backward Compatible**
+
+- ✅ Existing `.leorc.json` files work (agents section optional)
+- ✅ GitHub Projects integration unchanged
+- ✅ Issue templates and labels unchanged
+- ✅ CLI commands backward compatible (except AI file structure)
+
+### 📊 Migration Guide (v3.x → v4.0.0)
+
+#### Step 1: Update LEO
+
+```bash
+npm install -g leo-workflow-kit@latest
+```
+
+#### Step 2: Backup Existing Config
+
+```bash
+cp .leorc.json .leorc.json.backup
+```
+
+#### Step 3: Re-run Init with Agent Selection
+
+```bash
+leo init
+```
+
+Select agents when prompted.
+
+#### Step 4: Regenerate AI Files
+
+```bash
+leo agent sync
+```
+
+#### Step 5: Restart AI Assistant
+
+- **VS Code (Copilot)**: Reload window (`Cmd+Shift+P` → "Reload Window")
+- **Cursor**: Restart application
+- **Cline**: Reload extension
+- **Codeium**: Restart extension
+
+#### Step 6: Test Routing
+
+Try a simple request to verify routing:
+
+```
+"Add a button to the homepage"
+```
+
+Should see:
+
+```
+✓ Task analyzed: Frontend (UI component)
+✓ Routing to Frontend Agent...
+```
+
+### 🎯 Benefits Summary
+
+| Aspect            | v3.x                 | v4.0.0                       |
+| ----------------- | -------------------- | ---------------------------- |
+| **Architecture**  | Single AI assistant  | Multi-agent orchestration    |
+| **Instructions**  | One file (~500KB)    | Modular files (~60-80KB)     |
+| **Configuration** | Basic settings       | Agent selection              |
+| **Routing**       | Manual (user-driven) | Automatic (intelligent)      |
+| **Quality**       | Generic output       | Specialized domain expertise |
+| **Flexibility**   | All-or-nothing       | Enable only what you need    |
+
+### 🚀 Future Roadmap
+
+Coming in v4.1.0+:
+
+- Custom agent configurations
+- Per-agent settings and priority overrides
+- Custom routing rules
+- Agent usage statistics and metrics
+- Performance profiling
+- Quality scoring
+
+### 🙏 Acknowledgments
+
+Special thanks to all contributors and users who provided feedback that shaped the multi-agent system architecture.
+
+---
+
 ## [3.0.3] - 2025-10-19
 
 ### 🐛 Critical Bug Fixes

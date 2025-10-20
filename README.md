@@ -11,9 +11,23 @@
 [![GitHub Issues](https://img.shields.io/github/issues/leonpagotto/leo-kit?style=flat-square&color=red&logo=github)](https://github.com/leonpagotto/leo-kit/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
 
-**Transform your development process with AI-powered spec-first development, intelligent issue creation, automated GitHub Projects integration, automatic initialization, and project-type optimized Copilot instructions—all from your terminal.**
+**Transform your development process with AI-powered spec-first development, intelligent issue creation, automated GitHub Projects integration, automatic initialization, and multi-agent AI orchestration—all from your terminal.**
 
-🎉 **NEW in v3.0.3: Enhanced AI Enforcement!**
+🎉 **NEW in v4.0.0: Multi-Agent Orchestration System!**
+
+- 🎛️ **Intelligent Task Routing** - Orchestrator analyzes and routes to specialized agents
+- 🎨 **6 Specialized Agents** - Frontend, Backend, DevOps, Testing, Documentation + Orchestrator
+- 🎯 **Domain Expertise** - Each agent is an expert in its field (~13-17KB specialized instructions)
+- ⚡ **Enable What You Need** - Configure agents based on your project type
+- 🔄 **Multi-Agent Coordination** - Complex tasks automatically coordinated across agents
+- 🛠️ **New `leo agent` Command** - Manage agents (list, enable, disable, info, sync)
+- ✨ **Backward Compatible** - v3.x configurations continue working
+
+[Read Multi-Agent Docs](docs/guides/multi-agent-system.md) • [Migration Guide](docs/guides/multi-agent-system.md#migration-from-v3x)
+
+---
+
+🎉 **v3.0.3: Enhanced AI Enforcement!**
 
 - 🔒 **Fixed**: AI instruction files now generate correctly during `leo init`
 - 📖 **Mandatory Reading**: All AI adapters require reading instructions top-to-bottom
@@ -31,7 +45,7 @@
 - ⚡ **New `leo ai` Command** - Manage AI assistants (list, add, remove, sync)
 - ✨ **Backward Compatible** - Existing Copilot setups continue working
 
-[🚀 Quick Start](#-quick-start) • [📦 Installation](#-installation) • [🤖 Multi-AI Support](#-multi-ai-support-v30) • [✨ Features](#-features) • [🎯 Commands](#-commands)
+[🚀 Quick Start](#-quick-start) • [📦 Installation](#-installation) • [🎛️ Multi-Agent System](#-multi-agent-orchestration-v40) • [🤖 Multi-AI Support](#-multi-ai-support-v30) • [✨ Features](#-features) • [🎯 Commands](#-commands)
 
 ---
 
@@ -340,6 +354,130 @@ env:
   LEO_AUTO_INIT: true
 run: npm install
 ```
+
+---
+
+## 🎛️ Multi-Agent Orchestration (v4.0.0)
+
+### Intelligent Task Routing with Specialized Agents
+
+LEO v4.0.0 introduces an **intelligent orchestration system** that routes your requests to specialized AI agents based on task type. Instead of a single generic assistant, you get **domain experts** for different aspects of development.
+
+```
+┌─────────────┐
+│ Your Request│
+└──────┬──────┘
+       │
+       ▼
+┌────────────────┐
+│  Orchestrator   │ ◄── Analyzes & Routes
+└────────┬───────┘
+         │
+    ┌────┴────┐
+    ▼         ▼         ▼
+┌────────┐ ┌────────┐ ┌────────┐
+│Frontend│ │Backend │ │DevOps  │
+└────────┘ └────────┘ └────────┘
+    ▼         ▼
+┌────────┐ ┌──────────────┐
+│Testing │ │Documentation │
+└────────┘ └──────────────┘
+```
+
+### Available Agents
+
+| Agent                | Role                   | Expertise                                             | Triggers                             |
+| -------------------- | ---------------------- | ----------------------------------------------------- | ------------------------------------ |
+| 🎛️ **Orchestrator**  | Routing & Coordination | Always active, routes to specialists                  | ALL tasks                            |
+| 🎨 **Frontend**      | UI/UX Specialist       | Components, styling, accessibility, responsive design | component, UI, style, button, form   |
+| ⚙️ **Backend**       | API Specialist         | RESTful APIs, databases, auth, security               | API, endpoint, database, auth        |
+| 🚀 **DevOps**        | Infrastructure         | CI/CD, Docker, Kubernetes, deployment                 | deploy, Docker, pipeline, monitoring |
+| 🧪 **Testing**       | QA Specialist          | Unit/integration/E2E tests, TDD                       | test, spec, coverage, mock           |
+| 📚 **Documentation** | Technical Writer       | README, API docs, guides, tutorials                   | docs, README, guide, tutorial        |
+
+### Agent Management
+
+```bash
+# List all agents and their status
+leo agent list
+
+# Enable a specialized agent
+leo agent enable frontend
+leo agent enable backend
+
+# Disable an agent
+leo agent disable devops
+
+# Show agent details
+leo agent info testing
+
+# Regenerate AI files with current agents
+leo agent sync
+```
+
+### Example: How Routing Works
+
+**Single-Agent Task:**
+
+```
+You: "Add a search bar to the header"
+
+Orchestrator analyzes:
+  - Keywords: "search bar", "header" → Frontend
+  - Routes to: Frontend Agent
+
+Frontend Agent:
+  - Creates SearchBar component
+  - Adds styling and accessibility
+  - Updates Header component
+```
+
+**Multi-Agent Task:**
+
+```
+You: "Add OAuth2 login with Google"
+
+Orchestrator analyzes:
+  - "OAuth2" + "login" → Backend + Frontend
+  - Multi-agent coordination needed
+
+Step 1: Backend Agent
+  - Creates /api/auth/google endpoint
+  - Configures OAuth2 provider
+
+Step 2: Frontend Agent (with context from Backend)
+  - Creates LoginButton component
+  - Integrates with backend API
+
+Orchestrator: Verifies integration
+```
+
+### Benefits
+
+- ✅ **Higher Quality** - Domain specialists produce better code
+- ✅ **Faster Responses** - Smaller, focused instruction sets (~13-17KB per agent)
+- ✅ **Flexibility** - Enable only agents you need for your project
+- ✅ **Maintainability** - Modular agent templates
+- ✅ **Scalability** - Easy to add new agent types
+
+### Configuration
+
+In your `.leorc.json`:
+
+```json
+{
+  "project-type": "fullstack",
+  "agents": {
+    "frontend": { "enabled": true },
+    "backend": { "enabled": true },
+    "devops": { "enabled": true },
+    "testing": { "enabled": true },
+    "documentation": { "enabled": false }
+  }
+}
+```
+
+**📖 [Full Multi-Agent Documentation](docs/guides/multi-agent-system.md)** | **🔄 [Migration Guide](docs/guides/multi-agent-system.md#migration-from-v3x)**
 
 ---
 
@@ -726,6 +864,70 @@ leo ai sync
 ```
 
 **See [Multi-AI Support](#-multi-ai-support-v30) for details and [Migration Guide](docs/MIGRATION_V3.md) for upgrading from v2.x.**
+
+### `leo agent` - Manage Specialized Agents (v4.0.0)
+
+Manage specialized AI agents for multi-agent orchestration:
+
+```bash
+# List all agents and their status
+leo agent list
+
+# Enable a specialized agent
+leo agent enable frontend
+leo agent enable backend
+
+# Disable an agent
+leo agent disable devops
+
+# Show detailed agent information
+leo agent info testing
+
+# Regenerate AI instruction files
+leo agent sync
+```
+
+**Available Agents:**
+
+- 🎛️ **Orchestrator** - Core routing layer (always enabled)
+- 🎨 **Frontend** - UI/UX, components, styling, accessibility
+- ⚙️ **Backend** - APIs, databases, authentication, security
+- 🚀 **DevOps** - CI/CD, Docker, Kubernetes, deployment
+- 🧪 **Testing** - Unit/integration/E2E tests, TDD
+- 📚 **Documentation** - README, API docs, guides, tutorials
+
+**See [Multi-Agent System Guide](docs/guides/multi-agent-system.md) for complete documentation.**
+
+### `leo github` - Configure Repository Settings (v4.0.0)
+
+Configure GitHub repository settings with LEO recommended best practices:
+
+```bash
+# Show current repository settings
+leo github status
+
+# Configure recommended settings (interactive)
+leo github setup
+
+# Configure without confirmation prompt
+leo github setup --yes
+```
+
+**Recommended Settings:**
+
+- ✅ **Issues enabled** - For issue tracking
+- ✅ **Projects enabled** - For project boards
+- ✅ **Wiki enabled** - For documentation
+- ✅ **Discussions enabled** - For community
+- ✅ **Delete branch on merge** - Keep repository clean
+- ✅ **All merge types** - Flexibility in workflows
+
+**Safety Features:**
+
+- Shows current settings before making changes
+- Requires confirmation (unless --yes flag used)
+- Never deletes data without explicit confirmation
+- Reports settings that require manual configuration
 
 ### `leo status` (alias: `leo s`) - Check Status
 

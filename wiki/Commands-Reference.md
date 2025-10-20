@@ -4,20 +4,22 @@
 
 ## 🎯 Command Overview
 
-| Command         | Purpose                      | Interactive |
-| --------------- | ---------------------------- | ----------- |
-| `leo init`      | Initialize LEO in project    | ✅ Yes      |
-| `leo ai`        | Manage AI assistants 🎉 NEW  | ✅ Yes      |
-| `leo issue`     | Create issue interactively   | ✅ Yes      |
-| `leo labels`    | Configure GitHub labels      | ✅ Yes      |
-| `leo vscode`    | Setup VS Code integration    | ✅ Yes      |
-| `leo config`    | Manage configuration         | ✅ Yes      |
-| `leo status`    | Show project workflow status | ❌ No       |
-| `leo health`    | System health check          | ❌ No       |
-| `leo welcome`   | Show welcome banner          | ❌ No       |
-| `leo docs`      | Open documentation           | ❌ No       |
-| `leo --version` | Show version                 | ❌ No       |
-| `leo --help`    | Show help                    | ❌ No       |
+| Command         | Purpose                              | Interactive | Version |
+| --------------- | ------------------------------------ | ----------- | ------- |
+| `leo init`      | Initialize LEO in project            | ✅ Yes      | v1.0.0  |
+| `leo agent`     | Manage specialized agents 🎉 NEW     | ✅ Yes      | v4.0.0  |
+| `leo github`    | Configure repository settings 🎉 NEW | ✅ Yes      | v4.0.0  |
+| `leo ai`        | Manage AI assistants                 | ✅ Yes      | v3.0.0  |
+| `leo issue`     | Create issue interactively           | ✅ Yes      | v1.0.0  |
+| `leo labels`    | Configure GitHub labels              | ✅ Yes      | v1.0.0  |
+| `leo vscode`    | Setup VS Code integration            | ✅ Yes      | v1.0.0  |
+| `leo config`    | Manage configuration                 | ✅ Yes      | v2.6.0  |
+| `leo status`    | Show project workflow status         | ❌ No       | v1.0.0  |
+| `leo health`    | System health check                  | ❌ No       | v2.0.0  |
+| `leo welcome`   | Show welcome banner                  | ❌ No       | v1.0.0  |
+| `leo docs`      | Open documentation                   | ❌ No       | v1.0.0  |
+| `leo --version` | Show version                         | ❌ No       | v1.0.0  |
+| `leo --help`    | Show help                            | ❌ No       | v1.0.0  |
 
 ---
 
@@ -241,6 +243,290 @@ AI settings are stored in `.leorc.json`:
 
 - [Multi-AI Support Guide](./Multi-AI-Support)
 - [Migration Guide v2.x → v3.0.0](../docs/MIGRATION_V3.md)
+
+---
+
+### `leo agent` 🎉 NEW in v4.0.0
+
+Manage specialized AI agents for multi-agent orchestration.
+
+**Usage:**
+
+```bash
+leo agent <subcommand> [agent] [options]
+```
+
+**Subcommands:**
+
+#### `leo agent list`
+
+Show all agents and their current status.
+
+**Usage:**
+
+```bash
+leo agent list
+```
+
+**Output:**
+
+```
+🎯 LEO Multi-Agent System
+
+Project Type: fullstack
+
+🎛️  Orchestrator Agent ✓ ENABLED
+   Routes tasks to specialized agents
+   Status: Always active (core routing layer)
+
+🎨  Frontend Agent ✓ ENABLED
+   UI/UX, components, styling, accessibility, responsive design
+
+⚙️   Backend Agent ○ DISABLED
+   APIs, databases, authentication, security, performance
+
+Total: 2 agents enabled
+```
+
+#### `leo agent enable <agent>`
+
+Enable a specialized agent.
+
+**Usage:**
+
+```bash
+leo agent enable frontend
+leo agent enable backend
+leo agent enable devops
+leo agent enable testing
+leo agent enable documentation
+```
+
+**Example:**
+
+```bash
+leo agent enable frontend
+# Output:
+# ✔ frontend agent enabled
+# ? Regenerate AI instruction files with new agent? (Y/n)
+```
+
+**Options:**
+
+- `--no-sync` - Skip AI file regeneration prompt
+
+#### `leo agent disable <agent>`
+
+Disable a specialized agent.
+
+**Usage:**
+
+```bash
+leo agent disable devops
+```
+
+**Note:** Cannot disable the Orchestrator agent (core routing layer).
+
+#### `leo agent info <agent>`
+
+Show detailed information about a specific agent.
+
+**Usage:**
+
+```bash
+leo agent info frontend
+leo agent info orchestrator
+```
+
+**Output:**
+
+```
+🎨  Frontend Agent
+
+Description:
+  UI/UX development specialist
+
+Status:
+  ✓ ENABLED
+
+Responsibilities:
+  • Component-first architecture (atomic design)
+  • Accessibility (WCAG 2.1 AA compliance)
+  • Responsive design (mobile-first)
+  • Performance optimization
+  • SEO best practices
+
+Routing Triggers:
+  • Keywords: component, UI, style, design, responsive, button, form
+  • Files: *.jsx, *.tsx, *.vue, *.css, *.scss
+```
+
+#### `leo agent sync`
+
+Regenerate AI instruction files with current agent configuration.
+
+**Usage:**
+
+```bash
+leo agent sync
+```
+
+**When to Use:**
+
+- After manually editing `.leorc.json`
+- After enabling/disabling agents (if you skipped auto-sync)
+- After updating LEO Workflow Kit version
+
+**Available Agents:**
+
+- 🎛️ **Orchestrator** - Core routing layer (always enabled)
+- 🎨 **Frontend** - UI/UX, components, styling, accessibility
+- ⚙️ **Backend** - APIs, databases, authentication, security
+- 🚀 **DevOps** - CI/CD, Docker, Kubernetes, deployment
+- 🧪 **Testing** - Unit/integration/E2E tests, TDD
+- 📚 **Documentation** - README, API docs, guides, tutorials
+
+**Configuration:**
+
+Agents are configured in `.leorc.json`:
+
+```json
+{
+  "project-type": "fullstack",
+  "agents": {
+    "frontend": { "enabled": true },
+    "backend": { "enabled": true },
+    "devops": { "enabled": false },
+    "testing": { "enabled": true },
+    "documentation": { "enabled": false }
+  }
+}
+```
+
+**See Also:**
+
+- [Multi-Agent System Guide](../docs/guides/multi-agent-system.md)
+- [Migration Guide v3.x → v4.0.0](../docs/guides/multi-agent-system.md#migration-from-v3x)
+
+---
+
+### `leo github` 🎉 NEW in v4.0.0
+
+Configure GitHub repository settings with LEO recommended best practices.
+
+**Usage:**
+
+```bash
+leo github <subcommand> [options]
+```
+
+**Subcommands:**
+
+#### `leo github status`
+
+Show current GitHub repository settings.
+
+**Usage:**
+
+```bash
+leo github status
+```
+
+**Output:**
+
+```
+📊 GitHub Repository Settings
+
+Repository: leonpagotto/leo-kit
+URL: https://github.com/leonpagotto/leo-kit
+
+⚙️  Repository Settings:
+
+  Visibility:          PUBLIC
+  Default branch:      main
+
+Features:
+
+  Issues:              ✓ Enabled
+  Projects:            ✓ Enabled
+  Wiki:                ✓ Enabled
+  Discussions:         ○ Disabled
+
+Merge Settings:
+
+  Delete branch on merge: ○ Disabled
+  Allow merge commits: ✓ Enabled
+  Allow squash merge:  ✓ Enabled
+  Allow rebase merge:  ✓ Enabled
+```
+
+#### `leo github setup`
+
+Configure repository with recommended settings.
+
+**Usage:**
+
+```bash
+leo github setup          # Interactive (asks for confirmation)
+leo github setup --yes    # Non-interactive (applies without asking)
+```
+
+**Recommended Settings:**
+
+- ✅ **Issues enabled** - For issue tracking
+- ✅ **Projects enabled** - For project boards
+- ✅ **Wiki enabled** - For documentation
+- ✅ **Discussions enabled** - For community
+- ✅ **Delete branch on merge** - Keep repository clean
+- ✅ **All merge types** - Flexibility in workflows
+
+**Interactive Flow:**
+
+1. Shows current settings
+2. Shows recommended settings
+3. Calculates differences
+4. Asks for confirmation
+5. Applies changes safely
+
+**Safety Features:**
+
+- ✅ Shows all changes before applying
+- ✅ Requires confirmation (unless `--yes` flag)
+- ✅ Never deletes data without explicit permission
+- ✅ Reports settings requiring manual configuration
+
+**Example:**
+
+```bash
+leo github setup
+
+# Output:
+# ⚙️  GitHub Repository Settings Setup
+#
+# 📊 Current Settings:
+#   Delete branch on merge: ○ Disabled
+#
+# ✨ Recommended Settings (LEO Workflow Kit):
+#   Delete branch on merge: ✓ Enabled (keep repo clean)
+#
+# ⚠️  1 setting(s) need to be updated:
+#
+# ? Apply recommended settings? (Y/n)
+```
+
+**Options:**
+
+- `-y, --yes` - Skip confirmation prompt
+
+**Requirements:**
+
+- GitHub CLI installed (`gh`)
+- Repository admin permissions
+- Authenticated with GitHub
+
+**See Also:**
+
+- [GitHub Settings Best Practices](./GitHub-Settings)
 
 ---
 
