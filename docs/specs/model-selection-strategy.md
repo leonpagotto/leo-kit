@@ -1,10 +1,9 @@
 # Model Selection Strategy - LEO Workflow Kit
 
-> **Specification Document**  
-> **Feature:** Intelligent Model Selection for Multi-Agent Workflows  
-> **Issue:** #40  
-> **Status:** 📋 Proposed  
-> **Complexity:** Medium-to-Complex (2-3 weeks)  
+> **Specification Document** > **Feature:** Intelligent Model Selection for Multi-Agent Workflows
+> **Issue:** #40
+> **Status:** 📋 Proposed
+> **Complexity:** Medium-to-Complex (2-3 weeks)
 > **Target Release:** v4.1.0
 
 ---
@@ -29,6 +28,7 @@
 ## Overview
 
 Implement intelligent model selection strategy that automatically chooses the optimal AI model based on:
+
 - **Development Phase** (development, testing, deployment)
 - **Task Complexity** (simple, medium, complex)
 - **Agent Role** (orchestrator, frontend, backend, devops, testing, documentation)
@@ -41,6 +41,7 @@ This feature enhances LEO's multi-agent system by optimizing cost-to-performance
 ## Problem Statement
 
 ### Current State
+
 - All agents use the same AI model (GitHub Copilot)
 - No cost optimization based on task complexity
 - No flexibility to choose specialized models per agent
@@ -48,6 +49,7 @@ This feature enhances LEO's multi-agent system by optimizing cost-to-performance
 - Limited control over AI usage costs
 
 ### Pain Points
+
 1. **High Costs**: Using advanced models for simple tasks
 2. **Inefficiency**: Not leveraging specialized coding models
 3. **Inflexibility**: Cannot adapt model choice to project constraints
@@ -59,6 +61,7 @@ This feature enhances LEO's multi-agent system by optimizing cost-to-performance
 ## Goals
 
 ### Primary Goals
+
 1. ✅ Enable **per-agent model configuration** with fallback support
 2. ✅ Implement **phase-based model selection** (dev, test, deploy)
 3. ✅ Support **complexity-based model routing** (simple → cheap, complex → advanced)
@@ -67,6 +70,7 @@ This feature enhances LEO's multi-agent system by optimizing cost-to-performance
 6. ✅ Maintain **backward compatibility** with existing configurations
 
 ### Secondary Goals
+
 1. Support multiple AI providers (OpenAI, Anthropic, Google, local models)
 2. Cost estimation before task execution
 3. Model performance analytics
@@ -113,95 +117,98 @@ User Request
 ### Selection Strategies
 
 #### 1. **Phase-Based Strategy**
+
 ```javascript
 const phaseModels = {
   development: {
-    orchestrator: 'gpt-3.5-turbo',
-    frontend: 'claude-3-haiku',
-    backend: 'claude-3-haiku',
-    devops: 'gpt-3.5-turbo',
-    testing: 'gpt-3.5-turbo',
-    documentation: 'claude-3-haiku'
+    orchestrator: "gpt-3.5-turbo",
+    frontend: "claude-3-haiku",
+    backend: "claude-3-haiku",
+    devops: "gpt-3.5-turbo",
+    testing: "gpt-3.5-turbo",
+    documentation: "claude-3-haiku",
   },
   testing: {
-    orchestrator: 'gpt-4-turbo',
-    frontend: 'claude-3-sonnet',
-    backend: 'claude-3-sonnet',
-    devops: 'gpt-3.5-turbo',
-    testing: 'gpt-4-turbo',
-    documentation: 'claude-3-sonnet'
+    orchestrator: "gpt-4-turbo",
+    frontend: "claude-3-sonnet",
+    backend: "claude-3-sonnet",
+    devops: "gpt-3.5-turbo",
+    testing: "gpt-4-turbo",
+    documentation: "claude-3-sonnet",
   },
   deployment: {
-    orchestrator: 'gpt-4',
-    frontend: 'claude-3-opus',
-    backend: 'claude-3-opus',
-    devops: 'gpt-4-turbo',
-    testing: 'gpt-4',
-    documentation: 'claude-3-sonnet'
-  }
+    orchestrator: "gpt-4",
+    frontend: "claude-3-opus",
+    backend: "claude-3-opus",
+    devops: "gpt-4-turbo",
+    testing: "gpt-4",
+    documentation: "claude-3-sonnet",
+  },
 };
 ```
 
 #### 2. **Complexity-Based Strategy**
+
 ```javascript
 const complexityModels = {
   simple: {
-    model: 'gpt-3.5-turbo',
+    model: "gpt-3.5-turbo",
     maxTokens: 1000,
-    costLimit: 0.001
+    costLimit: 0.001,
   },
   medium: {
-    model: 'gpt-4-turbo',
+    model: "gpt-4-turbo",
     maxTokens: 4000,
-    costLimit: 0.01
+    costLimit: 0.01,
   },
   complex: {
-    model: 'gpt-4',
+    model: "gpt-4",
     maxTokens: 8000,
-    costLimit: 0.05
-  }
+    costLimit: 0.05,
+  },
 };
 ```
 
 #### 3. **Agent-Based Strategy**
+
 ```javascript
 const agentModels = {
   orchestrator: {
-    primary: 'gpt-4',           // Needs intelligent routing
-    fallback: 'claude-3-sonnet',
-    costLimit: 0.10,
-    specialization: 'reasoning'
+    primary: "gpt-4", // Needs intelligent routing
+    fallback: "claude-3-sonnet",
+    costLimit: 0.1,
+    specialization: "reasoning",
   },
   frontend: {
-    primary: 'claude-3-sonnet',  // UI/React expertise
-    fallback: 'gpt-4-turbo',
+    primary: "claude-3-sonnet", // UI/React expertise
+    fallback: "gpt-4-turbo",
     costLimit: 0.05,
-    specialization: 'frontend-coding'
+    specialization: "frontend-coding",
   },
   backend: {
-    primary: 'claude-3-sonnet',  // API/database
-    fallback: 'gpt-4-turbo',
+    primary: "claude-3-sonnet", // API/database
+    fallback: "gpt-4-turbo",
     costLimit: 0.05,
-    specialization: 'backend-coding'
+    specialization: "backend-coding",
   },
   devops: {
-    primary: 'gpt-3.5-turbo',    // Scripts, configs
-    fallback: 'claude-3-haiku',
+    primary: "gpt-3.5-turbo", // Scripts, configs
+    fallback: "claude-3-haiku",
     costLimit: 0.02,
-    specialization: 'devops'
+    specialization: "devops",
   },
   testing: {
-    primary: 'gpt-4-turbo',      // Test generation
-    fallback: 'claude-3-sonnet',
+    primary: "gpt-4-turbo", // Test generation
+    fallback: "claude-3-sonnet",
     costLimit: 0.03,
-    specialization: 'testing'
+    specialization: "testing",
   },
   documentation: {
-    primary: 'claude-3-haiku',   // Content generation
-    fallback: 'gpt-3.5-turbo',
+    primary: "claude-3-haiku", // Content generation
+    fallback: "gpt-3.5-turbo",
     costLimit: 0.01,
-    specialization: 'documentation'
-  }
+    specialization: "documentation",
+  },
 };
 ```
 
@@ -235,11 +242,12 @@ lib/
 ### Core Classes
 
 #### 1. **ModelSelector**
+
 ```javascript
 class ModelSelector {
   constructor(config) {
     this.config = config;
-    this.strategy = config.modelSelection?.strategy || 'agent-based';
+    this.strategy = config.modelSelection?.strategy || "agent-based";
     this.costTracker = new CostTracker(config);
   }
 
@@ -253,7 +261,7 @@ class ModelSelector {
     const model = await this.applyStrategy(agent, task, complexity);
 
     // 3. Validate availability
-    if (!await this.isModelAvailable(model)) {
+    if (!(await this.isModelAvailable(model))) {
       return this.selectFallback(agent);
     }
 
@@ -265,24 +273,27 @@ class ModelSelector {
 
   applyStrategy(agent, task, complexity) {
     switch (this.strategy) {
-      case 'phase-based':
+      case "phase-based":
         return this.phaseStrategy.select(agent);
-      case 'complexity-based':
+      case "complexity-based":
         return this.complexityStrategy.select(complexity);
-      case 'agent-based':
+      case "agent-based":
         return this.agentStrategy.select(agent);
       default:
-        return this.config.modelSelection?.agents?.[agent]?.model || 'gpt-4';
+        return this.config.modelSelection?.agents?.[agent]?.model || "gpt-4";
     }
   }
 
   selectFallback(agent) {
-    return this.config.modelSelection?.agents?.[agent]?.fallback || 'gpt-3.5-turbo';
+    return (
+      this.config.modelSelection?.agents?.[agent]?.fallback || "gpt-3.5-turbo"
+    );
   }
 }
 ```
 
 #### 2. **CostTracker**
+
 ```javascript
 class CostTracker {
   constructor(config) {
@@ -291,11 +302,12 @@ class CostTracker {
   }
 
   canAfford(agent, task) {
-    const limit = this.config.modelSelection?.agents?.[agent]?.costLimit || Infinity;
+    const limit =
+      this.config.modelSelection?.agents?.[agent]?.costLimit || Infinity;
     const currentCost = this.usage[agent] || 0;
     const estimatedCost = this.estimateCost(task);
 
-    return (currentCost + estimatedCost) <= limit;
+    return currentCost + estimatedCost <= limit;
   }
 
   recordUsage(agent, model, task) {
@@ -307,7 +319,7 @@ class CostTracker {
   estimateCost(task) {
     // Estimate tokens → cost
     const estimatedTokens = task.length * 1.5; // rough estimate
-    return this.tokensToCostan(estimatedTokens, 'gpt-4'); // worst case
+    return this.tokensToCostan(estimatedTokens, "gpt-4"); // worst case
   }
 
   calculateCost(model, task) {
@@ -332,53 +344,53 @@ class CostTracker {
     "strategy": "agent-based",
     "development-phase": "development",
     "cost-tracking": true,
-    "monthly-budget": 50.00,
-    
+    "monthly-budget": 50.0,
+
     "agents": {
       "orchestrator": {
         "model": "gpt-4",
         "fallback": "claude-3-sonnet",
-        "cost-limit": 10.00,
+        "cost-limit": 10.0,
         "max-tokens": 8000,
         "temperature": 0.7
       },
       "frontend": {
         "model": "claude-3-sonnet",
         "fallback": "gpt-4-turbo",
-        "cost-limit": 5.00,
+        "cost-limit": 5.0,
         "max-tokens": 4000,
         "temperature": 0.5
       },
       "backend": {
         "model": "claude-3-sonnet",
         "fallback": "gpt-4-turbo",
-        "cost-limit": 5.00,
+        "cost-limit": 5.0,
         "max-tokens": 4000,
         "temperature": 0.5
       },
       "devops": {
         "model": "gpt-3.5-turbo",
         "fallback": "claude-3-haiku",
-        "cost-limit": 2.00,
+        "cost-limit": 2.0,
         "max-tokens": 2000,
         "temperature": 0.3
       },
       "testing": {
         "model": "gpt-4-turbo",
         "fallback": "claude-3-sonnet",
-        "cost-limit": 3.00,
+        "cost-limit": 3.0,
         "max-tokens": 4000,
         "temperature": 0.4
       },
       "documentation": {
         "model": "claude-3-haiku",
         "fallback": "gpt-3.5-turbo",
-        "cost-limit": 1.00,
+        "cost-limit": 1.0,
         "max-tokens": 2000,
         "temperature": 0.6
       }
     },
-    
+
     "complexity-thresholds": {
       "simple": {
         "model": "gpt-3.5-turbo",
@@ -396,7 +408,7 @@ class CostTracker {
         "indicators": ["architecture", "system design", "integration"]
       }
     },
-    
+
     "providers": {
       "openai": {
         "api-key-env": "OPENAI_API_KEY",
@@ -482,6 +494,7 @@ leo model test frontend "Create a responsive navbar component"
 ## Implementation Plan
 
 ### Phase 1: Core Infrastructure (Week 1)
+
 - [ ] Create `lib/model-selection/` structure
 - [ ] Implement `ModelSelector` class
 - [ ] Implement `CostTracker` class
@@ -489,6 +502,7 @@ leo model test frontend "Create a responsive navbar component"
 - [ ] Create provider wrappers (OpenAI, Anthropic)
 
 ### Phase 2: Strategy Implementation (Week 1-2)
+
 - [ ] Implement Phase-Based Strategy
 - [ ] Implement Complexity-Based Strategy
 - [ ] Implement Agent-Based Strategy
@@ -496,6 +510,7 @@ leo model test frontend "Create a responsive navbar component"
 - [ ] Add cost estimation logic
 
 ### Phase 3: CLI Commands (Week 2)
+
 - [ ] Create `leo model` command
 - [ ] Implement `leo model list`
 - [ ] Implement `leo model set`
@@ -504,12 +519,14 @@ leo model test frontend "Create a responsive navbar component"
 - [ ] Implement `leo model phase`
 
 ### Phase 4: Integration (Week 2-3)
+
 - [ ] Integrate with orchestrator agent
 - [ ] Update agent execution to use selected models
 - [ ] Add model selection to agent templates
 - [ ] Update Copilot instructions
 
 ### Phase 5: Testing & Documentation (Week 3)
+
 - [ ] Unit tests for model selector
 - [ ] Integration tests for strategies
 - [ ] CLI command tests
@@ -521,43 +538,45 @@ leo model test frontend "Create a responsive navbar component"
 ## Testing Strategy
 
 ### Unit Tests
+
 ```javascript
-describe('ModelSelector', () => {
-  test('selects model based on agent strategy', () => {
+describe("ModelSelector", () => {
+  test("selects model based on agent strategy", () => {
     const selector = new ModelSelector(config);
-    const model = selector.selectModel('frontend', task, 'medium');
-    expect(model).toBe('claude-3-sonnet');
+    const model = selector.selectModel("frontend", task, "medium");
+    expect(model).toBe("claude-3-sonnet");
   });
 
-  test('falls back to fallback model on budget exceed', () => {
+  test("falls back to fallback model on budget exceed", () => {
     const selector = new ModelSelector(config);
     // Simulate budget exceeded
-    const model = selector.selectModel('frontend', task, 'medium');
-    expect(model).toBe('gpt-4-turbo'); // fallback
+    const model = selector.selectModel("frontend", task, "medium");
+    expect(model).toBe("gpt-4-turbo"); // fallback
   });
 
-  test('respects complexity thresholds', () => {
+  test("respects complexity thresholds", () => {
     const selector = new ModelSelector(config);
-    const model = selector.selectModel('backend', simpleTask, 'simple');
-    expect(model).toBe('gpt-3.5-turbo');
+    const model = selector.selectModel("backend", simpleTask, "simple");
+    expect(model).toBe("gpt-3.5-turbo");
   });
 });
 
-describe('CostTracker', () => {
-  test('tracks usage correctly', () => {
+describe("CostTracker", () => {
+  test("tracks usage correctly", () => {
     const tracker = new CostTracker(config);
-    tracker.recordUsage('frontend', 'claude-3-sonnet', task);
-    expect(tracker.usage['frontend']).toBeGreaterThan(0);
+    tracker.recordUsage("frontend", "claude-3-sonnet", task);
+    expect(tracker.usage["frontend"]).toBeGreaterThan(0);
   });
 
-  test('enforces cost limits', () => {
+  test("enforces cost limits", () => {
     const tracker = new CostTracker(config);
-    expect(tracker.canAfford('frontend', expensiveTask)).toBe(false);
+    expect(tracker.canAfford("frontend", expensiveTask)).toBe(false);
   });
 });
 ```
 
 ### Integration Tests
+
 - Test end-to-end agent execution with model selection
 - Verify fallback behavior on model failure
 - Test cost tracking across multiple agents
@@ -570,6 +589,7 @@ describe('CostTracker', () => {
 ### User Documentation
 
 #### `docs/guides/model-selection.md`
+
 - Overview of model selection strategies
 - Configuration guide
 - CLI command reference
@@ -577,6 +597,7 @@ describe('CostTracker', () => {
 - Examples for different project types
 
 #### `docs/guides/cost-management.md`
+
 - Understanding AI costs
 - Setting budgets
 - Monitoring usage
@@ -585,6 +606,7 @@ describe('CostTracker', () => {
 ### Developer Documentation
 
 #### `lib/model-selection/README.md`
+
 - Architecture overview
 - Adding new strategies
 - Adding new providers
@@ -595,17 +617,20 @@ describe('CostTracker', () => {
 ## Success Metrics
 
 ### Performance Metrics
+
 - ✅ Model selection latency < 100ms
 - ✅ 95% cost reduction for simple tasks
 - ✅ Zero degradation in output quality
 - ✅ 100% backward compatibility
 
 ### Business Metrics
+
 - ✅ 60% average cost reduction across projects
 - ✅ 90% user adoption of cost tracking
 - ✅ 50% increase in agent customization
 
 ### User Metrics
+
 - ✅ Users can configure models in < 2 minutes
 - ✅ Cost transparency improves user trust
 - ✅ Flexible model choice increases satisfaction
@@ -615,15 +640,19 @@ describe('CostTracker', () => {
 ## Risks & Mitigations
 
 ### Risk 1: API Rate Limits
+
 **Mitigation:** Implement exponential backoff and fallback models
 
 ### Risk 2: Cost Estimation Inaccuracy
+
 **Mitigation:** Conservative estimates + real-time tracking
 
 ### Risk 3: Model Provider Changes
+
 **Mitigation:** Provider abstraction layer + versioned API wrappers
 
 ### Risk 4: Complexity Overwhelms Users
+
 **Mitigation:** Sensible defaults + simple CLI + documentation
 
 ---
@@ -631,14 +660,17 @@ describe('CostTracker', () => {
 ## Open Questions
 
 1. **Should we support local models (Ollama, LM Studio)?**
+
    - Pros: Zero cost, privacy
    - Cons: Setup complexity, performance variance
 
 2. **Should we cache model responses?**
+
    - Pros: Cost savings on repeated tasks
    - Cons: Staleness, storage requirements
 
 3. **Should we support multi-provider fallback chains?**
+
    - Example: GPT-4 → Claude Opus → Gemini Pro
    - Pros: Resilience
    - Cons: Complexity
@@ -655,6 +687,7 @@ describe('CostTracker', () => {
 **Awaiting User Review** ✋
 
 Once approved, this spec will be broken into the following issues:
+
 1. Core model selection infrastructure
 2. Strategy implementations
 3. CLI commands
@@ -663,7 +696,7 @@ Once approved, this spec will be broken into the following issues:
 
 ---
 
-**Status:** 📋 Awaiting Approval  
-**Created:** 2025-10-21  
-**Last Updated:** 2025-10-21  
+**Status:** 📋 Awaiting Approval
+**Created:** 2025-10-21
+**Last Updated:** 2025-10-21
 **Assignee:** TBD
