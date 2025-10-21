@@ -6,6 +6,59 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.2] - 2025-10-21
+
+### 🤖 Automation Improvements
+
+#### Full Automation Enforcement
+
+- **ENHANCED**: Copilot instructions now enforce 100% automated issue creation
+  - ✅ Always uses `gh issue create --title "..." --body "..." --label "..."` with ALL parameters
+  - ❌ Never uses `leo issue` command (prevents interactive CLI prompts)
+  - ✅ Provides complete issue details in ONE command
+  - ✅ No manual user input required
+
+#### Latest AI Models Support
+
+- **UPDATED**: Model Selection Strategy spec with latest AI models
+  - Added **GPT-5** (main reasoning model)
+  - Added **GPT-5 Codex Preview** (coding tasks, testing)
+  - Added **Claude Sonnet 4.5** (frontend/backend development)
+  - Added **Claude Haiku 4.5 Preview** (lightweight tasks, docs)
+  - Updated all strategy configurations (phase-based, complexity-based, agent-based)
+
+### 📝 Documentation Updates
+
+- **IMPROVED**: `.github/copilot-instructions.md`
+  - Added explicit "NO MANUAL CLI" rules with examples
+  - Added Quick Reference section for issue creation
+  - Enhanced Key Mantras and Critical Reminders
+  - Added correct vs forbidden automation patterns
+
+- **IMPROVED**: `lib/copilot-instructions-template.js`
+  - Updated installation template with automation rules
+  - Added "NO MANUAL CLI - ONLY AUTOMATION" enforcement
+  - Ensures new projects get full automation by default
+
+- **UPDATED**: `docs/specs/model-selection-strategy.md`
+  - Updated to GPT-5, GPT-5 Codex Preview
+  - Updated to Claude 4.5 series
+  - Updated AI assistant mapping
+  - Aligned with latest OpenAI and Anthropic releases
+
+### 🔧 Files Modified
+
+- `.github/copilot-instructions.md` - Enhanced automation rules
+- `lib/copilot-instructions-template.js` - Updated installation template  
+- `docs/specs/model-selection-strategy.md` - Latest AI models
+
+### 📦 Package
+
+- **Size**: 143.5 KB (tarball), 479.4 KB (unpacked)
+- **Files**: 47 files
+
+---
+
 ## [4.0.0] - 2025-10-20
 
 ### 🎛️ Major Feature: Multi-Agent Orchestration System
