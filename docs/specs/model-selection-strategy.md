@@ -119,31 +119,104 @@ User Request
 #### 1. **Phase-Based Strategy**
 
 ```javascript
-// Models per development phase using latest GPT-4o and Claude 3.5
+// Models per development phase using latest GPT-5 and Claude 4.5
 const phaseModels = {
   development: {
-    orchestrator: "gpt-4o-mini",
-    frontend: "claude-3.5-haiku",
-    backend: "claude-3.5-haiku",
-    devops: "gpt-4o-mini",
-    testing: "gpt-4o-mini",
-    documentation: "claude-3.5-haiku",
+    orchestrator: "claude-haiku-4.5-preview",
+    frontend: "claude-haiku-4.5-preview",
+    backend: "claude-haiku-4.5-preview",
+    devops: "claude-haiku-4.5-preview",
+    testing: "claude-haiku-4.5-preview",
+    documentation: "claude-haiku-4.5-preview",
   },
   testing: {
-    orchestrator: "gpt-4o",
-    frontend: "claude-3.5-sonnet",
-    backend: "claude-3.5-sonnet",
-    devops: "gpt-4o-mini",
-    testing: "gpt-4o",
-    documentation: "claude-3.5-sonnet",
+    orchestrator: "gpt-5-codex-preview",
+    frontend: "claude-sonnet-4.5",
+    backend: "claude-sonnet-4.5",
+    devops: "gpt-5-codex-preview",
+    testing: "gpt-5-codex-preview",
+    documentation: "claude-sonnet-4.5",
   },
   deployment: {
-    orchestrator: "gpt-4o",
-    frontend: "claude-3.5-opus",
-    backend: "claude-3.5-opus",
-    devops: "gpt-4o",
-    testing: "gpt-4o",
-    documentation: "claude-3.5-sonnet",
+    orchestrator: "gpt-5",
+    frontend: "claude-sonnet-4.5",
+    backend: "claude-sonnet-4.5",
+    devops: "gpt-5",
+    testing: "gpt-5",
+    documentation: "claude-sonnet-4.5",
+  },
+};
+```
+
+#### 2. **Complexity-Based Strategy**
+
+```javascript
+// Model selection based on task complexity
+const complexityModels = {
+  simple: {
+    model: "claude-haiku-4.5-preview",
+    maxTokens: 1000,
+    costLimit: 0.001,
+  },
+  medium: {
+    model: "gpt-5-codex-preview",
+    maxTokens: 4000,
+    costLimit: 0.01,
+  },
+  complex: {
+    model: "gpt-5",
+    maxTokens: 8000,
+    costLimit: 0.05,
+  },
+};
+```
+
+#### 3. **Agent-Based Strategy**
+
+```javascript
+// Aligned with enabled AI assistants: copilot, cursor, cline, codeium
+const agentModels = {
+  orchestrator: {
+    primary: "gpt-5", // GitHub Copilot - Intelligent routing
+    fallback: "claude-sonnet-4.5", // Cursor/Cline
+    costLimit: 0.1,
+    specialization: "reasoning",
+    aiAssistant: "copilot",
+  },
+  frontend: {
+    primary: "claude-sonnet-4.5", // Cursor - UI/React expertise
+    fallback: "gpt-5-codex-preview",
+    costLimit: 0.05,
+    specialization: "frontend-coding",
+    aiAssistant: "cursor",
+  },
+  backend: {
+    primary: "claude-sonnet-4.5", // Cline - API/database
+    fallback: "gpt-5-codex-preview",
+    costLimit: 0.05,
+    specialization: "backend-coding",
+    aiAssistant: "cline",
+  },
+  devops: {
+    primary: "claude-haiku-4.5-preview", // Copilot - Scripts, configs
+    fallback: "gpt-5-codex-preview",
+    costLimit: 0.02,
+    specialization: "devops",
+    aiAssistant: "copilot",
+  },
+  testing: {
+    primary: "gpt-5-codex-preview", // Copilot - Test generation
+    fallback: "claude-sonnet-4.5",
+    costLimit: 0.03,
+    specialization: "testing",
+    aiAssistant: "copilot",
+  },
+  documentation: {
+    primary: "claude-haiku-4.5-preview", // Cursor - Content generation
+    fallback: "claude-sonnet-4.5",
+    costLimit: 0.01,
+    specialization: "documentation",
+    aiAssistant: "cursor",
   },
 };
 ```
@@ -357,48 +430,48 @@ class CostTracker {
 
     "agents": {
       "orchestrator": {
-        "model": "gpt-4o",
-        "fallback": "claude-3.5-sonnet",
+        "model": "gpt-5",
+        "fallback": "claude-sonnet-4.5",
         "cost-limit": 10.0,
         "max-tokens": 8000,
         "temperature": 0.7,
         "ai-assistant": "copilot"
       },
       "frontend": {
-        "model": "claude-3.5-sonnet",
-        "fallback": "gpt-4o",
+        "model": "claude-sonnet-4.5",
+        "fallback": "gpt-5",
         "cost-limit": 5.0,
         "max-tokens": 4000,
         "temperature": 0.5,
         "ai-assistant": "cursor"
       },
       "backend": {
-        "model": "claude-3.5-sonnet",
-        "fallback": "gpt-4o",
+        "model": "claude-sonnet-4.5",
+        "fallback": "gpt-5-codex-preview",
         "cost-limit": 5.0,
         "max-tokens": 4000,
         "temperature": 0.5,
         "ai-assistant": "cline"
       },
       "devops": {
-        "model": "gpt-4o-mini",
-        "fallback": "claude-3.5-haiku",
+        "model": "claude-haiku-4.5-preview",
+        "fallback": "gpt-5-codex-preview",
         "cost-limit": 2.0,
         "max-tokens": 2000,
         "temperature": 0.3,
         "ai-assistant": "copilot"
       },
       "testing": {
-        "model": "gpt-4o",
-        "fallback": "claude-3.5-sonnet",
+        "model": "gpt-5-codex-preview",
+        "fallback": "claude-sonnet-4.5",
         "cost-limit": 3.0,
         "max-tokens": 4000,
         "temperature": 0.4,
         "ai-assistant": "copilot"
       },
       "documentation": {
-        "model": "claude-3.5-haiku",
-        "fallback": "gpt-4o-mini",
+        "model": "claude-haiku-4.5-preview",
+        "fallback": "claude-sonnet-4.5",
         "cost-limit": 1.0,
         "max-tokens": 2000,
         "temperature": 0.6,
@@ -408,17 +481,17 @@ class CostTracker {
 
     "complexity-thresholds": {
       "simple": {
-        "model": "gpt-4o-mini",
+        "model": "claude-haiku-4.5-preview",
         "max-tokens": 1000,
         "indicators": ["bug fix", "typo", "formatting"]
       },
       "medium": {
-        "model": "gpt-4o",
+        "model": "gpt-5-codex-preview",
         "max-tokens": 4000,
         "indicators": ["new feature", "refactor", "optimization"]
       },
       "complex": {
-        "model": "claude-3.5-opus",
+        "model": "gpt-5",
         "max-tokens": 8000,
         "indicators": ["architecture", "system design", "integration"]
       }
@@ -428,16 +501,12 @@ class CostTracker {
       "openai": {
         "api-key-env": "OPENAI_API_KEY",
         "enabled": true,
-        "models": ["gpt-4o", "gpt-4o-mini", "gpt-4-turbo"]
+        "models": ["gpt-5", "gpt-5-codex-preview", "gpt-4o", "gpt-4o-mini"]
       },
       "anthropic": {
         "api-key-env": "ANTHROPIC_API_KEY",
         "enabled": true,
-        "models": [
-          "claude-3.5-opus",
-          "claude-3.5-sonnet",
-          "claude-3.5-haiku"
-        ]
+        "models": ["claude-sonnet-4.5", "claude-haiku-4.5-preview", "claude-3.5-opus"]
       },
       "google": {
         "api-key-env": "GOOGLE_AI_API_KEY",
@@ -447,24 +516,24 @@ class CostTracker {
     },
 
     "ai-assistant-mapping": {
-      "copilot": ["gpt-4o", "gpt-4o-mini", "gpt-4-turbo"],
+      "copilot": ["gpt-5", "gpt-5-codex-preview", "gpt-4o", "gpt-4o-mini"],
       "cursor": [
-        "claude-3.5-opus",
-        "claude-3.5-sonnet",
-        "claude-3.5-haiku",
-        "gpt-4o"
+        "claude-sonnet-4.5",
+        "claude-haiku-4.5-preview",
+        "gpt-5"
       ],
       "cline": [
-        "claude-3.5-opus",
-        "claude-3.5-sonnet",
-        "gpt-4o",
+        "claude-sonnet-4.5",
+        "gpt-5",
+        "gpt-5-codex-preview",
         "gemini-2.0-flash-exp"
       ],
-      "codeium": ["gpt-4o", "claude-3.5-sonnet"]
+      "codeium": ["gpt-5", "claude-sonnet-4.5"]
     }
   }
 }
 ```
+
         "model": "gpt-3.5-turbo",
         "fallback": "claude-3-haiku",
         "cost-limit": 2.0,
@@ -519,9 +588,11 @@ class CostTracker {
         "enabled": false
       }
     }
-  }
+
 }
-```
+}
+
+````
 
 ---
 
@@ -556,7 +627,7 @@ leo model cost-tracking <on|off>
 
 # Set monthly budget
 leo model budget <amount>
-```
+````
 
 ### Examples
 
