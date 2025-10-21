@@ -119,30 +119,31 @@ User Request
 #### 1. **Phase-Based Strategy**
 
 ```javascript
+// Models per development phase using latest GPT-4o and Claude 3.5
 const phaseModels = {
   development: {
-    orchestrator: "gpt-3.5-turbo",
-    frontend: "claude-3-haiku",
-    backend: "claude-3-haiku",
-    devops: "gpt-3.5-turbo",
-    testing: "gpt-3.5-turbo",
-    documentation: "claude-3-haiku",
+    orchestrator: "gpt-4o-mini",
+    frontend: "claude-3.5-haiku",
+    backend: "claude-3.5-haiku",
+    devops: "gpt-4o-mini",
+    testing: "gpt-4o-mini",
+    documentation: "claude-3.5-haiku",
   },
   testing: {
-    orchestrator: "gpt-4-turbo",
-    frontend: "claude-3-sonnet",
-    backend: "claude-3-sonnet",
-    devops: "gpt-3.5-turbo",
-    testing: "gpt-4-turbo",
-    documentation: "claude-3-sonnet",
+    orchestrator: "gpt-4o",
+    frontend: "claude-3.5-sonnet",
+    backend: "claude-3.5-sonnet",
+    devops: "gpt-4o-mini",
+    testing: "gpt-4o",
+    documentation: "claude-3.5-sonnet",
   },
   deployment: {
-    orchestrator: "gpt-4",
-    frontend: "claude-3-opus",
-    backend: "claude-3-opus",
-    devops: "gpt-4-turbo",
-    testing: "gpt-4",
-    documentation: "claude-3-sonnet",
+    orchestrator: "gpt-4o",
+    frontend: "claude-3.5-opus",
+    backend: "claude-3.5-opus",
+    devops: "gpt-4o",
+    testing: "gpt-4o",
+    documentation: "claude-3.5-sonnet",
   },
 };
 ```
@@ -150,19 +151,20 @@ const phaseModels = {
 #### 2. **Complexity-Based Strategy**
 
 ```javascript
+// Model selection based on task complexity
 const complexityModels = {
   simple: {
-    model: "gpt-3.5-turbo",
+    model: "gpt-4o-mini",
     maxTokens: 1000,
     costLimit: 0.001,
   },
   medium: {
-    model: "gpt-4-turbo",
+    model: "gpt-4o",
     maxTokens: 4000,
     costLimit: 0.01,
   },
   complex: {
-    model: "gpt-4",
+    model: "claude-3.5-opus",
     maxTokens: 8000,
     costLimit: 0.05,
   },
@@ -172,42 +174,49 @@ const complexityModels = {
 #### 3. **Agent-Based Strategy**
 
 ```javascript
+// Aligned with enabled AI assistants: copilot, cursor, cline, codeium
 const agentModels = {
   orchestrator: {
-    primary: "gpt-4", // Needs intelligent routing
-    fallback: "claude-3-sonnet",
+    primary: "gpt-4o", // GitHub Copilot - Intelligent routing
+    fallback: "claude-3.5-sonnet", // Cursor/Cline
     costLimit: 0.1,
     specialization: "reasoning",
+    aiAssistant: "copilot",
   },
   frontend: {
-    primary: "claude-3-sonnet", // UI/React expertise
-    fallback: "gpt-4-turbo",
+    primary: "claude-3.5-sonnet", // Cursor - UI/React expertise
+    fallback: "gpt-4o",
     costLimit: 0.05,
     specialization: "frontend-coding",
+    aiAssistant: "cursor",
   },
   backend: {
-    primary: "claude-3-sonnet", // API/database
-    fallback: "gpt-4-turbo",
+    primary: "claude-3.5-sonnet", // Cline - API/database
+    fallback: "gpt-4o",
     costLimit: 0.05,
     specialization: "backend-coding",
+    aiAssistant: "cline",
   },
   devops: {
-    primary: "gpt-3.5-turbo", // Scripts, configs
-    fallback: "claude-3-haiku",
+    primary: "gpt-4o-mini", // GitHub Copilot - Scripts, configs
+    fallback: "claude-3.5-haiku",
     costLimit: 0.02,
     specialization: "devops",
+    aiAssistant: "copilot",
   },
   testing: {
-    primary: "gpt-4-turbo", // Test generation
-    fallback: "claude-3-sonnet",
+    primary: "gpt-4o", // GitHub Copilot - Test generation
+    fallback: "claude-3.5-sonnet",
     costLimit: 0.03,
     specialization: "testing",
+    aiAssistant: "copilot",
   },
   documentation: {
-    primary: "claude-3-haiku", // Content generation
-    fallback: "gpt-3.5-turbo",
+    primary: "claude-3.5-haiku", // Cursor - Content generation
+    fallback: "gpt-4o-mini",
     costLimit: 0.01,
     specialization: "documentation",
+    aiAssistant: "cursor",
   },
 };
 ```
@@ -348,27 +357,114 @@ class CostTracker {
 
     "agents": {
       "orchestrator": {
-        "model": "gpt-4",
-        "fallback": "claude-3-sonnet",
+        "model": "gpt-4o",
+        "fallback": "claude-3.5-sonnet",
         "cost-limit": 10.0,
         "max-tokens": 8000,
-        "temperature": 0.7
+        "temperature": 0.7,
+        "ai-assistant": "copilot"
       },
       "frontend": {
-        "model": "claude-3-sonnet",
-        "fallback": "gpt-4-turbo",
+        "model": "claude-3.5-sonnet",
+        "fallback": "gpt-4o",
         "cost-limit": 5.0,
         "max-tokens": 4000,
-        "temperature": 0.5
+        "temperature": 0.5,
+        "ai-assistant": "cursor"
       },
       "backend": {
-        "model": "claude-3-sonnet",
-        "fallback": "gpt-4-turbo",
+        "model": "claude-3.5-sonnet",
+        "fallback": "gpt-4o",
         "cost-limit": 5.0,
         "max-tokens": 4000,
-        "temperature": 0.5
+        "temperature": 0.5,
+        "ai-assistant": "cline"
       },
       "devops": {
+        "model": "gpt-4o-mini",
+        "fallback": "claude-3.5-haiku",
+        "cost-limit": 2.0,
+        "max-tokens": 2000,
+        "temperature": 0.3,
+        "ai-assistant": "copilot"
+      },
+      "testing": {
+        "model": "gpt-4o",
+        "fallback": "claude-3.5-sonnet",
+        "cost-limit": 3.0,
+        "max-tokens": 4000,
+        "temperature": 0.4,
+        "ai-assistant": "copilot"
+      },
+      "documentation": {
+        "model": "claude-3.5-haiku",
+        "fallback": "gpt-4o-mini",
+        "cost-limit": 1.0,
+        "max-tokens": 2000,
+        "temperature": 0.6,
+        "ai-assistant": "cursor"
+      }
+    },
+
+    "complexity-thresholds": {
+      "simple": {
+        "model": "gpt-4o-mini",
+        "max-tokens": 1000,
+        "indicators": ["bug fix", "typo", "formatting"]
+      },
+      "medium": {
+        "model": "gpt-4o",
+        "max-tokens": 4000,
+        "indicators": ["new feature", "refactor", "optimization"]
+      },
+      "complex": {
+        "model": "claude-3.5-opus",
+        "max-tokens": 8000,
+        "indicators": ["architecture", "system design", "integration"]
+      }
+    },
+
+    "providers": {
+      "openai": {
+        "api-key-env": "OPENAI_API_KEY",
+        "enabled": true,
+        "models": ["gpt-4o", "gpt-4o-mini", "gpt-4-turbo"]
+      },
+      "anthropic": {
+        "api-key-env": "ANTHROPIC_API_KEY",
+        "enabled": true,
+        "models": [
+          "claude-3.5-opus",
+          "claude-3.5-sonnet",
+          "claude-3.5-haiku"
+        ]
+      },
+      "google": {
+        "api-key-env": "GOOGLE_AI_API_KEY",
+        "enabled": false,
+        "models": ["gemini-2.0-flash-exp", "gemini-1.5-pro"]
+      }
+    },
+
+    "ai-assistant-mapping": {
+      "copilot": ["gpt-4o", "gpt-4o-mini", "gpt-4-turbo"],
+      "cursor": [
+        "claude-3.5-opus",
+        "claude-3.5-sonnet",
+        "claude-3.5-haiku",
+        "gpt-4o"
+      ],
+      "cline": [
+        "claude-3.5-opus",
+        "claude-3.5-sonnet",
+        "gpt-4o",
+        "gemini-2.0-flash-exp"
+      ],
+      "codeium": ["gpt-4o", "claude-3.5-sonnet"]
+    }
+  }
+}
+```
         "model": "gpt-3.5-turbo",
         "fallback": "claude-3-haiku",
         "cost-limit": 2.0,
