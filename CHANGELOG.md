@@ -6,6 +6,31 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.3] - 2025-10-21
+
+### 🐛 Bug Fixes
+
+#### Template Syntax Error Fix
+
+- **FIXED**: Escaped backticks in `lib/copilot-instructions-template.js` to prevent syntax error
+  - Issue: Backticks inside template literal broke CLI commands
+  - Solution: Changed \`gh issue create\` to \\\`gh issue create\\\` in template string
+  - Impact: v4.0.2 was completely broken, couldn't run any `leo` commands
+  - Status: ✅ Fixed and verified working
+
+### ✅ Verification
+
+- CLI commands working: `leo --version`, `leo health`, `leo agent list`
+- No syntax errors in template
+- Global installation successful
+
+### 📦 Package
+
+- **Size**: 144.1 KB (tarball), 481.4 KB (unpacked)
+- **Files**: 47 files
+
+---
+
 ## [4.0.2] - 2025-10-21
 
 ### 🤖 Automation Improvements

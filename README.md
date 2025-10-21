@@ -19,13 +19,13 @@
 
 ---
 
-### 🎉 Latest Release: **v4.0.0** - Multi-Agent Orchestration System
+### 🎉 Latest Release: **v4.0.3** - Automation Improvements & Latest AI Models
 
-**Revolutionary AI-powered development with specialized domain experts**
+**Full automation with GPT-5 and Claude 4.5 support**
 
-🎛️ Intelligent task routing • 🎨 6 specialized AI agents • 🎯 Domain expertise • ⚡ Flexible configuration • 🔄 Multi-agent coordination
+🤖 100% automated issue creation • 🧠 Latest AI models • 🚀 Zero manual input • ⚡ Enhanced workflow
 
-**[📋 View All Releases](#-release-history)** • **[📚 Read Full Release Notes](RELEASE_V4.0.0_SUMMARY.md)**
+**[📋 View All Releases](#-release-history)** • **[📚 Read v4.0.0 Release Notes](RELEASE_V4.0.0_SUMMARY.md)**
 
 ---
 
