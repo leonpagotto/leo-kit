@@ -57,12 +57,14 @@
 ## 🎯 Quick Reference for Issue Creation
 
 **When user says ANY of these patterns:**
+
 - "Add [feature]" / "Create [component]" / "Build [thing]"
-- "Fix [bug]" / "Resolve [issue]" / "Debug [problem]"  
+- "Fix [bug]" / "Resolve [issue]" / "Debug [problem]"
 - "Update [docs]" / "Improve [code]" / "Refactor [module]"
 - "I need..." / "Can you..." / "Let's..." / "We should..."
 
 **Copilot MUST immediately run:**
+
 ```bash
 gh issue create \
   --title "Concise title under 72 chars" \
@@ -481,7 +483,7 @@ Execution Flow:
 # ✅ CORRECT: Full command with all details provided
 gh issue create \
   --title "Add dark mode toggle to settings" \
-  --body "User requested dark mode support for better UX in low-light environments. 
+  --body "User requested dark mode support for better UX in low-light environments.
 
 Acceptance Criteria:
 - [ ] Add toggle button in settings page
@@ -509,11 +511,12 @@ if (autoResolve) {
 }
 ```
 
-**🔥 WORKFLOW:** 
-1. User describes work 
+**🔥 WORKFLOW:**
+
+1. User describes work
 2. YOU create issue with `gh issue create --title "..." --body "..." --label "..."` (ONE command)
-3. Check auto-resolve 
-4. Route to agent 
+3. Check auto-resolve
+4. Route to agent
 5. Agent implements
 
 ---

@@ -506,7 +506,11 @@ class CostTracker {
       "anthropic": {
         "api-key-env": "ANTHROPIC_API_KEY",
         "enabled": true,
-        "models": ["claude-sonnet-4.5", "claude-haiku-4.5-preview", "claude-3.5-opus"]
+        "models": [
+          "claude-sonnet-4.5",
+          "claude-haiku-4.5-preview",
+          "claude-3.5-opus"
+        ]
       },
       "google": {
         "api-key-env": "GOOGLE_AI_API_KEY",
@@ -517,11 +521,7 @@ class CostTracker {
 
     "ai-assistant-mapping": {
       "copilot": ["gpt-5", "gpt-5-codex-preview", "gpt-4o", "gpt-4o-mini"],
-      "cursor": [
-        "claude-sonnet-4.5",
-        "claude-haiku-4.5-preview",
-        "gpt-5"
-      ],
+      "cursor": ["claude-sonnet-4.5", "claude-haiku-4.5-preview", "gpt-5"],
       "cline": [
         "claude-sonnet-4.5",
         "gpt-5",
