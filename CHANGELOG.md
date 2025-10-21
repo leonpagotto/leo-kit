@@ -30,12 +30,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 📝 Documentation Updates
 
 - **IMPROVED**: `.github/copilot-instructions.md`
+
   - Added explicit "NO MANUAL CLI" rules with examples
   - Added Quick Reference section for issue creation
   - Enhanced Key Mantras and Critical Reminders
   - Added correct vs forbidden automation patterns
 
 - **IMPROVED**: `lib/copilot-instructions-template.js`
+
   - Updated installation template with automation rules
   - Added "NO MANUAL CLI - ONLY AUTOMATION" enforcement
   - Ensures new projects get full automation by default
@@ -49,7 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 🔧 Files Modified
 
 - `.github/copilot-instructions.md` - Enhanced automation rules
-- `lib/copilot-instructions-template.js` - Updated installation template  
+- `lib/copilot-instructions-template.js` - Updated installation template
 - `docs/specs/model-selection-strategy.md` - Latest AI models
 
 ### 📦 Package
