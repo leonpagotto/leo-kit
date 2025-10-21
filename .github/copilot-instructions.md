@@ -21,19 +21,57 @@
 >
 > GitHub Copilot MUST follow these rules in EVERY response, starting from the FIRST message:
 >
-> - **🚨 AUTOMATIC ISSUE CREATION:** When user describes ANY work → Create GitHub issue IMMEDIATELY (use `gh issue create`)
-> - **🚨 NO MANUAL CLI:** NEVER ask user to run `leo issue` or manual commands - YOU create the issue automatically
+> - **🚨 AUTOMATIC ISSUE CREATION:** When user describes ANY work → Create GitHub issue IMMEDIATELY using `gh issue create --title "..." --body "..." --label "..."`
+> - **🚨 NO INTERACTIVE CLI:** NEVER use `leo issue` command - it opens interactive prompts that force manual input
+> - **🚨 NO MANUAL PROMPTS:** NEVER ask user to fill in issue details manually - YOU must provide all details programmatically
+> - **🚨 ONLY USE `gh issue create`:** Direct GitHub CLI with ALL parameters provided in the command itself
 > - **🚨 NO ASKING PERMISSION:** NEVER ask "should I create an issue?" - JUST DO IT AUTOMATICALLY
-> - **🚨 DETECT WORK DESCRIPTIONS:** ANY task, feature, bug, improvement, docs → IMMEDIATE issue creation
+> - **🚨 DETECT WORK DESCRIPTIONS:** ANY task, feature, bug, improvement, docs → IMMEDIATE automated issue creation
 > - **Auto-Resolve Check:** Read `.leorc.json` for `auto-resolve` setting before working
 > - **Status Updates:** Comment "🚀 Starting work..." and update to "In Progress" when starting
 > - **Commit Messages:** Keep under 72 characters, reference issue number
 > - **Issue Comments:** Keep under 3-4 lines (200 chars max)
 > - **Spec-First:** Create spec file for complex work (> 1 week), get approval first
 >
-> **🔥 CRITICAL AUTOMATION RULE: User says "I need X" or "Fix Y" or "Add Z" → YOU IMMEDIATELY CREATE GITHUB ISSUE 🔥**
+> **🔥 CRITICAL AUTOMATION RULE: User says "I need X" or "Fix Y" or "Add Z" → YOU IMMEDIATELY CREATE GITHUB ISSUE WITH FULL COMMAND 🔥**
+>
+> **✅ CORRECT APPROACH:**
+>
+> ```bash
+> gh issue create \
+>   --title "Add dark mode toggle" \
+>   --body "User requested dark mode support for better UX" \
+>   --label "enhancement,frontend"
+> ```
+>
+> **❌ NEVER DO THIS:**
+>
+> ```bash
+> leo issue  # ← Opens interactive CLI, forces manual input - FORBIDDEN!
+> ```
 >
 > **These instructions apply to THIS conversation and EVERY conversation in this repository.** > **Copilot must check for work descriptions in EVERY user message and act immediately.**
+
+---
+
+## 🎯 Quick Reference for Issue Creation
+
+**When user says ANY of these patterns:**
+- "Add [feature]" / "Create [component]" / "Build [thing]"
+- "Fix [bug]" / "Resolve [issue]" / "Debug [problem]"  
+- "Update [docs]" / "Improve [code]" / "Refactor [module]"
+- "I need..." / "Can you..." / "Let's..." / "We should..."
+
+**Copilot MUST immediately run:**
+```bash
+gh issue create \
+  --title "Concise title under 72 chars" \
+  --body "Detailed description with acceptance criteria" \
+  --label "type,priority,component"
+```
+
+**❌ NEVER run:** `leo issue` (interactive CLI - forbidden!)
+**✅ ALWAYS use:** `gh issue create` with full parameters in ONE command
 
 ---
 
@@ -416,22 +454,44 @@ Execution Flow:
 
 - ❌ NEVER ask "Should I create an issue?"
 - ❌ NEVER wait for permission
-- ❌ NEVER ask user to run `leo issue` manually
+- ❌ NEVER use `leo issue` command (opens interactive CLI - FORBIDDEN!)
+- ❌ NEVER ask user to fill in details manually
 - ❌ NEVER say "use the CLI to create an issue"
+- ❌ NEVER prompt user with interactive forms
 - ✅ ALWAYS create issue automatically as FIRST action
-- ✅ ALWAYS use `gh issue create` command (not interactive)
+- ✅ ALWAYS use `gh issue create --title "..." --body "..." --label "..."` with ALL parameters
+- ✅ ALWAYS provide complete title, body, and labels in ONE command
 - ✅ IMMEDIATELY after detecting work description
 
 **Example User Messages That Trigger Auto-Issue Creation:**
 
 ```
-✅ "Add a search bar to the header" → IMMEDIATE issue creation
-✅ "Fix the button alignment on mobile" → IMMEDIATE issue creation
-✅ "I need OAuth2 authentication" → IMMEDIATE issue creation
-✅ "Can you optimize the database queries?" → IMMEDIATE issue creation
-✅ "Let's improve the error handling" → IMMEDIATE issue creation
-✅ "We should add dark mode support" → IMMEDIATE issue creation
-✅ "Update the README with new features" → IMMEDIATE issue creation
+✅ "Add a search bar to the header" → IMMEDIATE issue creation with gh issue create
+✅ "Fix the button alignment on mobile" → IMMEDIATE issue creation with gh issue create
+✅ "I need OAuth2 authentication" → IMMEDIATE issue creation with gh issue create
+✅ "Can you optimize the database queries?" → IMMEDIATE issue creation with gh issue create
+✅ "Let's improve the error handling" → IMMEDIATE issue creation with gh issue create
+✅ "We should add dark mode support" → IMMEDIATE issue creation with gh issue create
+✅ "Update the README with new features" → IMMEDIATE issue creation with gh issue create
+```
+
+**Perfect Example - Copy This Pattern:**
+
+```bash
+# ✅ CORRECT: Full command with all details provided
+gh issue create \
+  --title "Add dark mode toggle to settings" \
+  --body "User requested dark mode support for better UX in low-light environments. 
+
+Acceptance Criteria:
+- [ ] Add toggle button in settings page
+- [ ] Persist user preference in localStorage
+- [ ] Apply dark theme across all components
+- [ ] Test on mobile and desktop" \
+  --label "enhancement,frontend,P2"
+
+# ❌ WRONG: Never use interactive CLI
+leo issue  # This opens a form that user must fill manually - FORBIDDEN!
 ```
 
 **Check Auto-Resolve Config:**
@@ -449,16 +509,12 @@ if (autoResolve) {
 }
 ```
 
-**Issue Creation Format:**
-
-```bash
-gh issue create \
-  --title "Clear, descriptive title (< 72 chars)" \
-  --body "Description with acceptance criteria" \
-  --label "type,priority,component"
-```
-
-**🔥 WORKFLOW:** User describes work → YOU create issue → Check auto-resolve → Route to agent → Agent implements
+**🔥 WORKFLOW:** 
+1. User describes work 
+2. YOU create issue with `gh issue create --title "..." --body "..." --label "..."` (ONE command)
+3. Check auto-resolve 
+4. Route to agent 
+5. Agent implements
 
 ---
 
@@ -621,18 +677,21 @@ Step 3: Routing to Testing Agent for test coverage...
 - **"Always Enforce LEO Workflow"** - Issue creation, status updates, commit format
 - **"Multi-Agent = Sequential Coordination"** - One agent at a time, clear handoffs
 - **"Keep It Short"** - Commit messages < 72 chars, issue comments < 3 lines
+- **"No Manual CLI, Only Automation"** - Never `leo issue`, always `gh issue create` with full params
 
 ---
 
 ## 🚨 Critical Reminders
 
 1. **READ ALL INSTRUCTIONS** - You read this file completely before responding
-2. **CREATE ISSUES AUTOMATICALLY** - Never ask permission, just create
-3. **ROUTE TO SPECIALISTS** - Don't implement yourself, delegate to experts
-4. **ENFORCE WORKFLOW** - Issue creation, status updates, commit format (always)
-5. **COORDINATE MULTI-AGENT** - Sequential handoffs with clear context
-6. **CHECK AUTO-RESOLVE** - Read .leorc.json before starting work
-7. **KEEP MESSAGES SHORT** - Commit subject < 72 chars, comments < 3 lines
+2. **CREATE ISSUES AUTOMATICALLY** - Never ask permission, just create with `gh issue create`
+3. **NO INTERACTIVE CLI** - Never use `leo issue` command, it forces manual input
+4. **ROUTE TO SPECIALISTS** - Don't implement yourself, delegate to experts
+5. **ENFORCE WORKFLOW** - Issue creation, status updates, commit format (always)
+6. **COORDINATE MULTI-AGENT** - Sequential handoffs with clear context
+7. **CHECK AUTO-RESOLVE** - Read .leorc.json before starting work
+8. **KEEP MESSAGES SHORT** - Commit subject < 72 chars, comments < 3 lines
+9. **FULL AUTOMATION** - Provide ALL issue details (title, body, labels) in ONE command
 
 ---
 
