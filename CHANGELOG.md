@@ -6,6 +6,105 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.0] - 2025-10-22
+
+### 🎯 NEW FEATURE: GitHub-Native Issue Creation System
+
+#### Breaking Changes
+
+- **CHANGED**: Issue creation now uses GitHub native features instead of label-based workarounds
+- **REMOVED**: P0, P1, P2, P3 priority labels (replaced with priority field in issue body)
+- **REMOVED**: Type labels like `bug`, `enhancement`, `feature` (use native GitHub issue type instead)
+- **CHANGED**: Labels are now ONLY for components (backend, frontend, database, devops, ux, documentation, api, infrastructure)
+
+#### New Features
+
+##### GitHub-Native Issue System
+- ✅ **Native Issue Types**: Use GitHub's standard Bug/Enhancement/Task types
+- ✅ **Visual Priority Indicators**: Emoji-based priority in body (🔴 Critical, 🟠 High, 🟡 Medium, 🟢 Low)
+- ✅ **Story Point Estimation**: Fibonacci scale (1, 2, 3, 5, 8, 13, 21) for effort tracking
+- ✅ **Component Labels Only**: Dedicated labels for components, not mixed with types/priorities
+- ✅ **Auto-Status Transitions**: Issues automatically move through workflow stages
+
+##### New Issue Creation Format
+```markdown
+**Priority:** 🟡 Medium
+**Estimate:** 5 story points
+**Components:** frontend, backend
+
+---
+
+## Description
+Clear description...
+
+## Acceptance Criteria
+- [ ] Testable criterion 1
+- [ ] Testable criterion 2
+```
+
+##### Component Label System
+- `backend` - Backend/API changes
+- `frontend` - Frontend/UI changes
+- `database` - Database changes
+- `devops` - DevOps/Infrastructure
+- `ux` - UX/Design
+- `documentation` - Documentation
+- `api` - API changes
+- `infrastructure` - Infrastructure
+
+##### New Tools & Scripts
+- **NEW**: `scripts/setup-github-project.js` - Auto-detects GitHub Project fields and generates .env configuration
+- **NEW**: `docs/guides/GITHUB_PROJECTS_SETUP.md` - Complete setup guide for GitHub Projects v2 integration
+- **NEW**: `lib/commands/issue-improved.js` - Modern issue creation with native GitHub features
+
+#### Improvements
+
+- **IMPROVED**: Issue body uses `--body-file` for proper markdown rendering (no escaping issues)
+- **IMPROVED**: Copilot instructions template updated with new workflow examples
+- **IMPROVED**: README.md with comprehensive v3.0.0 feature comparison table
+- **IMPROVED**: Wiki documentation with new issue creation workflow
+
+#### Documentation
+
+- **UPDATED**: `lib/copilot-instructions-template.js` - All examples use new format
+- **UPDATED**: `README.md` - Added "GitHub-Native Issue Creation" section
+- **UPDATED**: `wiki/Home.md` - "What's New in 3.0.0" highlights
+- **NEW**: Issue creation examples show `--body-file` approach with temp files
+
+#### Migration Guide
+
+**Old Format (< v3.0.0):**
+```bash
+gh issue create --title "Fix bug" --label "bug,P1,frontend,backend"
+```
+
+**New Format (v3.0.0+):**
+```bash
+cat > .gh-issue-body.md << 'EOF'
+**Priority:** 🔴 Critical
+**Estimate:** 3 story points
+**Components:** frontend, backend
+
+---
+
+## Description
+Bug description...
+EOF
+
+gh issue create --title "Fix bug" --body-file .gh-issue-body.md --label "frontend,backend"
+rm .gh-issue-body.md
+```
+
+#### Benefits
+
+- ✅ **Standards-Compliant** - Uses GitHub's intended feature set
+- ✅ **Better Filtering** - Component labels separate from types/priorities
+- ✅ **Effort Tracking** - Story points enable sprint planning
+- ✅ **Visual Clarity** - Emoji indicators make priorities instantly recognizable
+- ✅ **Automated Workflow** - Status transitions happen automatically
+
+---
+
 ## [4.0.3] - 2025-10-21
 
 ### 🐛 Bug Fixes

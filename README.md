@@ -316,6 +316,79 @@ leo init
 
 ---
 
+### 🎯 GitHub-Native Issue Creation (v3.0.0+)
+
+**NEW:** Modern issue management using GitHub's native features instead of label-based workarounds!
+
+#### What Changed in v3.0.0
+
+| Feature | Old System (< v3.0.0) | New System (v3.0.0+) |
+|---------|----------------------|---------------------|
+| **Issue Type** | Labels: `bug`, `enhancement`, `feature` | GitHub native type field |
+| **Priority** | Labels: `P0`, `P1`, `P2`, `P3` | Field in body: 🔴🟠🟡🟢 |
+| **Components** | Mixed with types/priorities | Dedicated labels only |
+| **Estimation** | Not supported | Story points (1-21) |
+| **Status** | Manual updates | Auto-transitions |
+
+#### The New Format
+
+**Issue Body Structure:**
+```markdown
+**Priority:** 🟡 Medium
+**Estimate:** 5 story points
+**Components:** frontend, backend
+
+---
+
+## Description
+Clear description of the work...
+
+## Acceptance Criteria
+- [ ] Testable criterion 1
+- [ ] Testable criterion 2
+```
+
+**Component Labels (use ONLY these for labeling):**
+- `backend` - Backend/API changes
+- `frontend` - Frontend/UI changes
+- `database` - Database changes
+- `devops` - DevOps/Infrastructure
+- `ux` - UX/Design
+- `documentation` - Documentation
+- `api` - API changes
+- `infrastructure` - Infrastructure
+
+**Priority Levels (displayed in body, not labels):**
+- 🔴 **Critical** - Production down, security issues
+- 🟠 **High** - Major features, significant bugs
+- 🟡 **Medium** - Standard work, minor bugs
+- 🟢 **Low** - Nice-to-have, tech debt
+
+**Example Commands:**
+```bash
+# ✅ NEW FORMAT (v3.0.0+)
+leo issue --interactive
+# Creates issue with:
+# - Native GitHub type (Bug/Enhancement/Task)
+# - Priority in body (🔴🟠🟡🟢)
+# - Story point estimate
+# - Component labels only
+
+# ❌ OLD FORMAT (deprecated)
+# Labels mixed types and priorities: "bug,P2,frontend"
+```
+
+**Benefits:**
+- ✅ **Standards-Compliant** - Uses GitHub's intended features
+- ✅ **Better Filtering** - Filter by components without type/priority noise
+- ✅ **Effort Tracking** - Story points for sprint planning
+- ✅ **Clearer Priority** - Visual emoji indicators in issue body
+- ✅ **Auto-Status** - Issues move through workflow automatically
+
+**[📖 Read Issue Workflow Guide](docs/guides/github-projects-integration.md)**
+
+---
+
 ### 📋 Spec-First Development Methodology
 
 Intelligent decision making for the right workflow at the right time:

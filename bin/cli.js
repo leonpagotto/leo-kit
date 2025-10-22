@@ -24,8 +24,8 @@ if (isFirstRun()) {
 }
 
 program
-  .name('leo-workflow')
-  .description('LEO Workflow Kit - CLI tool for setting up GitHub Projects workflow with spec-driven development')
+  .name('ingvar-workflow')
+  .description('Ingvar Workflow Kit - CLI tool for setting up GitHub Projects workflow with spec-driven development following Ingka Way of Working')
   .version(packageJson.version);
 
 // Get responsive banner
@@ -34,7 +34,7 @@ const banner = getBanner();
 // Init command - Set up complete workflow in current project
 program
   .command('init')
-  .description('Initialize LEO workflow in current project')
+  .description('Initialize Ingvar workflow in current project')
   .option('-o, --org <organization>', 'GitHub organization name (optional for personal repos)')
   .option('-p, --project <number>', 'GitHub project number (optional)')
   .option('--skip-project', 'Skip GitHub Project setup entirely')
@@ -46,15 +46,18 @@ program
     initCommand(options);
   });
 
-// Issue command - Create new issue from template
+// Issue command - Create new issue with GitHub-native features (v4.1.0+)
 program
   .command('issue')
   .alias('i')
-  .description('Create a new issue from template (spec-driven)')
-  .option('-t, --template <type>', 'Issue template type (bug, feature, docs, deployment)')
+  .description('Create a new issue with GitHub-native features (priorities, estimates, components)')
+  .option('-t, --type <type>', 'Issue type (bug, enhancement, task, documentation)')
   .option('-T, --title <title>', 'Issue title')
-  .option('-p, --priority <priority>', 'Priority (P0, P1, P2, P3)')
+  .option('-p, --priority <priority>', 'Priority (Critical, High, Medium, Low)')
+  .option('-e, --estimate <points>', 'Story points (1, 2, 3, 5, 8, 13, 21)')
+  .option('-c, --components <list>', 'Component labels (comma-separated: backend,frontend,database,devops,ux,documentation,api,infrastructure)')
   .option('-a, --assignee <username>', 'Assign to user')
+  .option('--interactive', 'Use interactive mode (default: true)', true)
   .option('--no-interactive', 'Skip interactive prompts')
   .action((options) => {
     issueCommand(options);
@@ -143,7 +146,7 @@ program
     });
 
     console.log();
-    console.log(chalk.gray('💡 Run `leo health` for comprehensive health check\n'));
+    console.log(chalk.gray('💡 Run `ingvar health` for comprehensive health check\n'));
   });
 
 // Health command - Comprehensive workflow health check
@@ -173,7 +176,7 @@ program
   .action(() => {
     const { exec } = require('child_process');
     console.log(chalk.cyan('\n📚 Opening documentation...\n'));
-    exec('open https://github.com/leonpagotto/leo-kit#readme');
+    exec('open https://github.com/ingka-group/ingvar-kit#readme');
   });
 
 // Show banner on no command

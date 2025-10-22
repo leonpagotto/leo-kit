@@ -30,6 +30,15 @@ LEO Workflow Kit is a powerful CLI tool that revolutionizes software development
 - ⚙️ **New `leo github` Command**: Configure repository settings with best practices
 - ✨ **Backward Compatible**: v3.x configurations continue working
 
+**What's New in 3.0.0:** 🎯 GitHub-Native Issue Creation
+
+- 🏷️ **No More Label Confusion**: Component labels separate from types/priorities
+- 📊 **Story Point Estimates**: Track effort with Fibonacci scale (1-21)
+- 🎨 **Visual Priorities**: Emoji indicators (🔴🟠🟡🟢) instead of P0-P3 labels
+- ✅ **Native GitHub Types**: Use standard Bug/Enhancement/Task types
+- 🔄 **Auto-Status Transitions**: Issues move through workflow automatically
+- 📋 **Better Filtering**: Filter by components without type/priority noise
+
 **v3.0.1 Features:**
 
 - 🚨 **CRITICAL Status Updates**: Mandatory immediate status updates when starting work
