@@ -19,3 +19,4 @@ jobs:
         uses: actions/add-to-project@v0.6.1
         with:
           project-url: ${{ secrets.PROJECT_URL }}
+          github-token: ${{ github.token }}
