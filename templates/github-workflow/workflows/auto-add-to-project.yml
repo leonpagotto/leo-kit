@@ -7,18 +7,17 @@ on:
     types: [opened]
 
 permissions:
+  contents: read
   issues: write
   pull-requests: write
-  repository-projects: write
 
 jobs:
   add-to-project:
     runs-on: ubuntu-latest
     steps:
       - name: Add to project
-        uses: actions/add-to-project@v0.5.0
+        uses: actions/add-to-project@v1.0.2
         with:
-          # Replace with your project URL
-          # Example: https://github.com/orgs/YOUR_ORG/projects/1
+          # Configure this with: leo project setup
+          # Or manually set PROJECT_URL secret with your project URL
           project-url: ${{ secrets.PROJECT_URL }}
-          github-token: ${{ secrets.GH_PROJECT_TOKEN }}
