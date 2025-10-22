@@ -8,8 +8,8 @@ dist/
 *.swo
 *~
 
-# LEO config files (user preferences)
-.leorc.json
+# Ingvar config files (user preferences)
+.ingvarrc.json
 
 # Test and verification scripts (development only)
 smoke-test.sh

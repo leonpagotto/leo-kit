@@ -16,6 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add to project
-        uses: actions/add-to-project@v1.0.2
+        uses: actions/add-to-project@v0.6.1
         with:
           project-url: ${{ secrets.PROJECT_URL }}

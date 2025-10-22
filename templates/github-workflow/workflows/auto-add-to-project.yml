@@ -16,8 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add to project
-        uses: actions/add-to-project@v1.0.2
+        uses: actions/add-to-project@v0.6.1
         with:
           # Configure this with: leo project setup
           # Or manually set PROJECT_URL secret with your project URL
           project-url: ${{ secrets.PROJECT_URL }}
+          github-token: ${{ github.token }}

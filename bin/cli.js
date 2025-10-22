@@ -15,6 +15,7 @@ const configCommand = require('../lib/commands/config');
 const aiCommand = require('../lib/commands/ai');
 const agentCommand = require('../lib/commands/agent');
 const githubCommand = require('../lib/commands/github');
+const githubProjectCommand = require('../lib/commands/github-project');
 
 // Check if this is the first run and show welcome message
 if (isFirstRun()) {
@@ -120,6 +121,14 @@ program
   .option('-y, --yes', 'Skip confirmation prompts')
   .action((subcommand, options) => {
     githubCommand(subcommand, options);
+  });
+
+// GitHub Project command - Configure GitHub Projects integration
+program
+  .command('project <action>')
+  .description('Configure GitHub Projects integration (setup, test)')
+  .action((action, options) => {
+    githubProjectCommand(action, options);
   });
 
 // Status command - Check workflow setup status (simple)
