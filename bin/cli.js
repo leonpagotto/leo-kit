@@ -16,6 +16,7 @@ const aiCommand = require('../lib/commands/ai');
 const agentCommand = require('../lib/commands/agent');
 const githubCommand = require('../lib/commands/github');
 const githubProjectCommand = require('../lib/commands/github-project');
+const modelCommand = require('../lib/commands/model');
 
 // Check if this is the first run and show welcome message
 if (isFirstRun()) {
@@ -129,6 +130,14 @@ program
   .description('Configure GitHub Projects integration (setup, test)')
   .action((action, options) => {
     githubProjectCommand(action, options);
+  });
+
+// Model command - Manage AI model selection
+program
+  .command('model <subcommand> [args...]')
+  .description('Manage AI model selection (list, status, enable, disable, budget, usage, reset, test)')
+  .action((subcommand, args, options) => {
+    modelCommand(subcommand, ...args);
   });
 
 // Status command - Check workflow setup status (simple)
