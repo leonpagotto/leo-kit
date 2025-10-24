@@ -17,6 +17,7 @@ const agentCommand = require('../lib/commands/agent');
 const githubCommand = require('../lib/commands/github');
 const githubProjectCommand = require('../lib/commands/github-project');
 const modelCommand = require('../lib/commands/model');
+const DashboardCommands = require('../lib/commands/dashboard');
 
 // Check if this is the first run and show welcome message
 if (isFirstRun()) {
@@ -195,6 +196,35 @@ program
     const { exec } = require('child_process');
     console.log(chalk.cyan('\n📚 Opening documentation...\n'));
     exec('open https://github.com/leonpagotto/leo-kit#readme');
+  });
+
+// Dashboard command - Start real-time API server
+program
+  .command('dashboard')
+  .description('Start the real-time API server for dashboard access')
+  .option('-p, --port <number>', 'Server port (default: 3000)')
+  .option('--host <host>', 'Server host (default: localhost)')
+  .option('--project <path>', 'Project path (default: current directory)')
+  .action((options) => {
+    const subCommand = process.argv[3];
+
+    // Handle subcommands
+    if (subCommand === 'start' || !subCommand || subCommand.startsWith('-')) {
+      // Adjust for options if no explicit subcommand
+      if (subCommand === 'start') {
+        DashboardCommands.start(options);
+      } else {
+        DashboardCommands.start(options);
+      }
+    } else if (subCommand === 'stop') {
+      DashboardCommands.stop(options);
+    } else if (subCommand === 'status') {
+      DashboardCommands.status(options);
+    } else if (subCommand === 'open') {
+      DashboardCommands.open(options);
+    } else if (subCommand === 'docs') {
+      DashboardCommands.docs(options);
+    }
   });
 
 // Show banner on no command
