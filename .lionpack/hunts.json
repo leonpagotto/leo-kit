@@ -1,0 +1,618 @@
+[
+  {
+    "id": "hunt-1761318181140",
+    "featureName": "Dashboard",
+    "description": "Create admin dashboard",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/trio",
+    "status": "completed",
+    "currentPhase": "testing",
+    "currentRole": "charlie",
+    "startedAt": "2025-10-24T15:03:01.140Z",
+    "completedAt": "2025-10-24T15:03:01.140Z",
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "startTime": "2025-10-24T15:03:01.140Z",
+        "endTime": "2025-10-24T15:03:01.140Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:03:01.140Z",
+        "endTime": "2025-10-24T15:03:01.140Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "charlie",
+        "startTime": "2025-10-24T15:03:01.140Z",
+        "endTime": "2025-10-24T15:03:01.140Z",
+        "duration": 0
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318181144",
+    "featureName": "Mobile App",
+    "description": "Release iOS app",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/pack",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "diana",
+    "startedAt": "2025-10-24T15:03:01.144Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "assignee": "bob",
+        "startTime": "2025-10-24T15:03:01.144Z",
+        "endTime": "2025-10-24T15:03:01.145Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:03:01.145Z",
+        "endTime": "2025-10-24T15:03:01.145Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "diana",
+        "startTime": "2025-10-24T15:03:01.145Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318249698",
+    "featureName": "Dashboard",
+    "description": "Create admin dashboard",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/trio",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "charlie",
+    "startedAt": "2025-10-24T15:04:09.698Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "startTime": "2025-10-24T15:04:09.698Z",
+        "endTime": "2025-10-24T15:04:09.698Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:04:09.698Z",
+        "endTime": "2025-10-24T15:04:09.698Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "charlie",
+        "startTime": "2025-10-24T15:04:09.698Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318249703",
+    "featureName": "Mobile App",
+    "description": "Release iOS app",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/pack",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "diana",
+    "startedAt": "2025-10-24T15:04:09.703Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "assignee": "bob",
+        "startTime": "2025-10-24T15:04:09.703Z",
+        "endTime": "2025-10-24T15:04:09.703Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:04:09.703Z",
+        "endTime": "2025-10-24T15:04:09.703Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "diana",
+        "startTime": "2025-10-24T15:04:09.703Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318256874",
+    "featureName": "Dashboard",
+    "description": "Create admin dashboard",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/trio",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "charlie",
+    "startedAt": "2025-10-24T15:04:16.874Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "startTime": "2025-10-24T15:04:16.874Z",
+        "endTime": "2025-10-24T15:04:16.874Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:04:16.874Z",
+        "endTime": "2025-10-24T15:04:16.874Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "charlie",
+        "startTime": "2025-10-24T15:04:16.874Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318256878",
+    "featureName": "Mobile App",
+    "description": "Release iOS app",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/pack",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "diana",
+    "startedAt": "2025-10-24T15:04:16.878Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "assignee": "bob",
+        "startTime": "2025-10-24T15:04:16.878Z",
+        "endTime": "2025-10-24T15:04:16.878Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:04:16.878Z",
+        "endTime": "2025-10-24T15:04:16.878Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "diana",
+        "startTime": "2025-10-24T15:04:16.878Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318271971",
+    "featureName": "Dashboard",
+    "description": "Create admin dashboard",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/trio",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "charlie",
+    "startedAt": "2025-10-24T15:04:31.971Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "startTime": "2025-10-24T15:04:31.971Z",
+        "endTime": "2025-10-24T15:04:31.971Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:04:31.971Z",
+        "endTime": "2025-10-24T15:04:31.971Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "charlie",
+        "startTime": "2025-10-24T15:04:31.971Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318271987",
+    "featureName": "Mobile App",
+    "description": "Release iOS app",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/pack",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "diana",
+    "startedAt": "2025-10-24T15:04:31.987Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "assignee": "bob",
+        "startTime": "2025-10-24T15:04:31.987Z",
+        "endTime": "2025-10-24T15:04:31.987Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:04:31.987Z",
+        "endTime": "2025-10-24T15:04:31.987Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "diana",
+        "startTime": "2025-10-24T15:04:31.987Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318289364",
+    "featureName": "Dashboard",
+    "description": "Create admin dashboard",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/trio",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "charlie",
+    "startedAt": "2025-10-24T15:04:49.364Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "startTime": "2025-10-24T15:04:49.365Z",
+        "endTime": "2025-10-24T15:04:49.365Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:04:49.365Z",
+        "endTime": "2025-10-24T15:04:49.365Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "charlie",
+        "startTime": "2025-10-24T15:04:49.365Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318289371",
+    "featureName": "Mobile App",
+    "description": "Release iOS app",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/pack",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "diana",
+    "startedAt": "2025-10-24T15:04:49.371Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "assignee": "bob",
+        "startTime": "2025-10-24T15:04:49.371Z",
+        "endTime": "2025-10-24T15:04:49.371Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:04:49.371Z",
+        "endTime": "2025-10-24T15:04:49.371Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "diana",
+        "startTime": "2025-10-24T15:04:49.371Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318353039",
+    "featureName": "Dashboard",
+    "description": "Create admin dashboard",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/trio",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "charlie",
+    "startedAt": "2025-10-24T15:05:53.039Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "startTime": "2025-10-24T15:05:53.039Z",
+        "endTime": "2025-10-24T15:05:53.039Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:05:53.039Z",
+        "endTime": "2025-10-24T15:05:53.040Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "charlie",
+        "startTime": "2025-10-24T15:05:53.040Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318353044",
+    "featureName": "Mobile App",
+    "description": "Release iOS app",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/pack",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "diana",
+    "startedAt": "2025-10-24T15:05:53.044Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "assignee": "bob",
+        "startTime": "2025-10-24T15:05:53.044Z",
+        "endTime": "2025-10-24T15:05:53.044Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:05:53.044Z",
+        "endTime": "2025-10-24T15:05:53.044Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "diana",
+        "startTime": "2025-10-24T15:05:53.044Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318368334",
+    "featureName": "Dashboard",
+    "description": "Create admin dashboard",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/trio",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "charlie",
+    "startedAt": "2025-10-24T15:06:08.334Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "startTime": "2025-10-24T15:06:08.334Z",
+        "endTime": "2025-10-24T15:06:08.334Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:06:08.334Z",
+        "endTime": "2025-10-24T15:06:08.334Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "charlie",
+        "startTime": "2025-10-24T15:06:08.334Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318368340",
+    "featureName": "Mobile App",
+    "description": "Release iOS app",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/pack",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "diana",
+    "startedAt": "2025-10-24T15:06:08.340Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "assignee": "bob",
+        "startTime": "2025-10-24T15:06:08.340Z",
+        "endTime": "2025-10-24T15:06:08.340Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:06:08.340Z",
+        "endTime": "2025-10-24T15:06:08.340Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "diana",
+        "startTime": "2025-10-24T15:06:08.340Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318372025",
+    "featureName": "Dashboard",
+    "description": "Create admin dashboard",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/trio",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "charlie",
+    "startedAt": "2025-10-24T15:06:12.025Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "startTime": "2025-10-24T15:06:12.025Z",
+        "endTime": "2025-10-24T15:06:12.025Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:06:12.025Z",
+        "endTime": "2025-10-24T15:06:12.025Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "charlie",
+        "startTime": "2025-10-24T15:06:12.025Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761318372034",
+    "featureName": "Mobile App",
+    "description": "Release iOS app",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/pack",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "diana",
+    "startedAt": "2025-10-24T15:06:12.034Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "assignee": "bob",
+        "startTime": "2025-10-24T15:06:12.034Z",
+        "endTime": "2025-10-24T15:06:12.034Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T15:06:12.034Z",
+        "endTime": "2025-10-24T15:06:12.034Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "diana",
+        "startTime": "2025-10-24T15:06:12.034Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  }
+]

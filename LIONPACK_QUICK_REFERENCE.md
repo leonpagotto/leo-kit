@@ -15,12 +15,12 @@
 - **Seamless Coordination** - Team hunts together, not sequentially
 - **Velocity Tracking** - Measure team efficiency and performance
 
-| Role | Emoji | Focus | Duration | Key Skill |
-|------|-------|-------|----------|-----------|
-| Requirements Hunter | 🔍 | Define scope & criteria | 2-4h | Product thinking |
-| Spec Refiner | 📋 | Architecture & task breakdown | 4-8h | System design |
-| Implementation Hunter | 🎯 | Code implementation | 1-3 days | Programming |
-| QA & Testing | ✅ | Validate & verify | 2-4h | Quality mindset |
+| Role                  | Emoji | Focus                         | Duration | Key Skill        |
+| --------------------- | ----- | ----------------------------- | -------- | ---------------- |
+| Requirements Hunter   | 🔍    | Define scope & criteria       | 2-4h     | Product thinking |
+| Spec Refiner          | 📋    | Architecture & task breakdown | 4-8h     | System design    |
+| Implementation Hunter | 🎯    | Code implementation           | 1-3 days | Programming      |
+| QA & Testing          | ✅    | Validate & verify             | 2-4h     | Quality mindset  |
 
 ---
 
@@ -61,11 +61,11 @@ DONE: Hunt Complete! 🏆
 
 ### For Small Teams
 
-✅ **Clear Responsibilities** - Everyone knows their role  
-✅ **No Bottlenecks** - Roles work in parallel when possible  
-✅ **Fast Handoffs** - Automatic transitions < 5 minutes  
-✅ **High Quality** - Specialization leads to better code  
-✅ **Faster Velocity** - 45-60 hours per hunt cycle vs 80+ hours in unstructured teams  
+✅ **Clear Responsibilities** - Everyone knows their role
+✅ **No Bottlenecks** - Roles work in parallel when possible
+✅ **Fast Handoffs** - Automatic transitions < 5 minutes
+✅ **High Quality** - Specialization leads to better code
+✅ **Faster Velocity** - 45-60 hours per hunt cycle vs 80+ hours in unstructured teams
 
 ### Example: Building Authentication
 
@@ -100,6 +100,7 @@ Friday:
 **Mindset:** "What problem are we solving?"
 
 **Activities:**
+
 - Reads feature requests and specifications
 - Asks clarifying questions about requirements
 - Identifies edge cases and constraints
@@ -107,6 +108,7 @@ Friday:
 - Documents all assumptions
 
 **Deliverables:**
+
 - Requirements document with:
   - Clear problem statement
   - User stories and use cases
@@ -115,6 +117,7 @@ Friday:
   - Known edge cases
 
 **Handoff Signal:**
+
 ```
 ✅ Requirements complete - Ready for specification refinement
 ```
@@ -128,6 +131,7 @@ Friday:
 **Mindset:** "How do we build this?"
 
 **Activities:**
+
 - Reviews requirements document
 - Designs solution architecture
 - Creates detailed technical specification
@@ -136,6 +140,7 @@ Friday:
 - Prepares GitHub issues with acceptance criteria
 
 **Deliverables:**
+
 - Specification document with:
   - Architecture diagram/description
   - Technical design decisions
@@ -146,6 +151,7 @@ Friday:
   - Estimated effort (usually 20-50 hours total)
 
 **Handoff Signal:**
+
 ```
 ✅ Specification approved - Implementation ready
 
@@ -164,6 +170,7 @@ Creates 3-5 GitHub issues labeled:
 **Mindset:** "Let's build it!"
 
 **Activities:**
+
 - Picks next implementation issue
 - Codes based on spec and acceptance criteria
 - Writes tests (unit + integration)
@@ -172,6 +179,7 @@ Creates 3-5 GitHub issues labeled:
 - Responds to code review feedback
 
 **Deliverables:**
+
 - Pull request with:
   - Implemented feature/fix
   - Unit tests (80%+ coverage)
@@ -180,6 +188,7 @@ Creates 3-5 GitHub issues labeled:
   - Clear commit messages with issue references
 
 **Handoff Signal:**
+
 ```
 ✅ Implementation complete - Ready for testing
 
@@ -198,6 +207,7 @@ Creates PR with:
 **Mindset:** "Will this work for our users?"
 
 **Activities:**
+
 - Reviews PR against acceptance criteria
 - Tests implementation in test environment
 - Runs full acceptance test suite
@@ -206,6 +216,7 @@ Creates PR with:
 - Approves or requests changes
 
 **Deliverables:**
+
 - Code review with:
   - Acceptance criteria validation ✓
   - Edge case testing results
@@ -214,6 +225,7 @@ Creates PR with:
   - Approval to merge
 
 **Handoff Signal:**
+
 ```
 ✅ Testing approved - Ready to ship
 
@@ -228,22 +240,26 @@ Records metrics for hunt analytics
 ## 📊 Pack Configurations
 
 ### 🦁 Solo Lion (1 person)
+
 - All roles
 - Uses LionPack for personal automation
 - Lightweight team features
 
 ### 🦁🦁 Pair (2 people)
+
 - Person A: Requirements + Specs
 - Person B: Implementation + Testing
 - Flexible swapping based on workload
 
 ### 🦁🦁🦁 Small Pack (3 people) ⭐ RECOMMENDED
+
 - Person A: Requirements (spec input)
 - Person B: Specs (implementation input)
 - Person C: Implementation + Testing (can swap)
 - Optimal balance of specialization and flexibility
 
 ### 🦁🦁🦁🦁 Full Pack (4 people) ⭐ IDEAL
+
 - Person A: Requirements
 - Person B: Specifications
 - Person C: Implementation
@@ -263,6 +279,7 @@ lionpack team init
 ```
 
 You'll be asked to:
+
 - Name your pack (e.g., "Alpha Team")
 - Add team members (GitHub usernames)
 - Assign roles (requirements, spec, implementation, testing)
@@ -319,6 +336,7 @@ lionpack metrics roles
 ```
 
 Shows per role:
+
 - Tasks completed
 - Average time per task
 - Velocity trend
@@ -330,6 +348,7 @@ lionpack metrics velocity
 ```
 
 Shows:
+
 - Hunts completed (per month)
 - Average hunt duration
 - Trend (improving/declining)
@@ -341,6 +360,7 @@ lionpack metrics quality
 ```
 
 Shows:
+
 - Test coverage (target: > 80%)
 - Bug escape rate (target: < 5%)
 - Regressions (target: 0)
@@ -352,6 +372,7 @@ lionpack report
 ```
 
 Generates comprehensive report with:
+
 - All metrics
 - Recommendations for improvement
 - Bottleneck identification
@@ -364,12 +385,14 @@ Generates comprehensive report with:
 ### Scenario 1: Single Feature (4 days)
 
 **Monday 9am:**
+
 ```
 lionpack hunt start "User Profile Page"
 🔍 Alice (Requirements) starts analyzing
 ```
 
 **Monday 2pm:**
+
 ```
 ✅ Requirements complete!
 📋 Bob (Specs) picks up
@@ -377,12 +400,14 @@ Bob breaks it into: Backend API + Frontend Component + E2E Tests
 ```
 
 **Tuesday 9am:**
+
 ```
 ✅ Specification ready!
 🎯 Charlie (Implementation) starts coding
 ```
 
 **Wednesday 5pm:**
+
 ```
 ✅ Implementation done!
 Charlie opens PR with full test coverage
@@ -390,6 +415,7 @@ Charlie opens PR with full test coverage
 ```
 
 **Thursday 2pm:**
+
 ```
 ✅ All tests pass! Quality ✓
 PR merged. Issue closed.
@@ -397,6 +423,7 @@ Hunt complete! 🏆
 ```
 
 **Efficiency:**
+
 - Total time: 35 hours (vs 50-60 hours traditional)
 - Each person specialized in their role
 - Clear handoffs, minimal wait time
@@ -483,6 +510,7 @@ lionpack config set phases requirements,spec,implementation,staging,testing,depl
 ## 🦁 The Philosophy
 
 **Lions hunt in packs because:**
+
 - Alone, they fail 90% of hunts
 - In a pack of 4, they succeed 90% of hunts
 - Each member has a role in the strategy
@@ -497,8 +525,7 @@ Your team doesn't have to work in isolation or hope things go well. With clear r
 
 ---
 
-**Questions? Feedback? Contributions?**  
-📧 open an issue or discussion  
-⭐ Star the repo if you find LionPack useful  
+**Questions? Feedback? Contributions?**
+📧 open an issue or discussion
+⭐ Star the repo if you find LionPack useful
 🚀 Join the hunt!
-

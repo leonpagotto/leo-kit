@@ -4,8 +4,8 @@
 
 > This guide details how to implement LionPack's core systems: team management, role-based coordination, hunt cycles, and team analytics.
 
-**Document Version:** 1.0  
-**Status:** Implementation Guide  
+**Document Version:** 1.0
+**Status:** Implementation Guide
 **Target Audience:** Developers implementing LionPack
 
 ---
@@ -87,7 +87,7 @@ class TeamPack {
       autoHandoff: true,
       notifyRole: true,
       trackAnalytics: true,
-      huntCycleDays: 7
+      huntCycleDays: 7,
     };
   }
 
@@ -133,7 +133,7 @@ class TeamPack {
    * @returns {Object} member object
    */
   getMemberByRole(role) {
-    return this.members.find(m => m.role === role);
+    return this.members.find((m) => m.role === role);
   }
 
   /**
@@ -205,7 +205,7 @@ class HuntCycleTracker {
    * @param {string} nextRole
    */
   async transitionHunt(huntId, nextPhase, nextRole) {
-    const hunt = this.hunts.find(h => h.id === huntId);
+    const hunt = this.hunts.find((h) => h.id === huntId);
 
     // Validate phase transition
     // Create GitHub comment: "Phase complete"
@@ -219,7 +219,7 @@ class HuntCycleTracker {
       phase: nextPhase,
       assignee: nextRole,
       startTime: new Date(),
-      previousPhaseDuration: calculateDuration(hunt)
+      previousPhaseDuration: calculateDuration(hunt),
     });
 
     await this.save();
@@ -230,7 +230,7 @@ class HuntCycleTracker {
    * @param {string} huntId
    */
   async completeHunt(huntId) {
-    const hunt = this.hunts.find(h => h.id === huntId);
+    const hunt = this.hunts.find((h) => h.id === huntId);
 
     hunt.status = "completed";
     hunt.completedAt = new Date();
@@ -249,7 +249,7 @@ class HuntCycleTracker {
    * @returns {Array} active hunt objects
    */
   getActiveHunts() {
-    return this.hunts.filter(h => h.status !== "completed");
+    return this.hunts.filter((h) => h.status !== "completed");
   }
 
   /**
@@ -258,7 +258,7 @@ class HuntCycleTracker {
    * @returns {HuntCycle}
    */
   getHunt(huntId) {
-    return this.hunts.find(h => h.id === huntId);
+    return this.hunts.find((h) => h.id === huntId);
   }
 
   /**
@@ -301,15 +301,13 @@ class HandoffEngine {
     // 4. Update GitHub
     await updateGitHubIssue(issue.number, {
       assignees: [toMember.username],
-      labels: [
-        `phase-${toRole}`,
-        'pack-hunt',
-        'awaiting-' + toRole
-      ]
+      labels: [`phase-${toRole}`, "pack-hunt", "awaiting-" + toRole],
     });
 
     // 5. Add handoff comment
-    await addGitHubComment(issue.number, `
+    await addGitHubComment(
+      issue.number,
+      `
 🤝 **Handoff from ${fromRole} to ${toRole}**
 
 **${toMember.name}** - Your turn to hunt! 🦁
@@ -318,14 +316,15 @@ class HandoffEngine {
 ${formatContext(context)}
 
 ⏭️ Start with: Review phase output, proceed with your role's responsibilities.
-    `);
+    `
+    );
 
     // 6. Send notification
-    await notifyMember(toMember, 'handoff', {
+    await notifyMember(toMember, "handoff", {
       huntId,
       fromRole,
       issue: issue.number,
-      context
+      context,
     });
 
     // 7. Update tracker
@@ -337,9 +336,9 @@ ${formatContext(context)}
    * Auto-handoff workflow for requirements complete
    */
   static async onRequirementsComplete(huntId, context) {
-    return this.executeHandoff(huntId, 'requirements', 'spec', {
+    return this.executeHandoff(huntId, "requirements", "spec", {
       requirements: context.requirements,
-      acceptanceCriteria: context.acceptanceCriteria
+      acceptanceCriteria: context.acceptanceCriteria,
     });
   }
 
@@ -350,9 +349,9 @@ ${formatContext(context)}
     // Create implementation issues from spec
     const issues = await createImplementationIssues(context.tasks);
 
-    return this.executeHandoff(huntId, 'spec', 'implementation', {
+    return this.executeHandoff(huntId, "spec", "implementation", {
       implementationIssues: issues,
-      architecture: context.architecture
+      architecture: context.architecture,
     });
   }
 
@@ -360,10 +359,10 @@ ${formatContext(context)}
    * Auto-handoff workflow for implementation complete (PR ready)
    */
   static async onImplementationComplete(huntId, context) {
-    return this.executeHandoff(huntId, 'implementation', 'testing', {
+    return this.executeHandoff(huntId, "implementation", "testing", {
       pullRequest: context.pr,
       testCoverage: context.coverage,
-      acceptanceCriteria: context.criteria
+      acceptanceCriteria: context.criteria,
     });
   }
 
@@ -386,103 +385,103 @@ ${formatContext(context)}
 ```javascript
 const ROLES = {
   requirements: {
-    id: 'requirements',
-    name: 'Requirements Hunter',
-    emoji: '🔍',
-    description: 'Analyzes requirements and defines scope',
-    gitHubLabel: 'role-requirements',
-    aiAgent: 'requirements-analyzer',
-    estimatedDuration: '2-4 hours',
+    id: "requirements",
+    name: "Requirements Hunter",
+    emoji: "🔍",
+    description: "Analyzes requirements and defines scope",
+    gitHubLabel: "role-requirements",
+    aiAgent: "requirements-analyzer",
+    estimatedDuration: "2-4 hours",
     responsibilities: [
-      'Analyze user needs and business requirements',
-      'Define scope, constraints, and success criteria',
-      'Identify edge cases and non-functional requirements',
-      'Create initial problem statement'
+      "Analyze user needs and business requirements",
+      "Define scope, constraints, and success criteria",
+      "Identify edge cases and non-functional requirements",
+      "Create initial problem statement",
     ],
     keywordTriggers: [
-      'user story',
-      'requirement',
-      'scope',
-      'acceptance criteria',
-      'feature request'
-    ]
+      "user story",
+      "requirement",
+      "scope",
+      "acceptance criteria",
+      "feature request",
+    ],
   },
 
   spec: {
-    id: 'spec',
-    name: 'Specification Refiner',
-    emoji: '📋',
-    description: 'Creates specifications and prepares issues',
-    gitHubLabel: 'role-spec',
-    aiAgent: 'spec-master',
-    estimatedDuration: '4-8 hours',
+    id: "spec",
+    name: "Specification Refiner",
+    emoji: "📋",
+    description: "Creates specifications and prepares issues",
+    gitHubLabel: "role-spec",
+    aiAgent: "spec-master",
+    estimatedDuration: "4-8 hours",
     responsibilities: [
-      'Take requirements and create detailed specifications',
-      'Break down complex features into testable chunks',
-      'Prepare focused GitHub issues for implementation',
-      'Identify risks and dependencies',
-      'Create implementation roadmap'
+      "Take requirements and create detailed specifications",
+      "Break down complex features into testable chunks",
+      "Prepare focused GitHub issues for implementation",
+      "Identify risks and dependencies",
+      "Create implementation roadmap",
     ],
     keywordTriggers: [
-      'specification',
-      'spec',
-      'design',
-      'architecture',
-      'breakdown'
-    ]
+      "specification",
+      "spec",
+      "design",
+      "architecture",
+      "breakdown",
+    ],
   },
 
   implementation: {
-    id: 'implementation',
-    name: 'Implementation Hunter',
-    emoji: '🎯',
-    description: 'Codes features based on specifications',
-    gitHubLabel: 'role-implementation',
-    aiAgent: 'implementation-expert',
-    estimatedDuration: '1-3 days per task',
+    id: "implementation",
+    name: "Implementation Hunter",
+    emoji: "🎯",
+    description: "Codes features based on specifications",
+    gitHubLabel: "role-implementation",
+    aiAgent: "implementation-expert",
+    estimatedDuration: "1-3 days per task",
     responsibilities: [
-      'Code features based on specifications',
-      'Implement according to acceptance criteria',
-      'Make implementation decisions within spec boundaries',
-      'Create commits with clear traceability',
-      'Open pull requests with complete context'
+      "Code features based on specifications",
+      "Implement according to acceptance criteria",
+      "Make implementation decisions within spec boundaries",
+      "Create commits with clear traceability",
+      "Open pull requests with complete context",
     ],
     keywordTriggers: [
-      'implement',
-      'code',
-      'feature',
-      'component',
-      'API',
-      'backend',
-      'frontend'
-    ]
+      "implement",
+      "code",
+      "feature",
+      "component",
+      "API",
+      "backend",
+      "frontend",
+    ],
   },
 
   testing: {
-    id: 'testing',
-    name: 'QA & Testing Specialist',
-    emoji: '✅',
-    description: 'Tests and validates implementation',
-    gitHubLabel: 'role-testing',
-    aiAgent: 'qa-expert',
-    estimatedDuration: '2-4 hours per task',
+    id: "testing",
+    name: "QA & Testing Specialist",
+    emoji: "✅",
+    description: "Tests and validates implementation",
+    gitHubLabel: "role-testing",
+    aiAgent: "qa-expert",
+    estimatedDuration: "2-4 hours per task",
     responsibilities: [
-      'Test implementation against acceptance criteria',
-      'Validate edge cases defined in requirements',
-      'Verify no regressions',
-      'Review code quality and test coverage',
-      'Approve or request changes'
+      "Test implementation against acceptance criteria",
+      "Validate edge cases defined in requirements",
+      "Verify no regressions",
+      "Review code quality and test coverage",
+      "Approve or request changes",
     ],
     keywordTriggers: [
-      'test',
-      'verify',
-      'quality',
-      'coverage',
-      'regression',
-      'QA',
-      'testing'
-    ]
-  }
+      "test",
+      "verify",
+      "quality",
+      "coverage",
+      "regression",
+      "QA",
+      "testing",
+    ],
+  },
 };
 
 class RoleManager {
@@ -531,7 +530,7 @@ class RoleManager {
    * Get previous role in hunt cycle
    */
   static getPreviousRole(roleId) {
-    const sequence = ['requirements', 'spec', 'implementation', 'testing'];
+    const sequence = ["requirements", "spec", "implementation", "testing"];
     const index = sequence.indexOf(roleId);
     return index > 0 ? sequence[index - 1] : null;
   }
@@ -540,7 +539,7 @@ class RoleManager {
    * Get next role in hunt cycle
    */
   static getNextRole(roleId) {
-    const sequence = ['requirements', 'spec', 'implementation', 'testing'];
+    const sequence = ["requirements", "spec", "implementation", "testing"];
     const index = sequence.indexOf(roleId);
     return index < sequence.length - 1 ? sequence[index + 1] : null;
   }
@@ -564,8 +563,8 @@ class AnalyticsEngine {
       phases: {},
       totals: {
         totalDuration: 0,
-        phaseCount: hunt.phaseHistory.length
-      }
+        phaseCount: hunt.phaseHistory.length,
+      },
     };
 
     // Calculate metrics per phase
@@ -575,7 +574,7 @@ class AnalyticsEngine {
         duration,
         assignee: phase.assignee,
         startTime: phase.startTime,
-        endTime: phase.endTime
+        endTime: phase.endTime,
       };
       metrics.totals.totalDuration += duration;
     }
@@ -591,7 +590,9 @@ class AnalyticsEngine {
    */
   static async getPackVelocity(packName, months = 3) {
     const tracker = await HuntCycleTracker.load(packName);
-    const completedHunts = tracker.hunts.filter(h => h.status === 'completed');
+    const completedHunts = tracker.hunts.filter(
+      (h) => h.status === "completed"
+    );
 
     const huntsPerMonth = completedHunts.length / months;
 
@@ -599,7 +600,7 @@ class AnalyticsEngine {
       huntsCompleted: completedHunts.length,
       months,
       velocity: huntsPerMonth,
-      trend: calculateTrend(completedHunts)
+      trend: calculateTrend(completedHunts),
     };
   }
 
@@ -609,7 +610,9 @@ class AnalyticsEngine {
   static async getRoleUtilization(packName) {
     const pack = await TeamPack.load(packName);
     const tracker = await HuntCycleTracker.load(packName);
-    const completedHunts = tracker.hunts.filter(h => h.status === 'completed');
+    const completedHunts = tracker.hunts.filter(
+      (h) => h.status === "completed"
+    );
 
     const roleStats = {};
 
@@ -618,7 +621,7 @@ class AnalyticsEngine {
       let taskCount = 0;
 
       for (const hunt of completedHunts) {
-        const phaseData = hunt.phaseHistory.find(p => p.phase === role.id);
+        const phaseData = hunt.phaseHistory.find((p) => p.phase === role.id);
         if (phaseData) {
           totalTime += calculateDuration(phaseData);
           taskCount++;
@@ -629,7 +632,7 @@ class AnalyticsEngine {
         role: role.name,
         tasksCompleted: taskCount,
         totalTime,
-        averageTime: taskCount > 0 ? totalTime / taskCount : 0
+        averageTime: taskCount > 0 ? totalTime / taskCount : 0,
       };
     }
 
@@ -641,13 +644,15 @@ class AnalyticsEngine {
    */
   static async getQualityMetrics(packName) {
     const tracker = await HuntCycleTracker.load(packName);
-    const completedHunts = tracker.hunts.filter(h => h.status === 'completed');
+    const completedHunts = tracker.hunts.filter(
+      (h) => h.status === "completed"
+    );
 
     const metrics = {
       huntsCompleted: completedHunts.length,
       avgTestCoverage: 0,
       bugsFound: 0,
-      requirementsMissed: 0
+      requirementsMissed: 0,
     };
 
     for (const hunt of completedHunts) {
@@ -661,8 +666,8 @@ class AnalyticsEngine {
       }
 
       // Count bugs reported
-      metrics.bugsFound += issue.comments
-        ?.filter(c => c.includes('[bug]')).length || 0;
+      metrics.bugsFound +=
+        issue.comments?.filter((c) => c.includes("[bug]")).length || 0;
     }
 
     metrics.avgTestCoverage =
@@ -676,16 +681,16 @@ class AnalyticsEngine {
   /**
    * Generate team report
    */
-  static async generateTeamReport(packName, reportType = 'summary') {
+  static async generateTeamReport(packName, reportType = "summary") {
     const velocity = await this.getPackVelocity(packName);
     const utilization = await this.getRoleUtilization(packName);
     const quality = await this.getQualityMetrics(packName);
 
-    if (reportType === 'summary') {
+    if (reportType === "summary") {
       return { velocity, utilization, quality };
     }
 
-    if (reportType === 'detailed') {
+    if (reportType === "detailed") {
       return {
         velocity,
         utilization,
@@ -695,7 +700,7 @@ class AnalyticsEngine {
           velocity,
           utilization,
           quality
-        )
+        ),
       };
     }
   }
@@ -729,9 +734,9 @@ class AnalyticsEngine {
     }
 
     // Check velocity trend
-    if (velocity.trend === 'declining') {
+    if (velocity.trend === "declining") {
       recommendations.push(
-        '📉 Velocity is declining. Check for team blockers or increased complexity.'
+        "📉 Velocity is declining. Check for team blockers or increased complexity."
       );
     }
 
@@ -754,7 +759,7 @@ class HuntCycle {
     this.description = description;
     this.packName = packName;
 
-    this.status = 'pending'; // pending, in-progress, completed
+    this.status = "pending"; // pending, in-progress, completed
     this.currentPhase = null;
     this.currentRole = null;
 
@@ -768,7 +773,7 @@ class HuntCycle {
     this.metrics = {
       totalDuration: 0,
       testCoverage: 0,
-      qualityScore: 0
+      qualityScore: 0,
     };
   }
 
@@ -816,7 +821,7 @@ ${this.description}
 ```javascript
 class TeamPackConfig {
   constructor(packName, organization, repository) {
-    this.version = '1.0';
+    this.version = "1.0";
     this.packName = packName;
     this.organization = organization;
     this.repository = repository;
@@ -828,7 +833,7 @@ class TeamPackConfig {
       notifyRole: true,
       trackAnalytics: true,
       huntCycleDays: 7,
-      defaultLabels: ['pack-hunt', 'spec-driven']
+      defaultLabels: ["pack-hunt", "spec-driven"],
     };
 
     this.createdAt = new Date();
@@ -847,7 +852,7 @@ class TeamPackConfig {
       members: this.members,
       config: this.config,
       createdAt: this.createdAt,
-      updatedAt: this.updatedAt
+      updatedAt: this.updatedAt,
     };
   }
 
@@ -992,22 +997,25 @@ async function huntStart(options) {
   // Get hunt details
   const answers = await inquirer.prompt([
     {
-      type: 'input',
-      name: 'featureName',
-      message: 'Feature or task name:'
+      type: "input",
+      name: "featureName",
+      message: "Feature or task name:",
     },
     {
-      type: 'editor',
-      name: 'description',
-      message: 'Describe the feature (editor will open):'
-    }
+      type: "editor",
+      name: "description",
+      message: "Describe the feature (editor will open):",
+    },
   ]);
 
   // Create hunt
-  const hunt = await tracker.startHunt(answers.featureName, answers.description);
+  const hunt = await tracker.startHunt(
+    answers.featureName,
+    answers.description
+  );
 
   // Get first role member
-  const requirementsHunter = pack.getMemberByRole('requirements');
+  const requirementsHunter = pack.getMemberByRole("requirements");
 
   console.log(chalk.green(`\n✅ Hunt #${hunt.id} started!\n`));
   console.log(
@@ -1021,8 +1029,8 @@ async function huntStart(options) {
     title: `🦁 ${answers.featureName}`,
     body: hunt.toGitHubIssue(),
     assignees: [requirementsHunter.username],
-    labels: ['pack-hunt', 'phase-requirements'],
-    projectNumber: pack.config.projectNumber
+    labels: ["pack-hunt", "phase-requirements"],
+    projectNumber: pack.config.projectNumber,
   });
 
   hunt.githubIssue = issue.number;

@@ -18,6 +18,7 @@
 ### 2.1 Directory Structure Updates
 
 - [ ] Create `lib/team/` directory:
+
   - [ ] `pack.js` - TeamPack class
   - [ ] `tracker.js` - HuntCycleTracker class
   - [ ] `handoff.js` - HandoffEngine class
@@ -25,6 +26,7 @@
   - [ ] `analytics.js` - AnalyticsEngine class
 
 - [ ] Update `lib/agents/` directory:
+
   - [ ] `requirements-analyzer-template.js` - New role-specific agent
   - [ ] `spec-master-template.js` - New role-specific agent
   - [ ] `implementation-expert-template.js` - Adapt existing
@@ -33,6 +35,7 @@
   - [ ] Keep: `frontend-template.js`, `backend-template.js`, `devops-template.js`, `testing-template.js`
 
 - [ ] Create `lib/commands/` additions:
+
   - [ ] `team.js` - Team management (`lionpack team init`, `add`, `list`, etc.)
   - [ ] `hunt.js` - Hunt management (`lionpack hunt start`, `status`, `complete`)
   - [ ] `role.js` - Role management (`lionpack role assign`, `rotate`)
@@ -50,6 +53,7 @@
 ### 2.2 Package Metadata Updates
 
 - [ ] Update `package.json`:
+
   - [ ] `"name"`: `"leo-workflow-kit"` → `"@osp-group/lionpack"`
   - [ ] `"description"`: Update to LionPack description
   - [ ] `"keywords"`: Add `team`, `pack`, `coordination`, `hunting`, `roles`
@@ -106,6 +110,7 @@
 ### 3.1 Create Configuration System
 
 - [ ] Create `.lionpack.json` schema:
+
   ```json
   {
     "version": "1.0",
@@ -149,6 +154,7 @@
 ### 4.1 Labels & Automation
 
 - [ ] Create GitHub labels:
+
   ```
   pack-hunt                  # All hunt-related issues
   phase-requirements         # Requirements phase
@@ -175,7 +181,7 @@
 
 - [ ] Create project columns mapped to phases:
   ```
-  Backlog → Requirements → Specifications → 
+  Backlog → Requirements → Specifications →
   Implementation → Testing → Done
   ```
 - [ ] Auto-move issues between columns based on phase
@@ -188,24 +194,28 @@
 ### 5.1 Create Role-Based Agents
 
 - [ ] Requirements Analyzer Agent:
+
   - [ ] Define instruction template
   - [ ] Add to agent initialization
   - [ ] Create examples and guidelines
   - [ ] Add to orchestration routing
 
 - [ ] Specification Master Agent:
+
   - [ ] Define instruction template
   - [ ] Add spec breakdown guidelines
   - [ ] Add complexity estimation
   - [ ] Add issue generation logic
 
 - [ ] Implementation Expert Agent:
+
   - [ ] Define instruction template
   - [ ] Adapt existing frontend/backend agents
   - [ ] Add best practices enforcement
   - [ ] Add code generation examples
 
 - [ ] QA Expert Agent:
+
   - [ ] Define instruction template
   - [ ] Add test scenario generation
   - [ ] Add quality checks
@@ -232,6 +242,7 @@
 ### 6.1 Team Management
 
 - [ ] `lionpack team init`
+
   - [ ] Prompt for pack name
   - [ ] Collect team members and roles
   - [ ] Save .lionpack.json
@@ -240,11 +251,13 @@
   - [ ] Generate AI instruction files
 
 - [ ] `lionpack team list`
+
   - [ ] Show all members with roles
   - [ ] Show current workload
   - [ ] Show status
 
 - [ ] `lionpack team add @username`
+
   - [ ] Verify GitHub user
   - [ ] Add to .lionpack.json
   - [ ] Assign initial role
@@ -259,6 +272,7 @@
 ### 6.2 Hunt Management
 
 - [ ] `lionpack hunt start`
+
   - [ ] Prompt for feature name
   - [ ] Create GitHub issue
   - [ ] Create hunt cycle record
@@ -266,12 +280,14 @@
   - [ ] Start hunt cycle tracker
 
 - [ ] `lionpack hunt list`
+
   - [ ] Show all active hunts
   - [ ] Show current phase and assignee
   - [ ] Show estimated completion
   - [ ] Show progress
 
 - [ ] `lionpack hunt status <hunt-id>`
+
   - [ ] Show detailed hunt info
   - [ ] Show phase timeline
   - [ ] Show GitHub issue link
@@ -286,6 +302,7 @@
 ### 6.3 Role Management
 
 - [ ] `lionpack role assign @username <role>`
+
   - [ ] Validate role and user
   - [ ] Update .lionpack.json
   - [ ] Update GitHub labels
@@ -309,16 +326,19 @@
 ### 6.5 Metrics & Analytics
 
 - [ ] `lionpack metrics velocity [--months 3]`
+
   - [ ] Calculate hunts per month
   - [ ] Show trend
   - [ ] Show recommendations
 
 - [ ] `lionpack metrics roles`
+
   - [ ] Show utilization per role
   - [ ] Show average task duration
   - [ ] Identify bottlenecks
 
 - [ ] `lionpack metrics quality`
+
   - [ ] Show test coverage
   - [ ] Show bug escape rate
   - [ ] Show regression count
@@ -336,6 +356,7 @@
 ### 7.1 Main Documentation
 
 - [ ] Update `README.md`:
+
   - [ ] Change title to "🦁 LionPack"
   - [ ] Update description for team-based workflow
   - [ ] Update badges (npm package name, etc.)
@@ -346,6 +367,7 @@
   - [ ] Add team workflow examples
 
 - [ ] Update `CHANGELOG.md`:
+
   - [ ] Add v5.0.0 entry for LionPack launch
   - [ ] Document breaking changes from LEO
   - [ ] List all new features
@@ -413,6 +435,7 @@
 ### 9.1 Version Bumping
 
 - [ ] Update `package.json`:
+
   - [ ] Decide: v5.0.0 (major) or new package name
   - [ ] Consider: `@osp-group/lionpack` as separate package
 
@@ -511,20 +534,20 @@
 
 ## Effort & Timeline Estimation
 
-| Phase | Tasks | Effort | Timeline |
-|-------|-------|--------|----------|
-| 1. Documentation & Planning | 4 | ✅ DONE | DONE |
-| 2. Core Architecture | 25 | High | 2 weeks |
-| 3. Configuration & Data | 10 | Medium | 1 week |
-| 4. GitHub Integration | 15 | Medium | 1 week |
-| 5. AI Agent Integration | 20 | High | 2 weeks |
-| 6. Commands Implementation | 30 | High | 3 weeks |
-| 7. Documentation | 20 | Medium | 2 weeks |
-| 8. Testing & Quality | 25 | High | 2 weeks |
-| 9. Version & Release | 10 | Low | 1 week |
-| 10. Launch Prep | 15 | Medium | 2 weeks |
-| 11. Community & Beta | 15 | Medium | 2-4 weeks |
-| 12. Post-Launch | Ongoing | Varies | Ongoing |
+| Phase                       | Tasks   | Effort  | Timeline  |
+| --------------------------- | ------- | ------- | --------- |
+| 1. Documentation & Planning | 4       | ✅ DONE | DONE      |
+| 2. Core Architecture        | 25      | High    | 2 weeks   |
+| 3. Configuration & Data     | 10      | Medium  | 1 week    |
+| 4. GitHub Integration       | 15      | Medium  | 1 week    |
+| 5. AI Agent Integration     | 20      | High    | 2 weeks   |
+| 6. Commands Implementation  | 30      | High    | 3 weeks   |
+| 7. Documentation            | 20      | Medium  | 2 weeks   |
+| 8. Testing & Quality        | 25      | High    | 2 weeks   |
+| 9. Version & Release        | 10      | Low     | 1 week    |
+| 10. Launch Prep             | 15      | Medium  | 2 weeks   |
+| 11. Community & Beta        | 15      | Medium  | 2-4 weeks |
+| 12. Post-Launch             | Ongoing | Varies  | Ongoing   |
 
 **Total: ~200 tasks, 8-12 weeks for v5.0.0 release**
 
@@ -533,6 +556,7 @@
 ## Success Criteria
 
 ✅ **Functional Requirements:**
+
 - [ ] All 4 team roles fully implemented
 - [ ] Hunt cycle automation working end-to-end
 - [ ] GitHub integration syncing properly
@@ -541,6 +565,7 @@
 - [ ] AI agents routing correctly
 
 ✅ **Quality Requirements:**
+
 - [ ] 80%+ test coverage
 - [ ] Zero critical bugs in beta
 - [ ] All documentation complete
@@ -548,6 +573,7 @@
 - [ ] All examples working
 
 ✅ **Community Requirements:**
+
 - [ ] 50+ beta testers
 - [ ] Positive feedback from teams
 - [ ] No blocking issues reported
@@ -570,5 +596,5 @@
 
 ---
 
-*Last Updated: October 24, 2025*  
-*Maintainer: GitHub Copilot*
+_Last Updated: October 24, 2025_
+_Maintainer: GitHub Copilot_

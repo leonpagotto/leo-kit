@@ -677,9 +677,9 @@ Model selection settings are in `.leorc.json`:
     "enabled": true,
     "strategy": "auto",
     "budgets": {
-      "daily": 5.00,
-      "monthly": 50.00,
-      "per-agent": 10.00
+      "daily": 5.0,
+      "monthly": 50.0,
+      "per-agent": 10.0
     }
   }
 }

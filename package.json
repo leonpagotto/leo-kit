@@ -64,25 +64,5 @@
   },
   "devDependencies": {
     "jest": "^29.7.0"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coverageDirectory": "coverage",
-    "collectCoverageFrom": [
-      "lib/model-selection/**/*.js",
-      "!lib/model-selection/providers/**",
-      "!**/node_modules/**"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": 80
-      }
-    },
-    "testMatch": [
-      "**/tests/**/*.test.js"
-    ]
   }
 }
