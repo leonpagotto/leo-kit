@@ -7,10 +7,10 @@ const APIServer = require('../../lib/team/api-server');
 const request = require('supertest');
 
 // Mock dependencies
-jest.mock('../../lib/team/tracker.js');
-jest.mock('../../lib/team/pack.js');
-jest.mock('../../lib/team/analytics.js');
-jest.mock('../../lib/team/config-manager.js');
+jest.mock('../../lib/team/tracker');
+jest.mock('../../lib/team/pack');
+jest.mock('../../lib/team/analytics');
+jest.mock('../../lib/team/config-manager');
 
 describe('APIServer - API Integration Tests', () => {
   let server;

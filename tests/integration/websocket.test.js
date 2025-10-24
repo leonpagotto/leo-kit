@@ -13,10 +13,10 @@ jest.mock('socket.io', () => {
   }));
 });
 
-jest.mock('../../lib/team/tracker.js');
-jest.mock('../../lib/team/pack.js');
-jest.mock('../../lib/team/analytics.js');
-jest.mock('../../lib/team/config-manager.js');
+jest.mock('../../lib/team/tracker');
+jest.mock('../../lib/team/pack');
+jest.mock('../../lib/team/analytics');
+jest.mock('../../lib/team/config-manager');
 
 const APIServer = require('../../lib/team/api-server');
 const http = require('http');
