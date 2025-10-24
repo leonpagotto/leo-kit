@@ -26,8 +26,8 @@ if (isFirstRun()) {
 }
 
 program
-  .name('ingvar-workflow')
-  .description('Ingvar Workflow Kit - CLI tool for setting up GitHub Projects workflow with spec-driven development following Ingka Way of Working')
+  .name('leo-workflow')
+  .description('LEO Workflow Kit - CLI tool for setting up GitHub Projects workflow with spec-driven development following spec-driven development workflow')
   .version(packageJson.version);
 
 // Get responsive banner
@@ -36,7 +36,7 @@ const banner = getBanner();
 // Init command - Set up complete workflow in current project
 program
   .command('init')
-  .description('Initialize Ingvar workflow in current project')
+  .description('Initialize LEO workflow in current project')
   .option('-o, --org <organization>', 'GitHub organization name (optional for personal repos)')
   .option('-p, --project <number>', 'GitHub project number (optional)')
   .option('--skip-project', 'Skip GitHub Project setup entirely')
@@ -164,7 +164,7 @@ program
     });
 
     console.log();
-    console.log(chalk.gray('💡 Run `ingvar health` for comprehensive health check\n'));
+    console.log(chalk.gray('💡 Run `leo health` for comprehensive health check\n'));
   });
 
 // Health command - Comprehensive workflow health check
@@ -194,7 +194,7 @@ program
   .action(() => {
     const { exec } = require('child_process');
     console.log(chalk.cyan('\n📚 Opening documentation...\n'));
-    exec('open https://github.com/ingka-group/ingvar-kit#readme');
+    exec('open https://github.com/leonpagotto/leo-kit#readme');
   });
 
 // Show banner on no command
