@@ -18,6 +18,7 @@ const githubCommand = require('../lib/commands/github');
 const githubProjectCommand = require('../lib/commands/github-project');
 const modelCommand = require('../lib/commands/model');
 const DashboardCommands = require('../lib/commands/dashboard');
+const PluginCommands = require('../lib/commands/plugin');
 
 // Check if this is the first run and show welcome message
 if (isFirstRun()) {
@@ -224,6 +225,41 @@ program
       DashboardCommands.open(options);
     } else if (subCommand === 'docs') {
       DashboardCommands.docs(options);
+    }
+  });
+
+// Plugin command - Manage dashboard plugins
+program
+  .command('plugin [subcommand] [arg]')
+  .description('Manage LEO Dashboard plugins (list, info, install, start, stop, create)')
+  .action((subcommand, arg, options) => {
+    const cmd = subcommand || 'list';
+
+    if (cmd === 'list') {
+      PluginCommands.list(options);
+    } else if (cmd === 'info' && arg) {
+      PluginCommands.info(arg, options);
+    } else if (cmd === 'install' && arg) {
+      PluginCommands.install(arg, options);
+    } else if (cmd === 'start' && arg) {
+      PluginCommands.start(arg, options);
+    } else if (cmd === 'stop' && arg) {
+      PluginCommands.stop(arg, options);
+    } else if (cmd === 'uninstall' && arg) {
+      PluginCommands.uninstall(arg, options);
+    } else if (cmd === 'create' && arg) {
+      PluginCommands.create(arg, options);
+    } else {
+      console.log(chalk.cyan.bold('\n🔌 Plugin Commands\n'));
+      console.log(chalk.gray('Usage: leo plugin [subcommand] [arg]\n'));
+      console.log('Subcommands:');
+      console.log(chalk.gray('  list                  - List all plugins'));
+      console.log(chalk.gray('  info <name>           - Show plugin information'));
+      console.log(chalk.gray('  install <package>     - Install plugin from npm'));
+      console.log(chalk.gray('  start <name>          - Start a plugin'));
+      console.log(chalk.gray('  stop <name>           - Stop a plugin'));
+      console.log(chalk.gray('  uninstall <package>   - Uninstall plugin'));
+      console.log(chalk.gray('  create <name>         - Create plugin template\n'));
     }
   });
 
