@@ -1,7 +1,7 @@
 {
   "name": "leo-workflow-kit",
-  "version": "4.1.1",
-  "description": "LEO Workflow Kit - AI-powered CLI tool with multi-agent orchestration supporting 4 AI assistants (Copilot, Cursor, Cline, Codeium). Features intelligent task routing, specialized agents (Frontend, Backend, DevOps, Testing, Documentation), spec-first development, GitHub-native issue creation, and automatic GitHub Projects integration",
+  "version": "5.0.0",
+  "description": "LEO Workflow Kit 5.0.0 - Specification-Driven Development with AI Code Generation. Features: Specification system with Constitutional Governance, Claude 3.5 Sonnet AI code generation, REST API with WebSocket, Plugin architecture, Multi-agent orchestration (Orchestrator, Frontend, Backend, DevOps, Testing, Documentation). Production-ready with 49/49 tests passing (100%)",
   "main": "dist/index.js",
   "bin": {
     "leo-workflow": "bin/cli.js",

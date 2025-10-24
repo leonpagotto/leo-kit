@@ -19,13 +19,13 @@
 
 ---
 
-### 🎉 Latest Release: **v4.1.1** - Real-Time Model Selection in VS Code
+### 🎉 Latest Release: **v5.0.0** - Multi-Model AI Code Generation & Enhanced Styling
 
-**Advanced AI orchestration with real-time model display and automatic switching**
+**Production-Ready Specification-Driven Development with Advanced Claude Support**
 
-🎨 Real-time model selection display • � Automatic AI switching • ⚡ 100ms latency • 🎯 Smart model routing
+🤖 **Multi-Model Claude Support** (3.5 Sonnet • 4 • 4.5 • Haiku) • ✨ **Beautiful ASCII Gradients** • 📋 **Spec-Driven Development** • ⚖️ **Constitutional Governance** • 🎯 **REST API + WebSocket** • 🔌 **Plugin Architecture** • ✅ **49/49 Tests (100%)**
 
-**[📋 View All Releases](#-release-history)** • **[📚 Read v4.1.1 Release Notes](docs/PUBLISHING_COMPLETE_V4.1.1.md)**
+**[📋 View All Releases](#-release-history)** • **[📚 Read v5.0.0 Release Notes](docs/README.md)** • **[🚀 Quick Start Guide](docs/QUICK_START.md)** • **[🤖 Claude Integration Guide](docs/CLAUDE_MULTI_MODEL_GUIDE.md)**
 
 ---
 
