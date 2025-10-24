@@ -9,6 +9,7 @@ leo team init
 ```
 
 **Interactive prompts:**
+
 ```
 🦁 Initializing LionPack Team Setup
 
@@ -43,6 +44,7 @@ leo team add
 ```
 
 **Interactive prompts:**
+
 ```
 ? Team member username: carol
 ? Team member role:
@@ -65,6 +67,7 @@ leo team list
 ```
 
 **Output:**
+
 ```
 🦁 Project: My Awesome Project
    Organization: my-org / Repository: my-repo
@@ -87,6 +90,7 @@ leo team setupBoard
 ```
 
 **Output:**
+
 ```
 📊 GitHub Board Configuration
 
@@ -111,6 +115,7 @@ leo hunt start
 ```
 
 **Interactive prompts:**
+
 ```
 🦁 Starting New Hunt
 
@@ -139,6 +144,7 @@ leo hunt status hunt-ccf82a1b
 ```
 
 **Output:**
+
 ```
 ═══════════════════════════════════════════════════════════
   🦁 Add OAuth2 Authentication
@@ -167,6 +173,7 @@ leo hunt list
 ```
 
 **Output:**
+
 ```
 📊 All Hunts
 
@@ -187,6 +194,7 @@ leo hunt nextPhase hunt-ccf82a1b
 ```
 
 **Output:**
+
 ```
 ✅ Hunt transitioned!
 
@@ -206,6 +214,7 @@ leo hunt complete hunt-ccf82a1b
 ```
 
 **Output:**
+
 ```
 ✅ Hunt completed!
 
@@ -223,6 +232,7 @@ leo hunt analytics
 ```
 
 **Output:**
+
 ```
 📊 Team Analytics
 
@@ -495,24 +505,28 @@ leo hunt import archive-q4-2025.json
 ## Common Issues & Solutions
 
 ### "Configuration not found"
+
 ```bash
 cd project-root
 leo team init  # Create initial configuration
 ```
 
 ### "Hunt not found"
+
 ```bash
 leo hunt list  # See all hunt IDs
 leo hunt status hunt-correct-id
 ```
 
 ### "Role not available"
+
 ```bash
 leo team add  # Add member with that role
 leo team list  # Verify team setup
 ```
 
 ### "Workflow mismatch"
+
 ```bash
 leo team list  # Check current workflow
 # Workflow auto-adapts when members added/removed
@@ -523,16 +537,19 @@ leo team list  # Check current workflow
 ## Next Steps
 
 1. **Start your first hunt**
+
    ```bash
    leo hunt start
    ```
 
 2. **Setup GitHub board** (Phase 3)
+
    ```bash
    ./setup-board.sh
    ```
 
 3. **Track team velocity** (Phase 3)
+
    ```bash
    leo hunt analytics
    ```
@@ -544,6 +561,6 @@ leo team list  # Check current workflow
 
 ---
 
-**Version**: LionPack v5.0.0  
-**Last Updated**: October 24, 2025  
+**Version**: LionPack v5.0.0
+**Last Updated**: October 24, 2025
 **Status**: Production Ready ✅
