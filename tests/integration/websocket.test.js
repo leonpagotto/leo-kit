@@ -13,10 +13,10 @@ jest.mock('socket.io', () => {
   }));
 });
 
-jest.mock('../../lib/team/tracker');
-jest.mock('../../lib/team/pack');
-jest.mock('../../lib/team/analytics');
-jest.mock('../../lib/team/config-manager');
+jest.mock('../../lib/team/tracker.js');
+jest.mock('../../lib/team/pack.js');
+jest.mock('../../lib/team/analytics.js');
+jest.mock('../../lib/team/config-manager.js');
 
 const APIServer = require('../../lib/team/api-server');
 const http = require('http');
@@ -30,7 +30,7 @@ describe('WebSocket - Connection Handling', () => {
     server._setupMiddleware();
     server._setupRoutes();
     server._setupWebSocket();
-    
+
     server.team = { members: [] };
     server.tracker = { hunts: [] };
   });
@@ -406,7 +406,7 @@ describe('WebSocket - Client Subscriptions', () => {
     server._handleConnection(mockSocket);
 
     const emitCalls = mockSocket.emit.mock.calls;
-    const hasHuntData = emitCalls.some(call => 
+    const hasHuntData = emitCalls.some(call =>
       call[0] === 'initial:state' && call[1].hunts
     );
 

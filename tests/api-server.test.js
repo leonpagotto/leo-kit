@@ -9,10 +9,10 @@ const path = require('path');
 const fs = require('fs');
 
 // Mock dependencies
-jest.mock('../../lib/team/tracker');
-jest.mock('../../lib/team/pack');
-jest.mock('../../lib/team/analytics');
-jest.mock('../../lib/team/config-manager');
+jest.mock('../../lib/team/tracker.js');
+jest.mock('../../lib/team/pack.js');
+jest.mock('../../lib/team/analytics.js');
+jest.mock('../../lib/team/config-manager.js');
 
 describe('APIServer - Constructor', () => {
   test('should initialize with default config', () => {
