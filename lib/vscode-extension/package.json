@@ -1,0 +1,57 @@
+{
+  "name": "leo-model-selector",
+  "displayName": "LEO Model Selector",
+  "description": "Real-time display of AI model selection during LEO workflow execution in VS Code status bar",
+  "version": "1.0.0",
+  "publisher": "leo-workflow",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "leo",
+    "ai",
+    "model",
+    "orchestration",
+    "status",
+    "workflow"
+  ],
+  "main": "./model-selector.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "leo-model-selector.showModelInfo",
+        "title": "LEO: Show Current Model Info",
+        "description": "Display information about the currently active model"
+      },
+      {
+        "command": "leo-model-selector.selectModel",
+        "title": "LEO: Select Model Preference",
+        "description": "Choose preferred model for next LEO task"
+      },
+      {
+        "command": "leo-model-selector.showHistory",
+        "title": "LEO: Show Model History",
+        "description": "View recent model selection history"
+      }
+    ],
+    "statusBar": [
+      {
+        "id": "leo-model-selector-status",
+        "alignment": "right",
+        "priority": 100
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/osp-group/workflow-cli.git"
+  },
+  "author": "LEO Team",
+  "license": "MIT"
+}
