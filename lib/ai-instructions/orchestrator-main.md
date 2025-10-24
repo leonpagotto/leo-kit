@@ -244,6 +244,95 @@ Each agent is a specialist with its own instruction file and expertise:
 
 ---
 
+## 🤖 Dynamic Model Selection by Agent
+
+**IMPORTANT:** The system automatically selects the optimal AI model for each agent based on:
+
+1. **Agent type** - Different agents need different model strengths
+2. **Task complexity** - Simple tasks use efficient models, complex use powerful models
+3. **Phase** - Development uses cost-efficient, production uses powerful models
+4. **Budget** - Respects token budgets to avoid overspending
+
+### Agent-Specific Model Preferences
+
+```javascript
+orchestrator:
+  Primary: GPT-4, GPT-4-Turbo
+  Why: Strong reasoning needed for task routing and multi-agent coordination
+  Cost: Medium
+
+🎨 Designer Agent:
+  Primary: Claude-3-Sonnet, GPT-4-Turbo
+  Fallback: Claude-3-Haiku
+  Why: Design requires good creative sense, but rapid iteration matters
+  Cost: Low-Medium (designs are cheap to iterate)
+
+💻 Frontend Agent:
+  Primary: Claude-3-Sonnet, GPT-4-Turbo
+  Fallback: Claude-3-Haiku, GPT-3.5-Turbo
+  Why: UI/UX needs good design sense + React/Vue expertise
+  Cost: Low-Medium
+
+🔧 Backend Agent:
+  Primary: Claude-3-Opus, Claude-3-Sonnet, GPT-4
+  Fallback: GPT-3.5-Turbo
+  Why: Complex logic, API design, database optimization requires power
+  Cost: Medium
+
+🧪 Testing Agent:
+  Primary: Claude-3-Sonnet, GPT-4-Turbo
+  Fallback: GPT-3.5-Turbo
+  Why: Test generation and edge case analysis benefits from reasoning
+  Cost: Low-Medium
+
+📚 Documentation Agent:
+  Primary: GPT-3.5-Turbo, Claude-3-Haiku
+  Fallback: GPT-3.5-Turbo
+  Why: Content generation is straightforward, cost-effectiveness matters
+  Cost: Low ✅ (Cheapest)
+
+🚀 DevOps Agent:
+  Primary: GPT-4-Turbo, GPT-3.5-Turbo
+  Fallback: GPT-3.5-Turbo
+  Why: Infrastructure scripts are critical but mostly straightforward
+  Cost: Low-Medium
+```
+
+### How It Works (Automatic)
+
+1. **You route to Designer Agent** → System selects Claude-3-Sonnet (fast iteration)
+2. **You route to Frontend Agent** → System selects Claude-3-Sonnet or GPT-4-Turbo
+3. **You route to Backend Agent** → System selects Claude-3-Opus (complex logic)
+4. **You route to Documentation Agent** → System selects GPT-3.5-Turbo (cost-efficient)
+
+**You don't choose models - the system optimizes automatically!**
+
+### Budget Tracking
+
+```
+Daily Budget: $5
+Monthly Budget: $50
+Per-Agent Budget: $10
+
+The system tracks usage and automatically:
+- Falls back to cheaper models if budget exceeded
+- Logs usage for transparency
+- Warns if approaching limits
+```
+
+### For AI Assistants (Copilot, Cline, Cursor)
+
+You don't manually select models. The system:
+
+1. Detects which agent you're being asked to perform
+2. Automatically selects the best model for that agent
+3. Routes your request to the selected model
+4. Tracks costs and respects budgets
+
+**Result:** Right model for right job, automatically.
+
+---
+
 ## Multi-Agent Coordination
 
 ### Coordination Pattern: Sequential Handoff

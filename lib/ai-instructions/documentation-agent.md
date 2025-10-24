@@ -11,6 +11,7 @@
 ## 🎯 Documentation Agent Workflow
 
 ### Input from Upstream Agents
+
 - ✅ Final implemented code
 - ✅ API endpoints and schemas
 - ✅ Component Storybook stories
@@ -20,6 +21,7 @@
 - ✅ Acceptance criteria from issue
 
 ### Output Deliverables
+
 - ✅ User guide / getting started
 - ✅ API documentation
 - ✅ Component documentation
@@ -41,21 +43,25 @@
 # Using the Checkout Feature
 
 ## Overview
+
 The checkout feature allows customers to complete purchases securely.
 
 ## Getting Started
 
 ### Step 1: Add Items to Cart
+
 1. Browse products
 2. Click "Add to Cart"
 3. Qty automatically updates
 
 ### Step 2: Review Cart
+
 1. Click cart icon
 2. Review items
 3. Update quantities if needed
 
 ### Step 3: Complete Checkout
+
 1. Click "Checkout"
 2. Enter email and payment info
 3. Review order summary
@@ -65,12 +71,14 @@ The checkout feature allows customers to complete purchases securely.
 ## Common Tasks
 
 ### How do I apply a discount code?
+
 1. At checkout, look for "Discount Code" field
 2. Enter code
 3. Click "Apply"
 4. Discount applies automatically
 
 ### What payment methods do you accept?
+
 - Credit/Debit cards (Visa, Mastercard, Amex)
 - Apple Pay
 - Google Pay
@@ -79,14 +87,18 @@ The checkout feature allows customers to complete purchases securely.
 ## Troubleshooting
 
 ### My checkout keeps failing
+
 **Solution:** Try these steps:
+
 1. Clear browser cache
 2. Use a different browser
 3. Ensure card details are correct
 4. Contact support if issue persists
 
 ### I didn't receive confirmation email
+
 **Solution:**
+
 1. Check spam folder
 2. Wait 5 minutes (emails may be delayed)
 3. Resend confirmation from order page
@@ -99,12 +111,13 @@ The checkout feature allows customers to complete purchases securely.
 
 **Purpose:** Help developers integrate with the feature
 
-```markdown
+````markdown
 # Checkout API Documentation
 
 ## Endpoints
 
 ### Create Order
+
 ```bash
 POST /api/orders
 
@@ -125,8 +138,10 @@ Response (201):
   "createdAt": "2025-10-24T10:00:00Z"
 }
 ```
+````
 
 ### Process Payment
+
 ```bash
 POST /api/payments
 
@@ -146,6 +161,7 @@ Response (200):
 ```
 
 ### Get Order Status
+
 ```bash
 GET /api/orders/:orderId
 
@@ -160,17 +176,19 @@ Response (200):
 
 ## Error Handling
 
-| Code | Error | Solution |
-|------|-------|----------|
-| 400 | Missing required fields | Provide all required fields |
-| 401 | Unauthorized | Include valid auth token |
-| 422 | Invalid email format | Provide valid email |
-| 500 | Server error | Retry or contact support |
+| Code | Error                   | Solution                    |
+| ---- | ----------------------- | --------------------------- |
+| 400  | Missing required fields | Provide all required fields |
+| 401  | Unauthorized            | Include valid auth token    |
+| 422  | Invalid email format    | Provide valid email         |
+| 500  | Server error            | Retry or contact support    |
 
 ## Rate Limiting
+
 - 100 requests per minute
 - Returns `429 Too Many Requests` when exceeded
-```
+
+````
 
 ---
 
@@ -195,22 +213,22 @@ function MyApp() {
   };
 
   return (
-    <CheckoutForm 
+    <CheckoutForm
       onSubmit={handleSubmit}
       onCancel={() => navigate('/cart')}
     />
   );
 }
-```
+````
 
 ## Props
 
-| Prop | Type | Required | Description |
-|------|------|----------|-------------|
-| `onSubmit` | Function | Yes | Called with form data on submit |
-| `onCancel` | Function | No | Called when user cancels |
-| `initialData` | Object | No | Pre-fill form fields |
-| `disabled` | Boolean | No | Disable entire form |
+| Prop          | Type     | Required | Description                     |
+| ------------- | -------- | -------- | ------------------------------- |
+| `onSubmit`    | Function | Yes      | Called with form data on submit |
+| `onCancel`    | Function | No       | Called when user cancels        |
+| `initialData` | Object   | No       | Pre-fill form fields            |
+| `disabled`    | Boolean  | No       | Disable entire form             |
 
 ## Events
 
@@ -222,13 +240,11 @@ function MyApp() {
 
 ```jsx
 // Custom styling
-<CheckoutForm 
-  className="my-checkout"
-  buttonClassName="custom-button"
-/>
+<CheckoutForm className="my-checkout" buttonClassName="custom-button" />
 ```
 
 CSS classes available:
+
 - `.checkout-form`
 - `.checkout-form__field`
 - `.checkout-form__button`
@@ -237,28 +253,29 @@ CSS classes available:
 ## Examples
 
 ### Basic Usage
+
 ```jsx
 <CheckoutForm onSubmit={handleSubmit} />
 ```
 
 ### With Initial Data
+
 ```jsx
-<CheckoutForm 
+<CheckoutForm
   onSubmit={handleSubmit}
   initialData={{
-    email: 'user@example.com'
+    email: "user@example.com",
   }}
 />
 ```
 
 ### Disabled State
+
 ```jsx
-<CheckoutForm 
-  onSubmit={handleSubmit}
-  disabled={isProcessing}
-/>
+<CheckoutForm onSubmit={handleSubmit} disabled={isProcessing} />
 ```
-```
+
+````
 
 ---
 
@@ -277,23 +294,25 @@ The checkout feature is built with a 3-tier architecture:
 
 ## Data Flow
 
-```
+````
+
 User fills form
-    ↓
+↓
 Frontend validates
-    ↓
+↓
 Frontend calls POST /api/orders
-    ↓
+↓
 Backend validates data
-    ↓
+↓
 Backend creates Order record
-    ↓
+↓
 Backend processes payment
-    ↓
+↓
 Backend sends confirmation email
-    ↓
+↓
 Frontend shows success page
-```
+
+````
 
 ## Database Schema
 
@@ -324,15 +343,17 @@ CREATE TABLE order_items (
   quantity INT,
   price DECIMAL(10, 2)
 );
-```
+````
 
 ## Security Considerations
 
 1. **Payment Data:** Never store raw credit card data
+
    - Use payment token (Stripe, Square)
    - PCI-DSS compliant
 
 2. **Authentication:** All checkout API routes require auth
+
    - JWT token in Authorization header
    - Rate limit by user
 
@@ -352,7 +373,8 @@ CREATE TABLE order_items (
 - Client errors (4xx): Return validation message
 - Server errors (5xx): Log and retry with exponential backoff
 - Payment failures: Return to cart with error message
-```
+
+````
 
 ---
 
@@ -447,7 +469,7 @@ Include:
 - Order ID (if you have it)
 - What you were trying to do
 - Error message (screenshot helpful)
-```
+````
 
 ---
 
@@ -524,18 +546,21 @@ Before considering documentation complete:
 ## 🎯 Documentation Standards
 
 ### Writing Style
+
 - **Tone:** Friendly, helpful, non-technical
 - **Structure:** Short sentences, bullet points
 - **Examples:** Every feature has at least one example
 - **Clarity:** Define technical terms when first used
 
 ### Code Examples
+
 - ✅ Tested and working
 - ✅ Include imports
 - ✅ Show both success and error cases
 - ✅ Include comments explaining key lines
 
 ### Organization
+
 ```
 README
 ├── Overview (1 paragraph)
@@ -555,47 +580,58 @@ README
 # Feature Name
 
 ## Overview
+
 One paragraph explaining what this feature does and why users care.
 
 ## Getting Started
 
 ### Prerequisites
+
 - Item 1
 - Item 2
 
 ### Installation/Setup
+
 Step-by-step instructions
 
 ### First Use
+
 Simple example
 
 ## How-To Guides
 
 ### Task 1
+
 Steps with screenshots
 
 ### Task 2
+
 Steps with screenshots
 
 ## Reference
 
 ### API Endpoints
+
 Detailed endpoint documentation
 
 ### Configuration Options
+
 All options explained
 
 ## Examples
 
 ### Example 1
+
 Code + explanation
 
 ### Example 2
+
 Code + explanation
 
 ## Troubleshooting
 
 ### Problem 1
+
 Symptoms, causes, solutions
 
 ## FAQ
@@ -626,13 +662,13 @@ A: Answer
 
 Track these to measure documentation quality:
 
-| Metric | Target | Why |
-|--------|--------|-----|
-| Time to first success | < 15 min | Users should get value quickly |
-| Docs viewed per visit | > 2 pages | Info should cross-link |
-| Search success rate | > 80% | Users finding what they need |
-| Support tickets reduced | > 20% | Good docs prevent questions |
-| User satisfaction | > 4/5 stars | Docs should be helpful |
+| Metric                  | Target      | Why                            |
+| ----------------------- | ----------- | ------------------------------ |
+| Time to first success   | < 15 min    | Users should get value quickly |
+| Docs viewed per visit   | > 2 pages   | Info should cross-link         |
+| Search success rate     | > 80%       | Users finding what they need   |
+| Support tickets reduced | > 20%       | Good docs prevent questions    |
+| User satisfaction       | > 4/5 stars | Docs should be helpful         |
 
 ---
 

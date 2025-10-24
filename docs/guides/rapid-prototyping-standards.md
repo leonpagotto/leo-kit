@@ -63,12 +63,12 @@ src/
 
 ```javascript
 // Button.jsx
-import styles from './Button.module.css';
+import styles from "./Button.module.css";
 
 /**
  * @component
  * Button component for actions and navigation
- * 
+ *
  * @param {Object} props
  * @param {'primary'|'secondary'|'danger'} props.variant - Visual variant
  * @param {'sm'|'md'|'lg'} props.size - Button size
@@ -78,22 +78,22 @@ import styles from './Button.module.css';
  * @param {function} props.onClick - Click handler
  */
 export function Button({
-  variant = 'primary',
-  size = 'md',
+  variant = "primary",
+  size = "md",
   disabled = false,
   loading = false,
   children,
   onClick,
-  className = '',
+  className = "",
 }) {
   const classNames = `
     ${styles.button}
     ${styles[`variant-${variant}`]}
     ${styles[`size-${size}`]}
-    ${disabled || loading ? styles.disabled : ''}
+    ${disabled || loading ? styles.disabled : ""}
     ${className}
   `;
-  
+
   return (
     <button
       className={classNames}
@@ -116,6 +116,7 @@ export default Button;
 ### Component Naming
 
 **PascalCase for components:**
+
 ```
 ✅ Button, ProfileCard, UserAvatar, FormInput
 ❌ button, profileCard, user-avatar, form_input
@@ -124,6 +125,7 @@ export default Button;
 ### Prop Naming
 
 **camelCase for props:**
+
 ```javascript
 ✅ onClick, onHover, isActive, hasError
 ❌ on-click, OnClick, on_click, has_error
@@ -132,23 +134,41 @@ export default Button;
 ### CSS Class Naming
 
 **Use CSS Modules with BEM for specificity:**
+
 ```css
 /* Button.module.css */
-.button { /* base */ }
-.button--primary { /* variant */ }
-.button--lg { /* modifier */ }
-.button:disabled { /* state */ }
+.button {
+  /* base */
+}
+.button--primary {
+  /* variant */
+}
+.button--lg {
+  /* modifier */
+}
+.button:disabled {
+  /* state */
+}
 
 /* Or with camelCase */
-.button { /* base */ }
-.buttonPrimary { /* variant */ }
-.buttonLarge { /* size */ }
-.buttonDisabled { /* state */ }
+.button {
+  /* base */
+}
+.buttonPrimary {
+  /* variant */
+}
+.buttonLarge {
+  /* size */
+}
+.buttonDisabled {
+  /* state */
+}
 ```
 
 ### File Naming
 
 **Match component name:**
+
 ```
 Button/
 ├── Button.jsx              # Component
@@ -166,11 +186,11 @@ Button/
 
 ```javascript
 // Input.jsx
-import styles from './Input.module.css';
+import styles from "./Input.module.css";
 
 export function Input({
-  type = 'text',
-  placeholder = '',
+  type = "text",
+  placeholder = "",
   value,
   onChange,
   disabled = false,
@@ -194,7 +214,7 @@ export function Input({
         onChange={onChange}
         disabled={disabled}
         aria-invalid={!!error}
-        className={`${styles.input} ${error ? styles.error : ''}`}
+        className={`${styles.input} ${error ? styles.error : ""}`}
         {...props}
       />
       {error && <span className={styles.errorMessage}>{error}</span>}
@@ -207,7 +227,7 @@ export function Input({
 
 ```javascript
 // Card.jsx
-export function Card({ children, className = '', ...props }) {
+export function Card({ children, className = "", ...props }) {
   return (
     <div className={`${styles.card} ${className}`} {...props}>
       {children}
@@ -219,7 +239,7 @@ export function Card({ children, className = '', ...props }) {
 <Card className="p-4">
   <h3>Title</h3>
   <p>Content</p>
-</Card>
+</Card>;
 ```
 
 ### Pattern 3: List Component with Items
@@ -243,7 +263,7 @@ export function List({ items, renderItem, keyExtractor }) {
   items={users}
   keyExtractor={(user) => user.id}
   renderItem={(user) => <UserCard user={user} />}
-/>
+/>;
 ```
 
 ### Pattern 4: Modal Component
@@ -252,13 +272,15 @@ export function List({ items, renderItem, keyExtractor }) {
 // Modal.jsx
 export function Modal({ isOpen, onClose, title, children }) {
   if (!isOpen) return null;
-  
+
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
           <h2>{title}</h2>
-          <button onClick={onClose} aria-label="Close">✕</button>
+          <button onClick={onClose} aria-label="Close">
+            ✕
+          </button>
         </div>
         <div className={styles.content}>{children}</div>
       </div>
@@ -360,28 +382,28 @@ DataTable
 export const colors = {
   // Primary palette
   primary: {
-    50: '#f0f9ff',
-    100: '#e0f2fe',
-    200: '#bae6fd',
-    500: '#0ea5e9',    // Main
-    600: '#0284c7',
-    900: '#0c2d6b',
+    50: "#f0f9ff",
+    100: "#e0f2fe",
+    200: "#bae6fd",
+    500: "#0ea5e9", // Main
+    600: "#0284c7",
+    900: "#0c2d6b",
   },
-  
+
   // Semantic colors
-  success: '#10b981',
-  error: '#ef4444',
-  warning: '#f59e0b',
-  info: '#3b82f6',
-  
+  success: "#10b981",
+  error: "#ef4444",
+  warning: "#f59e0b",
+  info: "#3b82f6",
+
   // Neutral
-  white: '#ffffff',
-  black: '#000000',
+  white: "#ffffff",
+  black: "#000000",
   gray: {
-    50: '#f9fafb',
-    100: '#f3f4f6',
-    500: '#6b7280',
-    900: '#111827',
+    50: "#f9fafb",
+    100: "#f3f4f6",
+    500: "#6b7280",
+    900: "#111827",
   },
 };
 ```
@@ -395,18 +417,18 @@ export const typography = {
     sans: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
     mono: '"SF Mono", Monaco, "Cascadia Code", monospace',
   },
-  
+
   fontSize: {
-    xs: '12px',
-    sm: '14px',
-    base: '16px',
-    lg: '18px',
-    xl: '20px',
-    '2xl': '24px',
-    '3xl': '30px',
-    '4xl': '36px',
+    xs: "12px",
+    sm: "14px",
+    base: "16px",
+    lg: "18px",
+    xl: "20px",
+    "2xl": "24px",
+    "3xl": "30px",
+    "4xl": "36px",
   },
-  
+
   fontWeight: {
     light: 300,
     normal: 400,
@@ -414,7 +436,7 @@ export const typography = {
     semibold: 600,
     bold: 700,
   },
-  
+
   lineHeight: {
     tight: 1.2,
     normal: 1.5,
@@ -428,16 +450,16 @@ export const typography = {
 ```javascript
 // src/tokens/spacing.js
 export const spacing = {
-  0: '0',
-  1: '4px',
-  2: '8px',
-  3: '12px',
-  4: '16px',
-  5: '20px',
-  6: '24px',
-  8: '32px',
-  10: '40px',
-  12: '48px',
+  0: "0",
+  1: "4px",
+  2: "8px",
+  3: "12px",
+  4: "16px",
+  5: "20px",
+  6: "24px",
+  8: "32px",
+  10: "40px",
+  12: "48px",
 };
 ```
 
@@ -448,14 +470,16 @@ export const spacing = {
 ### Fast Component Workflow (Target: 5-10 min per component)
 
 **Step 1: Define Props (2 min)**
+
 ```javascript
 // Write prop interface first
-const Button = ({ variant = 'primary', size = 'md', children, onClick }) => {
+const Button = ({ variant = "primary", size = "md", children, onClick }) => {
   // ...
-}
+};
 ```
 
 **Step 2: Write JSX (3 min)**
+
 ```javascript
 return (
   <button className={`btn btn-${variant} btn-${size}`} onClick={onClick}>
@@ -465,16 +489,24 @@ return (
 ```
 
 **Step 3: Style (3 min)**
+
 ```css
-.btn { /* base styles */ }
-.btn-primary { /* variant */ }
-.btn-md { /* size */ }
+.btn {
+  /* base styles */
+}
+.btn-primary {
+  /* variant */
+}
+.btn-md {
+  /* size */
+}
 ```
 
 **Step 4: Create Story (2 min)**
+
 ```javascript
-export const Primary = { args: { variant: 'primary', children: 'Click me' } };
-export const Secondary = { args: { variant: 'secondary', children: 'Cancel' } };
+export const Primary = { args: { variant: "primary", children: "Click me" } };
+export const Secondary = { args: { variant: "secondary", children: "Cancel" } };
 ```
 
 ### Total: ~10 minutes per component
@@ -486,12 +518,14 @@ export const Secondary = { args: { variant: 'secondary', children: 'Cancel' } };
 ### Pre-Commit Checklist
 
 ✅ **Component Complete:**
+
 - [ ] Props documented with JSDoc
 - [ ] All variants rendered
 - [ ] All states handled
 - [ ] Responsive at all breakpoints
 
 ✅ **Styling:**
+
 - [ ] Matches design tokens
 - [ ] Colors correct
 - [ ] Spacing using 8px grid
@@ -499,6 +533,7 @@ export const Secondary = { args: { variant: 'secondary', children: 'Cancel' } };
 - [ ] Dark mode support
 
 ✅ **Accessibility:**
+
 - [ ] Semantic HTML
 - [ ] ARIA labels where needed
 - [ ] Keyboard navigation works
@@ -506,6 +541,7 @@ export const Secondary = { args: { variant: 'secondary', children: 'Cancel' } };
 - [ ] Color contrast passes
 
 ✅ **Testing:**
+
 - [ ] Storybook stories created
 - [ ] Unit tests passing
 - [ ] No console warnings
@@ -532,21 +568,23 @@ with small, medium, and large sizes.
 
 ```javascript
 // ✅ GOOD - Reuse existing Avatar
-import Avatar from './atoms/Avatar';
+import Avatar from "./atoms/Avatar";
 
 // ❌ BAD - Create new
-const CustomAvatar = () => { /* ... */ };
+const CustomAvatar = () => {
+  /* ... */
+};
 ```
 
 ### Use Design Tokens
 
 ```javascript
 // ✅ GOOD
-import { colors, spacing } from '../tokens';
+import { colors, spacing } from "../tokens";
 const style = { color: colors.primary[500], padding: spacing[4] };
 
 // ❌ BAD
-const style = { color: '#0ea5e9', padding: '16px' };
+const style = { color: "#0ea5e9", padding: "16px" };
 ```
 
 ### Template Existing Patterns

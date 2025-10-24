@@ -11,6 +11,7 @@
 ## 🎯 Testing Agent Workflow
 
 ### Input from Upstream Agents
+
 - ✅ Frontend components (with Storybook stories)
 - ✅ Backend APIs (with OpenAPI/Swagger specs)
 - ✅ Integration points (API contracts)
@@ -18,6 +19,7 @@
 - ✅ Design specifications from Designer Agent
 
 ### Output Deliverables
+
 - ✅ Unit test files (Jest/Vitest)
 - ✅ Integration test suites
 - ✅ E2E test specs (Playwright/Cypress)
@@ -32,20 +34,21 @@
 ## 📋 Test Classification
 
 ### Unit Tests (Fastest)
+
 ```javascript
 // Frontend Components
-describe('CheckoutForm', () => {
-  test('renders email input', () => {});
-  test('validates email format', () => {});
-  test('shows error on invalid email', () => {});
-  test('enables submit only when valid', () => {});
+describe("CheckoutForm", () => {
+  test("renders email input", () => {});
+  test("validates email format", () => {});
+  test("shows error on invalid email", () => {});
+  test("enables submit only when valid", () => {});
 });
 
 // Utilities
-describe('calculateTotal', () => {
-  test('sums item prices correctly', () => {});
-  test('applies discount', () => {});
-  test('handles zero items', () => {});
+describe("calculateTotal", () => {
+  test("sums item prices correctly", () => {});
+  test("applies discount", () => {});
+  test("handles zero items", () => {});
 });
 ```
 
@@ -57,20 +60,21 @@ describe('calculateTotal', () => {
 ---
 
 ### Integration Tests (Medium Speed)
+
 ```javascript
 // Frontend + Backend API
-describe('Checkout Flow Integration', () => {
-  test('frontend calls /api/cart correctly', async () => {});
-  test('handles API error responses', async () => {});
-  test('updates cart state on API success', async () => {});
-  test('retries on network timeout', async () => {});
+describe("Checkout Flow Integration", () => {
+  test("frontend calls /api/cart correctly", async () => {});
+  test("handles API error responses", async () => {});
+  test("updates cart state on API success", async () => {});
+  test("retries on network timeout", async () => {});
 });
 
 // Database + API
-describe('User Creation Flow', () => {
-  test('creates user in database', async () => {});
-  test('sends welcome email', async () => {});
-  test('sets correct initial permissions', async () => {});
+describe("User Creation Flow", () => {
+  test("creates user in database", async () => {});
+  test("sends welcome email", async () => {});
+  test("sets correct initial permissions", async () => {});
 });
 ```
 
@@ -82,12 +86,13 @@ describe('User Creation Flow', () => {
 ---
 
 ### E2E Tests (Slowest but Most Important)
+
 ```javascript
 // Complete User Journeys
-describe('Checkout Flow E2E', () => {
-  test('user can complete checkout from product to confirmation', async () => {});
-  test('returns to cart if payment fails', async () => {});
-  test('shows order confirmation and email sent', async () => {});
+describe("Checkout Flow E2E", () => {
+  test("user can complete checkout from product to confirmation", async () => {});
+  test("returns to cart if payment fails", async () => {});
+  test("shows order confirmation and email sent", async () => {});
 });
 ```
 
@@ -101,6 +106,7 @@ describe('Checkout Flow E2E', () => {
 ## 🎨 Testing Standards
 
 ### File Organization
+
 ```
 src/
 ├── components/
@@ -126,8 +132,9 @@ e2e/
 ---
 
 ### Test Structure
+
 ```javascript
-describe('Feature: Checkout Form', () => {
+describe("Feature: Checkout Form", () => {
   // Setup
   beforeEach(() => {
     // Arrange: Create test data
@@ -135,23 +142,23 @@ describe('Feature: Checkout Form', () => {
   });
 
   // Unit: Smallest unit behavior
-  describe('Unit: Component Rendering', () => {
-    test('renders form with all fields', () => {
+  describe("Unit: Component Rendering", () => {
+    test("renders form with all fields", () => {
       // Act & Assert
     });
   });
 
   // Integration: Component + API
-  describe('Integration: Form + API', () => {
-    test('calls /api/checkout on submit', async () => {
+  describe("Integration: Form + API", () => {
+    test("calls /api/checkout on submit", async () => {
       // Mock API
       // Act & Assert
     });
   });
 
   // E2E: Complete flow
-  describe('E2E: Complete Checkout', () => {
-    test('user can checkout', async () => {
+  describe("E2E: Complete Checkout", () => {
+    test("user can checkout", async () => {
       // Real browser
       // Act & Assert
     });
@@ -169,6 +176,7 @@ describe('Feature: Checkout Form', () => {
 ## 🔍 Testing Coverage
 
 ### Frontend Components
+
 - ✅ Rendering (with props)
 - ✅ User interactions (click, input, submit)
 - ✅ State changes
@@ -179,6 +187,7 @@ describe('Feature: Checkout Form', () => {
 - ✅ Edge cases
 
 ### Backend APIs
+
 - ✅ Valid requests
 - ✅ Invalid input validation
 - ✅ Authentication/authorization
@@ -188,6 +197,7 @@ describe('Feature: Checkout Form', () => {
 - ✅ CORS handling
 
 ### Integration Points
+
 - ✅ API contract matching
 - ✅ Error handling flow
 - ✅ Data transformation
@@ -199,14 +209,15 @@ describe('Feature: Checkout Form', () => {
 ## 🛠️ Mocking Strategies
 
 ### API Mocking
+
 ```javascript
 // Use MSW (Mock Service Worker) for realistic mocking
-import { rest } from 'msw';
-import { setupServer } from 'msw/node';
+import { rest } from "msw";
+import { setupServer } from "msw/node";
 
 const server = setupServer(
-  rest.post('/api/checkout', (req, res, ctx) => {
-    return res(ctx.json({ orderId: '123' }));
+  rest.post("/api/checkout", (req, res, ctx) => {
+    return res(ctx.json({ orderId: "123" }));
   })
 );
 
@@ -216,24 +227,26 @@ afterAll(() => server.close());
 ```
 
 ### Database Mocking
+
 ```javascript
 // Use test database or in-memory database
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 
 const prismaMock = {
   user: {
     create: jest.fn(),
     findUnique: jest.fn(),
-  }
+  },
 };
 ```
 
 ### External Service Mocking
+
 ```javascript
 // Mock email service
-jest.mock('@sendgrid/mail', () => ({
+jest.mock("@sendgrid/mail", () => ({
   setApiKey: jest.fn(),
-  send: jest.fn().mockResolvedValue(true)
+  send: jest.fn().mockResolvedValue(true),
 }));
 ```
 
@@ -259,33 +272,37 @@ Before routing to Documentation Agent:
 ## 🚀 Testing Guidelines
 
 ### Speed Optimization
+
 - Unit tests: Run on every save (fast feedback)
 - Integration tests: Run on commit
 - E2E tests: Run on PR/deploy (slower, critical)
 
 ### Flake Prevention
+
 - Use `await` for async operations
 - Don't use arbitrary timeouts (use waitFor)
 - Mock dates/times for consistency
 - Isolate tests (no shared state)
 
 ### Maintainability
+
 - Use descriptive test names
 - Keep tests small (one assertion per test when possible)
 - Use test utilities/helpers for common patterns
 - Comment complex test logic
 
 ### Documentation
+
 ```javascript
 /**
  * Test that checkout form validates email before submission
- * 
+ *
  * Scenario: User enters invalid email
  * Expected: Submit button disabled, error message shown
- * 
+ *
  * Related Issue: #42 - Checkout validation
  */
-test('validates email format before submit', () => {
+test("validates email format before submit", () => {
   // ...
 });
 ```
@@ -294,14 +311,14 @@ test('validates email format before submit', () => {
 
 ## 📊 Coverage Targets
 
-| Type | Target | Priority |
-|------|--------|----------|
-| Unit Tests | 80%+ | HIGH |
-| Integration | 60%+ | HIGH |
-| E2E (Critical Paths) | 100% | CRITICAL |
-| Accessibility | WCAG AA | HIGH |
-| Security | OWASP Top 10 | CRITICAL |
-| Performance | Baseline set | MEDIUM |
+| Type                 | Target       | Priority |
+| -------------------- | ------------ | -------- |
+| Unit Tests           | 80%+         | HIGH     |
+| Integration          | 60%+         | HIGH     |
+| E2E (Critical Paths) | 100%         | CRITICAL |
+| Accessibility        | WCAG AA      | HIGH     |
+| Security             | OWASP Top 10 | CRITICAL |
+| Performance          | Baseline set | MEDIUM   |
 
 ---
 
@@ -325,14 +342,14 @@ When testing is complete:
 
 ```javascript
 // Good: Clear, specific, readable
-test('CheckoutForm disables submit button when email is invalid', () => {});
-test('API returns 400 when required fields missing', () => {});
-test('User can navigate checkout flow on mobile', () => {});
+test("CheckoutForm disables submit button when email is invalid", () => {});
+test("API returns 400 when required fields missing", () => {});
+test("User can navigate checkout flow on mobile", () => {});
 
 // Bad: Too vague, unclear
-test('form works', () => {});
-test('API works', () => {});
-test('mobile works', () => {});
+test("form works", () => {});
+test("API works", () => {});
+test("mobile works", () => {});
 ```
 
 ---

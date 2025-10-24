@@ -40,12 +40,14 @@ Complete:     ⊘ LEO Ready                      (returns to ready)
 ### Core Implementation
 
 **`lib/model-selection/status-manager.js`** (5.7 KB)
+
 - Emits real-time model selection events
 - Writes status to file for external monitoring
 - Tracks history of model selections
 - Event emitter for programmatic listening
 
 **`lib/model-selection/orchestrator-integration.js`** (4.9 KB)
+
 - Extends ModelSelector with orchestration tracking
 - Automatically tracks agent execution
 - Broadcasts model changes
@@ -54,12 +56,14 @@ Complete:     ⊘ LEO Ready                      (returns to ready)
 ### VS Code Extension
 
 **`lib/vscode-extension/model-selector.js`** (8.3 KB)
+
 - Displays active model in status bar
 - Watches for status file changes (polls every 100ms)
 - Shows agent emoji (🎨, 💻, 🔧, etc.)
 - Includes commands for model info and history
 
 **`lib/vscode-extension/package.json`** (manifest)
+
 - Extension configuration
 - Command definitions
 - Status bar integration
@@ -67,12 +71,14 @@ Complete:     ⊘ LEO Ready                      (returns to ready)
 ### Documentation
 
 **`docs/REALTIME_MODEL_SELECTION_IN_VSCODE.md`** (16 KB)
+
 - Comprehensive architecture documentation
 - Complete workflow explanations
 - Code examples
 - Event listener patterns
 
 **`docs/REALTIME_MODEL_SELECTION_QUICK_START.md`** (8.4 KB)
+
 - Quick installation guide
 - Step-by-step setup
 - Example usage
@@ -171,44 +177,52 @@ Next agent starts
 ## 🎯 Key Components
 
 ### 1. Status Manager (Event Source)
+
 ```javascript
 const statusManager = new ModelSelectorStatusManager();
 
 // Listen for model changes
-statusManager.on('status-update', (update) => {
+statusManager.on("status-update", (update) => {
   console.log(`${update.agent} now using ${update.model}`);
 });
 
 // Broadcast model selection
-await statusManager.onModelSelected('frontend', task, 'claude-3-sonnet', metadata);
+await statusManager.onModelSelected(
+  "frontend",
+  task,
+  "claude-3-sonnet",
+  metadata
+);
 // ↑ Triggers event: { agent: 'frontend', model: 'claude-3-sonnet', state: 'active' }
 
 // Broadcast agent completion
-await statusManager.onAgentComplete('frontend', { success: true });
+await statusManager.onAgentComplete("frontend", { success: true });
 // ↑ Triggers event: { agent: 'frontend', state: 'complete', duration: 5400000 }
 ```
 
 ### 2. Orchestrator Integration (Tracking)
+
 ```javascript
 const orchestrator = new ModelSelectionOrchestrator();
 
 // Automatically tracks and broadcasts model changes
 const model = await orchestrator.selectModelWithTracking(
-  'designer',
-  { feature: 'checkout' },
-  'moderate'
+  "designer",
+  { feature: "checkout" },
+  "moderate"
 );
 // ↑ Calls statusManager internally
 // ↑ Broadcasts to VS Code automatically
 
-await orchestrator.completeAgent('designer', { success: true });
+await orchestrator.completeAgent("designer", { success: true });
 // ↑ Notifies completion
 ```
 
 ### 3. VS Code Extension (Display)
+
 ```javascript
 // Watches status file
-const statusFile = '~/.leo-model-status.json';
+const statusFile = "~/.leo-model-status.json";
 fs.watch(statusFile, () => {
   const status = fs.readJSON(statusFile);
   updateStatusBar(status.current.agent, status.current.model);
@@ -225,6 +239,7 @@ setInterval(async () => {
 ```
 
 ### 4. Status File (Real-Time Update)
+
 ```json
 {
   "current": {
@@ -237,8 +252,16 @@ setInterval(async () => {
     "speed": "slow"
   },
   "history": [
-    { "agent": "designer", "model": "claude-3-sonnet", "event": "agent-complete" },
-    { "agent": "frontend", "model": "claude-3-sonnet", "event": "agent-complete" },
+    {
+      "agent": "designer",
+      "model": "claude-3-sonnet",
+      "event": "agent-complete"
+    },
+    {
+      "agent": "frontend",
+      "model": "claude-3-sonnet",
+      "event": "agent-complete"
+    },
     { "agent": "backend", "model": "claude-3-opus", "event": "agent-start" }
   ]
 }
@@ -252,41 +275,52 @@ setInterval(async () => {
 
 ```javascript
 // lib/commands/build-feature.js
-const ModelSelectionOrchestrator = require('../model-selection/orchestrator-integration');
+const ModelSelectionOrchestrator = require("../model-selection/orchestrator-integration");
 
 async function buildFeature(featureName) {
   const orchestrator = new ModelSelectionOrchestrator();
-  
+
   try {
     // Designer
-    const designModel = await orchestrator.selectModelWithTracking('designer', {}, 'moderate');
+    const designModel = await orchestrator.selectModelWithTracking(
+      "designer",
+      {},
+      "moderate"
+    );
     // VS Code: ↻ 🎨 designer → Claude-S
-    
+
     // ... do design work ...
-    
-    await orchestrator.completeAgent('designer', { success: true });
+
+    await orchestrator.completeAgent("designer", { success: true });
     // VS Code: ✓ 🎨 designer complete
-    
+
     // Frontend (VS Code auto-updates)
-    const frontendModel = await orchestrator.selectModelWithTracking('frontend', {}, 'moderate');
+    const frontendModel = await orchestrator.selectModelWithTracking(
+      "frontend",
+      {},
+      "moderate"
+    );
     // VS Code: ↻ 💻 frontend → Claude-S
-    
+
     // ... do frontend work ...
-    
-    await orchestrator.completeAgent('frontend', { success: true });
+
+    await orchestrator.completeAgent("frontend", { success: true });
     // VS Code: ✓ 💻 frontend complete
-    
+
     // Backend (more powerful model)
-    const backendModel = await orchestrator.selectModelWithTracking('backend', {}, 'complex');
+    const backendModel = await orchestrator.selectModelWithTracking(
+      "backend",
+      {},
+      "complex"
+    );
     // VS Code: ↻ 🔧 backend → Claude-Opus  ← Upgraded!
-    
+
     // ... do backend work ...
-    
-    await orchestrator.completeAgent('backend', { success: true });
-    
+
+    await orchestrator.completeAgent("backend", { success: true });
+
     await orchestrator.completeTask({ success: true });
     // VS Code: ⊘ LEO Ready
-    
   } catch (error) {
     await orchestrator.completeTask({ success: false });
   }
@@ -300,6 +334,7 @@ async function buildFeature(featureName) {
 ### Visual Indicators
 
 **Active Execution:**
+
 ```
 ↻ 🎨 designer → Claude-S      ← Spinning icon (currently working)
 ↻ 💻 frontend → Claude-S      ← Agent is active
@@ -307,6 +342,7 @@ async function buildFeature(featureName) {
 ```
 
 **Completed:**
+
 ```
 ✓ 🎨 designer complete        ← Check mark (done)
 ✓ 💻 frontend complete        ← Faded out
@@ -314,11 +350,13 @@ async function buildFeature(featureName) {
 ```
 
 **Inactive:**
+
 ```
 ⊘ LEO Ready                   ← Slash icon (no task)
 ```
 
 ### Color Coding
+
 - **Teal/Cyan** (#4EC9B0) = Active execution
 - **Green** (#6A9955) = Task completed
 - **Gray** (#808080) = Inactive/ready
@@ -328,6 +366,7 @@ async function buildFeature(featureName) {
 ## 🎯 Model Display Examples
 
 ### Designer Phase
+
 ```
 Status Bar: ↻ 🎨 designer → Claude-S
 Why: Fast iteration on design specs
@@ -336,6 +375,7 @@ Cost: Cheap ($0.02)
 ```
 
 ### Frontend Phase
+
 ```
 Status Bar: ↻ 💻 frontend → Claude-S
 Why: UI/component expertise
@@ -344,6 +384,7 @@ Cost: Medium ($0.15)
 ```
 
 ### Backend Phase (Powerful Model!)
+
 ```
 Status Bar: ↻ 🔧 backend → Claude-Opus
 Why: Complex reasoning for APIs
@@ -352,6 +393,7 @@ Cost: Higher ($0.30) - justified!
 ```
 
 ### Documentation Phase (Cheapest!)
+
 ```
 Status Bar: ↻ 📚 documentation → GPT-3.5
 Why: Simple writing task
@@ -428,42 +470,49 @@ T+14700.5s: Task complete
 
 ## ✅ Features Implemented
 
-| Feature | Status | Details |
-|---------|--------|---------|
-| Status bar display | ✅ | Right-aligned, real-time updates |
-| Agent emoji | ✅ | 🎨 🔧 💻 🧪 📚 🚀 for each agent |
-| Spinning indicator | ✅ | ↻ shows while active |
-| Check mark | ✅ | ✓ shows on completion |
-| Model name display | ✅ | Shortened labels (Claude-S, GPT-3.5, etc.) |
-| Real-time updates | ✅ | 100ms polling + file watching |
-| Event emission | ✅ | Can listen to status changes |
-| Status file | ✅ | ~/.leo-model-status.json |
-| History tracking | ✅ | Last 50 selections |
-| Cost tracking | ✅ | Recorded in status |
-| Duration tracking | ✅ | How long each phase takes |
-| Tooltip info | ✅ | Click status bar for details |
-| VS Code commands | ✅ | Show info, history, select model |
+| Feature            | Status | Details                                    |
+| ------------------ | ------ | ------------------------------------------ |
+| Status bar display | ✅     | Right-aligned, real-time updates           |
+| Agent emoji        | ✅     | 🎨 🔧 💻 🧪 📚 🚀 for each agent           |
+| Spinning indicator | ✅     | ↻ shows while active                       |
+| Check mark         | ✅     | ✓ shows on completion                      |
+| Model name display | ✅     | Shortened labels (Claude-S, GPT-3.5, etc.) |
+| Real-time updates  | ✅     | 100ms polling + file watching              |
+| Event emission     | ✅     | Can listen to status changes               |
+| Status file        | ✅     | ~/.leo-model-status.json                   |
+| History tracking   | ✅     | Last 50 selections                         |
+| Cost tracking      | ✅     | Recorded in status                         |
+| Duration tracking  | ✅     | How long each phase takes                  |
+| Tooltip info       | ✅     | Click status bar for details               |
+| VS Code commands   | ✅     | Show info, history, select model           |
 
 ---
 
 ## 🚀 Quick Setup
 
 ### 1. Install Extension
+
 ```bash
 mkdir -p ~/.vscode/extensions/leo-model-selector/
 cp -r lib/vscode-extension/* ~/.vscode/extensions/leo-model-selector/
 ```
 
 ### 2. Update CLI
+
 ```javascript
-const ModelSelectionOrchestrator = require('./lib/model-selection/orchestrator-integration');
+const ModelSelectionOrchestrator = require("./lib/model-selection/orchestrator-integration");
 
 const orchestrator = new ModelSelectionOrchestrator();
-const model = await orchestrator.selectModelWithTracking('designer', {}, 'moderate');
+const model = await orchestrator.selectModelWithTracking(
+  "designer",
+  {},
+  "moderate"
+);
 // ↑ VS Code auto-updates!
 ```
 
 ### 3. Run Task
+
 ```bash
 leo build-feature "checkout"
 # VS Code shows real-time model changes!

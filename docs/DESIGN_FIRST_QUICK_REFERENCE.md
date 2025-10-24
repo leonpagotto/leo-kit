@@ -83,6 +83,7 @@ leo-workflow-kit/
 ## 🎯 The Design-First Workflow
 
 ### Phase 1: Design (30 min - 2 hours)
+
 ```
 ┌──────────────────────────────────────┐
 │   DESIGNER AGENT                     │
@@ -108,6 +109,7 @@ leo-workflow-kit/
 ```
 
 ### Phase 2: Frontend (1-3 hours)
+
 ```
 ┌──────────────────────────────────────┐
 │   FRONTEND AGENT                     │
@@ -128,6 +130,7 @@ leo-workflow-kit/
 ```
 
 ### Phase 3: Backend (1-3 hours)
+
 ```
 ┌──────────────────────────────────────┐
 │   BACKEND AGENT                      │
@@ -147,6 +150,7 @@ leo-workflow-kit/
 ```
 
 ### Phase 4: Testing & Docs (1.5-2.5 hours)
+
 ```
 ┌──────────────────────────────────────┐
 │   TESTING + DOCUMENTATION            │
@@ -170,6 +174,7 @@ leo-workflow-kit/
 ## 📈 Speed Comparison
 
 ### Code-First Approach ❌
+
 ```
 Timeline:
 09:00 - Kickoff (1 hour)
@@ -188,6 +193,7 @@ Surprises: Yes - stakeholders unhappy with design decisions
 ```
 
 ### Design-First Approach ✅
+
 ```
 Timeline:
 09:00 - Kickoff (1 hour)
@@ -253,6 +259,7 @@ Why Fast?
 ## 📚 Documentation Provided
 
 ### 1. Core Instructions (4 files)
+
 ```
 lib/ai-instructions/
 ├── orchestrator-main.md      (5.2 KB)
@@ -262,6 +269,7 @@ lib/ai-instructions/
 ```
 
 ### 2. Process & Standards (2 files)
+
 ```
 docs/guides/
 ├── design-first-workflow.md          (6.9 KB) ⭐ NEW
@@ -269,6 +277,7 @@ docs/guides/
 ```
 
 ### 3. Architecture & Summaries (2 files)
+
 ```
 docs/
 ├── DESIGN_FIRST_ARCHITECTURE_V5.0.0.md        (6.2 KB) ⭐ NEW
@@ -280,6 +289,7 @@ docs/
 ## 🔄 Real-World Examples
 
 ### Example 1: "Add Dark Mode"
+
 ```
 Timeline: 55 minutes total
 
@@ -291,6 +301,7 @@ Improvement: 1+ hour saved vs code-first (2-3 hours)
 ```
 
 ### Example 2: "Build User Profile Page"
+
 ```
 Timeline: 5.5 hours total
 
@@ -307,6 +318,7 @@ Revisions: Fewer - design already approved
 ```
 
 ### Example 3: "Implement OAuth2"
+
 ```
 Timeline: 4 hours total
 
@@ -330,12 +342,14 @@ Alignment: Excellent
 ## 🎯 Key Principles
 
 ### For Rapid Prototyping
+
 1. **Rapid > Perfect** - 80% in 20% of time
 2. **Design System Driven** - Reuse existing patterns
 3. **Component Thinking** - Build for reusability
 4. **Frontend-Ready** - Specs clear enough for dev
 
 ### For Design-First Workflow
+
 1. **Designer First** - Always explore design for UI work
 2. **Spec Before Code** - Complex features get written spec
 3. **Sequential Stages** - Designer → Frontend → Backend
@@ -348,6 +362,7 @@ Alignment: Excellent
 ## ✅ Quality Checkpoints
 
 ### Designer Checklist
+
 ```
 ✓ Wireframe approved
 ✓ Components documented
@@ -359,6 +374,7 @@ Alignment: Excellent
 ```
 
 ### Frontend Checklist
+
 ```
 ✓ Components match design
 ✓ Responsive verified
@@ -368,6 +384,7 @@ Alignment: Excellent
 ```
 
 ### Backend Checklist
+
 ```
 ✓ Endpoints implemented
 ✓ Database schema ready
@@ -382,18 +399,22 @@ Alignment: Excellent
 ## 📊 Success Metrics
 
 ### Speed
+
 - **Target:** -38% faster time-to-market
 - **Measure:** Feature cycle time (requirements to done)
 
 ### Quality
+
 - **Target:** Fewer revisions (design approved early)
 - **Measure:** Number of feedback rounds
 
 ### Alignment
+
 - **Target:** Team and stakeholders on same page
 - **Measure:** Stakeholder satisfaction
 
 ### Satisfaction
+
 - **Target:** Better products, happier teams
 - **Measure:** Team velocity metrics
 
@@ -402,11 +423,13 @@ Alignment: Excellent
 ## 🚀 Get Started
 
 ### Step 1: Read the Guides
+
 - Product Managers: `docs/guides/design-first-workflow.md`
 - Developers: `lib/ai-instructions/[your-role]-agent.md`
 - Everyone: `docs/DESIGN_FIRST_ARCHITECTURE_V5.0.0.md`
 
 ### Step 2: Try the Workflow
+
 - Pick a simple feature
 - Start with Designer (30 min)
 - Get stakeholder approval
@@ -415,11 +438,13 @@ Alignment: Excellent
 - Total: ~4 hours
 
 ### Step 3: Gather Feedback
+
 - What worked?
 - What didn't?
 - How can we improve?
 
 ### Step 4: Iterate
+
 - Refine based on experience
 - Document lessons learned
 - Update standards as needed
@@ -436,4 +461,3 @@ Alignment: Excellent
 ---
 
 **You're ready to build faster, smarter, and more aligned. Let's ship! 🚀**
-

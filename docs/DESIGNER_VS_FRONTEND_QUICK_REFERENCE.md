@@ -7,6 +7,7 @@
 ## ❓ What's the Difference?
 
 ### 🎨 DESIGNER AGENT
+
 **Creates:** SPECIFICATIONS (NOT CODE)
 
 ```
@@ -27,13 +28,16 @@ OUTPUT: SPECIFICATIONS (text + diagrams)
 ```
 
 **What Designer Agent Creates:**
+
 ```markdown
 # CheckoutForm Design Specification
 
 ## Visual Layout
+
 [ASCII wireframe showing structure]
 
 ## Component Tree
+
 CheckoutForm
 ├── EmailField
 ├── CardField
@@ -43,6 +47,7 @@ CheckoutForm
 └── CancelLink
 
 ## Design Tokens
+
 - Width: 400px
 - Background: #FFFFFF
 - Primary color: #0066CC
@@ -51,17 +56,20 @@ CheckoutForm
 - Shadow: 0 1px 3px rgba(0,0,0,0.1)
 
 ## Responsive
+
 - Mobile: 100% with 16px margin
 - Tablet: 90% width
 - Desktop: 400px fixed
 
 ## Accessibility
+
 - WCAG AA compliant
 - Keyboard navigation supported
 - Screen reader labels for all fields
 - Color contrast ≥ 4.5:1
 
 ## States
+
 - Hover: light gray background
 - Focus: blue outline (3px)
 - Disabled: 50% opacity
@@ -69,12 +77,14 @@ CheckoutForm
 - Loading: disabled with spinner
 
 ## Figma Link
+
 https://figma.com/file/[id]/CheckoutForm
 ```
 
 ---
 
 ### 💻 FRONTEND AGENT
+
 **Creates:** ACTUAL COMPONENT CODE
 
 ```
@@ -90,17 +100,18 @@ OUTPUT: WORKING REACT COMPONENT
 ```
 
 **What Frontend Agent Creates:**
+
 ```jsx
 // CheckoutForm.jsx
-import { useState } from 'react';
-import styles from './CheckoutForm.module.css';
+import { useState } from "react";
+import styles from "./CheckoutForm.module.css";
 
 export function CheckoutForm({ onSubmit, onCancel }) {
   const [formData, setFormData] = useState({
-    email: '',
-    card: '',
-    expiry: '',
-    cvc: ''
+    email: "",
+    card: "",
+    expiry: "",
+    cvc: "",
   });
   const [errors, setErrors] = useState({});
 
@@ -120,7 +131,7 @@ export function CheckoutForm({ onSubmit, onCancel }) {
           type="email"
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          className={errors.email ? styles.fieldError : ''}
+          className={errors.email ? styles.fieldError : ""}
           aria-label="Email address"
           required
         />
@@ -135,7 +146,7 @@ export function CheckoutForm({ onSubmit, onCancel }) {
           placeholder="1234 5678 9012 3456"
           value={formData.card}
           onChange={(e) => setFormData({ ...formData, card: e.target.value })}
-          className={errors.card ? styles.fieldError : ''}
+          className={errors.card ? styles.fieldError : ""}
           aria-label="Card number"
           required
         />
@@ -149,7 +160,9 @@ export function CheckoutForm({ onSubmit, onCancel }) {
             type="text"
             placeholder="MM/YY"
             value={formData.expiry}
-            onChange={(e) => setFormData({ ...formData, expiry: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, expiry: e.target.value })
+            }
             aria-label="Expiration date"
             required
           />
@@ -245,17 +258,17 @@ export function CheckoutForm({ onSubmit, onCancel }) {
 
 ```jsx
 // CheckoutForm.stories.jsx
-import { CheckoutForm } from './CheckoutForm';
+import { CheckoutForm } from "./CheckoutForm";
 
 export default {
   component: CheckoutForm,
-  title: 'Components/CheckoutForm',
+  title: "Components/CheckoutForm",
 };
 
 export const Default = {
   args: {
-    onSubmit: (data) => console.log('Submitted:', data),
-    onCancel: () => console.log('Cancelled'),
+    onSubmit: (data) => console.log("Submitted:", data),
+    onCancel: () => console.log("Cancelled"),
   },
 };
 
@@ -263,38 +276,40 @@ export const WithError = {
   args: {
     ...Default.args,
   },
-  decorators: [(Story) => {
-    // Pre-populate with error
-    return <Story />;
-  }],
+  decorators: [
+    (Story) => {
+      // Pre-populate with error
+      return <Story />;
+    },
+  ],
 };
 ```
 
 ```jsx
 // CheckoutForm.test.jsx
-import { render, screen, fireEvent } from '@testing-library/react';
-import { CheckoutForm } from './CheckoutForm';
+import { render, screen, fireEvent } from "@testing-library/react";
+import { CheckoutForm } from "./CheckoutForm";
 
-describe('CheckoutForm', () => {
-  test('renders form with all fields', () => {
+describe("CheckoutForm", () => {
+  test("renders form with all fields", () => {
     render(<CheckoutForm onSubmit={() => {}} onCancel={() => {}} />);
-    expect(screen.getByLabelText('Email address')).toBeInTheDocument();
-    expect(screen.getByLabelText('Card number')).toBeInTheDocument();
-    expect(screen.getByLabelText('Expiration date')).toBeInTheDocument();
-    expect(screen.getByLabelText('CVC code')).toBeInTheDocument();
+    expect(screen.getByLabelText("Email address")).toBeInTheDocument();
+    expect(screen.getByLabelText("Card number")).toBeInTheDocument();
+    expect(screen.getByLabelText("Expiration date")).toBeInTheDocument();
+    expect(screen.getByLabelText("CVC code")).toBeInTheDocument();
   });
 
-  test('validates email before submit', () => {
+  test("validates email before submit", () => {
     render(<CheckoutForm onSubmit={() => {}} onCancel={() => {}} />);
-    const submitButton = screen.getByRole('button', { name: /submit/i });
+    const submitButton = screen.getByRole("button", { name: /submit/i });
     fireEvent.click(submitButton);
     // Should show error
   });
 
-  test('calls onCancel when cancel clicked', () => {
+  test("calls onCancel when cancel clicked", () => {
     const handleCancel = jest.fn();
     render(<CheckoutForm onSubmit={() => {}} onCancel={handleCancel} />);
-    fireEvent.click(screen.getByRole('button', { name: /cancel/i }));
+    fireEvent.click(screen.getByRole("button", { name: /cancel/i }));
     expect(handleCancel).toHaveBeenCalled();
   });
 });
@@ -339,6 +354,7 @@ STEP 4: Backend/Testing/Documentation (continues...)
 ## 🎯 Key Points to Remember
 
 ### Designer Agent DOES...
+
 ✅ Create wireframes
 ✅ Define colors/fonts/spacing
 ✅ Document responsive behavior
@@ -348,6 +364,7 @@ STEP 4: Backend/Testing/Documentation (continues...)
 ✅ Create handoff checklist for Frontend
 
 ### Designer Agent DOES NOT...
+
 ❌ Write React code
 ❌ Write CSS
 ❌ Write HTML
@@ -355,6 +372,7 @@ STEP 4: Backend/Testing/Documentation (continues...)
 ❌ Write any code at all
 
 ### Frontend Agent DOES...
+
 ✅ Read Designer specs (text document)
 ✅ Implement React components
 ✅ Write CSS styling
@@ -363,6 +381,7 @@ STEP 4: Backend/Testing/Documentation (continues...)
 ✅ Implement all Design specs
 
 ### Frontend Agent DOES NOT...
+
 ❌ Create new design specs
 ❌ Change Designer decisions
 ❌ Skip accessibility
@@ -374,6 +393,7 @@ STEP 4: Backend/Testing/Documentation (continues...)
 ## 💡 Why This Matters
 
 ### Old Approach (Code-First)
+
 ```
 Dev writes component code
     ↓
@@ -385,6 +405,7 @@ Dev refactors component
 ```
 
 ### New Approach (Design-First)
+
 ```
 Designer creates specs (30 min)
     ↓
@@ -399,12 +420,13 @@ Frontend implements exactly as designed (no rework!)
 
 ## 📊 Model Selection
 
-| Agent | Model | Why | Cost |
-|-------|-------|-----|------|
+| Agent        | Model           | Why                     | Cost  |
+| ------------ | --------------- | ----------------------- | ----- |
 | **Designer** | Claude-3-Sonnet | Fast iteration on specs | $0.02 |
-| **Frontend** | Claude-3-Sonnet | UI/component expertise | $0.15 |
+| **Frontend** | Claude-3-Sonnet | UI/component expertise  | $0.15 |
 
 Both use Claude-3-Sonnet because:
+
 - ✅ Design work is well-defined (follow specs)
 - ✅ No complex reasoning needed
 - ✅ Fast iteration needed
@@ -420,10 +442,10 @@ If the spec is **extremely complex**, system automatically upgrades to GPT-4-Tur
 ```
 Designer Agent:  Creates WHAT it should look like
                  (Specs, not code)
-                 
+
 Frontend Agent:  Creates HOW to build it
                  (Actual React components)
-                 
+
 Together:        Perfect separation of concerns
                  Stakeholders see specs first
                  Dev follows spec exactly

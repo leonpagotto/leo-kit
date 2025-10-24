@@ -37,6 +37,7 @@ cp -r lib/vscode-extension/* ~/.vscode/extensions/leo-model-selector/
 ```
 
 After restart, you'll see in status bar:
+
 ```
 ⊘ LEO Ready
 ```
@@ -49,70 +50,69 @@ Update your CLI command to use real-time tracking:
 
 ```javascript
 // lib/commands/build-feature.js
-const path = require('path');
-const ModelSelectionOrchestrator = require('../model-selection/orchestrator-integration');
+const path = require("path");
+const ModelSelectionOrchestrator = require("../model-selection/orchestrator-integration");
 
 async function buildFeature(featureName) {
   // Create orchestrator with real-time tracking
   const orchestrator = new ModelSelectionOrchestrator({
-    statusFile: path.join(process.env.HOME, '.leo-model-status.json')
+    statusFile: path.join(process.env.HOME, ".leo-model-status.json"),
   });
 
   try {
     // Designer Phase
-    console.log('🎨 Starting design phase...');
+    console.log("🎨 Starting design phase...");
     const designModel = await orchestrator.selectModelWithTracking(
-      'designer',
+      "designer",
       { feature: featureName },
-      'moderate'
+      "moderate"
     );
     // ↑ VS Code shows: ↻ 🎨 designer → Claude-S
-    
+
     // ... do design work ...
     console.log(`Designer used: ${designModel}`);
-    
-    await orchestrator.completeAgent('designer', { success: true });
+
+    await orchestrator.completeAgent("designer", { success: true });
     // ↑ VS Code shows: ✓ 🎨 designer complete
 
     // Frontend Phase
-    console.log('💻 Starting frontend phase...');
+    console.log("💻 Starting frontend phase...");
     const frontendModel = await orchestrator.selectModelWithTracking(
-      'frontend',
+      "frontend",
       { feature: featureName },
-      'moderate'
+      "moderate"
     );
     // ↑ VS Code shows: ↻ 💻 frontend → Claude-S
-    
+
     // ... do frontend work ...
     console.log(`Frontend used: ${frontendModel}`);
-    
-    await orchestrator.completeAgent('frontend', { success: true });
+
+    await orchestrator.completeAgent("frontend", { success: true });
     // ↑ VS Code shows: ✓ 💻 frontend complete
 
     // Backend Phase
-    console.log('🔧 Starting backend phase...');
+    console.log("🔧 Starting backend phase...");
     const backendModel = await orchestrator.selectModelWithTracking(
-      'backend',
+      "backend",
       { feature: featureName },
-      'complex'  // ← More complex = more powerful model
+      "complex" // ← More complex = more powerful model
     );
     // ↑ VS Code shows: ↻ 🔧 backend → Claude-Opus (upgraded!)
-    
+
     // ... do backend work ...
     console.log(`Backend used: ${backendModel}`);
-    
-    await orchestrator.completeAgent('backend', { success: true });
+
+    await orchestrator.completeAgent("backend", { success: true });
     // ↑ VS Code shows: ✓ 🔧 backend complete
 
     // Complete
     await orchestrator.completeTask({ success: true });
     // ↑ VS Code shows: ⊘ LEO Ready
 
-    console.log('✓ Feature build complete!');
-
+    console.log("✓ Feature build complete!");
   } catch (error) {
     await orchestrator.completeTask({ success: false, error: error.message });
-    console.error('✗ Build failed:', error.message);
+    console.error("✗ Build failed:", error.message);
     process.exit(1);
   }
 }
@@ -131,9 +131,9 @@ leo build-feature "checkout form"
 # 🎨 Starting design phase...
 # Designer used: claude-3-sonnet
 # (Watch status bar: ↻ 🎨 designer → Claude-S)
-# 
+#
 # [45 minutes later...]
-# 
+#
 # ✓ Feature build complete!
 # (Status bar: ⊘ LEO Ready)
 ```
@@ -155,6 +155,7 @@ leo build-feature "checkout form"
 ## 🎥 Live Example
 
 ### Terminal Output:
+
 ```
 $ leo build "checkout feature"
 🎨 Starting design phase...
@@ -181,6 +182,7 @@ Documentation selected: gpt-3.5-turbo  ← Cheapest model!
 ```
 
 ### VS Code Status Bar:
+
 ```
 Right side of status bar shows:
 ⊘ LEO Ready                                    (initial)
@@ -202,12 +204,14 @@ Right side of status bar shows:
 ## 💡 Key Features
 
 ### 🎯 Real-Time Display
+
 - Spinning ↻ means agent actively working
 - Check ✓ means agent completed
 - Shows current model name
 - Updates instantly as agents change
 
 ### 📊 Agent Emojis
+
 - 🎨 Designer
 - 💻 Frontend
 - 🔧 Backend
@@ -216,6 +220,7 @@ Right side of status bar shows:
 - 🚀 DevOps
 
 ### 💰 Model Optimization
+
 - Designer: Claude-3-Sonnet (fast)
 - Frontend: Claude-3-Sonnet (UI-focused)
 - Backend: Claude-3-Opus (powerful reasoning)
@@ -224,6 +229,7 @@ Right side of status bar shows:
 - DevOps: GPT-4-Turbo (infrastructure-critical)
 
 ### 📈 Tracking
+
 - Status file: `~/.leo-model-status.json`
 - History: Last 50 selections tracked
 - Duration: How long each phase takes
@@ -289,6 +295,7 @@ Command: LEO: Show Model History
 ## 🐛 Troubleshooting
 
 ### Status bar not showing
+
 ```bash
 # Check extension loaded
 VS Code Command Palette → "Developer: Show Logs..." → Extension Host
@@ -298,6 +305,7 @@ Command Palette → "Developer: Reload Window"
 ```
 
 ### Status bar shows "LEO Ready" but doesn't update
+
 ```bash
 # Check if orchestrator is being used in your code
 grep -r "selectModelWithTracking" lib/commands/
@@ -307,6 +315,7 @@ echo $HOME/.leo-model-status.json
 ```
 
 ### Models not changing between agents
+
 ```bash
 # Check if completeAgent() is being called
 # Check orchestrator configuration

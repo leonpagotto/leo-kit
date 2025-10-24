@@ -70,6 +70,7 @@ Copilot (following backend-agent.md, using frontend specs) builds:
 **Answer: YES, and they're now INTEGRATED into the agent instructions!**
 
 **What was added in v4.1.0:**
+
 - ✅ Dynamic model selection system
 - ✅ Agent-specific model preferences
 - ✅ Complexity-based model selection
@@ -77,10 +78,12 @@ Copilot (following backend-agent.md, using frontend specs) builds:
 - ✅ Phase-based model selection (dev vs production)
 
 **What was MISSING:**
+
 - ❌ Integration into agent instruction files
 - ❌ Documentation linking agents to model selection
 
 **What we just FIXED (today):**
+
 - ✅ Added model selection section to orchestrator-main.md
 - ✅ Added model preferences to each agent file header
 - ✅ Clarified that model selection is AUTOMATIC
@@ -102,14 +105,14 @@ Orchestrator detects: Designer Agent needed
 System selects: Claude-3-Sonnet (fast iteration for design)
     Cost: Low (~$0.01 per iteration)
     Speed: Fast (designs are cheap, so iterate fast)
-    
+
     ↓
 Orchestrator detects: Frontend Agent needed
     ↓
 System selects: Claude-3-Sonnet or GPT-4-Turbo (good design sense)
     Cost: Low-Medium (~$0.05-0.20 per component)
     Speed: Fast (components follow design specs)
-    
+
     ↓
 Orchestrator detects: Backend Agent needed
     ↓
@@ -120,17 +123,18 @@ System selects: Claude-3-Opus (strong reasoning)
 
 **Model Selection Mapping:**
 
-| Agent | Primary Model | Why? | Cost | Reason |
-|-------|---------------|------|------|--------|
-| **Orchestrator** | GPT-4 | Routing decisions need strong reasoning | Medium | Multi-agent coordination |
-| **🎨 Designer** | Claude-3-Sonnet | Design sense + iteration speed matters | Low | Designs iterate quickly |
-| **💻 Frontend** | Claude-3-Sonnet | UI/UX + React expertise | Low-Medium | Follows clear design specs |
-| **🔧 Backend** | Claude-3-Opus | Complex logic + architecture | Medium | Strong reasoning needed |
-| **🧪 Testing** | Claude-3-Sonnet | Test generation + reasoning | Low-Medium | Creates test cases |
-| **📚 Documentation** | GPT-3.5-Turbo | Content generation | Low ✅ | Cheapest - straightforward |
-| **🚀 DevOps** | GPT-4-Turbo | Infrastructure expertise | Low-Medium | Critical but structured |
+| Agent                | Primary Model   | Why?                                    | Cost       | Reason                     |
+| -------------------- | --------------- | --------------------------------------- | ---------- | -------------------------- |
+| **Orchestrator**     | GPT-4           | Routing decisions need strong reasoning | Medium     | Multi-agent coordination   |
+| **🎨 Designer**      | Claude-3-Sonnet | Design sense + iteration speed matters  | Low        | Designs iterate quickly    |
+| **💻 Frontend**      | Claude-3-Sonnet | UI/UX + React expertise                 | Low-Medium | Follows clear design specs |
+| **🔧 Backend**       | Claude-3-Opus   | Complex logic + architecture            | Medium     | Strong reasoning needed    |
+| **🧪 Testing**       | Claude-3-Sonnet | Test generation + reasoning             | Low-Medium | Creates test cases         |
+| **📚 Documentation** | GPT-3.5-Turbo   | Content generation                      | Low ✅     | Cheapest - straightforward |
+| **🚀 DevOps**        | GPT-4-Turbo     | Infrastructure expertise                | Low-Medium | Critical but structured    |
 
 **The System Automatically:**
+
 1. ✅ Detects which agent you're asking for
 2. ✅ Selects the best model for that agent
 3. ✅ Routes your request to that model
@@ -234,6 +238,7 @@ MODELS USED: 4 different models, each optimized for their task
 ## 📊 Designer Agent vs Code Implementation
 
 ### Designer Agent (Creates Specifications)
+
 ```
 INPUT: "Create a checkout form"
 
@@ -311,6 +316,7 @@ COST: ~$0.02
 ```
 
 ### Frontend Agent (Implements Components)
+
 ```
 INPUT: [Designer specs from above]
 
@@ -374,6 +380,7 @@ COST: ~$0.15
 ```
 
 **KEY DIFFERENCE:**
+
 - Designer: Creates WHAT it should look like + specs
 - Frontend: Creates ACTUAL WORKING CODE from those specs
 
@@ -382,6 +389,7 @@ COST: ~$0.15
 ## 🎯 Summary
 
 ### Designer Agent Role
+
 ✅ Creates design specifications
 ✅ Uses Claude-3-Sonnet (fast, design-focused)
 ✅ Guides Frontend Agent what to build
@@ -389,6 +397,7 @@ COST: ~$0.15
 ✅ Makes iterations cheap (change design, not code)
 
 ### Frontend Agent Role
+
 ✅ Implements components from design specs
 ✅ Uses Claude-3-Sonnet or GPT-4-Turbo
 ✅ Follows Designer specs exactly
@@ -396,6 +405,7 @@ COST: ~$0.15
 ✅ Creates Storybook stories + tests
 
 ### Backend Agent Role
+
 ✅ Implements APIs from Frontend contract
 ✅ Uses Claude-3-Opus (powerful reasoning)
 ✅ Builds databases + business logic
@@ -403,6 +413,7 @@ COST: ~$0.15
 ✅ Produces production-ready code
 
 ### Model Selection (Automatic)
+
 ✅ Each agent gets optimal model
 ✅ System selects automatically
 ✅ Respects budgets
@@ -424,6 +435,7 @@ Created DESIGNER_AGENT_CLARIFICATION.md (this document)
 ---
 
 **Bottom Line:**
+
 - ✅ Designer Agent creates DESIGNS (not code)
 - ✅ Copilot uses Designer Agent instructions to create specs
 - ✅ Copilot uses Frontend Agent instructions to create code

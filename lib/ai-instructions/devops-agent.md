@@ -11,6 +11,7 @@
 ## 🎯 DevOps Agent Workflow
 
 ### Input from Upstream Agents
+
 - ✅ Final tested code (from Testing Agent)
 - ✅ Documentation (from Documentation Agent)
 - ✅ Deployment requirements (from Backend Agent)
@@ -19,6 +20,7 @@
 - ✅ Performance requirements
 
 ### Output Deliverables
+
 - ✅ CI/CD pipeline (GitHub Actions, GitLab CI, etc.)
 - ✅ Docker configuration
 - ✅ Infrastructure as Code (Terraform, CloudFormation)
@@ -52,7 +54,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
       - run: npm ci
       - run: npm run lint
       - run: npm run test:unit
@@ -124,7 +126,7 @@ CMD ["npm", "start"]
 
 ```yaml
 # docker-compose.yml
-version: '3.8'
+version: "3.8"
 
 services:
   app:
@@ -300,8 +302,8 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 1        # New pods added
-      maxUnavailable: 0  # No pods removed during rollout
+      maxSurge: 1 # New pods added
+      maxUnavailable: 0 # No pods removed during rollout
   selector:
     matchLabels:
       app: app
@@ -312,22 +314,22 @@ spec:
         version: v1.0.0
     spec:
       containers:
-      - name: app
-        image: app:v1.0.0
-        ports:
-        - containerPort: 3000
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 3000
-          initialDelaySeconds: 10
-          periodSeconds: 30
-        readinessProbe:
-          httpGet:
-            path: /ready
-            port: 3000
-          initialDelaySeconds: 5
-          periodSeconds: 10
+        - name: app
+          image: app:v1.0.0
+          ports:
+            - containerPort: 3000
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
 ```
 
 ---
@@ -340,14 +342,14 @@ spec:
 
 ```javascript
 // healthcheck.js
-const http = require('http');
+const http = require("http");
 
 const server = http.createServer((req, res) => {
-  if (req.url === '/health') {
+  if (req.url === "/health") {
     // Basic health check
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ status: 'ok' }));
-  } else if (req.url === '/ready') {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify({ status: "ok" }));
+  } else if (req.url === "/ready") {
     // Readiness check (dependencies available)
     checkDatabase()
       .then(() => {
@@ -375,14 +377,14 @@ global:
   evaluation_interval: 15s
 
 scrape_configs:
-  - job_name: 'app'
+  - job_name: "app"
     static_configs:
-      - targets: ['localhost:3000']
-    metrics_path: '/metrics'
+      - targets: ["localhost:3000"]
+    metrics_path: "/metrics"
 
-  - job_name: 'postgres'
+  - job_name: "postgres"
     static_configs:
-      - targets: ['localhost:5432']
+      - targets: ["localhost:5432"]
 ```
 
 ### 3. Alert Rules
@@ -497,6 +499,7 @@ Before each deployment:
 ## 📝 Environment Configuration
 
 ### Development
+
 ```bash
 NODE_ENV=development
 DEBUG=true
@@ -507,6 +510,7 @@ API_TIMEOUT=30000
 ```
 
 ### Staging
+
 ```bash
 NODE_ENV=staging
 DEBUG=false
@@ -517,6 +521,7 @@ API_TIMEOUT=20000
 ```
 
 ### Production
+
 ```bash
 NODE_ENV=production
 DEBUG=false
@@ -531,6 +536,7 @@ API_TIMEOUT=15000
 ## 🔄 Backup & Disaster Recovery
 
 ### Database Backups
+
 ```bash
 # Daily backups to S3
 0 2 * * * /scripts/backup-db.sh
@@ -543,6 +549,7 @@ API_TIMEOUT=15000
 ```
 
 ### Backup Verification
+
 ```bash
 #!/bin/bash
 # verify-backup.sh
@@ -572,14 +579,14 @@ echo "✓ Backup verified"
 
 Track after each deployment:
 
-| Metric | Target | Critical if |
-|--------|--------|-----------|
-| Error Rate | < 0.1% | > 1% |
-| Latency (p95) | < 500ms | > 1s |
-| Availability | > 99.9% | < 99% |
-| Memory Usage | < 80% | > 90% |
-| CPU Usage | < 70% | > 90% |
-| Database Connections | < 80% | > 95% |
+| Metric               | Target  | Critical if |
+| -------------------- | ------- | ----------- |
+| Error Rate           | < 0.1%  | > 1%        |
+| Latency (p95)        | < 500ms | > 1s        |
+| Availability         | > 99.9% | < 99%       |
+| Memory Usage         | < 80%   | > 90%       |
+| CPU Usage            | < 70%   | > 90%       |
+| Database Connections | < 80%   | > 95%       |
 
 ---
 

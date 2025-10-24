@@ -9,6 +9,7 @@
 ## 📌 Overview
 
 You requested a complete architectural redesign of the LEO Workflow Kit to enable:
+
 1. **Modular instruction files** (main + per-agent)
 2. **Designer-first sequencing** for rapid UI prototyping
 3. **New Designer Agent** for visual feedback in minutes
@@ -24,6 +25,7 @@ You requested a complete architectural redesign of the LEO Workflow Kit to enabl
 ### 1. New Instruction Files (7 files, ~43 KB)
 
 #### `lib/ai-instructions/orchestrator-main.md`
+
 - **Purpose:** Primary routing and orchestration layer
 - **Content:**
   - Your role as orchestrator
@@ -36,6 +38,7 @@ You requested a complete architectural redesign of the LEO Workflow Kit to enabl
   - Response structure templates
 
 #### `lib/ai-instructions/designer-agent.md` ⭐ **NEW**
+
 - **Purpose:** Rapid UI/UX prototyping and design specifications
 - **Content:**
   - Designer role and superpower (speed)
@@ -49,6 +52,7 @@ You requested a complete architectural redesign of the LEO Workflow Kit to enabl
   - Quality gates and checkpoints
 
 #### `lib/ai-instructions/frontend-agent.md`
+
 - **Purpose:** Component implementation from design specs
 - **Content:**
   - Frontend role (transform designs into components)
@@ -62,6 +66,7 @@ You requested a complete architectural redesign of the LEO Workflow Kit to enabl
   - Component implementation checklist
 
 #### `lib/ai-instructions/backend-agent.md`
+
 - **Purpose:** API and backend implementation
 - **Content:**
   - Backend role (power frontend with APIs)
@@ -75,6 +80,7 @@ You requested a complete architectural redesign of the LEO Workflow Kit to enabl
   - LEO workflow rules
 
 #### `docs/guides/design-first-workflow.md` ⭐ **NEW GUIDE**
+
 - **Purpose:** Process guide for design-first development
 - **Content:**
   - Why design-first (speed comparison, benefits)
@@ -91,6 +97,7 @@ You requested a complete architectural redesign of the LEO Workflow Kit to enabl
   - Role-based checklists
 
 #### `docs/guides/rapid-prototyping-standards.md` ⭐ **NEW STANDARDS**
+
 - **Purpose:** Technical standards for fast component development
 - **Content:**
   - Component structure and directory organization
@@ -103,6 +110,7 @@ You requested a complete architectural redesign of the LEO Workflow Kit to enabl
   - Speed tips (reuse, tokens, templates, parallel work)
 
 #### `docs/DESIGN_FIRST_ARCHITECTURE_V5.0.0.md` ⭐ **SUMMARY**
+
 - **Purpose:** Implementation summary and architecture overview
 - **Content:**
   - What changed (before/after comparison)
@@ -120,6 +128,7 @@ You requested a complete architectural redesign of the LEO Workflow Kit to enabl
 ## 🎯 Key Architecture Changes
 
 ### Before (Monolithic)
+
 ```
 .github/copilot-instructions.md (936 lines)
 .clinerules (1279 lines)
@@ -132,6 +141,7 @@ Hard to update individually
 ```
 
 ### After (Modular, Design-First)
+
 ```
 lib/ai-instructions/
 ├── orchestrator-main.md          ← Main routing
@@ -148,6 +158,7 @@ docs/guides/
 ```
 
 **Benefits:**
+
 - ✅ Focused instruction per agent
 - ✅ Easy to update individual agents
 - ✅ Clear handoff documentation
@@ -160,11 +171,13 @@ docs/guides/
 ## 🚀 New Workflow Sequence
 
 ### Old Approach
+
 ```
 Requirements → [Mixed sequencing] → Done
 ```
 
 ### New Design-First Approach
+
 ```
 Requirements (1h)
     ↓
@@ -197,11 +210,13 @@ ALIGNMENT: Everyone knows the plan before coding
 **Role:** Rapid UI/UX prototyping in minutes
 
 **Speed:**
+
 - Simple component: 10-15 minutes
 - Moderate screen: 30-60 minutes
 - Complex feature: 1-2 hours
 
 **Deliverables:**
+
 - Wireframes (paper/digital sketches)
 - Component tree diagrams
 - Design specifications (exact colors, typography, spacing)
@@ -209,6 +224,7 @@ ALIGNMENT: Everyone knows the plan before coding
 - Handoff document for Frontend
 
 **Impact:**
+
 - ✅ Stakeholders see designs after 30 minutes (not 6 hours)
 - ✅ Can approve design before coding starts
 - ✅ Changes to design are cheap (revise design, not code)
@@ -216,6 +232,7 @@ ALIGNMENT: Everyone knows the plan before coding
 - ✅ Fewer questions, fewer revisions
 
 ### Design-First Feedback Loop
+
 ```
 Designer creates wireframe (10 min)
     ↓
@@ -245,16 +262,17 @@ Total: 7+ hours per iteration
 
 ### Feature Cycle Time Comparison
 
-| Phase | Code-First | Design-First | Savings |
-|-------|-----------|--------------|---------|
-| 1. Requirements | 1 hour | 1 hour | - |
-| 2. Design | - | 30 min | - |
-| 3. Frontend | 3 hours | 2 hours | **-33%** |
-| 4. Backend | 2 hours | 1.5 hours | **-25%** |
-| 5. Feedback/Revision | 2 hours | 1 hour | **-50%** |
-| **TOTAL** | **8 hours** | **5.5 hours** | **-31%** |
+| Phase                | Code-First  | Design-First  | Savings  |
+| -------------------- | ----------- | ------------- | -------- |
+| 1. Requirements      | 1 hour      | 1 hour        | -        |
+| 2. Design            | -           | 30 min        | -        |
+| 3. Frontend          | 3 hours     | 2 hours       | **-33%** |
+| 4. Backend           | 2 hours     | 1.5 hours     | **-25%** |
+| 5. Feedback/Revision | 2 hours     | 1 hour        | **-50%** |
+| **TOTAL**            | **8 hours** | **5.5 hours** | **-31%** |
 
 ### Why Faster?
+
 1. Designer spec is approved before Frontend starts → No "what should this look like?" questions
 2. Frontend spec is clear before Backend starts → No "what shape should this endpoint return?" questions
 3. Earlier feedback loops → Fewer expensive revisions
@@ -264,6 +282,7 @@ Total: 7+ hours per iteration
 ## 🎨 Rapid Prototyping Standards
 
 ### Component Structure
+
 ```
 src/components/
 ├── atoms/          Single elements (Button, Input, Avatar, Badge)
@@ -274,17 +293,20 @@ src/components/
 ```
 
 ### Naming Conventions
+
 - **Components:** `PascalCase` (Button, ProfileCard)
 - **Props:** `camelCase` (onClick, isActive)
 - **CSS:** BEM format (button, button-primary, button:disabled)
 - **Files:** Match component name
 
 ### Design Tokens
+
 - **Colors:** Pre-defined palette with semantic meaning
 - **Typography:** 8-step scale (12px - 36px)
 - **Spacing:** 8px base grid for consistency
 
 ### Building Time
+
 - Simple component: 5 min (jsx) + 3 min (css) + 2 min (stories) = **~10 min**
 - Moderate screen: 2-3 hours
 - Complex feature: 3-4 hours
@@ -296,6 +318,7 @@ src/components/
 ### New Guides (2 comprehensive guides)
 
 #### `design-first-workflow.md` (6.9 KB)
+
 - Process guide for design-first development
 - Stage-by-stage workflow with timings
 - Real-world examples (dark mode, profile page, OAuth2)
@@ -305,6 +328,7 @@ src/components/
 - Success metrics and checklists
 
 #### `rapid-prototyping-standards.md` (5.7 KB)
+
 - Technical standards for fast component development
 - Component patterns and examples
 - Design token system
@@ -313,6 +337,7 @@ src/components/
 - Quality gates and checkpoints
 
 ### Architecture Summary
+
 - **File:** `DESIGN_FIRST_ARCHITECTURE_V5.0.0.md`
 - Explains what changed and why
 - Integration points for adapters
@@ -324,6 +349,7 @@ src/components/
 ## ✅ Quality Checkpoints Included
 
 ### Designer Checklist
+
 - [ ] Wireframe approved by stakeholders
 - [ ] All components documented
 - [ ] Responsive behavior specified
@@ -334,6 +360,7 @@ src/components/
 - [ ] Frontend knows what to build
 
 ### Frontend Checklist
+
 - [ ] All components built to spec
 - [ ] Storybook stories created
 - [ ] Responsive tested
@@ -342,6 +369,7 @@ src/components/
 - [ ] Backend knows what to build
 
 ### Backend Checklist
+
 - [ ] All endpoints implemented
 - [ ] Database schema created
 - [ ] Validation working
@@ -354,12 +382,14 @@ src/components/
 ## 🔄 Real-World Examples Provided
 
 ### Example 1: "Add Dark Mode"
+
 - Designer: 10 min (color specs)
 - Frontend: 45 min (build components)
 - Total: 55 min
 - Improvement: 1+ hour saved vs code-first
 
 ### Example 2: "Build User Profile Page"
+
 - Designer: 45 min (wireframe + specs)
 - Frontend: 2 hours (components)
 - Backend: 1.5 hours (APIs)
@@ -368,6 +398,7 @@ src/components/
 - Quality: Better design alignment, fewer revisions
 
 ### Example 3: "Implement OAuth2"
+
 - Designer: 30 min (login screens)
 - Frontend: 1.5 hours (forms)
 - Backend: 2 hours (OAuth endpoints)
@@ -392,18 +423,21 @@ src/components/
 ## 📋 Next Steps
 
 ### Immediate Actions (Optional)
+
 1. **Test the workflow** on a real feature
 2. **Gather feedback** from your team
 3. **Refine based on experience**
 4. **Document lessons learned**
 
 ### Integration (Short-term)
+
 1. Update `.github/copilot-instructions.md` to reference new files
 2. Update `.clinerules` to reference new files
 3. Update `.cursorrules` to reference new files
 4. Add agent detection logic to adapters
 
 ### Future Enhancements (Medium-term)
+
 1. Create Testing Agent specific instructions
 2. Create Documentation Agent specific instructions
 3. Create DevOps Agent specific instructions
@@ -414,6 +448,7 @@ src/components/
 ## 📊 Files Summary
 
 ### Created Files (7 new files)
+
 ```
 ✅ lib/ai-instructions/orchestrator-main.md        (5.2 KB)
 ✅ lib/ai-instructions/designer-agent.md           (8.1 KB)
@@ -427,6 +462,7 @@ Total: ~49.3 KB of new documentation
 ```
 
 ### Git Commit
+
 ```
 788b51c feat: implement design-first architecture v5.0.0 with Designer agent
 
@@ -443,35 +479,45 @@ Total: ~49.3 KB of new documentation
 ## 🎓 Learning Resources
 
 ### For Product Managers
+
 → Read: `docs/guides/design-first-workflow.md`
+
 - Understand the design-first process
 - Learn real-world examples
 - See speed improvements
 
 ### For Designers
+
 → Read: `lib/ai-instructions/designer-agent.md`
+
 - Your role and responsibilities
 - Rapid prototyping standards
 - Handoff to Frontend
 - Quality gates
 
 ### For Frontend Developers
+
 → Read: `lib/ai-instructions/frontend-agent.md`
 → Read: `docs/guides/rapid-prototyping-standards.md`
+
 - How to implement from design specs
 - Component patterns and standards
 - Responsive implementation
 - Handoff to Backend
 
 ### For Backend Developers
+
 → Read: `lib/ai-instructions/backend-agent.md`
+
 - How to implement from Frontend specs
 - API design standards
 - Database design patterns
 - Security & performance
 
 ### For Everyone
+
 → Read: `lib/ai-instructions/orchestrator-main.md`
+
 - Understand the overall system
 - Learn routing logic
 - Understand multi-agent coordination
@@ -481,21 +527,26 @@ Total: ~49.3 KB of new documentation
 ## 🚀 Success Metrics
 
 ### After Implementation
+
 Track these to measure success:
 
 **Speed:**
+
 - Target: -38% faster time-to-market for features
 - Measure: Feature cycle time (requirements to done)
 
 **Quality:**
+
 - Target: Fewer revisions (design approved early)
 - Measure: Number of feedback rounds
 
 **Alignment:**
+
 - Target: Team and stakeholders on same page
 - Measure: Stakeholder satisfaction scores
 
 **Satisfaction:**
+
 - Target: Better products, happier teams
 - Measure: Team velocity, happiness metrics
 
@@ -523,4 +574,3 @@ You now have a **complete design-first architecture** with:
 **Ready to ship:** Yes! All files committed and ready to use.
 
 **Next Action:** Test on a real feature and gather feedback from your team.
-

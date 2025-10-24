@@ -53,14 +53,14 @@ Benefits:
 
 ### Speed Comparison
 
-| Phase | Code-First | Design-First | Savings |
-|-------|-----------|--------------|---------|
-| 1. Requirements | 1 hour | 1 hour | - |
-| 2. Design | - | 30 min | - |
-| 3. Frontend | 3 hours | 2 hours | **-33%** |
-| 4. Backend | 2 hours | 1.5 hours | **-25%** |
-| 5. Feedback/Revision | 2 hours | 1 hour | **-50%** |
-| **TOTAL** | **8 hours** | **5 hours** | **-38%** |
+| Phase                | Code-First  | Design-First | Savings  |
+| -------------------- | ----------- | ------------ | -------- |
+| 1. Requirements      | 1 hour      | 1 hour       | -        |
+| 2. Design            | -           | 30 min       | -        |
+| 3. Frontend          | 3 hours     | 2 hours      | **-33%** |
+| 4. Backend           | 2 hours     | 1.5 hours    | **-25%** |
+| 5. Feedback/Revision | 2 hours     | 1 hour       | **-50%** |
+| **TOTAL**            | **8 hours** | **5 hours**  | **-38%** |
 
 **Result: Finish 3 hours sooner with better alignment and fewer revisions.**
 
@@ -85,6 +85,7 @@ graph LR
 **Duration:** 30 minutes - 2 hours (depending on complexity)
 
 **Deliverables:**
+
 - Wireframes/sketches
 - Component tree diagram
 - Design specifications (colors, typography, spacing)
@@ -111,6 +112,7 @@ graph LR
 **Duration:** 1-3 hours (depending on components)
 
 **Deliverables:**
+
 - React/Vue components
 - CSS/styled components
 - Storybook stories
@@ -137,6 +139,7 @@ graph LR
 **Duration:** 1-3 hours (depending on complexity)
 
 **Deliverables:**
+
 - API endpoints
 - Database schema
 - Business logic
@@ -160,6 +163,7 @@ graph LR
 **Duration:** 1-2 hours
 
 **Deliverables:**
+
 - Integration tests
 - E2E tests
 - Coverage report
@@ -173,6 +177,7 @@ graph LR
 **Orchestrator + Product/Stakeholder:**
 
 Questions to answer:
+
 - ❓ What problem are we solving?
 - ❓ Who is the user?
 - ❓ What's the success metric?
@@ -204,6 +209,7 @@ Questions to answer:
 - 🚀 Go/no-go decision
 
 **Decision point:**
+
 ```
 Approved?
 ├─ YES → Proceed to Frontend
@@ -319,11 +325,11 @@ Is there a UI component?
 
 ### Feature Complexity Assessment
 
-| Complexity | Time | Process |
-|-----------|------|---------|
-| **Simple** | < 1 hour | Wireframe + code |
-| **Moderate** | 1-4 hours | Spec + prototype + code |
-| **Complex** | > 4 hours | Full spec + approval + design system |
+| Complexity   | Time      | Process                              |
+| ------------ | --------- | ------------------------------------ |
+| **Simple**   | < 1 hour  | Wireframe + code                     |
+| **Moderate** | 1-4 hours | Spec + prototype + code              |
+| **Complex**  | > 4 hours | Full spec + approval + design system |
 
 ---
 
@@ -379,7 +385,7 @@ Orchestrator Decision:
 - Has UI? YES (login button)
 - Backend? YES (auth endpoints)
 - Complexity? Moderate-Complex
-- Route: Designer (30 min for login screens) → Frontend (1.5 hours) 
+- Route: Designer (30 min for login screens) → Frontend (1.5 hours)
         → Backend (2 hours) → Testing (1 hour) → Done
 
 Timeline:
@@ -403,6 +409,7 @@ Benefits:
 ### ❌ Pitfall 1: Skipping Design Phase
 
 **Problem:** "We'll figure it out while coding"
+
 - Developers code the same feature 3 times
 - Stakeholders unhappy with result
 - 2x longer timeline
@@ -412,6 +419,7 @@ Benefits:
 ### ❌ Pitfall 2: Over-Designing
 
 **Problem:** Designer spends 4 hours perfecting every pixel
+
 - Still need frontend to implement (2 more hours)
 - Total: 6+ hours before seeing working code
 
@@ -420,10 +428,12 @@ Benefits:
 ### ❌ Pitfall 3: Design-Frontend Mismatch
 
 **Problem:** Designer creates design, Frontend builds something else
+
 - Designer: "That's not what I designed!"
 - Frontend: "The design wasn't clear!"
 
-**Solution:** 
+**Solution:**
+
 - Designer creates clear, detailed specs
 - Frontend builds exactly to spec
 - Compare side-by-side with Figma
@@ -431,10 +441,12 @@ Benefits:
 ### ❌ Pitfall 4: Frontend-Backend Mismatch
 
 **Problem:** Frontend asks for API, Backend builds something different
+
 - Frontend: "That's not the shape I need!"
 - Backend: "I didn't know I needed that!"
 
 **Solution:**
+
 - Frontend documents exact API contract
 - Backend implements exactly as specified
 - Validate with tests before merging
@@ -442,11 +454,13 @@ Benefits:
 ### ❌ Pitfall 5: Feedback Chaos
 
 **Problem:** Too many feedback rounds, no clear decision
+
 - Design reviewed 5 times, no approval
 - Frontend confused about spec
 - Nothing ships
 
 **Solution:**
+
 - Max 2 feedback rounds before approval
 - Clear decision criteria upfront
 - Approve or reject, don't endless iterate
@@ -484,6 +498,7 @@ Developer Satisfaction:
 ### Designer Checklist
 
 ✅ **Before handoff to Frontend:**
+
 - [ ] Wireframe approved by stakeholders
 - [ ] All components documented
 - [ ] Responsive behavior specified
@@ -496,6 +511,7 @@ Developer Satisfaction:
 ### Frontend Checklist
 
 ✅ **Before handoff to Backend:**
+
 - [ ] All components built to spec
 - [ ] Storybook stories created
 - [ ] Responsive tested
@@ -507,6 +523,7 @@ Developer Satisfaction:
 ### Backend Checklist
 
 ✅ **Before handoff to Testing:**
+
 - [ ] All endpoints implemented
 - [ ] Database schema created
 - [ ] Validation working

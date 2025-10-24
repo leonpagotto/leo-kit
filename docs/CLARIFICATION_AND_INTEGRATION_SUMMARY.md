@@ -9,11 +9,13 @@
 ### Q1: "Will the Designer Agent actually build code?"
 
 **Your Question:**
+
 > "So the designer agent will actually build in the code, right? We will copilot will build it"
 
 **Answer: NO → YES (clarified)**
 
 **Designer Agent creates:** SPECIFICATIONS (not code)
+
 - Wireframes
 - Component tree
 - Design tokens (colors, fonts, spacing)
@@ -23,6 +25,7 @@
 - Figma links
 
 **Frontend Agent builds:** ACTUAL CODE
+
 - React components (.jsx)
 - CSS styling (.css or .module.css)
 - Storybook stories
@@ -46,6 +49,7 @@
 **Answer: YES - Automatic**
 
 Each agent automatically gets optimal model:
+
 - Designer: Claude-3-Sonnet ($0.02)
 - Frontend: Claude-3-Sonnet ($0.15)
 - Backend: Claude-3-Opus ($0.30)
@@ -58,16 +62,19 @@ Each agent automatically gets optimal model:
 ## 📋 Complete Deliverables
 
 ### New Agent Files (3 files)
+
 - `testing-agent.md` - Unit/Integration/E2E tests
-- `documentation-agent.md` - User guides, API docs  
+- `documentation-agent.md` - User guides, API docs
 - `devops-agent.md` - Deployment, CI/CD, infrastructure
 
 ### New Documentation Files (3 files)
+
 - `DESIGNER_AGENT_CLARIFICATION.md` - Explains specs concept
 - `MODEL_SELECTION_INTEGRATION_COMPLETE.md` - Complete integration guide
 - `DESIGNER_VS_FRONTEND_QUICK_REFERENCE.md` - Code examples
 
 ### Updated Agent Files (4 files)
+
 - `orchestrator-main.md` - Added model selection section
 - `designer-agent.md` - Added model selection header
 - `frontend-agent.md` - Added model selection header
@@ -84,7 +91,7 @@ Phase 1: DESIGNER (30-45 min, Claude-3-Sonnet)
   Creates: Design specs + wireframes
   Cost: $0.02
     ↓
-Phase 2: FRONTEND (1.5-2 h, Claude-3-Sonnet)  
+Phase 2: FRONTEND (1.5-2 h, Claude-3-Sonnet)
   Builds: React components
   Cost: $0.15
     ↓
@@ -120,13 +127,13 @@ f9ba568 - Complete agent suite with model selection
 
 ## ✅ Your Concerns Addressed
 
-| Question | Answer | Evidence |
-|----------|--------|----------|
-| Designer builds code? | NO - creates specs | DESIGNER_AGENT_CLARIFICATION.md |
-| Model selection integrated? | YES | orchestrator-main.md + agent headers |
-| Models auto-select per agent? | YES | Model matrix documented |
-| All agents created? | YES (6 total) | 3 new + 3 updated |
-| All committed? | YES | 6 commits made |
+| Question                      | Answer             | Evidence                             |
+| ----------------------------- | ------------------ | ------------------------------------ |
+| Designer builds code?         | NO - creates specs | DESIGNER_AGENT_CLARIFICATION.md      |
+| Model selection integrated?   | YES                | orchestrator-main.md + agent headers |
+| Models auto-select per agent? | YES                | Model matrix documented              |
+| All agents created?           | YES (6 total)      | 3 new + 3 updated                    |
+| All committed?                | YES                | 6 commits made                       |
 
 ---
 
