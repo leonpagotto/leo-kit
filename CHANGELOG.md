@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### New Features
 
 ##### Real-Time Model Selection Display
+
 - ✅ **Status Bar Display**: Shows current AI model in VS Code status bar with agent emoji
 - ✅ **Automatic Model Switching**: Models update automatically as agents execute
 - ✅ **File Watching**: Real-time updates via `~/.leo-model-status.json`
@@ -21,17 +22,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ✅ **Status Indicators**: Visual feedback (↻ active, ✓ complete, ⊘ idle)
 
 ##### New Components
+
 - `ModelSelectorStatusManager` - Event emission and status file management
 - `ModelSelectionOrchestrator` - Orchestration with automatic tracking
 - VS Code Extension (`model-selector.js`) - Status bar display with real-time updates
 
 ##### Documentation
+
 - `REALTIME_MODEL_SELECTION_IN_VSCODE.md` - Complete architecture guide
 - `REALTIME_MODEL_SELECTION_QUICK_START.md` - Setup and installation guide
 - `REALTIME_MODEL_SELECTION_IMPLEMENTATION_SUMMARY.md` - Technical implementation details
 - `REALTIME_MODEL_SELECTION_VISUAL_GUIDE.md` - Visual flows and state diagrams
 
 ### 📝 Improvements
+
 - Enhanced documentation formatting and consistency
 - Improved visual guides for understanding real-time model selection
 - Better integration examples for orchestrator
@@ -50,6 +54,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### New Features
 
 ##### GitHub-Native Issue System
+
 - ✅ **Native Issue Types**: Use GitHub's standard Bug/Enhancement/Task types
 - ✅ **Visual Priority Indicators**: Emoji-based priority in body (🔴 Critical, 🟠 High, 🟡 Medium, 🟢 Low)
 - ✅ **Story Point Estimation**: Fibonacci scale (1, 2, 3, 5, 8, 13, 21) for effort tracking
@@ -57,6 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ✅ **Auto-Status Transitions**: Issues automatically move through workflow stages
 
 ##### New Issue Creation Format
+
 ```markdown
 **Priority:** 🟡 Medium
 **Estimate:** 5 story points
@@ -65,14 +71,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ---
 
 ## Description
+
 Clear description...
 
 ## Acceptance Criteria
+
 - [ ] Testable criterion 1
 - [ ] Testable criterion 2
 ```
 
 ##### Component Label System
+
 - `backend` - Backend/API changes
 - `frontend` - Frontend/UI changes
 - `database` - Database changes
@@ -83,6 +92,7 @@ Clear description...
 - `infrastructure` - Infrastructure
 
 ##### New Tools & Scripts
+
 - **NEW**: `scripts/setup-github-project.js` - Auto-detects GitHub Project fields and generates .env configuration
 - **NEW**: `docs/guides/GITHUB_PROJECTS_SETUP.md` - Complete setup guide for GitHub Projects v2 integration
 - **NEW**: `lib/commands/issue-improved.js` - Modern issue creation with native GitHub features
@@ -104,11 +114,13 @@ Clear description...
 #### Migration Guide
 
 **Old Format (< v3.0.0):**
+
 ```bash
 gh issue create --title "Fix bug" --label "bug,P1,frontend,backend"
 ```
 
 **New Format (v3.0.0+):**
+
 ```bash
 cat > .gh-issue-body.md << 'EOF'
 **Priority:** 🔴 Critical
