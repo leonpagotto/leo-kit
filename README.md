@@ -316,6 +316,64 @@ leo init
 
 ---
 
+### 🤖 Intelligent Model Selection (v4.1.0+)
+
+**NEW:** Automatic AI model selection for optimal performance and cost efficiency!
+
+LEO intelligently selects the best AI model for each task based on:
+- **Agent Role**: Different agents prefer different models
+- **Task Complexity**: Simple tasks use cost-efficient models, complex tasks use powerful models
+- **Development Phase**: Development uses cost-optimized models, production uses performance models
+
+#### Supported Models
+
+| Model | Provider | Tier | Best For | Cost |
+|-------|----------|------|----------|------|
+| GPT-4 | OpenAI | Premium | Complex reasoning, architecture | $$$ |
+| GPT-4-turbo | OpenAI | High | Fast complex tasks | $$ |
+| GPT-3.5-turbo | OpenAI | Standard | General development | $ |
+| Claude-3-opus | Anthropic | Premium | Backend architecture, security | $$$ |
+| Claude-3-sonnet | Anthropic | High | Frontend code generation | $$ |
+| Claude-3-haiku | Anthropic | Standard | Documentation, simple tasks | $ |
+
+#### Quick Commands
+
+```bash
+# View all models and their status
+leo model list
+
+# Check current usage and budgets
+leo model status
+
+# Test model selection
+leo model test frontend complex
+
+# Configure budgets
+leo model budget daily 10
+leo model budget monthly 100
+```
+
+#### Budget Control
+
+LEO enforces spending limits to prevent unexpected costs:
+- **Daily Budget**: $5 (default) - Resets every 24 hours
+- **Monthly Budget**: $50 (default) - Resets on 1st of each month
+- **Per-Agent Budget**: $10 (default) - Tracks spending per agent
+
+When budgets are exceeded, LEO automatically falls back to cost-efficient models.
+
+**Benefits:**
+
+- ✅ **Cost Efficient** - Don't waste money on GPT-4 for simple tasks
+- ✅ **Smart Selection** - Right model for the right job
+- ✅ **Budget Control** - Never exceed spending limits
+- ✅ **Transparent** - See exactly which model was selected and why
+- ✅ **Automatic** - Zero manual configuration needed
+
+**[📖 Read Model Selection Guide](docs/guides/model-selection.md)**
+
+---
+
 ### 🎯 GitHub-Native Issue Creation (v3.0.0+)
 
 **NEW:** Modern issue management using GitHub's native features instead of label-based workarounds!
