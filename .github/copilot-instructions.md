@@ -22,8 +22,12 @@
 >
 > GitHub Copilot MUST follow these rules in EVERY response, starting from the FIRST message:
 >
-> - **Issue Creation:** When user describes ANY work → Create GitHub issue IMMEDIATELY (use `gh issue create`)
-> - **No Asking Permission:** NEVER ask "should I create an issue?" - JUST DO IT
+> - **🚨 AUTOMATIC ISSUE CREATION:** When user describes ANY work → Create GitHub issue IMMEDIATELY using `gh issue create --title "..." --body "..." --label "..."`
+> - **🚨 NO INTERACTIVE CLI:** NEVER use `leo issue` command - it opens interactive prompts that force manual input
+> - **🚨 NO MANUAL PROMPTS:** NEVER ask user to fill in issue details manually - YOU must provide all details programmatically
+> - **🚨 ONLY USE `gh issue create`:** Direct GitHub CLI with ALL parameters provided in the command itself
+> - **🚨 NO ASKING PERMISSION:** NEVER ask "should I create an issue?" - JUST DO IT AUTOMATICALLY
+> - **🚨 DETECT WORK DESCRIPTIONS:** ANY task, feature, bug, improvement, docs → IMMEDIATE automated issue creation
 > - **Auto-Resolve Check:** Read `.leorc.json` for `auto-resolve` setting before working
 > - **Status Updates:** Comment "🚀 Starting work..." and update to "In Progress" when starting
 > - **Commit Messages:** Keep under 72 characters, reference issue number
