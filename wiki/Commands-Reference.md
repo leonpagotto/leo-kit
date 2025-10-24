@@ -1,25 +1,26 @@
 # 📖 Commands Reference
 
-> **Complete reference for all LEO Workflow Kit commands**
+> **Complete reference for all LEO Workflow Kit v4.1.1 commands**
 
 ## 🎯 Command Overview
 
-| Command         | Purpose                              | Interactive | Version |
-| --------------- | ------------------------------------ | ----------- | ------- |
-| `leo init`      | Initialize LEO in project            | ✅ Yes      | v1.0.0  |
-| `leo agent`     | Manage specialized agents 🎉 NEW     | ✅ Yes      | v4.0.0  |
-| `leo github`    | Configure repository settings 🎉 NEW | ✅ Yes      | v4.0.0  |
-| `leo ai`        | Manage AI assistants                 | ✅ Yes      | v3.0.0  |
-| `leo issue`     | Create issue interactively           | ✅ Yes      | v1.0.0  |
-| `leo labels`    | Configure GitHub labels              | ✅ Yes      | v1.0.0  |
-| `leo vscode`    | Setup VS Code integration            | ✅ Yes      | v1.0.0  |
-| `leo config`    | Manage configuration                 | ✅ Yes      | v2.6.0  |
-| `leo status`    | Show project workflow status         | ❌ No       | v1.0.0  |
-| `leo health`    | System health check                  | ❌ No       | v2.0.0  |
-| `leo welcome`   | Show welcome banner                  | ❌ No       | v1.0.0  |
-| `leo docs`      | Open documentation                   | ❌ No       | v1.0.0  |
-| `leo --version` | Show version                         | ❌ No       | v1.0.0  |
-| `leo --help`    | Show help                            | ❌ No       | v1.0.0  |
+| Command         | Purpose                                   | Interactive | Version |
+| --------------- | ----------------------------------------- | ----------- | ------- |
+| `leo init`      | Initialize LEO in project                 | ✅ Yes      | v1.0.0  |
+| `leo agent`     | Manage specialized agents                 | ✅ Yes      | v4.0.0  |
+| `leo github`    | Configure repository settings             | ✅ Yes      | v4.0.0  |
+| `leo model`     | Manage AI model selection 🎉 NEW (v4.1.1) | ✅ Yes      | v4.1.1  |
+| `leo ai`        | Manage AI assistants                      | ✅ Yes      | v3.0.0  |
+| `leo issue`     | Create issue interactively                | ✅ Yes      | v1.0.0  |
+| `leo labels`    | Configure GitHub labels                   | ✅ Yes      | v1.0.0  |
+| `leo vscode`    | Setup VS Code integration                 | ✅ Yes      | v1.0.0  |
+| `leo config`    | Manage configuration                      | ✅ Yes      | v2.6.0  |
+| `leo status`    | Show project workflow status              | ❌ No       | v1.0.0  |
+| `leo health`    | System health check                       | ❌ No       | v2.0.0  |
+| `leo welcome`   | Show welcome banner                       | ❌ No       | v1.0.0  |
+| `leo docs`      | Open documentation                        | ❌ No       | v1.0.0  |
+| `leo --version` | Show version (4.1.1)                      | ❌ No       | v1.0.0  |
+| `leo --help`    | Show help                                 | ❌ No       | v1.0.0  |
 
 ---
 
@@ -44,6 +45,7 @@ leo init [options]
 5. Installs issue and PR templates
 6. Sets up VS Code Copilot instructions
 7. Optionally configures GitHub labels
+8. Initializes real-time model selection (NEW in v4.1.1)
 
 **Interactive Prompts:**
 
@@ -527,6 +529,167 @@ leo github setup
 **See Also:**
 
 - [GitHub Settings Best Practices](./GitHub-Settings)
+
+---
+
+### `leo model` 🎉 NEW in v4.1.1
+
+Manage AI model selection for intelligent task routing and cost optimization.
+
+**Usage:**
+
+```bash
+leo model <subcommand> [options]
+```
+
+**Subcommands:**
+
+#### `leo model status`
+
+Show current model selection configuration and usage.
+
+**Usage:**
+
+```bash
+leo model status
+```
+
+**Output Shows:**
+
+- Feature enabled/disabled status
+- Current strategy (auto, manual, etc.)
+- Budget configurations (daily, monthly, per-agent)
+- Current usage vs. budgets
+- Available AI providers
+- API key configuration status
+
+#### `leo model list`
+
+List all available AI models.
+
+**Usage:**
+
+```bash
+leo model list
+```
+
+#### `leo model enable`
+
+Enable model selection feature.
+
+**Usage:**
+
+```bash
+leo model enable
+```
+
+#### `leo model disable`
+
+Disable model selection feature.
+
+**Usage:**
+
+```bash
+leo model disable
+```
+
+#### `leo model budget`
+
+Configure usage budgets.
+
+**Usage:**
+
+```bash
+leo model budget [options]
+```
+
+**Options:**
+
+- `--daily <amount>` - Set daily budget (default: $5)
+- `--monthly <amount>` - Set monthly budget (default: $50)
+- `--per-agent <amount>` - Set per-agent budget (default: $10)
+
+#### `leo model usage`
+
+Check current model usage statistics.
+
+**Usage:**
+
+```bash
+leo model usage
+```
+
+#### `leo model reset`
+
+Reset usage counters (admin only).
+
+**Usage:**
+
+```bash
+leo model reset
+```
+
+#### `leo model test`
+
+Test model selection for a specific agent and complexity.
+
+**Usage:**
+
+```bash
+leo model test <agent> [complexity]
+```
+
+**Arguments:**
+
+- `agent` - Agent name (designer, frontend, backend, testing, documentation, devops)
+- `complexity` - Task complexity (simple, moderate, complex)
+
+**Features:**
+
+- Automatic model selection based on agent type
+- Complexity-aware routing (simple tasks use cheap models, complex use powerful)
+- Real-time status display in VS Code (100ms latency)
+- Event emission for tracking changes
+- File-based status monitoring
+- Cost-conscious routing
+- Usage tracking against budgets
+
+**Real-Time Display:**
+
+When agents execute, watch the VS Code status bar automatically update:
+
+```
+⊘ LEO Ready                    (idle)
+↻ 🎨 designer → Claude-S       (designer working)
+✓ 🎨 designer complete         (designer done)
+↻ 💻 frontend → Claude-S       (frontend working)
+↻ 🔧 backend → Claude-Opus     (backend - upgraded for complexity!)
+↻ 📚 documentation → GPT-3.5    (docs - most cost-efficient)
+```
+
+**Configuration:**
+
+Model selection settings are in `.leorc.json`:
+
+```json
+{
+  "model-selection": {
+    "enabled": true,
+    "strategy": "auto",
+    "budgets": {
+      "daily": 5.00,
+      "monthly": 50.00,
+      "per-agent": 10.00
+    }
+  }
+}
+```
+
+**See Also:**
+
+- [Real-Time Model Selection Guide](../docs/REALTIME_MODEL_SELECTION_IN_VSCODE.md)
+- [Model Selection Quick Start](../docs/REALTIME_MODEL_SELECTION_QUICK_START.md)
+- [Cost Tracking Documentation](../docs/guides/model-selection.md)
 
 ---
 

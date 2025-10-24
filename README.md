@@ -19,13 +19,13 @@
 
 ---
 
-### 🎉 Latest Release: **v4.0.3** - Automation Improvements & Latest AI Models
+### 🎉 Latest Release: **v4.1.1** - Real-Time Model Selection in VS Code
 
-**Full automation with GPT-5 and Claude 4.5 support**
+**Advanced AI orchestration with real-time model display and automatic switching**
 
-🤖 100% automated issue creation • 🧠 Latest AI models • 🚀 Zero manual input • ⚡ Enhanced workflow
+🎨 Real-time model selection display • � Automatic AI switching • ⚡ 100ms latency • 🎯 Smart model routing
 
-**[📋 View All Releases](#-release-history)** • **[📚 Read v4.0.0 Release Notes](RELEASE_V4.0.0_SUMMARY.md)**
+**[📋 View All Releases](#-release-history)** • **[📚 Read v4.1.1 Release Notes](docs/PUBLISHING_COMPLETE_V4.1.1.md)**
 
 ---
 
@@ -74,7 +74,7 @@ LEO transforms these pain points into strengths:
 
 ### Multi-Agent Orchestration
 
-LEO v4.0.0 introduces an intelligent orchestration system that routes tasks to specialized AI agents based on domain expertise:
+LEO v4.1.1 includes an intelligent orchestration system that routes tasks to specialized AI agents based on domain expertise:
 
 ```
                                     Your Development Request
@@ -316,25 +316,26 @@ leo init
 
 ---
 
-### 🤖 Intelligent Model Selection (v4.1.0+)
+### 🤖 Real-Time Model Selection (v4.1.1+) - NOW INCLUDED!
 
 **NEW:** Automatic AI model selection for optimal performance and cost efficiency!
 
 LEO intelligently selects the best AI model for each task based on:
+
 - **Agent Role**: Different agents prefer different models
 - **Task Complexity**: Simple tasks use cost-efficient models, complex tasks use powerful models
 - **Development Phase**: Development uses cost-optimized models, production uses performance models
 
 #### Supported Models
 
-| Model | Provider | Tier | Best For | Cost |
-|-------|----------|------|----------|------|
-| GPT-4 | OpenAI | Premium | Complex reasoning, architecture | $$$ |
-| GPT-4-turbo | OpenAI | High | Fast complex tasks | $$ |
-| GPT-3.5-turbo | OpenAI | Standard | General development | $ |
-| Claude-3-opus | Anthropic | Premium | Backend architecture, security | $$$ |
-| Claude-3-sonnet | Anthropic | High | Frontend code generation | $$ |
-| Claude-3-haiku | Anthropic | Standard | Documentation, simple tasks | $ |
+| Model           | Provider  | Tier     | Best For                        | Cost |
+| --------------- | --------- | -------- | ------------------------------- | ---- |
+| GPT-4           | OpenAI    | Premium  | Complex reasoning, architecture | $$$  |
+| GPT-4-turbo     | OpenAI    | High     | Fast complex tasks              | $$   |
+| GPT-3.5-turbo   | OpenAI    | Standard | General development             | $    |
+| Claude-3-opus   | Anthropic | Premium  | Backend architecture, security  | $$$  |
+| Claude-3-sonnet | Anthropic | High     | Frontend code generation        | $$   |
+| Claude-3-haiku  | Anthropic | Standard | Documentation, simple tasks     | $    |
 
 #### Quick Commands
 
@@ -356,6 +357,7 @@ leo model budget monthly 100
 #### Budget Control
 
 LEO enforces spending limits to prevent unexpected costs:
+
 - **Daily Budget**: $5 (default) - Resets every 24 hours
 - **Monthly Budget**: $50 (default) - Resets on 1st of each month
 - **Per-Agent Budget**: $10 (default) - Tracks spending per agent
@@ -380,17 +382,18 @@ When budgets are exceeded, LEO automatically falls back to cost-efficient models
 
 #### What Changed in v3.0.0
 
-| Feature | Old System (< v3.0.0) | New System (v3.0.0+) |
-|---------|----------------------|---------------------|
+| Feature        | Old System (< v3.0.0)                   | New System (v3.0.0+)     |
+| -------------- | --------------------------------------- | ------------------------ |
 | **Issue Type** | Labels: `bug`, `enhancement`, `feature` | GitHub native type field |
-| **Priority** | Labels: `P0`, `P1`, `P2`, `P3` | Field in body: 🔴🟠🟡🟢 |
-| **Components** | Mixed with types/priorities | Dedicated labels only |
-| **Estimation** | Not supported | Story points (1-21) |
-| **Status** | Manual updates | Auto-transitions |
+| **Priority**   | Labels: `P0`, `P1`, `P2`, `P3`          | Field in body: 🔴🟠🟡🟢  |
+| **Components** | Mixed with types/priorities             | Dedicated labels only    |
+| **Estimation** | Not supported                           | Story points (1-21)      |
+| **Status**     | Manual updates                          | Auto-transitions         |
 
 #### The New Format
 
 **Issue Body Structure:**
+
 ```markdown
 **Priority:** 🟡 Medium
 **Estimate:** 5 story points
@@ -399,14 +402,17 @@ When budgets are exceeded, LEO automatically falls back to cost-efficient models
 ---
 
 ## Description
+
 Clear description of the work...
 
 ## Acceptance Criteria
+
 - [ ] Testable criterion 1
 - [ ] Testable criterion 2
 ```
 
 **Component Labels (use ONLY these for labeling):**
+
 - `backend` - Backend/API changes
 - `frontend` - Frontend/UI changes
 - `database` - Database changes
@@ -417,12 +423,14 @@ Clear description of the work...
 - `infrastructure` - Infrastructure
 
 **Priority Levels (displayed in body, not labels):**
+
 - 🔴 **Critical** - Production down, security issues
 - 🟠 **High** - Major features, significant bugs
 - 🟡 **Medium** - Standard work, minor bugs
 - 🟢 **Low** - Nice-to-have, tech debt
 
 **Example Commands:**
+
 ```bash
 # ✅ NEW FORMAT (v3.0.0+)
 leo issue --interactive
@@ -437,6 +445,7 @@ leo issue --interactive
 ```
 
 **Benefits:**
+
 - ✅ **Standards-Compliant** - Uses GitHub's intended features
 - ✅ **Better Filtering** - Filter by components without type/priority noise
 - ✅ **Effort Tracking** - Story points for sprint planning
@@ -1446,7 +1455,45 @@ leo ai sync
 
 ## 📋 Release History
 
-### 🎉 v4.0.0 - Multi-Agent Orchestration System (Current)
+### 🎉 v4.1.1 - Real-Time Model Selection in VS Code (Current)
+
+**Released:** October 24, 2025
+
+**🚀 Major Features:**
+
+- ✨ **Real-Time Model Selection Display** - Live model updates in VS Code status bar with agent emoji
+- 🔄 **Automatic Model Switching** - Models automatically change as agents execute
+- 📊 **Status Manager Events** - Event emission system for model selection lifecycle tracking
+- 🎯 **Orchestrator Integration** - Automatic tracking and broadcasting of model selection
+- 🔌 **VS Code Extension** - Full extension with status bar display and commands
+- 📁 **File Watching** - Real-time updates via `~/.leo-model-status.json` with 100ms polling
+
+**💡 Benefits:**
+
+- **Transparency** - See exactly which AI model is working on your task
+- **Cost Optimization** - Automatic model selection based on task complexity
+- **Real-Time Feedback** - Instant status updates in VS Code
+- **Event-Driven Architecture** - Extensible system for tracking and monitoring
+
+**🎁 What's Included:**
+
+- ModelSelectorStatusManager - Event emission system
+- ModelSelectionOrchestrator - Orchestration with tracking
+- VS Code Extension - Status bar display with commands
+- 4 comprehensive documentation guides
+- Visual flow diagrams and examples
+
+**📖 Documentation:**
+
+- [Real-Time Model Selection Guide](docs/REALTIME_MODEL_SELECTION_IN_VSCODE.md)
+- [Quick Start Setup](docs/REALTIME_MODEL_SELECTION_QUICK_START.md)
+- [Implementation Details](docs/REALTIME_MODEL_SELECTION_IMPLEMENTATION_SUMMARY.md)
+- [Visual Flows & Diagrams](docs/REALTIME_MODEL_SELECTION_VISUAL_GUIDE.md)
+- [Release Summary](docs/PUBLISHING_COMPLETE_V4.1.1.md)
+
+---
+
+### 🎉 v4.0.0 - Multi-Agent Orchestration System
 
 **Released:** October 20, 2025
 

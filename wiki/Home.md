@@ -1,25 +1,47 @@
 # Welcome to the LEO Workflow Kit Wiki! 🦁
 
-> **Your comprehensive guide to mastering AI-powered workflow automation with multi-agent orchestration**
+> **Your comprehensive guide to mastering AI-powered workflow automation with real-time model selection**
 
 ## 🌟 What is LEO Workflow Kit?
 
 LEO Workflow Kit is a powerful CLI tool that revolutionizes software development project management through:
 
-- **🎛️ Multi-Agent Orchestration**: Intelligent routing to specialized AI agents (v4.0.0) 🎉 NEW
+- **🎛️ Multi-Agent Orchestration**: Intelligent routing to specialized AI agents (v4.1.1) 🎉 LATEST
+- **🔄 Real-Time Model Selection**: Live AI model display in VS Code status bar (v4.1.1) ✨ NEW
 - **🤖 Multi-AI Support**: Works with Copilot, Cursor, Cline, and Codeium
 - **🚀 Automatic Initialization**: Zero-config setup with `LEO_AUTO_INIT=true`
-- **🎯 Domain Expertise**: 6 specialized agents (Frontend, Backend, DevOps, Testing, Documentation, Orchestrator)
+- **🎯 Domain Expertise**: 6 specialized agents (Frontend, Backend, DevOps, Testing, Documentation, Orchestrator, Designer)
 - **⚙️ GitHub Settings Automation**: Configure repository best practices automatically
 - **🧠 Intelligent Spec-First AI**: Automatically decides when to create specs vs direct issues
 - **📊 Intelligent Project Management**: Auto-sync with GitHub Projects with smart status updates
 - **⚡ Zero Configuration**: Works out-of-the-box - literally just `npm install`
 
-**Current Version:** 4.0.0 🎉
-**Latest Stable:** 4.0.0
-**Released:** October 20, 2025
+**Current Version:** 4.1.1 🎉
+**Latest Stable:** 4.1.1
+**Released:** October 24, 2025
 
-**What's New in 4.0.0:** 🎉 MAJOR RELEASE - Multi-Agent Orchestration System
+**What's New in 4.1.1:** ✨ REAL-TIME MODEL SELECTION IN VS CODE
+
+- � **Real-Time Model Display**: Watch AI models change in VS Code status bar as agents execute
+- 🔄 **Automatic Model Switching**: Intelligent model selection based on task complexity
+- 📊 **Status Manager Events**: Event emission system for tracking model changes
+- 🔌 **VS Code Extension**: Full integration with status bar and commands
+- 📁 **File Watching**: Real-time updates via `~/.leo-model-status.json`
+- ⚡ **100ms Max Latency**: Super-fast status bar updates
+- 💰 **Cost-Conscious Routing**: Automatic model selection optimizing for cost vs power
+
+**Example Real-Time Display:**
+
+```
+⊘ LEO Ready                    (idle)
+↻ 🎨 designer → Claude-S       (designer working)
+✓ 🎨 designer complete         (designer done)
+↻ 💻 frontend → Claude-S       (frontend working)
+↻ 🔧 backend → Claude-Opus     (backend - upgraded model!)
+↻ 📚 documentation → GPT-3.5    (docs - cheapest model)
+```
+
+**What's New in 4.0.0:** 🎯 Multi-Agent Orchestration System
 
 - 🎛️ **Intelligent Task Routing**: Orchestrator analyzes and routes to specialized agents
 - 🎨 **6 Specialized Agents**: Frontend, Backend, DevOps, Testing, Documentation + Orchestrator
@@ -28,7 +50,6 @@ LEO Workflow Kit is a powerful CLI tool that revolutionizes software development
 - 🔄 **Multi-Agent Coordination**: Complex tasks automatically coordinated across agents
 - 🛠️ **New `leo agent` Command**: Manage agents (list, enable, disable, info, sync)
 - ⚙️ **New `leo github` Command**: Configure repository settings with best practices
-- ✨ **Backward Compatible**: v3.x configurations continue working
 
 **What's New in 3.0.0:** 🎯 GitHub-Native Issue Creation
 
@@ -38,21 +59,6 @@ LEO Workflow Kit is a powerful CLI tool that revolutionizes software development
 - ✅ **Native GitHub Types**: Use standard Bug/Enhancement/Task types
 - 🔄 **Auto-Status Transitions**: Issues move through workflow automatically
 - 📋 **Better Filtering**: Filter by components without type/priority noise
-
-**v3.0.1 Features:**
-
-- 🚨 **CRITICAL Status Updates**: Mandatory immediate status updates when starting work
-- 📝 **Enhanced Banner**: Multi-AI support highlighted in installation
-- 📚 **Updated Documentation**: Comprehensive v3.0.0 wiki updates
-- 🔧 **Better Workflow**: Explicit instructions for AI assistants on project status management
-
-**v3.0.0 Features:**
-
-- 🤖 **Multi-AI Support**: 4 AI assistants (Copilot, Cursor, Cline, Codeium)
-- ⚡ **New `leo ai` Command**: Manage AI assistants (list, add, remove, sync)
-- 🎯 **AI Selection During Init**: Choose your AI tools during setup
-- 📝 **AI-Specific Instructions**: Optimized for each tool's strengths
-- 🔄 **Backward Compatible**: Existing Copilot setups continue working
 
 ---
 

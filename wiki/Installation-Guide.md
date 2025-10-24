@@ -1,6 +1,6 @@
 # 📦 Installation Guide
 
-> **Get LEO Workflow Kit up and running in < 30 seconds**
+> **Get LEO Workflow Kit v4.1.1 up and running in < 30 seconds**
 
 ## 🎯 Prerequisites
 
@@ -15,30 +15,31 @@ Before installing LEO Workflow Kit, ensure you have:
 ### Recommended
 
 - ✅ **GitHub CLI (`gh`)** - [Install here](https://cli.github.com/)
-- ✅ **VS Code** - [Download here](https://code.visualstudio.com/)
+- ✅ **VS Code** - [Download here](https://code.visualstudio.com/) - For real-time model selection display (v4.1.1)
 - ✅ **GitHub Copilot** - [Get it here](https://github.com/features/copilot)
 
 ---
 
 ## 🚀 Installation Methods
 
-### Method 1: Automatic Installation (NEW v2.5.0 - Recommended)
+### Method 1: Automatic Installation (Recommended)
 
-**One command - complete setup!**
+**One command - complete setup with v4.1.1 features!**
 
 ```bash
-LEO_AUTO_INIT=true npm install leo-workflow-kit
+LEO_AUTO_INIT=true npm install -g leo-workflow-kit@4.1.1
 ```
 
 **What this does:**
 
-- ✅ Installs LEO Workflow Kit
+- ✅ Installs LEO Workflow Kit v4.1.1
 - ✅ Automatically initializes your project
 - ✅ Creates documentation structure (`docs/specs/`)
 - ✅ Installs issue templates (8 professional templates)
 - ✅ Configures GitHub Actions workflows
 - ✅ Sets up VS Code with Copilot instructions
 - ✅ Configures standard labels (22+)
+- ✅ Enables real-time model selection display (NEW!)
 
 **⚡ Total time:** < 30 seconds
 
@@ -58,7 +59,7 @@ LEO_AUTO_INIT=true npm install leo-workflow-kit
 Install LEO globally to use across all projects:
 
 ```bash
-npm install -g leo-workflow-kit
+npm install -g leo-workflow-kit@4.1.1
 ```
 
 **Verify installation:**
