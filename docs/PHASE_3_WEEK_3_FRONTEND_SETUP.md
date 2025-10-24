@@ -40,136 +40,169 @@ Create `web/index.html`:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="LEO Hunt Dashboard - Team Feature Hunting">
-  <title>LEO Dashboard</title>
-  
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/dark-mode.css">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23FF6B6B'>⚡</text></svg>">
-</head>
-<body>
-  <div id="root">
-    <!-- Main App Container -->
-    <div class="app">
-      <!-- Navigation -->
-      <nav class="navbar">
-        <div class="navbar-container">
-          <div class="logo">
-            <span class="logo-icon">⚡</span>
-            <span class="logo-text">LEO Dashboard</span>
-          </div>
-          
-          <ul class="nav-menu">
-            <li><a href="#" data-page="overview" class="nav-link active">Overview</a></li>
-            <li><a href="#" data-page="team" class="nav-link">Team</a></li>
-            <li><a href="#" data-page="hunts" class="nav-link">Hunts</a></li>
-            <li><a href="#" data-page="analytics" class="nav-link">Analytics</a></li>
-          </ul>
-          
-          <div class="nav-actions">
-            <button id="theme-toggle" class="btn-icon" title="Toggle dark mode">🌙</button>
-            <button id="refresh-btn" class="btn-icon" title="Refresh data">🔄</button>
-          </div>
-        </div>
-      </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="LEO Hunt Dashboard - Team Feature Hunting"
+    />
+    <title>LEO Dashboard</title>
 
-      <!-- Status Bar -->
-      <div class="status-bar">
-        <div class="status-item">
-          <span class="status-label">Status:</span>
-          <span id="connection-status" class="status-value">●</span>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/dark-mode.css" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23FF6B6B'>⚡</text></svg>"
+    />
+  </head>
+  <body>
+    <div id="root">
+      <!-- Main App Container -->
+      <div class="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+          <div class="navbar-container">
+            <div class="logo">
+              <span class="logo-icon">⚡</span>
+              <span class="logo-text">LEO Dashboard</span>
+            </div>
+
+            <ul class="nav-menu">
+              <li>
+                <a href="#" data-page="overview" class="nav-link active"
+                  >Overview</a
+                >
+              </li>
+              <li><a href="#" data-page="team" class="nav-link">Team</a></li>
+              <li><a href="#" data-page="hunts" class="nav-link">Hunts</a></li>
+              <li>
+                <a href="#" data-page="analytics" class="nav-link">Analytics</a>
+              </li>
+            </ul>
+
+            <div class="nav-actions">
+              <button
+                id="theme-toggle"
+                class="btn-icon"
+                title="Toggle dark mode"
+              >
+                🌙
+              </button>
+              <button id="refresh-btn" class="btn-icon" title="Refresh data">
+                🔄
+              </button>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+          <div class="status-item">
+            <span class="status-label">Status:</span>
+            <span id="connection-status" class="status-value">●</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Connected Clients:</span>
+            <span id="client-count" class="status-value">0</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Last Update:</span>
+            <span id="last-update" class="status-value">--:--</span>
+          </div>
         </div>
-        <div class="status-item">
-          <span class="status-label">Connected Clients:</span>
-          <span id="client-count" class="status-value">0</span>
-        </div>
-        <div class="status-item">
-          <span class="status-label">Last Update:</span>
-          <span id="last-update" class="status-value">--:--</span>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+          <!-- Page Placeholder -->
+          <div id="page-container" class="page-container">
+            <div class="loading">
+              <div class="spinner"></div>
+              <p>Loading dashboard...</p>
+            </div>
+          </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <p>LEO Workflow Kit • Phase 3 Dashboard • v1.0.0</p>
+        </footer>
+      </div>
+
+      <!-- Modal for Creating Hunts -->
+      <div id="create-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Create New Hunt</h2>
+            <button class="btn-close">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form id="create-hunt-form">
+              <div class="form-group">
+                <label for="hunt-title">Title *</label>
+                <input
+                  type="text"
+                  id="hunt-title"
+                  placeholder="Hunt title"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="hunt-description">Description</label>
+                <textarea
+                  id="hunt-description"
+                  placeholder="Hunt description"
+                  rows="4"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="hunt-owner">Owner *</label>
+                <select id="hunt-owner" required>
+                  <option value="">Select owner</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="hunt-priority">Priority</label>
+                <select id="hunt-priority">
+                  <option value="Low">Low</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="High">High</option>
+                  <option value="Critical">Critical</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" id="modal-cancel">Cancel</button>
+            <button class="btn btn-primary" id="modal-create">
+              Create Hunt
+            </button>
+          </div>
         </div>
       </div>
 
-      <!-- Main Content Area -->
-      <main class="main-content">
-        <!-- Page Placeholder -->
-        <div id="page-container" class="page-container">
-          <div class="loading">
-            <div class="spinner"></div>
-            <p>Loading dashboard...</p>
-          </div>
-        </div>
-      </main>
-
-      <!-- Footer -->
-      <footer class="footer">
-        <p>LEO Workflow Kit • Phase 3 Dashboard • v1.0.0</p>
-      </footer>
+      <!-- Notification Container -->
+      <div id="notifications" class="notifications"></div>
     </div>
 
-    <!-- Modal for Creating Hunts -->
-    <div id="create-modal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>Create New Hunt</h2>
-          <button class="btn-close">&times;</button>
-        </div>
-        <div class="modal-body">
-          <form id="create-hunt-form">
-            <div class="form-group">
-              <label for="hunt-title">Title *</label>
-              <input type="text" id="hunt-title" placeholder="Hunt title" required>
-            </div>
-            <div class="form-group">
-              <label for="hunt-description">Description</label>
-              <textarea id="hunt-description" placeholder="Hunt description" rows="4"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="hunt-owner">Owner *</label>
-              <select id="hunt-owner" required>
-                <option value="">Select owner</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="hunt-priority">Priority</label>
-              <select id="hunt-priority">
-                <option value="Low">Low</option>
-                <option value="Medium" selected>Medium</option>
-                <option value="High">High</option>
-                <option value="Critical">Critical</option>
-              </select>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" id="modal-cancel">Cancel</button>
-          <button class="btn btn-primary" id="modal-create">Create Hunt</button>
-        </div>
-      </div>
-    </div>
+    <!-- Socket.IO Client -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
 
-    <!-- Notification Container -->
-    <div id="notifications" class="notifications"></div>
-  </div>
-
-  <!-- Socket.IO Client -->
-  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-  
-  <!-- App Scripts -->
-  <script src="js/api.js"></script>
-  <script src="js/websocket.js"></script>
-  <script src="js/app.js"></script>
-</body>
+    <!-- App Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/websocket.js"></script>
+    <script src="js/app.js"></script>
+  </body>
 </html>
 ```
 
 **Key Features:**
+
 - Responsive navigation bar
 - Status connection indicator
 - Main content area (pages)
@@ -190,8 +223,8 @@ Create `web/js/api.js`:
  * Wrapper around REST API endpoints
  */
 class DashboardAPI {
-  constructor(baseURL = '') {
-    this.baseURL = baseURL || '';
+  constructor(baseURL = "") {
+    this.baseURL = baseURL || "";
     this.timeout = 10000; // 10 seconds
   }
 
@@ -200,13 +233,13 @@ class DashboardAPI {
    */
   async request(method, endpoint, data = null) {
     const url = `${this.baseURL}/api${endpoint}`;
-    
+
     const options = {
       method,
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
     };
 
     if (data) {
@@ -217,8 +250,8 @@ class DashboardAPI {
       const response = await Promise.race([
         fetch(url, options),
         new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Request timeout')), this.timeout)
-        )
+          setTimeout(() => reject(new Error("Request timeout")), this.timeout)
+        ),
       ]);
 
       if (!response.ok) {
@@ -227,7 +260,7 @@ class DashboardAPI {
 
       return await response.json();
     } catch (error) {
-      console.error('API request failed:', error);
+      console.error("API request failed:", error);
       throw error;
     }
   }
@@ -235,72 +268,73 @@ class DashboardAPI {
   // Team Endpoints
 
   async getTeam() {
-    return this.request('GET', '/team');
+    return this.request("GET", "/team");
   }
 
   async getTeamMembers() {
-    return this.request('GET', '/team/members');
+    return this.request("GET", "/team/members");
   }
 
   // Hunt Endpoints
 
   async getHunts(options = {}) {
     const params = new URLSearchParams();
-    if (options.limit) params.append('limit', options.limit);
-    if (options.offset) params.append('offset', options.offset);
-    if (options.owner) params.append('owner', options.owner);
-    if (options.status) params.append('status', options.status);
+    if (options.limit) params.append("limit", options.limit);
+    if (options.offset) params.append("offset", options.offset);
+    if (options.owner) params.append("owner", options.owner);
+    if (options.status) params.append("status", options.status);
 
-    const query = params.toString() ? `?${params.toString()}` : '';
-    return this.request('GET', `/hunts${query}`);
+    const query = params.toString() ? `?${params.toString()}` : "";
+    return this.request("GET", `/hunts${query}`);
   }
 
   async getHuntDetail(huntId) {
-    return this.request('GET', `/hunts/${huntId}`);
+    return this.request("GET", `/hunts/${huntId}`);
   }
 
   async getHuntPhases(huntId) {
-    return this.request('GET', `/hunts/${huntId}/phases`);
+    return this.request("GET", `/hunts/${huntId}/phases`);
   }
 
   async createHunt(data) {
-    return this.request('POST', '/hunts', data);
+    return this.request("POST", "/hunts", data);
   }
 
   async updateHunt(huntId, data) {
-    return this.request('PUT', `/hunts/${huntId}`, data);
+    return this.request("PUT", `/hunts/${huntId}`, data);
   }
 
   async nextPhase(huntId) {
-    return this.request('POST', `/hunts/${huntId}/phase-next`);
+    return this.request("POST", `/hunts/${huntId}/phase-next`);
   }
 
   async completeHunt(huntId) {
-    return this.request('POST', `/hunts/${huntId}/complete`);
+    return this.request("POST", `/hunts/${huntId}/complete`);
   }
 
   // Analytics Endpoints
 
   async getAnalytics() {
-    return this.request('GET', '/analytics');
+    return this.request("GET", "/analytics");
   }
 
   async getHuntAnalytics() {
-    return this.request('GET', '/analytics/hunts');
+    return this.request("GET", "/analytics/hunts");
   }
 
   async getPerformanceMetrics() {
-    return this.request('GET', '/analytics/performance');
+    return this.request("GET", "/analytics/performance");
   }
 }
 
 // Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== "undefined" && module.exports) {
   module.exports = DashboardAPI;
 }
 ```
 
 **Key Features:**
+
 - All 12 REST endpoints wrapped
 - Error handling and timeouts
 - Parameter serialization
@@ -320,7 +354,7 @@ Create `web/js/websocket.js`:
  */
 class DashboardWebSocket {
   constructor(options = {}) {
-    this.url = options.url || '';
+    this.url = options.url || "";
     this.socket = null;
     this.connected = false;
     this.listeners = new Map();
@@ -339,37 +373,36 @@ class DashboardWebSocket {
           reconnection: true,
           reconnectionDelay: this.reconnectDelay,
           reconnectionDelayMax: 5000,
-          reconnectionAttempts: this.maxReconnectAttempts
+          reconnectionAttempts: this.maxReconnectAttempts,
         });
 
-        this.socket.on('connect', () => {
-          console.log('WebSocket connected:', this.socket.id);
+        this.socket.on("connect", () => {
+          console.log("WebSocket connected:", this.socket.id);
           this.connected = true;
           this.reconnectAttempts = 0;
-          this.emit('connected', { socketId: this.socket.id });
+          this.emit("connected", { socketId: this.socket.id });
           resolve();
         });
 
-        this.socket.on('disconnect', (reason) => {
-          console.log('WebSocket disconnected:', reason);
+        this.socket.on("disconnect", (reason) => {
+          console.log("WebSocket disconnected:", reason);
           this.connected = false;
-          this.emit('disconnected', { reason });
+          this.emit("disconnected", { reason });
         });
 
-        this.socket.on('connect_error', (error) => {
-          console.error('WebSocket connection error:', error);
-          this.emit('error', { type: 'connection', error });
+        this.socket.on("connect_error", (error) => {
+          console.error("WebSocket connection error:", error);
+          this.emit("error", { type: "connection", error });
           reject(error);
         });
 
-        this.socket.on('error', (error) => {
-          console.error('WebSocket error:', error);
-          this.emit('error', { type: 'server', error });
+        this.socket.on("error", (error) => {
+          console.error("WebSocket error:", error);
+          this.emit("error", { type: "server", error });
         });
 
         // Setup event forwarding
         this.setupEventForwarding();
-
       } catch (error) {
         reject(error);
       }
@@ -391,15 +424,15 @@ class DashboardWebSocket {
    */
   setupEventForwarding() {
     const events = [
-      'initial:state',
-      'hunt:created',
-      'hunt:updated',
-      'hunt:phase-changed',
-      'hunt:completed',
-      'error'
+      "initial:state",
+      "hunt:created",
+      "hunt:updated",
+      "hunt:phase-changed",
+      "hunt:completed",
+      "error",
     ];
 
-    events.forEach(event => {
+    events.forEach((event) => {
       this.socket.on(event, (data) => {
         this.emit(event, data);
       });
@@ -434,7 +467,7 @@ class DashboardWebSocket {
    */
   emit(event, data) {
     if (this.listeners.has(event)) {
-      this.listeners.get(event).forEach(callback => {
+      this.listeners.get(event).forEach((callback) => {
         try {
           callback(data);
         } catch (error) {
@@ -451,7 +484,7 @@ class DashboardWebSocket {
     if (this.socket && this.connected) {
       this.socket.emit(event, data);
     } else {
-      console.warn('WebSocket not connected, cannot send:', event);
+      console.warn("WebSocket not connected, cannot send:", event);
     }
   }
 
@@ -471,12 +504,13 @@ class DashboardWebSocket {
 }
 
 // Export for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== "undefined" && module.exports) {
   module.exports = DashboardWebSocket;
 }
 ```
 
 **Key Features:**
+
 - Automatic reconnection
 - Event subscription system
 - Error handling
@@ -498,20 +532,20 @@ Create `web/css/main.css`:
 /* CSS Variables */
 :root {
   /* Colors */
-  --primary: #FF6B6B;
-  --primary-dark: #E63946;
-  --secondary: #457B9D;
-  --success: #06A77D;
-  --warning: #F4A460;
-  --danger: #E63946;
-  --info: #457B9D;
-  
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F8F9FA;
-  --text-primary: #2C3E50;
-  --text-secondary: #7F8C8D;
-  --border-color: #E8E8E8;
-  
+  --primary: #ff6b6b;
+  --primary-dark: #e63946;
+  --secondary: #457b9d;
+  --success: #06a77d;
+  --warning: #f4a460;
+  --danger: #e63946;
+  --info: #457b9d;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --border-color: #e8e8e8;
+
   /* Spacing */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
@@ -519,23 +553,24 @@ Create `web/css/main.css`:
   --spacing-lg: 24px;
   --spacing-xl: 32px;
   --spacing-2xl: 48px;
-  
+
   /* Typography */
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  --font-mono: 'Monaco', 'Menlo', 'Courier New', monospace;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  --font-mono: "Monaco", "Menlo", "Courier New", monospace;
   --font-size-sm: 12px;
   --font-size-base: 14px;
   --font-size-md: 16px;
   --font-size-lg: 18px;
   --font-size-xl: 20px;
   --font-size-2xl: 24px;
-  
+
   /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-  
+
   /* Borders */
   --border-radius: 8px;
   --border-width: 1px;
@@ -548,7 +583,8 @@ Create `web/css/main.css`:
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -686,8 +722,13 @@ body {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 /* Main Content */
@@ -724,7 +765,9 @@ body {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Buttons */
@@ -931,6 +974,7 @@ body {
 ```
 
 **Key Features:**
+
 - CSS variables for theming
 - Professional color scheme
 - Responsive component styling
@@ -1013,7 +1057,7 @@ Create `web/css/responsive.css`:
     font-size: var(--font-size-sm);
   }
 
-  .nav-item:nth-child(n+4) {
+  .nav-item:nth-child(n + 4) {
     display: none; /* Hide less important nav items */
   }
 
@@ -1088,6 +1132,7 @@ Create `web/css/responsive.css`:
 ```
 
 **Key Features:**
+
 - Mobile-first approach
 - Tablet optimization
 - Mobile optimization
@@ -1108,29 +1153,29 @@ Create `web/css/dark-mode.css`:
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-primary: #1A1A1A;
-    --bg-secondary: #2D2D2D;
-    --text-primary: #E8E8E8;
-    --text-secondary: #A0A0A0;
-    --border-color: #3D3D3D;
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #e8e8e8;
+    --text-secondary: #a0a0a0;
+    --border-color: #3d3d3d;
   }
 }
 
 /* User Preference Override */
 body.dark-mode {
-  --bg-primary: #1A1A1A;
-  --bg-secondary: #2D2D2D;
-  --text-primary: #E8E8E8;
-  --text-secondary: #A0A0A0;
-  --border-color: #3D3D3D;
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #e8e8e8;
+  --text-secondary: #a0a0a0;
+  --border-color: #3d3d3d;
 }
 
 body.light-mode {
-  --bg-primary: #FFFFFF;
-  --bg-secondary: #F8F9FA;
-  --text-primary: #2C3E50;
-  --text-secondary: #7F8C8D;
-  --border-color: #E8E8E8;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --border-color: #e8e8e8;
 }
 
 /* Dark Mode Specific */
@@ -1140,17 +1185,17 @@ body.dark-mode {
 }
 
 body.dark-mode .navbar {
-  background-color: #0D0D0D;
+  background-color: #0d0d0d;
 }
 
 body.dark-mode .modal-content {
-  background-color: #1A1A1A;
+  background-color: #1a1a1a;
 }
 
 body.dark-mode .form-group input,
 body.dark-mode .form-group textarea,
 body.dark-mode .form-group select {
-  background-color: #2D2D2D;
+  background-color: #2d2d2d;
   color: var(--text-primary);
   border-color: var(--border-color);
 }
@@ -1161,13 +1206,13 @@ body.dark-mode .form-group textarea::placeholder {
 }
 
 body.dark-mode .btn-secondary {
-  background-color: #2D2D2D;
+  background-color: #2d2d2d;
   color: var(--text-primary);
   border-color: var(--border-color);
 }
 
 body.dark-mode .btn-secondary:hover {
-  background-color: #3D3D3D;
+  background-color: #3d3d3d;
 }
 
 body.dark-mode ::-webkit-scrollbar {
@@ -1176,16 +1221,16 @@ body.dark-mode ::-webkit-scrollbar {
 }
 
 body.dark-mode ::-webkit-scrollbar-track {
-  background: #1A1A1A;
+  background: #1a1a1a;
 }
 
 body.dark-mode ::-webkit-scrollbar-thumb {
-  background: #3D3D3D;
+  background: #3d3d3d;
   border-radius: 4px;
 }
 
 body.dark-mode ::-webkit-scrollbar-thumb:hover {
-  background: #4D4D4D;
+  background: #4d4d4d;
 }
 ```
 
@@ -1201,6 +1246,6 @@ After setting up frontend foundation:
 
 ---
 
-**Total Files:** 6  
-**Total Lines:** 1,080+  
+**Total Files:** 6
+**Total Lines:** 1,080+
 **Status:** Ready for implementation

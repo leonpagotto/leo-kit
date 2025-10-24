@@ -12,12 +12,12 @@ The LEO Plugin System enables developers to build **custom frontends** and **int
 
 ### Key Features
 
-✅ **Plugin Interface** - Standard interface for all plugins  
-✅ **Plugin Manager** - Register, load, start, and stop plugins  
-✅ **Event System** - Real-time event propagation to plugins  
-✅ **CLI Integration** - Easy plugin management via CLI commands  
-✅ **Template Generator** - Create new plugins from templates  
-✅ **Built-in Examples** - Web and VS Code extension examples  
+✅ **Plugin Interface** - Standard interface for all plugins
+✅ **Plugin Manager** - Register, load, start, and stop plugins
+✅ **Event System** - Real-time event propagation to plugins
+✅ **CLI Integration** - Easy plugin management via CLI commands
+✅ **Template Generator** - Create new plugins from templates
+✅ **Built-in Examples** - Web and VS Code extension examples
 
 ---
 
@@ -28,6 +28,7 @@ The LEO Plugin System enables developers to build **custom frontends** and **int
 Web-based frontends for hunt tracking and team visualization.
 
 **Examples:**
+
 - Web Dashboard (React, Vue, Svelte, etc.)
 - Mobile App (React Native, Flutter, etc.)
 - Desktop App (Electron, Tauri, etc.)
@@ -37,6 +38,7 @@ Web-based frontends for hunt tracking and team visualization.
 IDE and editor extensions.
 
 **Examples:**
+
 - VS Code Extension
 - IntelliJ IDEA Plugin
 - Sublime Text Plugin
@@ -46,6 +48,7 @@ IDE and editor extensions.
 Third-party service integrations.
 
 **Examples:**
+
 - Slack Integration
 - GitHub Integration
 - Jira Integration
@@ -56,6 +59,7 @@ Third-party service integrations.
 Backend services and middleware.
 
 **Examples:**
+
 - Database Adapters
 - Authentication Providers
 - Caching Layers
@@ -68,7 +72,7 @@ Backend services and middleware.
 All plugins must implement the `PluginInterface`:
 
 ```javascript
-const { PluginInterface } = require('leo-workflow-kit/lib/plugins/manager');
+const { PluginInterface } = require("leo-workflow-kit/lib/plugins/manager");
 
 class MyPlugin extends PluginInterface {
   /**
@@ -89,11 +93,11 @@ class MyPlugin extends PluginInterface {
    */
   getMetadata() {
     return {
-      name: 'My Plugin',
-      version: '1.0.0',
-      description: 'My custom plugin',
-      author: 'Your Name',
-      type: 'frontend' // or 'extension', 'integration', 'backend'
+      name: "My Plugin",
+      version: "1.0.0",
+      description: "My custom plugin",
+      author: "Your Name",
+      type: "frontend", // or 'extension', 'integration', 'backend'
     };
   }
 
@@ -101,7 +105,7 @@ class MyPlugin extends PluginInterface {
    * Start plugin
    */
   async start() {
-    console.log('Plugin started');
+    console.log("Plugin started");
     // Initialize resources
   }
 
@@ -109,7 +113,7 @@ class MyPlugin extends PluginInterface {
    * Stop plugin
    */
   async stop() {
-    console.log('Plugin stopped');
+    console.log("Plugin stopped");
     // Cleanup resources
   }
 
@@ -137,6 +141,7 @@ leo plugin list
 ```
 
 **Output:**
+
 ```
 🔌 LEO Plugins
 
@@ -157,6 +162,7 @@ leo plugin info leo-web-dashboard
 ```
 
 **Output:**
+
 ```
 🔌 Plugin Information
 
@@ -191,6 +197,7 @@ leo plugin start leo-web-dashboard
 Starts a plugin and connects it to the API server.
 
 **Output:**
+
 ```
 🔌 Starting Plugin
 
@@ -227,6 +234,7 @@ leo plugin create my-dashboard
 ```
 
 Generates a new plugin template with:
+
 - Directory structure
 - `package.json`
 - `src/index.js` (plugin class)
@@ -283,6 +291,7 @@ cd my-awesome-plugin
 ### Step 2: Edit Plugin
 
 **`package.json`:**
+
 ```json
 {
   "name": "leo-plugin-my-awesome-plugin",
@@ -298,8 +307,9 @@ cd my-awesome-plugin
 ```
 
 **`src/index.js`:**
+
 ```javascript
-const { PluginInterface } = require('leo-workflow-kit/lib/plugins/manager');
+const { PluginInterface } = require("leo-workflow-kit/lib/plugins/manager");
 
 class MyAwesomePlugin extends PluginInterface {
   async init(context) {
@@ -309,31 +319,31 @@ class MyAwesomePlugin extends PluginInterface {
 
   getMetadata() {
     return {
-      name: 'My Awesome Plugin',
-      version: '1.0.0',
-      description: 'Awesome dashboard plugin',
-      author: 'Your Name',
-      type: 'frontend'
+      name: "My Awesome Plugin",
+      version: "1.0.0",
+      description: "Awesome dashboard plugin",
+      author: "Your Name",
+      type: "frontend",
     };
   }
 
   async start() {
-    console.log('🎉 My Awesome Plugin started!');
+    console.log("🎉 My Awesome Plugin started!");
 
     // Listen to hunt events
-    this.apiServer.on('hunt:created', (hunt) => {
-      console.log('🎯 New hunt created:', hunt.title);
-      this.onEvent('hunt:created', hunt);
+    this.apiServer.on("hunt:created", (hunt) => {
+      console.log("🎯 New hunt created:", hunt.title);
+      this.onEvent("hunt:created", hunt);
     });
 
-    this.apiServer.on('hunt:completed', (hunt) => {
-      console.log('✅ Hunt completed:', hunt.title);
-      this.onEvent('hunt:completed', hunt);
+    this.apiServer.on("hunt:completed", (hunt) => {
+      console.log("✅ Hunt completed:", hunt.title);
+      this.onEvent("hunt:completed", hunt);
     });
   }
 
   async stop() {
-    console.log('Stopping...');
+    console.log("Stopping...");
     // Cleanup
   }
 
@@ -393,9 +403,9 @@ leo-dashboard-web/
 ### Implementation
 
 ```javascript
-const { PluginInterface } = require('leo-workflow-kit/lib/plugins/manager');
-const express = require('express');
-const path = require('path');
+const { PluginInterface } = require("leo-workflow-kit/lib/plugins/manager");
+const express = require("express");
+const path = require("path");
 
 class WebDashboardPlugin extends PluginInterface {
   async init(context) {
@@ -406,11 +416,11 @@ class WebDashboardPlugin extends PluginInterface {
 
   getMetadata() {
     return {
-      name: 'Web Dashboard',
-      version: '1.0.0',
-      description: 'Web-based dashboard for hunt tracking',
-      author: 'LEO Team',
-      type: 'frontend'
+      name: "Web Dashboard",
+      version: "1.0.0",
+      description: "Web-based dashboard for hunt tracking",
+      author: "LEO Team",
+      type: "frontend",
     };
   }
 
@@ -419,12 +429,12 @@ class WebDashboardPlugin extends PluginInterface {
     const app = express();
 
     // Serve static files
-    const publicDir = path.join(__dirname, '../public');
+    const publicDir = path.join(__dirname, "../public");
     app.use(express.static(publicDir));
 
     // Start web server on port 3001
     this.webServer = app.listen(3001, () => {
-      console.log('Web Dashboard running on http://localhost:3001');
+      console.log("Web Dashboard running on http://localhost:3001");
     });
 
     // Connect to API server WebSocket for real-time updates
@@ -439,12 +449,12 @@ class WebDashboardPlugin extends PluginInterface {
 
   _setupWebSocketListener() {
     // Listen to hunt events and forward to frontend
-    this.apiServer.on('hunt:created', (hunt) => {
-      console.log('Broadcasting hunt:created to frontend');
+    this.apiServer.on("hunt:created", (hunt) => {
+      console.log("Broadcasting hunt:created to frontend");
     });
 
-    this.apiServer.on('hunt:completed', (hunt) => {
-      console.log('Broadcasting hunt:completed to frontend');
+    this.apiServer.on("hunt:completed", (hunt) => {
+      console.log("Broadcasting hunt:completed to frontend");
     });
   }
 
@@ -480,8 +490,8 @@ leo-vscode-extension/
 ### Implementation
 
 ```javascript
-const { PluginInterface } = require('leo-workflow-kit/lib/plugins/manager');
-const vscode = require('vscode');
+const { PluginInterface } = require("leo-workflow-kit/lib/plugins/manager");
+const vscode = require("vscode");
 
 class VSCodeExtensionPlugin extends PluginInterface {
   async init(context) {
@@ -492,11 +502,11 @@ class VSCodeExtensionPlugin extends PluginInterface {
 
   getMetadata() {
     return {
-      name: 'LEO VS Code Extension',
-      version: '1.0.0',
-      description: 'VS Code extension for hunt management',
-      author: 'LEO Team',
-      type: 'extension'
+      name: "LEO VS Code Extension",
+      version: "1.0.0",
+      description: "VS Code extension for hunt management",
+      author: "LEO Team",
+      type: "extension",
     };
   }
 
@@ -507,16 +517,16 @@ class VSCodeExtensionPlugin extends PluginInterface {
       100
     );
 
-    this.statusBar.text = '$(loading~spin) LEO Dashboard';
-    this.statusBar.command = 'leo.openDashboard';
+    this.statusBar.text = "$(loading~spin) LEO Dashboard";
+    this.statusBar.command = "leo.openDashboard";
     this.statusBar.show();
 
     // Listen to hunt events and update VS Code UI
-    this.apiServer.on('hunt:created', (hunt) => {
+    this.apiServer.on("hunt:created", (hunt) => {
       this.statusBar.text = `$(check) ${hunt.title} created`;
     });
 
-    this.apiServer.on('hunt:completed', (hunt) => {
+    this.apiServer.on("hunt:completed", (hunt) => {
       this.statusBar.text = `$(verified) ${hunt.title} completed`;
     });
   }
@@ -686,6 +696,7 @@ getMetadata() {
 ### 5. Documentation
 
 Include comprehensive README.md with:
+
 - Installation instructions
 - Usage examples
 - Configuration options
@@ -772,8 +783,8 @@ npm test
 ```javascript
 // Verify API server is running
 // Verify event listeners are registered
-this.apiServer.on('hunt:created', (data) => {
-  console.log('Received event:', data);
+this.apiServer.on("hunt:created", (data) => {
+  console.log("Received event:", data);
 });
 ```
 
@@ -803,6 +814,6 @@ async stop() {
 
 ---
 
-**Last Updated:** October 24, 2025  
-**Plugin Architecture Version:** 1.0.0  
+**Last Updated:** October 24, 2025
+**Plugin Architecture Version:** 1.0.0
 **Status:** Production Ready

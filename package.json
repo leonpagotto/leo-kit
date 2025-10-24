@@ -55,14 +55,19 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
+    "body-parser": "^2.2.0",
     "chalk": "^4.1.2",
     "commander": "^11.0.0",
+    "cors": "^2.8.5",
+    "execa": "^5.1.1",
+    "express": "^5.1.0",
+    "fs-extra": "^11.1.1",
     "inquirer": "^8.2.5",
     "ora": "^5.4.1",
-    "execa": "^5.1.1",
-    "fs-extra": "^11.1.1"
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "supertest": "^7.1.4"
   }
 }

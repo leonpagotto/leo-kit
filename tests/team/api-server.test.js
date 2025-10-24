@@ -77,7 +77,7 @@ describe('APIServer - Middleware Configuration', () => {
 
   test('should accept POST requests after setup', () => {
     server._setupRoutes();
-    
+
     // App should be properly configured
     expect(server.app).toBeDefined();
     expect(typeof server.app.post).toBe('function');

@@ -12,6 +12,7 @@
 **Primary Objective**: Build interactive web dashboard for real-time hunt tracking and team visualization
 
 **Deliverables**:
+
 - ✅ `lib/team/api-server.js` - Express server with REST API (300-400 lines)
 - ✅ `web/` - Dashboard frontend (HTML/CSS/JavaScript)
 - ✅ Dashboard pages (overview, team, hunts, analytics)
@@ -150,27 +151,27 @@ class APIServer {
   // Route setup
   setupRoutes() {
     // Team routes
-    this.app.get('/api/team', this.getTeam);
-    this.app.get('/api/team/members', this.getTeamMembers);
-    
+    this.app.get("/api/team", this.getTeam);
+    this.app.get("/api/team/members", this.getTeamMembers);
+
     // Hunt routes
-    this.app.get('/api/hunts', this.getHunts);
-    this.app.get('/api/hunts/:id', this.getHuntDetail);
-    this.app.post('/api/hunts', this.createHunt);
-    this.app.put('/api/hunts/:id', this.updateHunt);
-    this.app.post('/api/hunts/:id/phase-next', this.nextPhase);
-    this.app.post('/api/hunts/:id/complete', this.completeHunt);
-    
+    this.app.get("/api/hunts", this.getHunts);
+    this.app.get("/api/hunts/:id", this.getHuntDetail);
+    this.app.post("/api/hunts", this.createHunt);
+    this.app.put("/api/hunts/:id", this.updateHunt);
+    this.app.post("/api/hunts/:id/phase-next", this.nextPhase);
+    this.app.post("/api/hunts/:id/complete", this.completeHunt);
+
     // Analytics routes
-    this.app.get('/api/analytics', this.getAnalytics);
-    this.app.get('/api/analytics/hunts', this.getHuntAnalytics);
-    this.app.get('/api/analytics/performance', this.getPerformanceMetrics);
+    this.app.get("/api/analytics", this.getAnalytics);
+    this.app.get("/api/analytics/hunts", this.getHuntAnalytics);
+    this.app.get("/api/analytics/performance", this.getPerformanceMetrics);
   }
 
   // WebSocket setup
   setupWebSocket() {
     this.io = socketIO(this.server);
-    this.io.on('connection', this.handleConnection);
+    this.io.on("connection", this.handleConnection);
   }
 
   // Start server
@@ -191,6 +192,7 @@ module.exports = APIServer;
 ```
 
 **Tests** (5-10 tests):
+
 - Server starts/stops
 - Middleware configured
 - Routes registered
@@ -241,6 +243,7 @@ GET /api/analytics/performance
 ```
 
 **Tests** (15+ tests):
+
 - Each endpoint returns correct data
 - Error handling (404, 400, 500)
 - Input validation
@@ -252,35 +255,36 @@ GET /api/analytics/performance
 
 ```javascript
 // Connection
-socket.on('connect', () => {
+socket.on("connect", () => {
   // Join room for team
-  socket.join('team');
-  socket.emit('connected', { message: 'Connected to server' });
+  socket.join("team");
+  socket.emit("connected", { message: "Connected to server" });
 });
 
 // Hunt events
-socket.on('hunt:created', (data) => {
+socket.on("hunt:created", (data) => {
   // { huntId, title, owner, createdAt }
-  io.to('team').emit('hunt:created', data);
+  io.to("team").emit("hunt:created", data);
 });
 
-socket.on('hunt:phase-changed', (data) => {
+socket.on("hunt:phase-changed", (data) => {
   // { huntId, phase, duration }
-  io.to('team').emit('hunt:phase-changed', data);
+  io.to("team").emit("hunt:phase-changed", data);
 });
 
-socket.on('hunt:completed', (data) => {
+socket.on("hunt:completed", (data) => {
   // { huntId, metrics, completedAt }
-  io.to('team').emit('hunt:completed', data);
+  io.to("team").emit("hunt:completed", data);
 });
 
 // Disconnect
-socket.on('disconnect', () => {
-  console.log('Client disconnected');
+socket.on("disconnect", () => {
+  console.log("Client disconnected");
 });
 ```
 
 **Tests** (10+ tests):
+
 - WebSocket connects
 - Events broadcast correctly
 - Reconnection logic
@@ -291,6 +295,7 @@ socket.on('disconnect', () => {
 #### Day 6-7: Frontend Setup & Layout
 
 **Files**:
+
 - `web/index.html` - App shell (80 lines)
 - `web/app.js` - Core logic (200+ lines)
 - `web/styles/main.css` - Base styles (300+ lines)
@@ -298,6 +303,7 @@ socket.on('disconnect', () => {
 - `web/utils/websocket.js` - WebSocket client (100 lines)
 
 **Index Layout**:
+
 ```html
 <div id="app">
   <nav class="header">
@@ -309,11 +315,11 @@ socket.on('disconnect', () => {
       <li><a href="/analytics">Analytics</a></li>
     </ul>
   </nav>
-  
+
   <main class="container">
     <div id="router-outlet"></div>
   </main>
-  
+
   <footer class="status-bar">
     <span class="connection-status">●</span>
     <span class="update-time">Last updated: ...</span>
@@ -322,6 +328,7 @@ socket.on('disconnect', () => {
 ```
 
 **Tests** (5+ tests):
+
 - DOM renders
 - Navigation works
 - WebSocket connects
@@ -332,18 +339,21 @@ socket.on('disconnect', () => {
 **Pages** (4 main pages):
 
 1. **Overview Page** (`/`)
+
    - Active hunts count
    - Recent activity
    - Key metrics
    - Quick actions
 
 2. **Team Page** (`/team`)
+
    - Team members
    - Roles
    - Current hunts
    - Performance
 
 3. **Hunts Page** (`/hunts`)
+
    - Hunt list/grid
    - Filter options
    - Sort options
@@ -356,6 +366,7 @@ socket.on('disconnect', () => {
    - Export options
 
 **Tests** (10+ tests):
+
 - Pages render
 - Data displays
 - User interactions work
@@ -374,6 +385,7 @@ socket.on('disconnect', () => {
 7. **StatusIndicator** - Real-time connection status
 
 **Styling**:
+
 - Responsive design (mobile, tablet, desktop)
 - Light/dark mode support
 - Color-coded statuses
@@ -381,6 +393,7 @@ socket.on('disconnect', () => {
 - Loading states
 
 **Tests** (10+ tests):
+
 - Components render
 - Props handled correctly
 - User interactions
@@ -492,12 +505,14 @@ tests/
 ### User Documentation
 
 1. **Dashboard Getting Started** (500 lines)
+
    - How to access dashboard
    - Main dashboard features
    - Navigation guide
    - Keyboard shortcuts
 
 2. **Hunt Tracking Guide** (400 lines)
+
    - View hunt status
    - Create hunts
    - Update phases
@@ -512,12 +527,14 @@ tests/
 ### Developer Documentation
 
 1. **API Documentation** (500+ lines)
+
    - Endpoint reference
    - Request/response formats
    - Error codes
    - Examples
 
 2. **WebSocket Documentation** (300 lines)
+
    - Event reference
    - Connection setup
    - Reconnection logic

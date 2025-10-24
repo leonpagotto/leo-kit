@@ -5,10 +5,10 @@
 ## 🚀 Starting the Dashboard Server
 
 ```javascript
-const APIServer = require('./lib/team/api-server');
+const APIServer = require("./lib/team/api-server");
 
 // Initialize server
-const server = new APIServer({ port: 3000, workdir: '.' });
+const server = new APIServer({ port: 3000, workdir: "." });
 
 // Setup middleware and routes
 server._setupMiddleware();
@@ -17,7 +17,7 @@ server._setupWebSocket();
 
 // Start server
 await server.start();
-console.log('Dashboard running on http://localhost:3000');
+console.log("Dashboard running on http://localhost:3000");
 ```
 
 ---
@@ -27,12 +27,15 @@ console.log('Dashboard running on http://localhost:3000');
 ### Team Management
 
 #### GET /api/team
+
 Get team information
+
 ```bash
 curl http://localhost:3000/api/team
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "name": "Team A",
@@ -47,12 +50,15 @@ curl http://localhost:3000/api/team
 ```
 
 #### GET /api/team/members
+
 Get all team members with hunt counts
+
 ```bash
 curl http://localhost:3000/api/team/members
 ```
 
 **Response (200 OK):**
+
 ```json
 [
   {
@@ -77,6 +83,7 @@ curl http://localhost:3000/api/team/members
 ### Hunt Management
 
 #### GET /api/hunts
+
 List all hunts with optional filtering and pagination
 
 ```bash
@@ -94,6 +101,7 @@ curl 'http://localhost:3000/api/hunts?status=active'
 ```
 
 **Response (200 OK):**
+
 ```json
 [
   {
@@ -118,6 +126,7 @@ curl 'http://localhost:3000/api/hunts?status=active'
 ```
 
 #### GET /api/hunts/:id
+
 Get hunt details with all phases
 
 ```bash
@@ -125,6 +134,7 @@ curl http://localhost:3000/api/hunts/1
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "id": "1",
@@ -147,6 +157,7 @@ curl http://localhost:3000/api/hunts/1
 ```
 
 #### GET /api/hunts/:id/phases
+
 Get phase breakdown for a hunt
 
 ```bash
@@ -154,15 +165,25 @@ curl http://localhost:3000/api/hunts/1/phases
 ```
 
 **Response (200 OK):**
+
 ```json
 [
-  { "name": "Discovery", "completed": true, "completedAt": "2024-10-15T11:00:00Z" },
-  { "name": "Analysis", "completed": true, "completedAt": "2024-10-15T12:00:00Z" },
+  {
+    "name": "Discovery",
+    "completed": true,
+    "completedAt": "2024-10-15T11:00:00Z"
+  },
+  {
+    "name": "Analysis",
+    "completed": true,
+    "completedAt": "2024-10-15T12:00:00Z"
+  },
   { "name": "Implementation", "completed": false, "completedAt": null }
 ]
 ```
 
 #### POST /api/hunts
+
 Create a new hunt
 
 ```bash
@@ -177,6 +198,7 @@ curl -X POST http://localhost:3000/api/hunts \
 ```
 
 **Response (201 Created):**
+
 ```json
 {
   "id": "123",
@@ -191,6 +213,7 @@ curl -X POST http://localhost:3000/api/hunts \
 ```
 
 **Validation Errors (400 Bad Request):**
+
 ```json
 {
   "error": "Title is required"
@@ -198,6 +221,7 @@ curl -X POST http://localhost:3000/api/hunts \
 ```
 
 #### PUT /api/hunts/:id
+
 Update hunt metadata
 
 ```bash
@@ -210,6 +234,7 @@ curl -X PUT http://localhost:3000/api/hunts/1 \
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "id": "1",
@@ -220,6 +245,7 @@ curl -X PUT http://localhost:3000/api/hunts/1 \
 ```
 
 #### POST /api/hunts/:id/phase-next
+
 Move hunt to next phase
 
 ```bash
@@ -227,6 +253,7 @@ curl -X POST http://localhost:3000/api/hunts/1/phase-next
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "huntId": "1",
@@ -237,6 +264,7 @@ curl -X POST http://localhost:3000/api/hunts/1/phase-next
 ```
 
 #### POST /api/hunts/:id/complete
+
 Mark hunt as completed
 
 ```bash
@@ -244,6 +272,7 @@ curl -X POST http://localhost:3000/api/hunts/1/complete
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "huntId": "1",
@@ -259,6 +288,7 @@ curl -X POST http://localhost:3000/api/hunts/1/complete
 ### Analytics
 
 #### GET /api/analytics
+
 Get overall team analytics
 
 ```bash
@@ -266,6 +296,7 @@ curl http://localhost:3000/api/analytics
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "activeHunts": 5,
@@ -282,6 +313,7 @@ curl http://localhost:3000/api/analytics
 ```
 
 #### GET /api/analytics/hunts
+
 Get per-hunt statistics
 
 ```bash
@@ -289,6 +321,7 @@ curl http://localhost:3000/api/analytics/hunts
 ```
 
 **Response (200 OK):**
+
 ```json
 [
   {
@@ -314,6 +347,7 @@ curl http://localhost:3000/api/analytics/hunts
 ```
 
 #### GET /api/analytics/performance
+
 Get detailed performance metrics
 
 ```bash
@@ -321,6 +355,7 @@ curl http://localhost:3000/api/analytics/performance
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "throughput": 2.5,
@@ -355,32 +390,34 @@ curl http://localhost:3000/api/analytics/performance
 ### Client Connection
 
 When a client connects, they automatically:
+
 1. Join the `team` room
 2. Receive `initial:state` with existing data
 
 ```javascript
 // Frontend (JavaScript)
-const socket = io('http://localhost:3000');
+const socket = io("http://localhost:3000");
 
-socket.on('connect', () => {
-  console.log('Connected to dashboard');
+socket.on("connect", () => {
+  console.log("Connected to dashboard");
 });
 
-socket.on('initial:state', (data) => {
-  console.log('Team data:', data.team);
-  console.log('Hunts:', data.hunts);
-  console.log('Connected clients:', data.connectedClients);
+socket.on("initial:state", (data) => {
+  console.log("Team data:", data.team);
+  console.log("Hunts:", data.hunts);
+  console.log("Connected clients:", data.connectedClients);
 });
 ```
 
 ### Hunt Events
 
 #### hunt:created
+
 Fired when a new hunt is created
 
 ```javascript
-socket.on('hunt:created', (hunt) => {
-  console.log('New hunt:', hunt);
+socket.on("hunt:created", (hunt) => {
+  console.log("New hunt:", hunt);
   // {
   //   id: '1',
   //   title: 'New Hunt',
@@ -391,11 +428,12 @@ socket.on('hunt:created', (hunt) => {
 ```
 
 #### hunt:updated
+
 Fired when hunt metadata is updated
 
 ```javascript
-socket.on('hunt:updated', (hunt) => {
-  console.log('Hunt updated:', hunt);
+socket.on("hunt:updated", (hunt) => {
+  console.log("Hunt updated:", hunt);
   // {
   //   id: '1',
   //   title: 'Updated Title',
@@ -406,11 +444,12 @@ socket.on('hunt:updated', (hunt) => {
 ```
 
 #### hunt:phase-changed
+
 Fired when hunt moves to next phase
 
 ```javascript
-socket.on('hunt:phase-changed', (data) => {
-  console.log('Phase changed:', data);
+socket.on("hunt:phase-changed", (data) => {
+  console.log("Phase changed:", data);
   // {
   //   huntId: '1',
   //   previousPhase: 'Analysis',
@@ -421,11 +460,12 @@ socket.on('hunt:phase-changed', (data) => {
 ```
 
 #### hunt:completed
+
 Fired when hunt is completed
 
 ```javascript
-socket.on('hunt:completed', (data) => {
-  console.log('Hunt completed:', data);
+socket.on("hunt:completed", (data) => {
+  console.log("Hunt completed:", data);
   // {
   //   huntId: '1',
   //   completedAt: '2024-10-24T15:45:00Z',
@@ -438,8 +478,8 @@ socket.on('hunt:completed', (data) => {
 ### Error Events
 
 ```javascript
-socket.on('error', (error) => {
-  console.error('Dashboard error:', error);
+socket.on("error", (error) => {
+  console.error("Dashboard error:", error);
   // {
   //   code: 'HUNT_CREATE_ERROR',
   //   message: 'Failed to create hunt',
@@ -454,10 +494,10 @@ Send event to all connected team members (backend):
 
 ```javascript
 // Backend (Node.js)
-server._broadcast('hunt:created', {
-  id: '1',
-  title: 'New Hunt',
-  owner: 'Alice'
+server._broadcast("hunt:created", {
+  id: "1",
+  title: "New Hunt",
+  owner: "Alice",
 });
 ```
 
@@ -469,7 +509,7 @@ server._broadcast('hunt:created', {
 
 ```javascript
 // Create API client
-const client = new DashboardAPI('http://localhost:3000');
+const client = new DashboardAPI("http://localhost:3000");
 
 // Fetch team
 const team = await client.getTeam();
@@ -478,23 +518,23 @@ const team = await client.getTeam();
 const hunts = await client.getHunts();
 
 // Get hunt details
-const hunt = await client.getHuntDetail('1');
+const hunt = await client.getHuntDetail("1");
 
 // Create new hunt
 const newHunt = await client.createHunt({
-  title: 'Feature Hunt',
-  description: 'Description here',
-  owner: 'Alice'
+  title: "Feature Hunt",
+  description: "Description here",
+  owner: "Alice",
 });
 
 // Update hunt
-await client.updateHunt('1', { title: 'Updated' });
+await client.updateHunt("1", { title: "Updated" });
 
 // Move to next phase
-await client.nextPhase('1');
+await client.nextPhase("1");
 
 // Complete hunt
-await client.completeHunt('1');
+await client.completeHunt("1");
 
 // Get analytics
 const stats = await client.getAnalytics();
@@ -504,13 +544,13 @@ const stats = await client.getAnalytics();
 
 ## 📊 Response Status Codes
 
-| Code | Meaning | Example |
-|------|---------|---------|
-| 200 | OK | Successful GET/PUT |
-| 201 | Created | Successful POST |
-| 400 | Bad Request | Missing required field |
-| 404 | Not Found | Hunt doesn't exist |
-| 500 | Server Error | Unexpected error |
+| Code | Meaning      | Example                |
+| ---- | ------------ | ---------------------- |
+| 200  | OK           | Successful GET/PUT     |
+| 201  | Created      | Successful POST        |
+| 400  | Bad Request  | Missing required field |
+| 404  | Not Found    | Hunt doesn't exist     |
+| 500  | Server Error | Unexpected error       |
 
 ---
 

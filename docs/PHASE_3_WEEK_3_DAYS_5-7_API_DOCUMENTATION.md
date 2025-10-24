@@ -30,11 +30,11 @@ The LEO Dashboard API Server provides real-time access to hunt data, team inform
 
 ### Key Features
 
-✅ Real-time WebSocket broadcasts  
-✅ Team and hunt management  
-✅ Advanced analytics and metrics  
-✅ CORS-enabled for frontend integration  
-✅ Full event tracking and logging  
+✅ Real-time WebSocket broadcasts
+✅ Team and hunt management
+✅ Advanced analytics and metrics
+✅ CORS-enabled for frontend integration
+✅ Full event tracking and logging
 
 ---
 
@@ -132,6 +132,7 @@ http://localhost:3000/api
 Check if server is running.
 
 **Response (200 OK):**
+
 ```json
 {
   "status": "ok",
@@ -146,6 +147,7 @@ Check if server is running.
 Get comprehensive API server status.
 
 **Response (200 OK):**
+
 ```json
 {
   "running": true,
@@ -169,6 +171,7 @@ Get comprehensive API server status.
 Get team information.
 
 **Response (200 OK):**
+
 ```json
 {
   "name": "Engineering Team",
@@ -192,6 +195,7 @@ Get team information.
 ```
 
 **cURL Example:**
+
 ```bash
 curl http://localhost:3000/api/team
 ```
@@ -203,10 +207,12 @@ curl http://localhost:3000/api/team
 Get all team members.
 
 **Query Parameters:**
+
 - `role` (optional): Filter by role (e.g., "Developer", "Lead")
 - `active` (optional): Filter by active status (true/false)
 
 **Response (200 OK):**
+
 ```json
 [
   {
@@ -231,6 +237,7 @@ Get all team members.
 ```
 
 **cURL Example:**
+
 ```bash
 curl http://localhost:3000/api/team/members
 curl "http://localhost:3000/api/team/members?role=Developer"
@@ -245,6 +252,7 @@ curl "http://localhost:3000/api/team/members?role=Developer"
 Get all hunts.
 
 **Query Parameters:**
+
 - `status` (optional): Filter by status (`active`, `completed`, `archived`)
 - `owner` (optional): Filter by owner name
 - `priority` (optional): Filter by priority (`Low`, `Medium`, `High`, `Critical`)
@@ -252,6 +260,7 @@ Get all hunts.
 - `offset` (optional): Pagination offset (default: 0)
 
 **Response (200 OK):**
+
 ```json
 [
   {
@@ -284,6 +293,7 @@ Get all hunts.
 ```
 
 **cURL Examples:**
+
 ```bash
 # Get all hunts
 curl http://localhost:3000/api/hunts
@@ -308,9 +318,11 @@ curl "http://localhost:3000/api/hunts?status=active&owner=Alice"
 Get hunt details.
 
 **Path Parameters:**
+
 - `id` (required): Hunt ID
 
 **Response (200 OK):**
+
 ```json
 {
   "id": "hunt-001",
@@ -358,6 +370,7 @@ Get hunt details.
 ```
 
 **Response (404 Not Found):**
+
 ```json
 {
   "error": "Hunt not found"
@@ -365,6 +378,7 @@ Get hunt details.
 ```
 
 **cURL Example:**
+
 ```bash
 curl http://localhost:3000/api/hunts/hunt-001
 ```
@@ -376,6 +390,7 @@ curl http://localhost:3000/api/hunts/hunt-001
 Get hunt phase information.
 
 **Response (200 OK):**
+
 ```json
 {
   "huntId": "hunt-001",
@@ -403,6 +418,7 @@ Get hunt phase information.
 ```
 
 **cURL Example:**
+
 ```bash
 curl http://localhost:3000/api/hunts/hunt-001/phases
 ```
@@ -414,6 +430,7 @@ curl http://localhost:3000/api/hunts/hunt-001/phases
 Create a new hunt.
 
 **Request Body:**
+
 ```json
 {
   "title": "Add Dark Mode Support",
@@ -424,6 +441,7 @@ Create a new hunt.
 ```
 
 **Response (201 Created):**
+
 ```json
 {
   "id": "hunt-001",
@@ -435,6 +453,7 @@ Create a new hunt.
 ```
 
 **Response (400 Bad Request):**
+
 ```json
 {
   "error": "Title required"
@@ -442,6 +461,7 @@ Create a new hunt.
 ```
 
 **cURL Example:**
+
 ```bash
 curl -X POST http://localhost:3000/api/hunts \
   -H "Content-Type: application/json" \
@@ -460,6 +480,7 @@ curl -X POST http://localhost:3000/api/hunts \
 Update a hunt.
 
 **Request Body (all optional):**
+
 ```json
 {
   "title": "Updated Title",
@@ -469,6 +490,7 @@ Update a hunt.
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "id": "hunt-001",
@@ -480,6 +502,7 @@ Update a hunt.
 ```
 
 **cURL Example:**
+
 ```bash
 curl -X PUT http://localhost:3000/api/hunts/hunt-001 \
   -H "Content-Type: application/json" \
@@ -496,6 +519,7 @@ curl -X PUT http://localhost:3000/api/hunts/hunt-001 \
 Advance hunt to the next phase.
 
 **Response (200 OK):**
+
 ```json
 {
   "id": "hunt-001",
@@ -505,6 +529,7 @@ Advance hunt to the next phase.
 ```
 
 **Response (404 Not Found):**
+
 ```json
 {
   "error": "Hunt not found"
@@ -512,6 +537,7 @@ Advance hunt to the next phase.
 ```
 
 **cURL Example:**
+
 ```bash
 curl -X POST http://localhost:3000/api/hunts/hunt-001/phase-next
 ```
@@ -523,6 +549,7 @@ curl -X POST http://localhost:3000/api/hunts/hunt-001/phase-next
 Mark a hunt as completed.
 
 **Response (200 OK):**
+
 ```json
 {
   "id": "hunt-001",
@@ -533,6 +560,7 @@ Mark a hunt as completed.
 ```
 
 **cURL Example:**
+
 ```bash
 curl -X POST http://localhost:3000/api/hunts/hunt-001/complete
 ```
@@ -546,6 +574,7 @@ curl -X POST http://localhost:3000/api/hunts/hunt-001/complete
 Get overall team analytics.
 
 **Response (200 OK):**
+
 ```json
 {
   "activeHunts": 3,
@@ -559,6 +588,7 @@ Get overall team analytics.
 ```
 
 **cURL Example:**
+
 ```bash
 curl http://localhost:3000/api/analytics
 ```
@@ -570,6 +600,7 @@ curl http://localhost:3000/api/analytics
 Get hunt-specific analytics.
 
 **Response (200 OK):**
+
 ```json
 {
   "byStatus": {
@@ -599,6 +630,7 @@ Get hunt-specific analytics.
 ```
 
 **cURL Example:**
+
 ```bash
 curl http://localhost:3000/api/analytics/hunts
 ```
@@ -610,6 +642,7 @@ curl http://localhost:3000/api/analytics/hunts
 Get team performance metrics.
 
 **Response (200 OK):**
+
 ```json
 {
   "throughput": 7,
@@ -632,6 +665,7 @@ Get team performance metrics.
 ```
 
 **cURL Example:**
+
 ```bash
 curl http://localhost:3000/api/analytics/performance
 ```
@@ -645,34 +679,34 @@ Connect to WebSocket at: `ws://localhost:3000`
 ### JavaScript Example
 
 ```javascript
-const socket = io('http://localhost:3000');
+const socket = io("http://localhost:3000");
 
 // Connection event
-socket.on('connected', (data) => {
-  console.log('Connected:', data);
+socket.on("connected", (data) => {
+  console.log("Connected:", data);
   // { message: 'Connected to LionPack server', clientId: '...', timestamp: '...' }
 });
 
 // Listen for hunt events
-socket.on('hunt:created', (data) => {
-  console.log('Hunt created:', data);
+socket.on("hunt:created", (data) => {
+  console.log("Hunt created:", data);
 });
 
-socket.on('hunt:updated', (data) => {
-  console.log('Hunt updated:', data);
+socket.on("hunt:updated", (data) => {
+  console.log("Hunt updated:", data);
 });
 
-socket.on('hunt:phase-changed', (data) => {
-  console.log('Hunt phase changed:', data);
+socket.on("hunt:phase-changed", (data) => {
+  console.log("Hunt phase changed:", data);
 });
 
-socket.on('hunt:completed', (data) => {
-  console.log('Hunt completed:', data);
+socket.on("hunt:completed", (data) => {
+  console.log("Hunt completed:", data);
 });
 
 // Disconnect event
-socket.on('disconnect', () => {
-  console.log('Disconnected from server');
+socket.on("disconnect", () => {
+  console.log("Disconnected from server");
 });
 ```
 
@@ -683,6 +717,7 @@ socket.on('disconnect', () => {
 Broadcast when a new hunt is created.
 
 **Data:**
+
 ```json
 {
   "event": "hunt:created",
@@ -703,6 +738,7 @@ Broadcast when a new hunt is created.
 Broadcast when a hunt is updated.
 
 **Data:**
+
 ```json
 {
   "event": "hunt:updated",
@@ -722,6 +758,7 @@ Broadcast when a hunt is updated.
 Broadcast when hunt phase changes.
 
 **Data:**
+
 ```json
 {
   "event": "hunt:phase-changed",
@@ -743,6 +780,7 @@ Broadcast when hunt phase changes.
 Broadcast when hunt is completed.
 
 **Data:**
+
 ```json
 {
   "event": "hunt:completed",
@@ -772,15 +810,15 @@ All API errors follow this format:
 
 ### Common HTTP Status Codes
 
-| Status | Code | Meaning |
-|--------|------|---------|
-| 200 | OK | Success |
-| 201 | CREATED | Resource created |
-| 400 | BAD_REQUEST | Invalid request parameters |
-| 401 | UNAUTHORIZED | Authentication required |
-| 404 | NOT_FOUND | Resource not found |
-| 409 | CONFLICT | Resource conflict |
-| 500 | SERVER_ERROR | Internal server error |
+| Status | Code         | Meaning                    |
+| ------ | ------------ | -------------------------- |
+| 200    | OK           | Success                    |
+| 201    | CREATED      | Resource created           |
+| 400    | BAD_REQUEST  | Invalid request parameters |
+| 401    | UNAUTHORIZED | Authentication required    |
+| 404    | NOT_FOUND    | Resource not found         |
+| 409    | CONFLICT     | Resource conflict          |
+| 500    | SERVER_ERROR | Internal server error      |
 
 ### Error Examples
 
@@ -853,21 +891,23 @@ curl -X POST http://localhost:3000/api/hunts/hunt-001/complete
 ### WebSocket Real-time Monitoring
 
 ```javascript
-const io = require('socket.io-client');
+const io = require("socket.io-client");
 
 // Connect to API server
-const socket = io('http://localhost:3000');
+const socket = io("http://localhost:3000");
 
 // Log all events
-socket.on('hunt:created', (event) => {
-  console.log('✨ Hunt created:', event.data.title);
+socket.on("hunt:created", (event) => {
+  console.log("✨ Hunt created:", event.data.title);
 });
 
-socket.on('hunt:phase-changed', (event) => {
-  console.log(`📍 Phase changed: ${event.data.previousPhase} → ${event.data.currentPhase}`);
+socket.on("hunt:phase-changed", (event) => {
+  console.log(
+    `📍 Phase changed: ${event.data.previousPhase} → ${event.data.currentPhase}`
+  );
 });
 
-socket.on('hunt:completed', (event) => {
+socket.on("hunt:completed", (event) => {
   console.log(`✅ Hunt completed: ${event.data.title}`);
 });
 ```
@@ -898,7 +938,7 @@ paths:
       tags:
         - Status
       responses:
-        '200':
+        "200":
           description: Server status
           content:
             application/json:
@@ -924,7 +964,7 @@ paths:
       tags:
         - Team
       responses:
-        '200':
+        "200":
           description: Team information
           content:
             application/json:
@@ -937,7 +977,7 @@ paths:
       tags:
         - Team
       responses:
-        '200':
+        "200":
           description: Array of team members
           content:
             application/json:
@@ -962,7 +1002,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Array of hunts
           content:
             application/json:
@@ -993,7 +1033,7 @@ paths:
                 priority:
                   type: string
       responses:
-        '201':
+        "201":
           description: Hunt created
           content:
             application/json:
@@ -1012,13 +1052,13 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Hunt details
           content:
             application/json:
               schema:
                 type: object
-        '404':
+        "404":
           description: Hunt not found
 
     put:
@@ -1044,7 +1084,7 @@ paths:
                 status:
                   type: string
       responses:
-        '200':
+        "200":
           description: Hunt updated
           content:
             application/json:
@@ -1063,7 +1103,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Phase advanced
           content:
             application/json:
@@ -1082,7 +1122,7 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           description: Hunt completed
           content:
             application/json:
@@ -1095,7 +1135,7 @@ paths:
       tags:
         - Analytics
       responses:
-        '200':
+        "200":
           description: Team analytics
           content:
             application/json:
@@ -1108,7 +1148,7 @@ paths:
       tags:
         - Analytics
       responses:
-        '200':
+        "200":
           description: Hunt analytics
           content:
             application/json:
@@ -1121,7 +1161,7 @@ paths:
       tags:
         - Analytics
       responses:
-        '200':
+        "200":
           description: Performance metrics
           content:
             application/json:
@@ -1138,17 +1178,17 @@ paths:
 ```javascript
 // api-client.js - Simple API client wrapper
 class APIClient {
-  constructor(baseURL = 'http://localhost:3000') {
+  constructor(baseURL = "http://localhost:3000") {
     this.baseURL = baseURL;
   }
 
   async request(path, options = {}) {
     const response = await fetch(`${this.baseURL}${path}`, {
       headers: {
-        'Content-Type': 'application/json',
-        ...options.headers
+        "Content-Type": "application/json",
+        ...options.headers,
       },
-      ...options
+      ...options,
     });
 
     if (!response.ok) {
@@ -1160,17 +1200,17 @@ class APIClient {
 
   // Team methods
   async getTeam() {
-    return this.request('/api/team');
+    return this.request("/api/team");
   }
 
   async getTeamMembers() {
-    return this.request('/api/team/members');
+    return this.request("/api/team/members");
   }
 
   // Hunt methods
   async getHunts(filters = {}) {
     const query = new URLSearchParams(filters).toString();
-    return this.request(`/api/hunts${query ? '?' + query : ''}`);
+    return this.request(`/api/hunts${query ? "?" + query : ""}`);
   }
 
   async getHunt(id) {
@@ -1178,48 +1218,48 @@ class APIClient {
   }
 
   async createHunt(data) {
-    return this.request('/api/hunts', {
-      method: 'POST',
-      body: JSON.stringify(data)
+    return this.request("/api/hunts", {
+      method: "POST",
+      body: JSON.stringify(data),
     });
   }
 
   async updateHunt(id, data) {
     return this.request(`/api/hunts/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(data)
+      method: "PUT",
+      body: JSON.stringify(data),
     });
   }
 
   async nextPhase(id) {
     return this.request(`/api/hunts/${id}/phase-next`, {
-      method: 'POST'
+      method: "POST",
     });
   }
 
   async completeHunt(id) {
     return this.request(`/api/hunts/${id}/complete`, {
-      method: 'POST'
+      method: "POST",
     });
   }
 
   // Analytics methods
   async getAnalytics() {
-    return this.request('/api/analytics');
+    return this.request("/api/analytics");
   }
 
   async getHuntAnalytics() {
-    return this.request('/api/analytics/hunts');
+    return this.request("/api/analytics/hunts");
   }
 
   async getPerformance() {
-    return this.request('/api/analytics/performance');
+    return this.request("/api/analytics/performance");
   }
 }
 
 // Usage
 const api = new APIClient();
-const hunts = await api.getHunts({ status: 'active' });
+const hunts = await api.getHunts({ status: "active" });
 ```
 
 ---
@@ -1250,11 +1290,11 @@ ping localhost
 
 ```javascript
 // Increase reconnection attempts
-const socket = io('http://localhost:3000', {
+const socket = io("http://localhost:3000", {
   reconnection: true,
   reconnectionDelay: 1000,
   reconnectionDelayMax: 5000,
-  reconnectionAttempts: 5
+  reconnectionAttempts: 5,
 });
 ```
 
@@ -1270,6 +1310,6 @@ For issues, questions, or feature requests:
 
 ---
 
-**Last Updated:** October 24, 2025  
-**Version:** 1.0.0  
+**Last Updated:** October 24, 2025
+**Version:** 1.0.0
 **Status:** Production Ready

@@ -29,11 +29,12 @@ The `GitHubAuth` class manages GitHub authentication and token handling.
 ### Constructor
 
 ```javascript
-const GitHubAuth = require('./github-auth');
+const GitHubAuth = require("./github-auth");
 const auth = new GitHubAuth(token);
 ```
 
 **Parameters:**
+
 - `token` (string): GitHub Personal Access Token
 
 ### Instance Methods
@@ -47,6 +48,7 @@ async validateToken() → Promise<User>
 ```
 
 **Returns:**
+
 ```javascript
 {
   id: number,           // GitHub user ID
@@ -59,18 +61,20 @@ async validateToken() → Promise<User>
 ```
 
 **Throws:**
+
 - `Error: Invalid token (401)` - Token is invalid or expired
 - `Error: Insufficient permissions (403)` - Token lacks required scopes
 - `Error: GitHub API error (5xx)` - Server error
 
 **Example:**
+
 ```javascript
 try {
   const user = await auth.validateToken();
   console.log(`Authenticated as @${user.login}`);
 } catch (error) {
-  if (error.message.includes('401')) {
-    console.log('Invalid token');
+  if (error.message.includes("401")) {
+    console.log("Invalid token");
   }
 }
 ```
@@ -84,6 +88,7 @@ async getUser() → Promise<User>
 ```
 
 **Returns:**
+
 ```javascript
 {
   id: number,
@@ -102,6 +107,7 @@ async getUser() → Promise<User>
 ```
 
 **Example:**
+
 ```javascript
 const user = await auth.getUser();
 console.log(`User: ${user.name} (@${user.login})`);
@@ -118,6 +124,7 @@ getRateLimit() → RateLimit
 ```
 
 **Returns:**
+
 ```javascript
 {
   remaining: number,    // Remaining API calls this hour
@@ -127,6 +134,7 @@ getRateLimit() → RateLimit
 ```
 
 **Example:**
+
 ```javascript
 const limits = auth.getRateLimit();
 console.log(`API Calls: ${limits.remaining}/${limits.limit}`);
@@ -144,14 +152,16 @@ isNearRateLimit() → boolean
 ```
 
 **Returns:**
+
 - `true` - Less than 250 API calls remaining
 - `false` - More than 250 API calls available
 
 **Example:**
+
 ```javascript
 if (auth.isNearRateLimit()) {
-  console.warn('Rate limit approaching - waiting before next request');
-  await sleep(60000);  // Wait 60 seconds
+  console.warn("Rate limit approaching - waiting before next request");
+  await sleep(60000); // Wait 60 seconds
 }
 ```
 
@@ -166,10 +176,12 @@ static hasToken() → boolean
 ```
 
 **Returns:**
+
 - `true` - Token file exists at `.lionpack/github-token`
 - `false` - No token found
 
 **Example:**
+
 ```javascript
 if (GitHubAuth.hasToken()) {
   const token = GitHubAuth.loadToken();
@@ -188,15 +200,17 @@ static loadToken() → string
 **Returns:** Token string
 
 **Throws:**
+
 - `Error: No GitHub token found` - Token file doesn't exist
 
 **Example:**
+
 ```javascript
 try {
   const token = GitHubAuth.loadToken();
   const auth = new GitHubAuth(token);
 } catch (error) {
-  console.log('GitHub not configured');
+  console.log("GitHub not configured");
 }
 ```
 
@@ -209,16 +223,18 @@ static saveToken(token) → void
 ```
 
 **Parameters:**
+
 - `token` (string): GitHub Personal Access Token
 
 **File Permissions:** 0o600 (user read/write only)
 **Location:** `.lionpack/github-token`
 
 **Example:**
+
 ```javascript
-const token = 'gho_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+const token = "gho_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 GitHubAuth.saveToken(token);
-console.log('Token saved securely');
+console.log("Token saved securely");
 ```
 
 #### `GitHubAuth.deleteToken()`
@@ -230,9 +246,10 @@ static deleteToken() → void
 ```
 
 **Example:**
+
 ```javascript
 GitHubAuth.deleteToken();
-console.log('Token deleted');
+console.log("Token deleted");
 ```
 
 ---
@@ -250,11 +267,12 @@ The `GitHubAPI` class handles GitHub REST API operations for projects, issues, a
 ### Constructor
 
 ```javascript
-const GitHubAPI = require('./github-api');
+const GitHubAPI = require("./github-api");
 const api = new GitHubAPI(auth);
 ```
 
 **Parameters:**
+
 - `auth` (GitHubAuth): Authenticated GitHubAuth instance
 
 ### Instance Methods
@@ -268,10 +286,12 @@ async createProjectBoard(name, columns) → Promise<Board>
 ```
 
 **Parameters:**
+
 - `name` (string): Project board name
 - `columns` (string[]): Column names in order
 
 **Returns:**
+
 ```javascript
 {
   id: string,           // Project ID
@@ -289,19 +309,21 @@ async createProjectBoard(name, columns) → Promise<Board>
 ```
 
 **Throws:**
+
 - `Error` - GitHub API error
 
 **Example:**
+
 ```javascript
-const board = await api.createProjectBoard('LionPack Board', [
-  'discovery',
-  'design',
-  'development',
-  'testing'
+const board = await api.createProjectBoard("LionPack Board", [
+  "discovery",
+  "design",
+  "development",
+  "testing",
 ]);
 
 console.log(`Board created: ${board.name}`);
-console.log(`Columns: ${board.columns.map(c => c.name).join(', ')}`);
+console.log(`Columns: ${board.columns.map((c) => c.name).join(", ")}`);
 ```
 
 #### `createIssue(repo, title, description, labels)`
@@ -313,12 +335,14 @@ async createIssue(repo, title, description, labels) → Promise<Issue>
 ```
 
 **Parameters:**
+
 - `repo` (string): Repository in format "owner/repo"
 - `title` (string): Issue title
 - `description` (string): Issue body/description
 - `labels` (string[]): Label names
 
 **Returns:**
+
 ```javascript
 {
   id: number,
@@ -338,12 +362,13 @@ async createIssue(repo, title, description, labels) → Promise<Issue>
 ```
 
 **Example:**
+
 ```javascript
 const issue = await api.createIssue(
-  'octocat/Hello-World',
-  '🦁 User Authentication',
-  'Implement OAuth2 authentication\n\nHunt ID: hunt-123',
-  ['feature', 'hunt', 'p1']
+  "octocat/Hello-World",
+  "🦁 User Authentication",
+  "Implement OAuth2 authentication\n\nHunt ID: hunt-123",
+  ["feature", "hunt", "p1"]
 );
 
 console.log(`Issue created: #${issue.number}`);
@@ -359,6 +384,7 @@ async updateIssue(repo, number, updates) → Promise<Issue>
 ```
 
 **Parameters:**
+
 - `repo` (string): Repository "owner/repo"
 - `number` (number): Issue number
 - `updates` (object): Properties to update
@@ -370,17 +396,18 @@ async updateIssue(repo, number, updates) → Promise<Issue>
 **Returns:** Updated issue object
 
 **Example:**
+
 ```javascript
 // Close an issue
-const issue = await api.updateIssue('octocat/Hello-World', 42, {
-  state: 'closed'
+const issue = await api.updateIssue("octocat/Hello-World", 42, {
+  state: "closed",
 });
 
 // Update multiple properties
-await api.updateIssue('octocat/Hello-World', 42, {
-  state: 'closed',
-  title: '✅ User Authentication (Completed)',
-  labels: ['feature', 'completed']
+await api.updateIssue("octocat/Hello-World", 42, {
+  state: "closed",
+  title: "✅ User Authentication (Completed)",
+  labels: ["feature", "completed"],
 });
 ```
 
@@ -393,13 +420,15 @@ async addLabel(repo, number, labels) → Promise<void>
 ```
 
 **Parameters:**
+
 - `repo` (string): Repository "owner/repo"
 - `number` (number): Issue number
 - `labels` (string[]): Labels to add
 
 **Example:**
+
 ```javascript
-await api.addLabel('octocat/Hello-World', 42, ['urgent', 'backend']);
+await api.addLabel("octocat/Hello-World", 42, ["urgent", "backend"]);
 ```
 
 #### `addComment(repo, number, comment)`
@@ -411,11 +440,13 @@ async addComment(repo, number, comment) → Promise<Comment>
 ```
 
 **Parameters:**
+
 - `repo` (string): Repository "owner/repo"
 - `number` (number): Issue number
 - `comment` (string): Comment text (supports Markdown)
 
 **Returns:**
+
 ```javascript
 {
   id: number,
@@ -428,8 +459,12 @@ async addComment(repo, number, comment) → Promise<Comment>
 ```
 
 **Example:**
+
 ```javascript
-await api.addComment('octocat/Hello-World', 42, `
+await api.addComment(
+  "octocat/Hello-World",
+  42,
+  `
 🔄 **Status Update**
 
 - Moved to: Design phase
@@ -437,7 +472,8 @@ await api.addComment('octocat/Hello-World', 42, `
 - Estimated: 2 days
 
 [View Hunt](hunt-link)
-`);
+`
+);
 ```
 
 #### `addIssueToBoard(projectId, issueNumber, columnId)`
@@ -449,14 +485,16 @@ async addIssueToBoard(projectId, issueNumber, columnId) → Promise<void>
 ```
 
 **Parameters:**
+
 - `projectId` (string): Project ID
 - `issueNumber` (number): Issue number
 - `columnId` (string): Target column ID
 
 **Example:**
+
 ```javascript
 // Add issue #42 to first column (Discovery)
-await api.addIssueToBoard('P123', 42, 'C1');
+await api.addIssueToBoard("P123", 42, "C1");
 ```
 
 #### `moveIssueColumn(projectId, issueNumber, targetColumnId)`
@@ -468,17 +506,19 @@ async moveIssueColumn(projectId, issueNumber, targetColumnId) → Promise<void>
 ```
 
 **Parameters:**
+
 - `projectId` (string): Project ID
 - `issueNumber` (number): Issue number
 - `targetColumnId` (string): Target column ID
 
 **Example:**
+
 ```javascript
 // Move from discovery (C1) to design (C2)
-await api.moveIssueColumn('P123', 42, 'C2');
+await api.moveIssueColumn("P123", 42, "C2");
 
 // Move to development (C3)
-await api.moveIssueColumn('P123', 42, 'C3');
+await api.moveIssueColumn("P123", 42, "C3");
 ```
 
 #### `getProject(projectId)`
@@ -490,6 +530,7 @@ async getProject(projectId) → Promise<Project>
 ```
 
 **Returns:**
+
 ```javascript
 {
   id: string,
@@ -519,6 +560,7 @@ async getBoardColumns(projectId) → Promise<Column[]>
 ```
 
 **Returns:**
+
 ```javascript
 [
   { id: string, name: string, cards_url: string },
@@ -544,15 +586,15 @@ async getProjectIssues(projectId) → Promise<Issue[]>
 
 ```javascript
 // Invalid Token
-Error: "Invalid token (401)"
+Error: "Invalid token (401)";
 // Solution: Check token validity, regenerate if needed
 
 // Insufficient Scopes
-Error: "Insufficient permissions (403)"
+Error: "Insufficient permissions (403)";
 // Solution: Regenerate token with correct scopes
 
 // Rate Limit
-Error: "API rate limit exceeded"
+Error: "API rate limit exceeded";
 // Solution: Wait for limit reset, check with getRateLimit()
 ```
 
@@ -560,14 +602,14 @@ Error: "API rate limit exceeded"
 
 ```javascript
 try {
-  await api.createIssue('owner/repo', 'Title', 'Body', []);
+  await api.createIssue("owner/repo", "Title", "Body", []);
 } catch (error) {
-  if (error.message.includes('404')) {
-    console.log('Repository not found');
-  } else if (error.message.includes('422')) {
-    console.log('Validation error - check parameters');
-  } else if (error.message.includes('5')) {
-    console.log('GitHub server error - retrying');
+  if (error.message.includes("404")) {
+    console.log("Repository not found");
+  } else if (error.message.includes("422")) {
+    console.log("Validation error - check parameters");
+  } else if (error.message.includes("5")) {
+    console.log("GitHub server error - retrying");
   }
 }
 ```
@@ -577,10 +619,12 @@ try {
 ## Rate Limiting
 
 GitHub API has rate limits:
+
 - **Limit:** 5,000 requests per hour (authenticated)
 - **Reset:** Hourly
 
 LionPack automatically:
+
 - Tracks remaining requests
 - Pauses when approaching limit (≤250 remaining)
 - Includes retry logic for transient failures
@@ -592,8 +636,8 @@ console.log(`Remaining: ${limits.remaining}`);
 
 // Check if approaching threshold
 if (auth.isNearRateLimit()) {
-  console.log('Pausing for rate limit safety');
-  await new Promise(r => setTimeout(r, 60000));  // 1 minute
+  console.log("Pausing for rate limit safety");
+  await new Promise((r) => setTimeout(r, 60000)); // 1 minute
 }
 ```
 
@@ -604,8 +648,8 @@ if (auth.isNearRateLimit()) {
 ### Complete Workflow
 
 ```javascript
-const GitHubAuth = require('./github-auth');
-const GitHubAPI = require('./github-api');
+const GitHubAuth = require("./github-auth");
+const GitHubAPI = require("./github-api");
 
 // 1. Load or create authentication
 const token = GitHubAuth.loadToken();
@@ -619,20 +663,20 @@ console.log(`Authenticated as @${user.login}`);
 const api = new GitHubAPI(auth);
 
 // 4. Create project board
-const board = await api.createProjectBoard('My Project', [
-  'todo',
-  'in-progress',
-  'review',
-  'done'
+const board = await api.createProjectBoard("My Project", [
+  "todo",
+  "in-progress",
+  "review",
+  "done",
 ]);
 console.log(`Board: ${board.name} (${board.id})`);
 
 // 5. Create issue
 const issue = await api.createIssue(
-  'owner/repo',
-  'Implement feature',
-  'Detailed description',
-  ['feature', 'bug']
+  "owner/repo",
+  "Implement feature",
+  "Detailed description",
+  ["feature", "bug"]
 );
 console.log(`Issue: #${issue.number}`);
 
@@ -641,11 +685,11 @@ await api.addIssueToBoard(board.id, issue.number, board.columns[0].id);
 
 // 7. Update status
 await api.moveIssueColumn(board.id, issue.number, board.columns[1].id);
-await api.addComment('owner/repo', issue.number, '🚀 Started work');
+await api.addComment("owner/repo", issue.number, "🚀 Started work");
 
 // 8. Complete
-await api.updateIssue('owner/repo', issue.number, { state: 'closed' });
-await api.addComment('owner/repo', issue.number, '✅ Done');
+await api.updateIssue("owner/repo", issue.number, { state: "closed" });
+await api.addComment("owner/repo", issue.number, "✅ Done");
 ```
 
 ---

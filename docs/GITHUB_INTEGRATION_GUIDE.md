@@ -67,9 +67,11 @@ leo team setupGitHub
 ```
 
 You'll be prompted for:
+
 - **GitHub Personal Access Token**: Your PAT (input masked for security)
 
 The setup process will:
+
 1. ✅ Validate your token against GitHub
 2. ✅ Create a project board for your team
 3. ✅ Create columns matching your workflow phases
@@ -101,7 +103,7 @@ When you run `leo team setupGitHub`, LionPack automatically creates a GitHub pro
 - **Discovery** - Initial research and planning
 - **Design** - Architecture and design phase
 - **Development** - Implementation phase
-- *(Custom phases based on your workflow)*
+- _(Custom phases based on your workflow)_
 
 ### 2. Automatic Issue Creation
 
@@ -118,6 +120,7 @@ leo hunt start
 ```
 
 The system automatically:
+
 - Creates a GitHub issue with hunt details
 - Adds hunt-specific labels (`hunt`, `lionpack`)
 - Adds the issue to your project board
@@ -136,6 +139,7 @@ leo hunt nextPhase hunt-1
 ```
 
 The system:
+
 - Moves the issue between board columns
 - Adds phase labels (`design`, `development`, etc.)
 - Comments on the issue with phase transitions
@@ -154,6 +158,7 @@ leo hunt complete hunt-1
 ```
 
 The system:
+
 - Closes the corresponding GitHub issue
 - Adds a completion comment with hunt metrics
 - Archives hunt data locally
@@ -170,6 +175,7 @@ leo team checkGitHub
 ```
 
 Operations automatically handle rate limits:
+
 - Pauses before limit is exceeded (at 250 remaining)
 - Provides helpful error messages
 - Includes retry logic for transient failures
@@ -209,7 +215,7 @@ leo team checkGitHub
 
 # Output:
 # ✅ GitHub Connected
-# 
+#
 # User Information:
 #   Login: octocat
 #   ID: 12345
@@ -275,6 +281,7 @@ leo hunt list
 **Error:** `Invalid token (401)`
 
 **Solutions:**
+
 1. Verify token hasn't expired (regenerate if needed)
 2. Check token has correct scopes (`repo`, `project`)
 3. Ensure you copied the full token
@@ -288,6 +295,7 @@ leo team setupGitHub  # Re-enter token
 **Error:** `Insufficient permissions (403)`
 
 **Solutions:**
+
 1. Token needs `repo` and `project` scopes
 2. Check repository access permissions
 3. Regenerate token with correct scopes
@@ -297,6 +305,7 @@ leo team setupGitHub  # Re-enter token
 **Error:** `API rate limit exceeded`
 
 **Solutions:**
+
 1. Wait for rate limit reset (shown in message)
 2. LionPack automatically retries transient failures
 3. Check current status: `leo team checkGitHub`
@@ -306,6 +315,7 @@ leo team setupGitHub  # Re-enter token
 **Symptoms:** Hunt starts but no GitHub issue appears
 
 **Diagnosis:**
+
 ```bash
 # Check GitHub is enabled
 leo team checkGitHub
@@ -315,6 +325,7 @@ leo hunt list
 ```
 
 **Solutions:**
+
 1. Verify GitHub token is still valid: `leo team checkGitHub`
 2. Check rate limits aren't exceeded
 3. Try creating issue manually on GitHub
@@ -323,6 +334,7 @@ leo hunt list
 ### Token Not Saved Securely
 
 **Security Check:**
+
 ```bash
 ls -la .lionpack/github-token
 
@@ -330,6 +342,7 @@ ls -la .lionpack/github-token
 ```
 
 If permissions are wrong:
+
 ```bash
 chmod 600 .lionpack/github-token
 ```
@@ -578,10 +591,10 @@ const api = new GitHubAPI(auth);
 Create a GitHub project board.
 
 ```javascript
-const board = await api.createProjectBoard('LionPack Board', [
-  'discovery',
-  'design',
-  'development'
+const board = await api.createProjectBoard("LionPack Board", [
+  "discovery",
+  "design",
+  "development",
 ]);
 // Returns: { id, name, columns: [...] }
 ```
@@ -592,10 +605,10 @@ Create a GitHub issue.
 
 ```javascript
 const issue = await api.createIssue(
-  'org/repo',
-  '🦁 Feature Name',
-  'Detailed description',
-  ['hunt', 'feature']
+  "org/repo",
+  "🦁 Feature Name",
+  "Detailed description",
+  ["hunt", "feature"]
 );
 // Returns: { id, number, state, title, ... }
 ```
@@ -605,7 +618,7 @@ const issue = await api.createIssue(
 Update issue state or metadata.
 
 ```javascript
-await api.updateIssue('org/repo', 42, { state: 'closed' });
+await api.updateIssue("org/repo", 42, { state: "closed" });
 // Returns: { id, number, state, ... }
 ```
 
@@ -614,7 +627,7 @@ await api.updateIssue('org/repo', 42, { state: 'closed' });
 Add labels to an issue.
 
 ```javascript
-await api.addLabel('org/repo', 42, ['bug', 'urgent']);
+await api.addLabel("org/repo", 42, ["bug", "urgent"]);
 // Returns: boolean (success)
 ```
 
@@ -623,7 +636,7 @@ await api.addLabel('org/repo', 42, ['bug', 'urgent']);
 Add comment to an issue.
 
 ```javascript
-await api.addComment('org/repo', 42, '✅ Complete');
+await api.addComment("org/repo", 42, "✅ Complete");
 // Returns: { id, body, ... }
 ```
 
@@ -632,7 +645,7 @@ await api.addComment('org/repo', 42, '✅ Complete');
 Add issue to project board.
 
 ```javascript
-await api.addIssueToBoard('P1', 42, 'C1');
+await api.addIssueToBoard("P1", 42, "C1");
 // Returns: boolean (success)
 ```
 
@@ -641,7 +654,7 @@ await api.addIssueToBoard('P1', 42, 'C1');
 Move issue between columns.
 
 ```javascript
-await api.moveIssueColumn('P1', 42, 'C2');
+await api.moveIssueColumn("P1", 42, "C2");
 // Returns: boolean (success)
 ```
 
@@ -704,6 +717,7 @@ leo hunt complete hunt-1
 ### Use Case 2: Team Collaboration
 
 With GitHub integration, your team can:
+
 - See hunt progress on GitHub board
 - Comment on issues for discussion
 - Assign issues to team members
@@ -713,6 +727,7 @@ With GitHub integration, your team can:
 ### Use Case 3: Audit & Reporting
 
 GitHub integration provides:
+
 - Complete audit trail on GitHub
 - Hunt metrics in completion comments
 - Phase transition history
