@@ -1,4 +1,4 @@
-# Cline Rules - Ingvar Workflow Kit
+# Cline Rules - LEO Workflow Kit
 
 > **📖 MANDATORY: READ ALL INSTRUCTIONS FROM TOP TO BOTTOM**
 >
@@ -15,8 +15,8 @@
 ---
 
 > **AI Assistant:** Cline (Claude-Dev VSCode Extension)
-> **Purpose:** Follow Ingvar's workflow standards for consistent, high-quality development
-> **Last Updated:** 2025-10-20
+> **Purpose:** Follow LEO's workflow standards for consistent, high-quality development
+> **Last Updated:** 2025-10-24
 >
 > **⚡ ACTIVE ENFORCEMENT MODE: These rules are ALWAYS ACTIVE ⚡**
 >
@@ -24,7 +24,7 @@
 >
 > - **Issue Creation:** When user describes ANY work → Create GitHub issue IMMEDIATELY (use `gh issue create`)
 > - **No Asking Permission:** NEVER ask "should I create an issue?" - JUST DO IT
-> - **Auto-Resolve Check:** Read `.ingvarrc.json` for `auto-resolve` setting before working
+> - **Auto-Resolve Check:** Read `.leorc.json` for `auto-resolve` setting before working
 > - **Status Updates:** Comment "🚀 Starting work..." and update to "In Progress" when starting
 > - **Commit Messages:** Keep under 72 characters, reference issue number
 > - **Issue Comments:** Keep under 3-4 lines (200 chars max)
@@ -395,8 +395,8 @@ Execution Flow:
 
 **Check Auto-Resolve Config:**
 ```javascript
-// Read .ingvarrc.json
-const config = require('./.ingvarrc.json');
+// Read .leorc.json
+const config = require('./.leorc.json');
 const autoResolve = config['auto-resolve'] !== false; // Default: true
 
 if (autoResolve) {
@@ -574,7 +574,7 @@ Step 3: Routing to Testing Agent for test coverage...
 3. **ROUTE TO SPECIALISTS** - Don't implement yourself, delegate to experts
 4. **ENFORCE WORKFLOW** - Issue creation, status updates, commit format (always)
 5. **COORDINATE MULTI-AGENT** - Sequential handoffs with clear context
-6. **CHECK AUTO-RESOLVE** - Read .ingvarrc.json before starting work
+6. **CHECK AUTO-RESOLVE** - Read .leorc.json before starting work
 7. **KEEP MESSAGES SHORT** - Commit subject < 72 chars, comments < 3 lines
 
 ---
