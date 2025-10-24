@@ -6,6 +6,36 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.1] - 2025-10-24
+
+### 🎯 NEW FEATURE: Real-Time Model Selection in VS Code
+
+#### New Features
+
+##### Real-Time Model Selection Display
+- ✅ **Status Bar Display**: Shows current AI model in VS Code status bar with agent emoji
+- ✅ **Automatic Model Switching**: Models update automatically as agents execute
+- ✅ **File Watching**: Real-time updates via `~/.leo-model-status.json`
+- ✅ **Polling Fallback**: 100ms polling ensures maximum 100ms update latency
+- ✅ **Event Emission**: Full event system for model selection lifecycle
+- ✅ **Status Indicators**: Visual feedback (↻ active, ✓ complete, ⊘ idle)
+
+##### New Components
+- `ModelSelectorStatusManager` - Event emission and status file management
+- `ModelSelectionOrchestrator` - Orchestration with automatic tracking
+- VS Code Extension (`model-selector.js`) - Status bar display with real-time updates
+
+##### Documentation
+- `REALTIME_MODEL_SELECTION_IN_VSCODE.md` - Complete architecture guide
+- `REALTIME_MODEL_SELECTION_QUICK_START.md` - Setup and installation guide
+- `REALTIME_MODEL_SELECTION_IMPLEMENTATION_SUMMARY.md` - Technical implementation details
+- `REALTIME_MODEL_SELECTION_VISUAL_GUIDE.md` - Visual flows and state diagrams
+
+### 📝 Improvements
+- Enhanced documentation formatting and consistency
+- Improved visual guides for understanding real-time model selection
+- Better integration examples for orchestrator
+
 ## [4.1.0] - 2025-10-22
 
 ### 🎯 NEW FEATURE: GitHub-Native Issue Creation System
