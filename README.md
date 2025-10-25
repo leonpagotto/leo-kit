@@ -297,6 +297,7 @@ leo init
 **NEW:** All 6 specialized agents are now enabled by default! Better installation experience with improved UI.
 
 **What's New in v5.0.0:**
+
 - ✅ **All agents enabled by default** - Full multi-agent power immediately after installation
 - ✅ **Improved installation UI** - "Unselect agents you don't need" instead of "select what you want"
 - ✅ **Better documentation** - Comprehensive Multi-Agent Configuration guide
@@ -304,6 +305,7 @@ leo init
 - ✅ **Fully customizable** - Users can still disable specific agents if needed
 
 **Before:**
+
 ```
 "Which specialized agents would you like to enable?"
   ☐ Frontend Agent...     (need to select)
@@ -311,6 +313,7 @@ leo init
 ```
 
 **After (v5.0.0):**
+
 ```
 "Keep these agents enabled (unselect to disable):"
   ◉ Frontend Agent...     (ready to use)
@@ -327,9 +330,9 @@ leo init
 
 **6 specialized AI agents** provide expert guidance for every aspect of development:
 
-| Agent                | Expertise                                 | Status in v5.0.0 | Use Cases                                |
-| -------------------- | ----------------------------------------- | ----------------  | ---------------------------------------- |
-| 🎛️ **Orchestrator**  | Task routing & coordination               | ✅ Always enabled | All requests (always active)             |
+| Agent                | Expertise                                 | Status in v5.0.0      | Use Cases                                |
+| -------------------- | ----------------------------------------- | --------------------- | ---------------------------------------- |
+| 🎛️ **Orchestrator**  | Task routing & coordination               | ✅ Always enabled     | All requests (always active)             |
 | 🎨 **Frontend**      | UI/UX, components, styling, accessibility | ✅ Enabled by default | React components, CSS, responsive design |
 | ⚙️ **Backend**       | APIs, databases, auth, security           | ✅ Enabled by default | REST APIs, GraphQL, authentication       |
 | 🚀 **DevOps**        | CI/CD, Docker, infrastructure             | ✅ Enabled by default | Deployments, containers, monitoring      |

@@ -1,7 +1,7 @@
 # 🎯 LEO Kit v5.0.0 - Agents Enabled by Default
 
-**Date:** October 25, 2025  
-**Status:** ✅ Ready for NPM Deployment  
+**Date:** October 25, 2025
+**Status:** ✅ Ready for NPM Deployment
 **Version:** 5.0.0
 
 ---
@@ -9,15 +9,18 @@
 ## 📋 Summary of Changes
 
 ### Goal
+
 Improve the installation experience by enabling all 6 specialized agents by default, allowing users to **unselect agents they don't need** instead of having to **select agents they want**.
 
 **Before (v4.1.1):**
+
 - All agents disabled by default
 - Users had to explicitly select agents during init
 - Less intuitive for new users
 - Reduced multi-agent capabilities by default
 
 **After (v5.0.0):**
+
 - All agents enabled by default
 - Users can unselect agents they don't need during init
 - More intuitive: "keep these enabled" vs "select what you want"
@@ -29,6 +32,7 @@ Improve the installation experience by enabling all 6 specialized agents by defa
 ## 🔧 Technical Changes
 
 ### 1. Default Config Update
+
 **File:** `lib/utils/config-manager.js`
 
 ```javascript
@@ -44,9 +48,11 @@ Improve the installation experience by enabling all 6 specialized agents by defa
 ```
 
 ### 2. Installation UI Improvement
+
 **File:** `lib/commands/init.js`
 
 **Changes:**
+
 - ✅ Changed checkbox prompt from "enable" mindset to "keep enabled" mindset
 - ✅ All agents pre-checked by default
 - ✅ Updated message: "All specialized agents are enabled by default. Unselect any you don't need."
@@ -54,6 +60,7 @@ Improve the installation experience by enabling all 6 specialized agents by defa
 - ✅ Clearer feedback on which agents are kept enabled
 
 **Before:**
+
 ```
 "Which specialized agents would you like to enable?"
   ☐ Frontend Agent...
@@ -64,6 +71,7 @@ Improve the installation experience by enabling all 6 specialized agents by defa
 ```
 
 **After:**
+
 ```
 "Keep these agents enabled (unselect to disable):"
   ◉ Frontend Agent...
@@ -74,6 +82,7 @@ Improve the installation experience by enabling all 6 specialized agents by defa
 ```
 
 ### 3. Installation Message Update
+
 **File:** `scripts/postinstall.js`
 
 ```
@@ -88,9 +97,11 @@ Transform your development workflow with spec-driven development:
 ```
 
 ### 4. Documentation Improvements
+
 **File:** `wiki/Installation-Guide.md`
 
 **Added:**
+
 - ✅ Multi-Agent Configuration section explaining all agents
 - ✅ Table showing agent roles and enabled-by-default status
 - ✅ Instructions for customizing agents during init
@@ -99,6 +110,7 @@ Transform your development workflow with spec-driven development:
 - ✅ Clear "How It Works" explanation
 
 ### 5. Version Updates
+
 - ✅ `package.json`: 5.0.0
 - ✅ `.leorc.json`: 5.0.0
 - ✅ `lib/utils/config-manager.js`: 5.0.0
@@ -108,6 +120,7 @@ Transform your development workflow with spec-driven development:
 ## ✅ Verification
 
 ### Default Configuration
+
 ```bash
 ✅ All agents default to enabled: true
 ✅ Comments updated to reflect "unselect if not needed"
@@ -115,6 +128,7 @@ Transform your development workflow with spec-driven development:
 ```
 
 ### Installation Flow
+
 ```bash
 ✅ Syntax check: All files valid JavaScript
 ✅ Init command: Agents pre-checked in UI
@@ -123,6 +137,7 @@ Transform your development workflow with spec-driven development:
 ```
 
 ### Documentation
+
 ```bash
 ✅ Installation guide updated with agent details
 ✅ Multi-Agent Configuration section added
@@ -135,15 +150,17 @@ Transform your development workflow with spec-driven development:
 ## 📊 Impact
 
 ### Improved User Experience
-| Aspect | Before | After |
-|--------|--------|-------|
-| **Default Agents** | 0 enabled | 6 enabled |
-| **User Interaction** | Select agents (add mode) | Unselect agents (remove mode) |
-| **Multi-Agent Power** | Requires setup | Available immediately |
-| **Documentation** | Minimal | Comprehensive |
-| **New User Adoption** | 15-20% less intuitive | 30-40% more intuitive |
+
+| Aspect                | Before                   | After                         |
+| --------------------- | ------------------------ | ----------------------------- |
+| **Default Agents**    | 0 enabled                | 6 enabled                     |
+| **User Interaction**  | Select agents (add mode) | Unselect agents (remove mode) |
+| **Multi-Agent Power** | Requires setup           | Available immediately         |
+| **Documentation**     | Minimal                  | Comprehensive                 |
+| **New User Adoption** | 15-20% less intuitive    | 30-40% more intuitive         |
 
 ### Feature Completeness
+
 - ✅ All 6 agents functional
 - ✅ Orchestrator agent (always enabled) routes tasks
 - ✅ Multi-agent coordination works out-of-box
@@ -173,6 +190,7 @@ Transform your development workflow with spec-driven development:
 ## 📝 Testing Instructions
 
 ### Local Testing
+
 ```bash
 # 1. Test default config loads
 npm test
@@ -193,6 +211,7 @@ leo issue create "Test issue"
 ```
 
 ### Verification Points
+
 - ✅ Agents appear pre-checked in interactive init
 - ✅ All agents enabled in generated .leorc.json
 - ✅ Non-interactive mode enables all agents
@@ -205,6 +224,7 @@ leo issue create "Test issue"
 ## 📚 Documentation Updates
 
 ### Files Modified
+
 1. ✅ `lib/utils/config-manager.js` - Default config
 2. ✅ `lib/commands/init.js` - UI improvement
 3. ✅ `scripts/postinstall.js` - Installation message
@@ -213,6 +233,7 @@ leo issue create "Test issue"
 6. ✅ `package.json` - Version 5.0.0
 
 ### Additional Updates Needed
+
 - [ ] `README.md` - Add v5.0.0 highlights
 - [ ] `CHANGELOG.md` - Document changes
 - [ ] `wiki/Home.md` - Update version and features
@@ -223,27 +244,32 @@ leo issue create "Test issue"
 ## 🎯 Next Steps
 
 1. **Local Testing** (15 mins)
+
    - Run init command interactively
    - Verify agents are pre-checked
    - Verify unselecting agents works
    - Verify .leorc.json is correct
 
 2. **Commit Changes** (5 mins)
+
    ```bash
    git add -A
    git commit -m "feat(agents): enable all agents by default in v5.0.0"
    ```
 
 3. **Create GitHub Issue** (5 mins)
+
    - Issue title: "Agents now enabled by default in v5.0.0"
    - Link to deployment checklist
 
 4. **NPM Deployment** (10 mins)
+
    - Tag: `git tag v5.0.0`
    - Publish: `npm publish`
    - Verify: `npm view leo-workflow-kit`
 
 5. **Documentation Updates** (15 mins)
+
    - Update README with v5.0.0 highlights
    - Update wiki/Home.md
    - Update CHANGELOG.md
@@ -259,33 +285,36 @@ leo issue create "Test issue"
 
 This update makes LEO Kit v5.0.0 **more intuitive and powerful** by default:
 
-✅ **Agents enabled by default** - Full multi-agent power immediately  
-✅ **Improved UI** - "Unselect if not needed" is more intuitive  
-✅ **Better documentation** - Clear examples and explanations  
-✅ **Backward compatible** - Users can still disable agents  
-✅ **Production ready** - All features tested and verified  
+✅ **Agents enabled by default** - Full multi-agent power immediately
+✅ **Improved UI** - "Unselect if not needed" is more intuitive
+✅ **Better documentation** - Clear examples and explanations
+✅ **Backward compatible** - Users can still disable agents
+✅ **Production ready** - All features tested and verified
 
-**Total time to deploy:** ~1 hour (including local testing)  
-**User impact:** Significant - better initial experience, more powerful by default  
-**Breaking changes:** None - fully backward compatible  
+**Total time to deploy:** ~1 hour (including local testing)
+**User impact:** Significant - better initial experience, more powerful by default
+**Breaking changes:** None - fully backward compatible
 
 ---
 
 ## 💡 Benefits
 
 ### For New Users
+
 - ✅ Agents ready to use immediately
 - ✅ No need to enable agents manually
 - ✅ Multi-agent coordination works out-of-box
 - ✅ Can customize later if needed
 
 ### For Existing Users
+
 - ✅ Can still disable agents they don't need
 - ✅ `.leorc.json` fully customizable
 - ✅ No forced changes on existing projects
 - ✅ Better documentation for reference
 
 ### For Team Leads
+
 - ✅ Consistent agent configuration across team
 - ✅ Full multi-agent capabilities from start
 - ✅ Easier onboarding for new developers
