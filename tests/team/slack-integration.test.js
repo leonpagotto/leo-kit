@@ -10,7 +10,7 @@ const SlackAuth = require('../../lib/team/slack-auth');
 global.fetch = jest.fn();
 
 describe('SlackIntegration - Constructor', () => {
-  const mockToken = 'xoxb-1234567890-0987654321-abcdefghijklmnop';
+  const mockToken = 'mock-xoxb-token-for-testing-only';
   const mockChannelId = 'C1234567890';
 
   test('should initialize with SlackAuth and channel ID', () => {
@@ -40,7 +40,7 @@ describe('SlackIntegration - Constructor', () => {
 });
 
 describe('SlackIntegration - Hunt Notifications', () => {
-  const mockToken = 'xoxb-1234567890-0987654321-abcdefghijklmnop';
+  const mockToken = 'mock-xoxb-token-for-testing-only';
   const mockChannelId = 'C1234567890';
   const mockHunt = {
     title: 'Test Hunt',
@@ -274,7 +274,7 @@ describe('SlackIntegration - Hunt Notifications', () => {
 });
 
 describe('SlackIntegration - Error Notifications', () => {
-  const mockToken = 'xoxb-1234567890-0987654321-abcdefghijklmnop';
+  const mockToken = 'mock-xoxb-token-for-testing-only';
   const mockChannelId = 'C1234567890';
 
   beforeEach(() => {
@@ -332,7 +332,7 @@ describe('SlackIntegration - Error Notifications', () => {
 });
 
 describe('SlackIntegration - Summary Notifications', () => {
-  const mockToken = 'xoxb-1234567890-0987654321-abcdefghijklmnop';
+  const mockToken = 'mock-xoxb-token-for-testing-only';
   const mockChannelId = 'C1234567890';
   const mockHunts = [
     { title: 'Hunt 1', currentPhase: 'Analysis' },
@@ -474,7 +474,7 @@ describe('SlackIntegration - Static Utilities', () => {
 });
 
 describe('SlackIntegration - Private Utilities', () => {
-  const mockToken = 'xoxb-1234567890-0987654321-abcdefghijklmnop';
+  const mockToken = 'mock-xoxb-token-for-testing-only';
   const mockChannelId = 'C1234567890';
 
   describe('_calculateProgress', () => {
