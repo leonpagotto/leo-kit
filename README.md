@@ -292,31 +292,59 @@ leo init
 
 ## ✨ Core Features
 
+### 🎉 Latest Release: **v5.0.0** - Agents Enabled by Default
+
+**NEW:** All 6 specialized agents are now enabled by default! Better installation experience with improved UI.
+
+**What's New in v5.0.0:**
+- ✅ **All agents enabled by default** - Full multi-agent power immediately after installation
+- ✅ **Improved installation UI** - "Unselect agents you don't need" instead of "select what you want"
+- ✅ **Better documentation** - Comprehensive Multi-Agent Configuration guide
+- ✅ **Faster onboarding** - No need to manually enable agents anymore
+- ✅ **Fully customizable** - Users can still disable specific agents if needed
+
+**Before:**
+```
+"Which specialized agents would you like to enable?"
+  ☐ Frontend Agent...     (need to select)
+  ☐ Backend Agent...      (need to select)
+```
+
+**After (v5.0.0):**
+```
+"Keep these agents enabled (unselect to disable):"
+  ◉ Frontend Agent...     (ready to use)
+  ◉ Backend Agent...      (ready to use)
+```
+
+**[📖 Read v5.0.0 Installation Guide](wiki/Installation-Guide.md)** • **[📋 View Detailed Changes](AGENTS_DEFAULT_ENABLED_UPDATE.md)**
+
+---
+
+## ✨ Core Features
+
 ### 🤖 Multi-Agent AI Orchestration
 
 **6 specialized AI agents** provide expert guidance for every aspect of development:
 
-| Agent                | Expertise                                 | Instruction Size | Use Cases                                |
-| -------------------- | ----------------------------------------- | ---------------- | ---------------------------------------- |
-| 🎛️ **Orchestrator**  | Task routing & coordination               | ~15KB            | All requests (always active)             |
-| 🎨 **Frontend**      | UI/UX, components, styling, accessibility | ~17KB            | React components, CSS, responsive design |
-| ⚙️ **Backend**       | APIs, databases, auth, security           | ~16KB            | REST APIs, GraphQL, authentication       |
-| 🚀 **DevOps**        | CI/CD, Docker, infrastructure             | ~14KB            | Deployments, containers, monitoring      |
-| 🧪 **Testing**       | Unit/integration/E2E tests, TDD           | ~15KB            | Test suites, mocks, coverage             |
-| 📚 **Documentation** | README, API docs, guides                  | ~13KB            | Markdown docs, JSDoc, tutorials          |
+| Agent                | Expertise                                 | Status in v5.0.0 | Use Cases                                |
+| -------------------- | ----------------------------------------- | ----------------  | ---------------------------------------- |
+| 🎛️ **Orchestrator**  | Task routing & coordination               | ✅ Always enabled | All requests (always active)             |
+| 🎨 **Frontend**      | UI/UX, components, styling, accessibility | ✅ Enabled by default | React components, CSS, responsive design |
+| ⚙️ **Backend**       | APIs, databases, auth, security           | ✅ Enabled by default | REST APIs, GraphQL, authentication       |
+| 🚀 **DevOps**        | CI/CD, Docker, infrastructure             | ✅ Enabled by default | Deployments, containers, monitoring      |
+| 🧪 **Testing**       | Unit/integration/E2E tests, TDD           | ✅ Enabled by default | Test suites, mocks, coverage             |
+| 📚 **Documentation** | README, API docs, guides                  | ✅ Enabled by default | Markdown docs, JSDoc, tutorials          |
 
 **Benefits:**
 
+- ✅ **All agents ready immediately** - No need to select individual agents
 - ✅ **Domain Expertise** - Specialists produce higher quality code
 - ✅ **Faster Responses** - Smaller, focused instruction sets
-- ✅ **Flexible** - Enable only what you need
+- ✅ **Flexible** - Disable only agents you don't need
 - ✅ **Coordinated** - Complex tasks automatically handled by multiple agents
 
-**[📖 Read Multi-Agent System Guide](docs/guides/multi-agent-system.md)**
-
----
-
-### 🤖 Real-Time Model Selection (v4.1.1+) - NOW INCLUDED!
+**[📖 Read Multi-Agent System Guide](docs/guides/multi-agent-system.md)** • **[🎯 Agent Customization](wiki/Installation-Guide.md#-multi-agent-configuration)**
 
 **NEW:** Automatic AI model selection for optimal performance and cost efficiency!
 
