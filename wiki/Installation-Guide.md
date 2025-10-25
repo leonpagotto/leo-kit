@@ -239,12 +239,24 @@ leo init
    - Creates `.github/copilot-instructions.md`
    - Enables AI-powered workflow automation
 
-7. **Labels Setup** 🏷️ (Optional)
+7. **Multi-Agent Configuration** 🤖 (NEW!)
+
+   - **All 6 agents are enabled by default:**
+     - 🎨 **Frontend Agent** - UI/UX, components, styling, accessibility
+     - ⚙️ **Backend Agent** - APIs, databases, authentication, security
+     - 🚀 **DevOps Agent** - CI/CD, Docker, Kubernetes, monitoring
+     - 🧪 **Testing Agent** - Unit/integration/E2E tests, TDD, coverage
+     - 📚 **Documentation Agent** - README, API docs, guides, comments
+     - 🎯 **Orchestrator Agent** - Task routing and coordination
+   - Unselect any agents you don't need for your project
+   - Can be customized later in `.leorc.json`
+
+8. **Labels Setup** 🏷️ (Optional)
 
    - Asks: "Would you like to configure GitHub labels?"
    - Creates 22+ standardized labels if yes
 
-8. **Completion** 🎉
+9. **Completion** 🎉
    - Shows success message
    - Displays next steps
 
@@ -280,6 +292,103 @@ leo health
 # View documentation structure
 leo docs
 ```
+
+---
+
+## 🤖 Multi-Agent Configuration
+
+### Overview
+
+LEO Workflow Kit includes a powerful multi-agent system that routes tasks to specialized AI agents based on task type. **All 6 agents are enabled by default** - you can customize this during setup or later.
+
+### Available Agents
+
+| Agent                | Role               | Best For                                              | Enabled by Default |
+| -------------------- | ------------------ | ----------------------------------------------------- | ------------------ |
+| 🎯 **Orchestrator**  | Route & Coordinate | Task classification, multi-agent coordination         | ✅ Always          |
+| 🎨 **Frontend**      | UI/UX Development  | Components, styling, accessibility, responsive design | ✅ Yes             |
+| ⚙️ **Backend**       | API & Database     | REST APIs, database design, authentication, security  | ✅ Yes             |
+| 🚀 **DevOps**        | Infrastructure     | Docker, CI/CD, monitoring, deployment                 | ✅ Yes             |
+| 🧪 **Testing**       | Quality Assurance  | Unit tests, E2E tests, coverage, TDD                  | ✅ Yes             |
+| 📚 **Documentation** | Technical Writing  | README, API docs, guides, code comments               | ✅ Yes             |
+
+### Customizing Agents
+
+#### Option 1: During Initialization
+
+During `leo init`, you'll see a prompt like this:
+
+```
+🎯 Multi-Agent Configuration
+
+All specialized agents are enabled by default. Unselect any you don't need.
+
+Keep these agents enabled (unselect to disable):
+  ◉ 🎨 Frontend Agent - UI/UX, components, styling, accessibility
+  ◉ ⚙️ Backend Agent - APIs, databases, authentication, security
+  ◉ 🚀 DevOps Agent - CI/CD, Docker, Kubernetes, monitoring
+  ◉ 🧪 Testing Agent - Unit/integration/E2E tests, TDD, coverage
+  ◉ 📚 Documentation Agent - README, API docs, guides, comments
+```
+
+Simply uncheck (spacebar) any agents you don't need:
+
+```bash
+# To disable an agent: press spacebar to uncheck
+# To keep it: leave it checked
+# When done: press Enter
+```
+
+#### Option 2: Edit `.leorc.json` Later
+
+```json
+{
+  "agents": {
+    "orchestrator": {
+      "enabled": true
+    },
+    "frontend": {
+      "enabled": true
+    },
+    "backend": {
+      "enabled": true
+    },
+    "devops": {
+      "enabled": false // Disable if not needed
+    },
+    "testing": {
+      "enabled": true
+    },
+    "documentation": {
+      "enabled": true
+    }
+  }
+}
+```
+
+### How It Works
+
+1. **Task Detection** - Copilot/Cursor/Cline analyzes your request
+2. **Agent Routing** - Orchestrator determines which agent(s) to use
+3. **Specialized Handling** - Agent executes with domain expertise
+4. **Quality Output** - Specialized instructions for each agent
+
+### Examples
+
+**"Add a login button"**
+→ Routed to 🎨 Frontend Agent
+
+**"Create a REST API for users"**
+→ Routed to ⚙️ Backend Agent
+
+**"Add OAuth authentication with login UI"**
+→ Routed to ⚙️ Backend Agent (API) + 🎨 Frontend Agent (UI)
+
+**"Write unit tests for auth service"**
+→ Routed to 🧪 Testing Agent
+
+**"Document the API endpoints"**
+→ Routed to 📚 Documentation Agent
 
 ---
 

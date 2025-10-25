@@ -77,12 +77,13 @@ ${chalk.hex('#FFD700')('╚═════════════════�
 ${chalk.green.bold('✨ Installation Complete! ✨')}
 
 ${chalk.white('Transform your development workflow with spec-driven development:')}
-  ${chalk.hex('#FFD700')('•')} Multi-AI support (Copilot, Cursor, Cline, Codeium)
-  ${chalk.hex('#FF9500')('•')} Spec-driven development methodology
-  ${chalk.hex('#FFD700')('•')} Automated GitHub Projects integration
-  ${chalk.hex('#FF9500')('•')} Comprehensive issue & PR templates
-  ${chalk.hex('#FFD700')('•')} Smart label management
-  ${chalk.hex('#FF9500')('•')} AI-optimized workflow instructions
+  ${chalk.hex('#FFD700')('•')} Multi-agent system (6 specialized agents, all enabled by default)
+  ${chalk.hex('#FF9500')('•')} Multi-AI support (Copilot, Cursor, Cline, Codeium)
+  ${chalk.hex('#FFD700')('•')} Spec-driven development methodology
+  ${chalk.hex('#FF9500')('•')} Automated GitHub Projects integration
+  ${chalk.hex('#FFD700')('•')} Comprehensive issue & PR templates
+  ${chalk.hex('#FF9500')('•')} Smart label management
+  ${chalk.hex('#FFD700')('•')} AI-optimized workflow instructions
 
 ${chalk.hex('#FFD700')('─────────────────────────────────────────────────────────────────────')}
 
