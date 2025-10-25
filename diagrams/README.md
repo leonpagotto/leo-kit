@@ -1,17 +1,18 @@
 # LEO Workflow Kit - Diagrams
 
-This directory contains architecture and workflow diagrams for the LEO Workflow Kit (v4.1.1).
+This directory contains architecture and workflow diagrams for the LEO Workflow Kit (v5.0.0).
 
 ## 📊 Available Diagrams
 
-### 1. Architecture Diagram (v4.1.1)
+### 1. Architecture Diagram (v5.0.0)
 
 **File:** `architecture.mmd`
 **Shows:**
 
 - System components and data flow with real-time model selection
-- 🆕 Multi-agent orchestration system (6 specialized agents + Designer)
-- 🆕 Real-time model selection status manager and display (v4.1.1)
+- 🆕 **All 6 agents enabled by default** (v5.0.0)
+- Multi-agent orchestration system (6 specialized agents + Designer)
+- Real-time model selection status manager and display
 - AI instructions builder and agent adapters
 - `leo agent`, `leo github`, and `leo model` commands
 - Configuration system with agent and model management
@@ -21,21 +22,23 @@ This directory contains architecture and workflow diagrams for the LEO Workflow 
 **Key Features:**
 
 - Orchestrator Agent → Routes tasks to specialists
-- Frontend, Backend, DevOps, Testing, Documentation, Designer agents
-- Real-Time Model Selection with VS Code status bar display (NEW!)
+- Frontend, Backend, DevOps, Testing, Documentation agents
+- **All agents ready to use immediately** ✨ (v5.0.0)
+- Real-Time Model Selection with VS Code status bar display
 - Agent configuration via `.leorc.json`
 - Intelligent routing based on keywords, files, and intent
 
-### 2. Workflow Diagram (v4.1.1)
+### 2. Workflow Diagram (v5.0.0)
 
 **File:** `workflow.mmd`
 **Shows:**
 
 - Complete development workflow from user request to deployment
-- 🆕 Multi-agent orchestration and task routing with real-time model display
-- 🆕 Real-time model selection display in VS Code (v4.1.1)
-- 🆕 Enhanced spec-first decision making (complexity estimation)
-- 🆕 Multi-agent coordination for complex features
+- Multi-agent orchestration and task routing with real-time model display
+- 🆕 **All 6 agents enabled by default** (v5.0.0)
+- Real-time model selection display in VS Code
+- Enhanced spec-first decision making (complexity estimation)
+- Multi-agent coordination for complex features
 - Auto-resolution configuration
 - Issue creation and GitHub Projects integration
 - Development lifecycle with status management
@@ -44,6 +47,7 @@ This directory contains architecture and workflow diagrams for the LEO Workflow 
 
 - Orchestrator analyzes and classifies tasks
 - Routes to appropriate specialized agent(s)
+- **All 6 agents available immediately** ✨ (v5.0.0)
 - Real-time model selection with status updates
 - Spec creation for complex work (> 1 week)
 - Direct issue creation for simple work (< 1 day)
@@ -242,5 +246,5 @@ When updating diagrams:
 
 ---
 
-**Last Updated:** October 20, 2025
-**Diagrams Version:** 2.0 (v4.0.0 Multi-Agent System)
+**Last Updated:** October 25, 2025
+**Diagrams Version:** 3.0 (v5.0.0 - All Agents Enabled by Default)

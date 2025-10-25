@@ -1,6 +1,8 @@
 # 📦 Installation Guide
 
-> **Get LEO Workflow Kit v4.1.1 up and running in < 30 seconds**
+> **Get LEO Workflow Kit v5.0.0 up and running in < 30 seconds**
+>
+> **✨ NEW in v5.0.0:** All 6 agents enabled by default! No manual setup needed.
 
 ## 🎯 Prerequisites
 
@@ -15,7 +17,7 @@ Before installing LEO Workflow Kit, ensure you have:
 ### Recommended
 
 - ✅ **GitHub CLI (`gh`)** - [Install here](https://cli.github.com/)
-- ✅ **VS Code** - [Download here](https://code.visualstudio.com/) - For real-time model selection display (v4.1.1)
+- ✅ **VS Code** - [Download here](https://code.visualstudio.com/) - For real-time model selection display (v5.0.0)
 - ✅ **GitHub Copilot** - [Get it here](https://github.com/features/copilot)
 
 ---
@@ -24,22 +26,23 @@ Before installing LEO Workflow Kit, ensure you have:
 
 ### Method 1: Automatic Installation (Recommended)
 
-**One command - complete setup with v4.1.1 features!**
+**One command - complete setup with v5.0.0 features!**
 
 ```bash
-LEO_AUTO_INIT=true npm install -g leo-workflow-kit@4.1.1
+LEO_AUTO_INIT=true npm install -g leo-workflow-kit@5.0.0
 ```
 
 **What this does:**
 
-- ✅ Installs LEO Workflow Kit v4.1.1
+- ✅ Installs LEO Workflow Kit v5.0.0
 - ✅ Automatically initializes your project
+- ✅ **Enables all 6 agents by default** ✨ (NEW!)
 - ✅ Creates documentation structure (`docs/specs/`)
 - ✅ Installs issue templates (8 professional templates)
 - ✅ Configures GitHub Actions workflows
 - ✅ Sets up VS Code with Copilot instructions
 - ✅ Configures standard labels (22+)
-- ✅ Enables real-time model selection display (NEW!)
+- ✅ Enables real-time model selection display
 
 **⚡ Total time:** < 30 seconds
 
@@ -59,14 +62,14 @@ LEO_AUTO_INIT=true npm install -g leo-workflow-kit@4.1.1
 Install LEO globally to use across all projects:
 
 ```bash
-npm install -g leo-workflow-kit@4.1.1
+npm install -g leo-workflow-kit@5.0.0
 ```
 
 **Verify installation:**
 
 ```bash
 leo --version
-# Should show: 2.5.0 (or later)
+# Should show: 5.0.0 (or later)
 
 leo --help
 # Shows all available commands
@@ -74,6 +77,7 @@ leo --help
 
 **Benefits:**
 
+- ✅ All 6 agents enabled by default ✨
 - ✅ Available everywhere via `leo` command
 - ✅ Easy to update
 - ✅ Single installation for all projects

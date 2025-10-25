@@ -74,7 +74,7 @@ LEO transforms these pain points into strengths:
 
 ### Multi-Agent Orchestration
 
-LEO v4.1.1 includes an intelligent orchestration system that routes tasks to specialized AI agents based on domain expertise:
+LEO v5.0.0 includes an intelligent orchestration system that routes tasks to specialized AI agents based on domain expertise. **All 6 agents are enabled by default for immediate multi-agent power:**
 
 ```
                                     Your Development Request
