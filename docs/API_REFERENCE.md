@@ -2,8 +2,8 @@
 
 **Complete REST API & CLI Command Reference**
 
-**Version:** 5.0.0  
-**Released:** October 25, 2025  
+**Version:** 5.0.0
+**Released:** October 25, 2025
 **Status:** Production Ready ✅
 
 ---
@@ -24,14 +24,14 @@
 
 ### Base Information
 
-| Property | Value |
-|----------|-------|
-| **API Version** | 5.0.0 |
-| **Base URL** | `http://localhost:3000/api` |
-| **Protocol** | HTTP/REST + WebSocket |
-| **Auth** | None (configure for production) |
-| **Content-Type** | `application/json` |
-| **CORS** | Enabled by default |
+| Property         | Value                           |
+| ---------------- | ------------------------------- |
+| **API Version**  | 5.0.0                           |
+| **Base URL**     | `http://localhost:3000/api`     |
+| **Protocol**     | HTTP/REST + WebSocket           |
+| **Auth**         | None (configure for production) |
+| **Content-Type** | `application/json`              |
+| **CORS**         | Enabled by default              |
 
 ### Response Format
 
@@ -40,7 +40,9 @@ All API responses follow this format:
 ```json
 {
   "success": true,
-  "data": { /* response data */ },
+  "data": {
+    /* response data */
+  },
   "timestamp": "2025-10-25T12:00:00Z",
   "requestId": "req_12345"
 }
@@ -63,11 +65,13 @@ Error responses:
 ## REST API
 
 ### Base URL
+
 ```
 http://localhost:3000/api
 ```
 
 ### Authentication Headers (Optional)
+
 ```
 Authorization: Bearer <token>
 Content-Type: application/json
@@ -82,11 +86,13 @@ Content-Type: application/json
 List all specifications in the project.
 
 **Request:**
+
 ```bash
 curl http://localhost:3000/api/specs
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -120,6 +126,7 @@ curl http://localhost:3000/api/specs
 Create a new specification.
 
 **Request:**
+
 ```bash
 curl -X POST http://localhost:3000/api/specs \
   -H "Content-Type: application/json" \
@@ -130,6 +137,7 @@ curl -X POST http://localhost:3000/api/specs \
 ```
 
 **Response (201 Created):**
+
 ```json
 {
   "success": true,
@@ -154,21 +162,31 @@ curl -X POST http://localhost:3000/api/specs \
 Get detailed information about a specification.
 
 **Request:**
+
 ```bash
 curl http://localhost:3000/api/specs/user-auth
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
   "data": {
     "name": "user-auth",
     "status": "planning",
-    "constitution": { /* constitution content */ },
-    "specification": { /* specification content */ },
-    "plan": { /* plan content */ },
-    "tasks": [ /* tasks array */ ],
+    "constitution": {
+      /* constitution content */
+    },
+    "specification": {
+      /* specification content */
+    },
+    "plan": {
+      /* plan content */
+    },
+    "tasks": [
+      /* tasks array */
+    ],
     "progress": 75,
     "statistics": {
       "totalTasks": 20,
@@ -187,6 +205,7 @@ curl http://localhost:3000/api/specs/user-auth
 Update a specification.
 
 **Request:**
+
 ```bash
 curl -X PUT http://localhost:3000/api/specs/user-auth \
   -H "Content-Type: application/json" \
@@ -196,6 +215,7 @@ curl -X PUT http://localhost:3000/api/specs/user-auth \
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -215,11 +235,13 @@ curl -X PUT http://localhost:3000/api/specs/user-auth \
 Delete a specification.
 
 **Request:**
+
 ```bash
 curl -X DELETE http://localhost:3000/api/specs/user-auth
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -240,6 +262,7 @@ curl -X DELETE http://localhost:3000/api/specs/user-auth
 Generate code from specification using Claude AI.
 
 **Request:**
+
 ```bash
 curl -X POST http://localhost:3000/api/specs/user-auth/generate \
   -H "Content-Type: application/json" \
@@ -250,6 +273,7 @@ curl -X POST http://localhost:3000/api/specs/user-auth/generate \
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -277,6 +301,7 @@ curl -X POST http://localhost:3000/api/specs/user-auth/generate \
 ```
 
 **Error Response (500):**
+
 ```json
 {
   "success": false,
@@ -294,11 +319,13 @@ curl -X POST http://localhost:3000/api/specs/user-auth/generate \
 Check code generation status.
 
 **Request:**
+
 ```bash
 curl http://localhost:3000/api/specs/user-auth/generate/status
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -324,11 +351,13 @@ curl http://localhost:3000/api/specs/user-auth/generate/status
 Get task list for a specification.
 
 **Request:**
+
 ```bash
 curl http://localhost:3000/api/specs/user-auth/tasks
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -370,11 +399,13 @@ curl http://localhost:3000/api/specs/user-auth/tasks
 Mark a task as complete.
 
 **Request:**
+
 ```bash
 curl -X POST http://localhost:3000/api/specs/user-auth/tasks/1/complete
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -396,11 +427,13 @@ curl -X POST http://localhost:3000/api/specs/user-auth/tasks/1/complete
 Analyze specification for consistency.
 
 **Request:**
+
 ```bash
 curl -X POST http://localhost:3000/api/specs/user-auth/analyze
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -431,11 +464,13 @@ curl -X POST http://localhost:3000/api/specs/user-auth/analyze
 Check API server health.
 
 **Request:**
+
 ```bash
 curl http://localhost:3000/api/health
 ```
 
 **Response (200 OK):**
+
 ```json
 {
   "success": true,
@@ -462,12 +497,14 @@ curl http://localhost:3000/api/health
 Initialize a new specification project.
 
 **Usage:**
+
 ```bash
 leo spec init my-feature
 leo spec init "Complex Feature Name"
 ```
 
 **Output:**
+
 ```
 ✅ Specification initialized for my-feature
 📁 Project structure created:
@@ -478,6 +515,7 @@ leo spec init "Complex Feature Name"
 ```
 
 **Options:**
+
 ```bash
 leo spec init <name> --template <template>
 leo spec init <name> --description "Description"
@@ -490,6 +528,7 @@ leo spec init <name> --description "Description"
 Create or edit team constitution.
 
 **Usage:**
+
 ```bash
 leo spec constitution
 leo spec constitution edit
@@ -505,6 +544,7 @@ leo spec constitution view
 Write the specification.
 
 **Usage:**
+
 ```bash
 leo spec specify
 leo spec specify edit
@@ -519,6 +559,7 @@ leo spec specify edit
 Generate implementation plan.
 
 **Usage:**
+
 ```bash
 leo spec plan
 leo spec plan generate
@@ -526,6 +567,7 @@ leo spec plan view
 ```
 
 **Output:**
+
 ```
 ✅ Plan generated successfully
 📋 Generated 3 phases
@@ -541,6 +583,7 @@ leo spec plan view
 View task list.
 
 **Usage:**
+
 ```bash
 leo spec tasks
 leo spec tasks list
@@ -550,6 +593,7 @@ leo spec tasks --pending
 ```
 
 **Output:**
+
 ```
 Generated Tasks (20 total):
 
@@ -578,6 +622,7 @@ Phase 3: Polish (3 tasks)
 Analyze specification for consistency.
 
 **Usage:**
+
 ```bash
 leo spec analyze
 leo spec analyze check
@@ -585,6 +630,7 @@ leo spec analyze validate
 ```
 
 **Output:**
+
 ```
 ✅ Specification Analysis
 
@@ -606,6 +652,7 @@ Tasks:         ✅ Valid (20 tasks)
 Generate code using Claude AI.
 
 **Usage:**
+
 ```bash
 leo spec implement
 leo spec implement --provider claude
@@ -613,6 +660,7 @@ leo spec implement --output ./generated
 ```
 
 **Output:**
+
 ```
 🚀 Implementing specification...
 ✨ Generating with Claude 3.5 Sonnet...
@@ -640,6 +688,7 @@ Generated Files:
 Show specification progress.
 
 **Usage:**
+
 ```bash
 leo spec status
 leo spec status <name>
@@ -647,6 +696,7 @@ leo spec status --verbose
 ```
 
 **Output:**
+
 ```
 Specification Status: my-feature
 
@@ -673,6 +723,7 @@ Output Directory: .leo/generated/
 Start the API server.
 
 **Usage:**
+
 ```bash
 leo dashboard start
 leo dashboard start --port 3001
@@ -680,6 +731,7 @@ leo dashboard start --no-open
 ```
 
 **Output:**
+
 ```
 🚀 Dashboard server starting...
 
@@ -697,11 +749,13 @@ leo dashboard start --no-open
 Stop the running server.
 
 **Usage:**
+
 ```bash
 leo dashboard stop
 ```
 
 **Output:**
+
 ```
 Stopping dashboard server...
 ✅ Server stopped
@@ -714,11 +768,13 @@ Stopping dashboard server...
 Check server status.
 
 **Usage:**
+
 ```bash
 leo dashboard status
 ```
 
 **Output:**
+
 ```
 Server Status:
 ├─ Status:       Running
@@ -736,6 +792,7 @@ Server Status:
 Open dashboard in browser.
 
 **Usage:**
+
 ```bash
 leo dashboard open
 ```
@@ -749,6 +806,7 @@ Opens `http://localhost:3000` in default browser.
 Show API documentation.
 
 **Usage:**
+
 ```bash
 leo dashboard docs
 leo dashboard docs --format json
@@ -765,12 +823,14 @@ leo dashboard docs --format json
 Create a new plugin.
 
 **Usage:**
+
 ```bash
 leo plugin create my-plugin
 leo plugin create my-plugin --description "Plugin description"
 ```
 
 **Output:**
+
 ```
 ✅ Plugin created successfully
 📁 Structure:
@@ -788,12 +848,14 @@ leo plugin create my-plugin --description "Plugin description"
 List all plugins.
 
 **Usage:**
+
 ```bash
 leo plugin list
 leo plugin list --details
 ```
 
 **Output:**
+
 ```
 Installed Plugins (3):
 ├─ web-dashboard (v1.0.0) - Visual management
@@ -808,11 +870,13 @@ Installed Plugins (3):
 Show plugin details.
 
 **Usage:**
+
 ```bash
 leo plugin info web-dashboard
 ```
 
 **Output:**
+
 ```
 Plugin: web-dashboard
 ├─ Version:     1.0.0
@@ -831,11 +895,13 @@ Plugin: web-dashboard
 Start a plugin.
 
 **Usage:**
+
 ```bash
 leo plugin start web-dashboard
 ```
 
 **Output:**
+
 ```
 Starting plugin: web-dashboard...
 ✅ Plugin started on port 3001
@@ -848,11 +914,13 @@ Starting plugin: web-dashboard...
 Stop a plugin.
 
 **Usage:**
+
 ```bash
 leo plugin stop web-dashboard
 ```
 
 **Output:**
+
 ```
 Stopping plugin: web-dashboard...
 ✅ Plugin stopped
@@ -865,12 +933,14 @@ Stopping plugin: web-dashboard...
 Install a plugin from npm.
 
 **Usage:**
+
 ```bash
 leo plugin install @leo/plugin-analytics
 leo plugin install my-local-plugin
 ```
 
 **Output:**
+
 ```
 Installing plugin: @leo/plugin-analytics...
 ✅ Plugin installed successfully
@@ -883,11 +953,13 @@ Installing plugin: @leo/plugin-analytics...
 Uninstall a plugin.
 
 **Usage:**
+
 ```bash
 leo plugin uninstall my-plugin
 ```
 
 **Output:**
+
 ```
 Uninstalling plugin: my-plugin...
 ✅ Plugin uninstalled
@@ -936,7 +1008,7 @@ Generate code using Claude AI.
 **Methods:**
 
 ```javascript
-const generator = new AICodeGenerator('claude');
+const generator = new AICodeGenerator("claude");
 
 // Generate from specification
 const code = await generator.generateFromSpec(spec, options);
@@ -984,9 +1056,9 @@ Connect to WebSocket at `ws://localhost:3000`
 ### Listening to Events
 
 ```javascript
-const ws = new WebSocket('ws://localhost:3000');
+const ws = new WebSocket("ws://localhost:3000");
 
-ws.addEventListener('message', (event) => {
+ws.addEventListener("message", (event) => {
   const { type, data } = JSON.parse(event.data);
   console.log(`Event: ${type}`, data);
 });
@@ -995,6 +1067,7 @@ ws.addEventListener('message', (event) => {
 ### Event Types
 
 #### `specification:created`
+
 ```json
 {
   "type": "specification:created",
@@ -1006,6 +1079,7 @@ ws.addEventListener('message', (event) => {
 ```
 
 #### `specification:updated`
+
 ```json
 {
   "type": "specification:updated",
@@ -1018,6 +1092,7 @@ ws.addEventListener('message', (event) => {
 ```
 
 #### `code:generated`
+
 ```json
 {
   "type": "code:generated",
@@ -1032,6 +1107,7 @@ ws.addEventListener('message', (event) => {
 ```
 
 #### `task:completed`
+
 ```json
 {
   "type": "task:completed",
@@ -1045,6 +1121,7 @@ ws.addEventListener('message', (event) => {
 ```
 
 #### `error:occurred`
+
 ```json
 {
   "type": "error:occurred",
@@ -1109,13 +1186,13 @@ LEO_MAX_RETRIES=3
 
 ### Common Error Codes
 
-| Code | Meaning | Solution |
-|------|---------|----------|
-| `SPEC_NOT_FOUND` | Specification doesn't exist | Initialize with `leo spec init` |
-| `API_KEY_MISSING` | API key not configured | Set `ANTHROPIC_API_KEY` env var |
-| `GENERATION_FAILED` | Code generation failed | Check specification validity |
-| `INVALID_REQUEST` | Bad request format | Check JSON syntax |
-| `INTERNAL_ERROR` | Server error | Check logs |
+| Code                | Meaning                     | Solution                        |
+| ------------------- | --------------------------- | ------------------------------- |
+| `SPEC_NOT_FOUND`    | Specification doesn't exist | Initialize with `leo spec init` |
+| `API_KEY_MISSING`   | API key not configured      | Set `ANTHROPIC_API_KEY` env var |
+| `GENERATION_FAILED` | Code generation failed      | Check specification validity    |
+| `INVALID_REQUEST`   | Bad request format          | Check JSON syntax               |
+| `INTERNAL_ERROR`    | Server error                | Check logs                      |
 
 ### Error Response Format
 
@@ -1134,6 +1211,6 @@ LEO_MAX_RETRIES=3
 
 ---
 
-**Document Version:** 1.0  
-**Last Updated:** October 25, 2025  
+**Document Version:** 1.0
+**Last Updated:** October 25, 2025
 **Status:** ✅ Production Ready

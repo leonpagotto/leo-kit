@@ -1,7 +1,7 @@
 # LEO Kit 5.0.0 - Complete User Guide
 
-**Version:** 5.0.0  
-**Released:** October 25, 2025  
+**Version:** 5.0.0
+**Released:** October 25, 2025
 **Status:** Production Ready ✅
 
 ---
@@ -39,11 +39,11 @@ LEO Kit is an **enterprise-grade CLI framework** for building scalable, automate
 
 ### Why LEO Kit?
 
-✅ **Reduce Manual Work** - Generate code from specifications  
-✅ **Automated Workflows** - CI/CD-ready development pipeline  
-✅ **AI-Powered** - Claude 3.5 Sonnet integration for smart generation  
-✅ **Extensible** - Plugin architecture for custom needs  
-✅ **Team-Ready** - Constitutional governance for alignment  
+✅ **Reduce Manual Work** - Generate code from specifications
+✅ **Automated Workflows** - CI/CD-ready development pipeline
+✅ **AI-Powered** - Claude 3.5 Sonnet integration for smart generation
+✅ **Extensible** - Plugin architecture for custom needs
+✅ **Team-Ready** - Constitutional governance for alignment
 ✅ **Production-Grade** - 49/49 tests passing (100%)
 
 ### Perfect For
@@ -61,6 +61,7 @@ LEO Kit is an **enterprise-grade CLI framework** for building scalable, automate
 ### Installation
 
 **Prerequisites:**
+
 - Node.js 16+ installed
 - npm or yarn package manager
 - Basic command-line knowledge
@@ -89,6 +90,7 @@ leo spec init my-first-feature
 ```
 
 You should see:
+
 ```
 ✅ Specification initialized for my-first-feature
 📁 Project structure created:
@@ -101,32 +103,41 @@ You should see:
 ### Your First Workflow (5 Minutes)
 
 #### Step 1: Initialize a Project
+
 ```bash
 leo spec init user-auth
 ```
 
 #### Step 2: Define the Constitution (Team Values)
+
 ```bash
 leo spec constitution
 ```
+
 Edit the constitution.md file with your team's principles.
 
 #### Step 3: Write the Specification
+
 ```bash
 leo spec specify
 ```
+
 Describe what you want to build in specification.md.
 
 #### Step 4: Generate a Plan
+
 ```bash
 leo spec plan
 ```
+
 LEO Kit analyzes your spec and creates a structured plan.
 
 #### Step 5: Generate Code
+
 ```bash
 leo spec implement
 ```
+
 Claude 3.5 Sonnet AI generates code from your specification!
 
 ```
@@ -151,11 +162,13 @@ Generated Files:
 LEO Kit includes a powerful REST API with 12 endpoints and WebSocket support:
 
 **Starting the Server:**
+
 ```bash
 leo dashboard start
 ```
 
 **Key Features:**
+
 - Express.js-based HTTP API
 - WebSocket real-time events
 - CORS support
@@ -164,6 +177,7 @@ leo dashboard start
 - Response formatting
 
 **Example API Call:**
+
 ```bash
 curl http://localhost:3000/api/specs
 ```
@@ -173,6 +187,7 @@ curl http://localhost:3000/api/specs
 Full suite of commands for complete workflow management:
 
 **Specification Commands:**
+
 ```bash
 leo spec init <name>              # Initialize new specification
 leo spec constitution             # Define team principles
@@ -185,6 +200,7 @@ leo spec status                    # Show progress
 ```
 
 **Dashboard Commands:**
+
 ```bash
 leo dashboard start                # Start API server
 leo dashboard stop                 # Stop server
@@ -194,6 +210,7 @@ leo dashboard docs                 # View API docs
 ```
 
 **Plugin Commands:**
+
 ```bash
 leo plugin create <name>           # Create plugin
 leo plugin list                    # List plugins
@@ -209,16 +226,19 @@ leo plugin uninstall <name>        # Remove plugin
 Extensible plugin architecture for custom functionality:
 
 **Built-in Plugins:**
+
 - Web Dashboard - Visual project management
 - VS Code Extension - Editor integration
 - CLI Tools - Command extensions
 
 **Creating a Plugin:**
+
 ```bash
 leo plugin create my-plugin
 ```
 
 **Plugin Structure:**
+
 ```
 my-plugin/
 ├── index.js                    # Main plugin file
@@ -232,28 +252,29 @@ my-plugin/
 ```
 
 **Example Plugin:**
+
 ```javascript
 // my-plugin/index.js
 module.exports = {
-  name: 'my-plugin',
-  version: '1.0.0',
-  
+  name: "my-plugin",
+  version: "1.0.0",
+
   async init(leo) {
     // Initialize plugin
-    console.log('Plugin loaded!');
+    console.log("Plugin loaded!");
   },
-  
+
   async execute(command, args) {
     // Handle commands
     return { success: true };
   },
-  
+
   getMetadata() {
     return {
-      description: 'My custom plugin',
-      commands: ['do-something']
+      description: "My custom plugin",
+      commands: ["do-something"],
     };
-  }
+  },
 };
 ```
 
@@ -262,10 +283,12 @@ module.exports = {
 Structure-driven development with multiple document types:
 
 #### Constitution (Team Principles)
+
 ```markdown
 # Constitution
 
 ## Our Principles
+
 1. Code Quality - Maintainable and well-tested
 2. User-First - Prioritize user experience
 3. Transparency - Document decisions
@@ -273,46 +296,56 @@ Structure-driven development with multiple document types:
 ```
 
 #### Specification (What to Build)
+
 ```markdown
 # User Authentication System
 
 ## Overview
+
 Build secure user authentication with email/password.
 
 ## Requirements
+
 - User registration and login
 - JWT-based sessions
 - Password hashing
 - Email verification
 
 ## Acceptance Criteria
+
 - All 20 tests passing
 - 95%+ test coverage
 - Load 1000 users/sec
 ```
 
 #### Plan (How to Build It)
+
 ```markdown
 # Implementation Plan
 
 ## Phase 1: Models (Day 1)
+
 - User model with validation
 - Session model
 - Password hashing utilities
 
 ## Phase 2: API (Day 2)
+
 - Registration endpoint
 - Login endpoint
 - Logout endpoint
 
 ## Phase 3: Testing (Day 3)
+
 - Unit tests (100% coverage)
 - Integration tests
 - E2E tests
 ```
 
 #### Tasks (What to Do)
+
 Auto-generated from specification:
+
 ```
 [ ] Create user model
 [ ] Add password hashing
@@ -328,6 +361,7 @@ Auto-generated from specification:
 Powered by Claude 3.5 Sonnet, automatically generate production code:
 
 **How It Works:**
+
 1. Write specification in Markdown
 2. LEO Kit parses requirements
 3. Constructs detailed prompt for Claude
@@ -338,10 +372,12 @@ Powered by Claude 3.5 Sonnet, automatically generate production code:
 **Example Generated Code:**
 
 **From Specification:**
+
 ```markdown
 # User Auth Service
 
 Build a service that:
+
 - Validates email format
 - Hashes passwords with bcrypt
 - Generates JWT tokens
@@ -350,10 +386,11 @@ Build a service that:
 ```
 
 **Generated Output:**
+
 ```javascript
 // services/auth.service.js
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 class AuthService {
   constructor() {
@@ -363,34 +400,34 @@ class AuthService {
 
   async register(email, password) {
     if (!this.validateEmail(email)) {
-      throw new Error('Invalid email format');
+      throw new Error("Invalid email format");
     }
-    
+
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = {
       id: Date.now(),
       email,
       password: hashedPassword,
-      createdAt: new Date()
+      createdAt: new Date(),
     };
-    
+
     this.users.set(email, user);
     return { id: user.id, email: user.email };
   }
 
   async login(email, password) {
     const user = this.users.get(email);
-    if (!user) throw new Error('User not found');
-    
+    if (!user) throw new Error("User not found");
+
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) throw new Error('Invalid password');
-    
+    if (!valid) throw new Error("Invalid password");
+
     const token = jwt.sign(
       { userId: user.id, email: user.email },
-      'secret-key',
-      { expiresIn: '24h' }
+      "secret-key",
+      { expiresIn: "24h" }
     );
-    
+
     this.sessions.set(token, user);
     return { token, user: { id: user.id, email: user.email } };
   }
@@ -435,35 +472,43 @@ Tasks (Actions)
 Defines your team's core principles:
 
 **Template:**
+
 ```markdown
 # Constitution
 
 ## Mission
+
 What are we trying to accomplish?
 
 ## Core Principles
+
 1. First principle
 2. Second principle
 3. Third principle
 
 ## Team Values
+
 - Value 1
 - Value 2
 - Value 3
 
 ## Quality Standards
+
 - Code coverage: 85%+
 - Documentation: Required
 - Tests: Required for new code
 
 ## Decision-Making Process
+
 How do we make decisions?
 
 ## Conflict Resolution
+
 How do we resolve disagreements?
 ```
 
 **Best Practice:**
+
 - Keep constitution stable (rarely changes)
 - Reference in specification decisions
 - Use for design reviews
@@ -474,46 +519,57 @@ How do we resolve disagreements?
 Describes exactly what to build:
 
 **Template:**
+
 ```markdown
 # Feature Name
 
 ## Overview
+
 One-paragraph summary of the feature.
 
 ## Problem Statement
+
 What problem does this solve?
 
 ## Goals
+
 - Goal 1
 - Goal 2
 - Goal 3
 
 ## Requirements
+
 ### Functional
+
 - Requirement 1
 - Requirement 2
 - Requirement 3
 
 ### Non-Functional
+
 - Performance: X requests/sec
 - Scalability: Support Y users
 - Availability: 99.9% uptime
 
 ## Acceptance Criteria
+
 - [ ] Criteria 1
 - [ ] Criteria 2
 - [ ] Criteria 3
 
 ## Constraints
+
 - Technical limitations
 - Timeline constraints
 - Budget constraints
 
 ## Out of Scope
+
 What are we NOT building?
 ```
 
 **Best Practice:**
+
 - Be specific and measurable
 - Include examples
 - Define success clearly
@@ -524,13 +580,16 @@ What are we NOT building?
 Outlines how to build it:
 
 **Template:**
+
 ```markdown
 # Implementation Plan
 
 ## Architecture Overview
+
 High-level system design diagram.
 
 ## Technology Stack
+
 - Backend: Node.js + Express
 - Database: PostgreSQL
 - Frontend: React
@@ -538,34 +597,41 @@ High-level system design diagram.
 ## Phases
 
 ### Phase 1: Foundation (Days 1-2)
+
 - Task 1
 - Task 2
 - Deliverable: X
 
 ### Phase 2: Core (Days 3-5)
+
 - Task 1
 - Task 2
 - Deliverable: Y
 
 ### Phase 3: Polish (Days 6-7)
+
 - Task 1
 - Task 2
 - Deliverable: Z
 
 ## Dependencies
+
 - External service X
 - Third-party library Y
 
 ## Risk Mitigation
+
 - Risk 1: Mitigation strategy
 - Risk 2: Mitigation strategy
 
 ## Success Metrics
+
 - Metric 1: Expected value
 - Metric 2: Expected value
 ```
 
 **Best Practice:**
+
 - Break into phases
 - Identify dependencies
 - Plan for risks
@@ -580,6 +646,7 @@ leo spec tasks
 ```
 
 **Output:**
+
 ```
 Generated Tasks (20 total):
 
@@ -620,6 +687,7 @@ export ANTHROPIC_API_KEY=sk-ant-xxxxx
 ```
 
 Or in `.env`:
+
 ```
 ANTHROPIC_API_KEY=sk-ant-xxxxx
 ```
@@ -693,13 +761,14 @@ Return code as a JSON object with filenames and content.
 
 LEO Kit validates generated code:
 
-✅ **Syntax Validation** - No syntax errors  
-✅ **Import Checks** - All imports resolvable  
-✅ **Test Coverage** - Tests included  
-✅ **Documentation** - Comments present  
-✅ **Best Practices** - Follows conventions  
+✅ **Syntax Validation** - No syntax errors
+✅ **Import Checks** - All imports resolvable
+✅ **Test Coverage** - Tests included
+✅ **Documentation** - Comments present
+✅ **Best Practices** - Follows conventions
 
 If issues detected:
+
 ```
 ⚠️ Generated code review:
   - Missing error handling in line 45
@@ -716,6 +785,7 @@ Run `leo spec implement --fix` to auto-correct
 ### Spec Commands
 
 #### `leo spec init <name>`
+
 Initialize a new specification project.
 
 ```bash
@@ -730,6 +800,7 @@ leo spec init user-dashboard
 ```
 
 #### `leo spec constitution`
+
 Create/edit team constitution.
 
 ```bash
@@ -740,6 +811,7 @@ leo spec constitution
 ```
 
 #### `leo spec specify`
+
 Write the specification.
 
 ```bash
@@ -750,6 +822,7 @@ leo spec specify
 ```
 
 #### `leo spec plan`
+
 Generate implementation plan from specification.
 
 ```bash
@@ -761,6 +834,7 @@ leo spec plan
 ```
 
 #### `leo spec tasks`
+
 View auto-generated task list.
 
 ```bash
@@ -779,6 +853,7 @@ Generate Tasks (45 total):
 ```
 
 #### `leo spec analyze`
+
 Check specification consistency.
 
 ```bash
@@ -795,6 +870,7 @@ leo spec analyze
 ```
 
 #### `leo spec implement`
+
 Generate code using Claude AI.
 
 ```bash
@@ -811,6 +887,7 @@ leo spec implement
 ```
 
 #### `leo spec status`
+
 Show specification progress.
 
 ```bash
@@ -828,6 +905,7 @@ Specification Status: my-feature
 ### Dashboard Commands
 
 #### `leo dashboard start`
+
 Start the API server.
 
 ```bash
@@ -840,6 +918,7 @@ leo dashboard start
 ```
 
 #### `leo dashboard stop`
+
 Stop the running server.
 
 ```bash
@@ -850,6 +929,7 @@ leo dashboard stop
 ```
 
 #### `leo dashboard status`
+
 Check server status.
 
 ```bash
@@ -863,6 +943,7 @@ leo dashboard status
 ```
 
 #### `leo dashboard open`
+
 Open dashboard in browser.
 
 ```bash
@@ -872,6 +953,7 @@ leo dashboard open
 ```
 
 #### `leo dashboard docs`
+
 Show API documentation.
 
 ```bash
@@ -885,6 +967,7 @@ leo dashboard docs
 ### Plugin Commands
 
 #### `leo plugin create <name>`
+
 Create a new plugin.
 
 ```bash
@@ -899,6 +982,7 @@ leo plugin create my-analyzer
 ```
 
 #### `leo plugin list`
+
 List all installed plugins.
 
 ```bash
@@ -911,6 +995,7 @@ leo plugin list
 ```
 
 #### `leo plugin info <name>`
+
 Show plugin details.
 
 ```bash
@@ -925,6 +1010,7 @@ leo plugin info web-dashboard
 ```
 
 #### `leo plugin start <name>`
+
 Start a plugin.
 
 ```bash
@@ -935,6 +1021,7 @@ leo plugin start web-dashboard
 ```
 
 #### `leo plugin stop <name>`
+
 Stop a plugin.
 
 ```bash
@@ -945,6 +1032,7 @@ leo plugin stop web-dashboard
 ```
 
 #### `leo plugin uninstall <name>`
+
 Remove a plugin.
 
 ```bash
@@ -959,11 +1047,13 @@ leo plugin uninstall my-analyzer
 ## REST API Reference
 
 ### Base URL
+
 ```
 http://localhost:3000/api
 ```
 
 ### Authentication
+
 None required for development. Configure in production.
 
 ### Endpoints
@@ -978,6 +1068,7 @@ curl http://localhost:3000/api/specs
 ```
 
 Response:
+
 ```json
 {
   "specs": [
@@ -1013,13 +1104,11 @@ curl -X POST http://localhost:3000/api/specs/user-auth/generate
 ```
 
 Response:
+
 ```json
 {
   "status": "success",
-  "files": [
-    "src/auth/models/User.js",
-    "src/auth/services/AuthService.js"
-  ],
+  "files": ["src/auth/models/User.js", "src/auth/services/AuthService.js"],
   "lineCount": 450
 }
 ```
@@ -1034,6 +1123,7 @@ curl http://localhost:3000/api/specs/user-auth/tasks
 ```
 
 Response:
+
 ```json
 {
   "tasks": [
@@ -1055,9 +1145,9 @@ curl -X POST http://localhost:3000/api/specs/user-auth/tasks/1/complete
 Connect to `ws://localhost:3000`:
 
 ```javascript
-const ws = new WebSocket('ws://localhost:3000');
+const ws = new WebSocket("ws://localhost:3000");
 
-ws.addEventListener('message', (event) => {
+ws.addEventListener("message", (event) => {
   const data = JSON.parse(event.data);
   console.log(data);
 });
@@ -1077,50 +1167,53 @@ ws.addEventListener('message', (event) => {
 ### Creating a Plugin
 
 **Generate plugin scaffold:**
+
 ```bash
 leo plugin create my-plugin
 ```
 
 **Plugin structure:**
+
 ```javascript
 // my-plugin/index.js
 module.exports = {
-  name: 'my-plugin',
-  version: '1.0.0',
-  
+  name: "my-plugin",
+  version: "1.0.0",
+
   // Required: Initialize plugin
   async init(leo) {
-    console.log('Plugin initialized');
-    
+    console.log("Plugin initialized");
+
     // Register commands
-    leo.commands.register('my-command', this.myCommand.bind(this));
-    
+    leo.commands.register("my-command", this.myCommand.bind(this));
+
     // Listen to events
-    leo.on('code:generated', (data) => {
-      console.log('Code generated:', data);
+    leo.on("code:generated", (data) => {
+      console.log("Code generated:", data);
     });
   },
-  
+
   // Required: Provide metadata
   getMetadata() {
     return {
-      description: 'My custom plugin',
-      version: '1.0.0',
-      commands: ['my-command'],
-      events: ['my-event']
+      description: "My custom plugin",
+      version: "1.0.0",
+      commands: ["my-command"],
+      events: ["my-event"],
     };
   },
-  
+
   // Custom command implementation
   async myCommand(args) {
-    return { success: true, message: 'Done!' };
-  }
+    return { success: true, message: "Done!" };
+  },
 };
 ```
 
 ### Publishing a Plugin
 
 1. **Create package.json:**
+
 ```json
 {
   "name": "@leo/plugin-myname",
@@ -1133,11 +1226,13 @@ module.exports = {
 ```
 
 2. **Publish to npm:**
+
 ```bash
 npm publish
 ```
 
 3. **Install in LEO Kit:**
+
 ```bash
 leo plugin install @leo/plugin-myname
 ```
@@ -1153,21 +1248,26 @@ leo plugin install @leo/plugin-myname
 **Steps:**
 
 1. Initialize specification
+
 ```bash
 leo spec init user-profiles-api
 ```
 
 2. Write specification
+
 ```bash
 leo spec specify
 ```
+
 Content:
+
 ```markdown
 # User Profiles API
 
 Build RESTful API to manage user profiles with CRUD operations.
 
 ## Requirements
+
 - GET /profiles - List all profiles
 - GET /profiles/:id - Get single profile
 - POST /profiles - Create new profile
@@ -1175,24 +1275,29 @@ Build RESTful API to manage user profiles with CRUD operations.
 - DELETE /profiles/:id - Delete profile
 
 ## Validation
+
 - Email must be valid format
 - Name must be 2-50 characters
 - Phone optional but valid if provided
 
 ## Authentication
+
 - No auth for MVP
 - Add token validation later
 
 ## Response Format
+
 All endpoints return JSON with structure:
 ```
 
 3. Create plan
+
 ```bash
 leo spec plan
 ```
 
 4. Generate code
+
 ```bash
 leo spec implement
 ```
@@ -1200,27 +1305,32 @@ leo spec implement
 5. Review generated code in `.leo/generated/`
 
 6. Copy to project
+
 ```bash
 cp -r .leo/generated/src/* src/
 cp -r .leo/generated/tests/* tests/
 ```
 
 7. Install dependencies
+
 ```bash
 npm install
 ```
 
 8. Run tests
+
 ```bash
 npm test
 ```
 
 9. Start server
+
 ```bash
 leo dashboard start
 ```
 
 10. Test endpoints
+
 ```bash
 curl http://localhost:3000/api/profiles
 ```
@@ -1232,44 +1342,54 @@ curl http://localhost:3000/api/profiles
 **Steps:**
 
 1. Create constitutional alignment
+
 ```bash
 leo spec constitution
 ```
+
 Ensure feature aligns with team values.
 
 2. Write detailed specification
+
 ```bash
 leo spec specify
 ```
+
 Include examples, edge cases, constraints.
 
 3. Generate plan
+
 ```bash
 leo spec plan
 ```
 
 4. Review generated plan
+
 ```bash
 leo spec status
 ```
 
 5. Adjust as needed
+
 ```bash
 leo spec specify  # Update if needed
 leo spec plan     # Regenerate
 ```
 
 6. Share with team
+
 - Review specification.md
 - Review plan.md
 - Get feedback before coding
 
 7. Generate code
+
 ```bash
 leo spec implement
 ```
 
 8. Team review
+
 - Check generated code quality
 - Ensure it meets constitution
 - Approve before merge
@@ -1281,43 +1401,53 @@ leo spec implement
 **Steps:**
 
 1. Document current behavior
+
 ```bash
 leo spec init refactor-auth
 leo spec specify
 ```
+
 Describe what needs to change and why.
 
 2. Create migration plan
+
 ```bash
 leo spec plan
 ```
+
 Include breaking changes, migration path.
 
 3. Generate new code
+
 ```bash
 leo spec implement
 ```
 
 4. Write migration guide
+
 ```markdown
 # Migration Guide
 
 ## Breaking Changes
+
 - Changed parameter X to Y
 - Removed deprecated method Z
 
 ## Migration Steps
+
 1. Update calls from X to Y
 2. Remove calls to Z
 3. Run tests
 ```
 
 5. Update tests
+
 ```bash
 npm test
 ```
 
 6. Gradual rollout
+
 - Deploy with feature flag
 - Monitor for issues
 - Disable flag if needed
@@ -1329,12 +1459,14 @@ npm test
 ### Example 1: Simple CRUD API
 
 **Specification:**
+
 ```markdown
 # Blog Posts API
 
 Create REST API for managing blog posts.
 
 ## Endpoints
+
 - GET /posts - List posts (paginated)
 - GET /posts/:id - Get single post
 - POST /posts - Create post
@@ -1342,6 +1474,7 @@ Create REST API for managing blog posts.
 - DELETE /posts/:id - Delete post
 
 ## Data Model
+
 - id: UUID
 - title: String (required, max 200 chars)
 - content: String (required)
@@ -1350,32 +1483,35 @@ Create REST API for managing blog posts.
 - updatedAt: ISO timestamp
 
 ## Validation
+
 - Title must be 10-200 characters
 - Content must be at least 100 characters
 - Author required
 
 ## Response
+
 All responses return JSON with data/error structure:
 {
-  "success": true,
-  "data": {...},
-  "timestamp": "2025-10-25T10:00:00Z"
+"success": true,
+"data": {...},
+"timestamp": "2025-10-25T10:00:00Z"
 }
 ```
 
 **Generated Code Example:**
+
 ```javascript
 // routes/posts.routes.js
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 // GET /posts
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   // List with pagination
 });
 
 // POST /posts
-router.post('/', (req, res) => {
+router.post("/", (req, res) => {
   // Validate and create
 });
 
@@ -1385,27 +1521,32 @@ module.exports = router;
 ### Example 2: Multi-Phase Feature
 
 **Specification:**
+
 ```markdown
 # User Dashboard
 
 Build comprehensive user dashboard with analytics, settings, and notifications.
 
 ## Phase 1: Foundation
+
 - User profile display
 - Account settings
 - Session management
 
 ## Phase 2: Analytics
+
 - Activity timeline
 - Usage statistics
 - Performance metrics
 
 ## Phase 3: Notifications
+
 - Real-time notifications
 - Notification history
 - Preference management
 
 ## Acceptance Criteria
+
 - Load in under 2 seconds
 - Support 10,000 concurrent users
 - 95% test coverage
@@ -1424,6 +1565,7 @@ leo spec constitution
 ```
 
 Include:
+
 - Mission statement
 - Core values
 - Quality standards
@@ -1432,10 +1574,12 @@ Include:
 ### 2. Be Specific in Specifications
 
 ✅ **Good Specification:**
+
 ```markdown
 # User Authentication
 
 Create authentication system supporting:
+
 - Email/password login
 - JWT tokens valid 24 hours
 - Refresh tokens valid 30 days
@@ -1443,12 +1587,14 @@ Create authentication system supporting:
 - Rate limiting: 5 attempts per minute
 
 ## Acceptance Criteria
+
 - Login takes < 500ms
 - All edge cases tested
 - 100% test coverage
 ```
 
 ❌ **Vague Specification:**
+
 ```markdown
 # Authentication
 
@@ -1514,6 +1660,7 @@ Share specifications early in development:
 ### Problem: "API Key not found"
 
 **Solution:**
+
 ```bash
 # Set API key
 export ANTHROPIC_API_KEY=sk-ant-xxxxx
@@ -1528,6 +1675,7 @@ echo "ANTHROPIC_API_KEY=sk-ant-xxxxx" > .env
 ### Problem: "Specification not found"
 
 **Solution:**
+
 ```bash
 # Check current directory
 pwd
@@ -1545,6 +1693,7 @@ ls -la
 ### Problem: "Claude API timeout"
 
 **Solution:**
+
 - Check internet connection
 - API key valid?
 - Try again in a minute
@@ -1553,6 +1702,7 @@ ls -la
 ### Problem: "Generated code has errors"
 
 **Solution:**
+
 1. Review generated code
 2. Check specification for ambiguity
 3. Add more detail to specification
@@ -1561,6 +1711,7 @@ ls -la
 ### Problem: "Tests failing"
 
 **Solution:**
+
 ```bash
 # Run tests with verbose output
 npm test -- --verbose
@@ -1575,6 +1726,7 @@ npm test -- --verbose 2>&1 | tail -20
 ### Problem: "Port 3000 already in use"
 
 **Solution:**
+
 ```bash
 # Use different port
 leo dashboard start --port 3001
@@ -1614,6 +1766,7 @@ lsof -ti :3000 | xargs kill -9
 ### Q: What's the performance?
 
 **A:** - REST API: <50ms latency
+
 - Code generation: 3-5 seconds per feature
 - CLI commands: <1 second
 - WebSocket: Real-time (<100ms)
@@ -1658,6 +1811,6 @@ lsof -ti :3000 | xargs kill -9
 
 ---
 
-**Document Version:** 1.0  
-**Last Updated:** October 25, 2025  
+**Document Version:** 1.0
+**Last Updated:** October 25, 2025
 **Status:** ✅ Production Ready

@@ -25,6 +25,7 @@ cd my-first-app
 ```
 
 You now have:
+
 - `constitution.md` - Team principles
 - `specification.md` - What to build
 - `plan.md` - How to build it
@@ -48,12 +49,14 @@ A text editor opens. Replace the template with your idea:
 # User Authentication System
 
 Build a simple login system with:
+
 - User registration with email
 - Password-protected login
 - JWT tokens valid for 24 hours
 - Email validation
 
 ## Acceptance Criteria
+
 - User can sign up with email and password
 - User can login with credentials
 - Invalid passwords are rejected
@@ -75,6 +78,7 @@ leo spec plan
 ```
 
 LEO Kit automatically creates:
+
 - Phase breakdown
 - Implementation steps
 - Key deliverables
@@ -134,8 +138,8 @@ Generated Files:
 4. ✅ Generated an implementation plan
 5. ✅ AI generated production-ready code
 
-**Time spent:** 5 minutes  
-**Code written:** 0 lines (AI did it!)  
+**Time spent:** 5 minutes
+**Code written:** 0 lines (AI did it!)
 **Productivity gained:** 10x ⚡
 
 ---
@@ -172,6 +176,7 @@ npm test
 ### Start Building
 
 Your code is ready to use! You can:
+
 - Review the code quality
 - Run the tests
 - Deploy to production
@@ -263,12 +268,14 @@ leo dashboard --help     # Dashboard commands
 ## Success! 🎉
 
 You now know how to:
+
 1. Install LEO Kit
 2. Create specifications
 3. Generate code with AI
 4. Use your generated code
 
 **Next steps:**
+
 - Read full guides for advanced usage
 - Create your own projects
 - Try different feature types
@@ -307,6 +314,6 @@ export ANTHROPIC_API_KEY="sk-ant-..."
 
 ---
 
-**Duration:** 5 minutes  
-**Difficulty:** ⭐ Beginner  
+**Duration:** 5 minutes
+**Difficulty:** ⭐ Beginner
 **Result:** Generated production code ✅

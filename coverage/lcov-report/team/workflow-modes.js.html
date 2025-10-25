@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.31% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/82</span>
+                <span class='fraction'>0/82</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">8% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/75</span>
+                <span class='fraction'>0/75</span>
             </div>
         
             
@@ -459,13 +459,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -501,7 +501,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -537,7 +537,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -582,7 +582,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -830,7 +830,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
@@ -844,13 +844,13 @@
  * Defines workflow configurations for different team sizes
  */
 class WorkflowMode {
-  static MODES = {
+  static MODES = <span class="cstat-no" title="statement not covered" >{</span>
     SOLO: 'solo',
     TEAM: 'team'
   };
 &nbsp;
   // SOLO MODE: 1 person, 3 phases (roles merged for speed)
-  static SOLO_CONFIG = {
+  static SOLO_CONFIG = <span class="cstat-no" title="statement not covered" >{</span>
     mode: 'solo',
     teamSize: 1,
     description: 'Single developer - roles merged for speed',
@@ -886,7 +886,7 @@ class WorkflowMode {
   };
 &nbsp;
   // TEAM OF 2: Minimal split, focus on parallel work
-  static TEAM_OF_2_CONFIG = {
+  static TEAM_OF_2_CONFIG = <span class="cstat-no" title="statement not covered" >{</span>
     mode: 'team',
     teamSize: 2,
     description: 'Two developers - split specialized work',
@@ -922,7 +922,7 @@ class WorkflowMode {
   };
 &nbsp;
   // TEAM OF 3: Balanced workflow, three distinct phases
-  static TEAM_OF_3_CONFIG = {
+  static TEAM_OF_3_CONFIG = <span class="cstat-no" title="statement not covered" >{</span>
     mode: 'team',
     teamSize: 3,
     description: 'Three developers - specialized roles',
@@ -967,7 +967,7 @@ class WorkflowMode {
   };
 &nbsp;
   // TEAM OF 4: Full pack - all four specialized roles
-  static TEAM_OF_4_CONFIG = {
+  static TEAM_OF_4_CONFIG = <span class="cstat-no" title="statement not covered" >{</span>
     mode: 'team',
     teamSize: 4,
     description: 'Full pack - all specialized roles',
@@ -1215,7 +1215,7 @@ class WorkflowMode {
   }
 }
 &nbsp;
-module.exports = {
+<span class="cstat-no" title="statement not covered" >module.exports = {</span>
   WorkflowMode
 };
 &nbsp;</pre></td></tr></table></pre>
@@ -1225,7 +1225,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-24T19:38:18.500Z
+                at 2025-10-25T06:37:27.925Z
             </div>
         <script src="../prettify.js"></script>
         <script>

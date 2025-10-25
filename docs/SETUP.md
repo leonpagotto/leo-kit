@@ -1,7 +1,7 @@
 # LEO Kit 5.0.0 - Setup Guide
 
-**Version:** 5.0.0  
-**Released:** October 25, 2025  
+**Version:** 5.0.0
+**Released:** October 25, 2025
 **Status:** Production Ready ✅
 
 ---
@@ -21,29 +21,29 @@
 
 ### Prerequisites
 
-| Requirement | Version | Notes |
-|-----------|---------|-------|
-| Node.js | 16+ | LTS recommended (18+) |
-| npm | 7+ | Or yarn 1.22+ |
-| Git | 2.0+ | For repository cloning |
-| RAM | 2GB+ | 4GB+ recommended |
-| Disk Space | 500MB+ | For node_modules |
-| OS | Any | Windows, macOS, Linux supported |
+| Requirement | Version | Notes                           |
+| ----------- | ------- | ------------------------------- |
+| Node.js     | 16+     | LTS recommended (18+)           |
+| npm         | 7+      | Or yarn 1.22+                   |
+| Git         | 2.0+    | For repository cloning          |
+| RAM         | 2GB+    | 4GB+ recommended                |
+| Disk Space  | 500MB+  | For node_modules                |
+| OS          | Any     | Windows, macOS, Linux supported |
 
 ### Supported Operating Systems
 
-✅ **macOS** - Intel & Apple Silicon (M1/M2/M3)  
-✅ **Windows** - 10/11 (PowerShell or Git Bash)  
-✅ **Linux** - Ubuntu 20.04+, Debian 11+, CentOS 8+  
+✅ **macOS** - Intel & Apple Silicon (M1/M2/M3)
+✅ **Windows** - 10/11 (PowerShell or Git Bash)
+✅ **Linux** - Ubuntu 20.04+, Debian 11+, CentOS 8+
 
 ### Optional Software
 
-| Tool | Purpose | Link |
-|------|---------|------|
-| Docker | Containerization | https://docker.com |
-| Docker Compose | Multi-container | https://docs.docker.com/compose |
-| Visual Studio Code | Recommended editor | https://code.visualstudio.com |
-| Git | Version control | https://git-scm.com |
+| Tool               | Purpose            | Link                            |
+| ------------------ | ------------------ | ------------------------------- |
+| Docker             | Containerization   | https://docker.com              |
+| Docker Compose     | Multi-container    | https://docs.docker.com/compose |
+| Visual Studio Code | Recommended editor | https://code.visualstudio.com   |
+| Git                | Version control    | https://git-scm.com             |
 
 ---
 
@@ -58,12 +58,14 @@ npm install -g @leo/kit
 ```
 
 **Verify installation:**
+
 ```bash
 leo --version
 leo spec init --help
 ```
 
 **Update to latest version:**
+
 ```bash
 npm install -g @leo/kit@latest
 ```
@@ -84,6 +86,7 @@ npx leo spec init my-feature
 ```
 
 **Or add to package.json:**
+
 ```json
 {
   "devDependencies": {
@@ -96,6 +99,7 @@ npx leo spec init my-feature
 ```
 
 Then run:
+
 ```bash
 npm run spec init my-feature
 ```
@@ -120,6 +124,7 @@ leo --version
 ```
 
 **Update from source:**
+
 ```bash
 cd leo-kit
 git pull origin main
@@ -146,6 +151,7 @@ CMD ["leo", "dashboard", "start"]
 ```
 
 **Build and run:**
+
 ```bash
 docker build -t leo-kit .
 docker run -p 3000:3000 leo-kit
@@ -168,6 +174,7 @@ npm --version
 ```
 
 **If not installed:**
+
 - macOS: `brew install node`
 - Windows: Download from https://nodejs.org
 - Linux: `apt-get install nodejs npm` (Ubuntu/Debian)
@@ -198,6 +205,7 @@ setx ANTHROPIC_API_KEY "sk-ant-xxxxxxxx"
 **Option B: .env File**
 
 Create `.env` in your project:
+
 ```
 ANTHROPIC_API_KEY=sk-ant-xxxxxxxx
 ```
@@ -210,6 +218,7 @@ leo spec implement
 ```
 
 **Get your API Key:**
+
 1. Visit https://console.anthropic.com
 2. Sign up or log in
 3. Create new API key
@@ -237,6 +246,7 @@ leo spec init my-first-feature
 ```
 
 You should see:
+
 ```
 ✅ Specification initialized for my-first-feature
 📁 Project structure created:
@@ -414,6 +424,7 @@ leo dashboard start
 ```
 
 In another terminal:
+
 ```bash
 curl http://localhost:3000/api/specs
 
@@ -495,6 +506,7 @@ echo "You're ready to start building with LEO Kit!"
 ```
 
 Run verification:
+
 ```bash
 chmod +x verify.sh
 ./verify.sh
@@ -802,6 +814,6 @@ npm install -g @leo/kit
 
 ---
 
-**Document Version:** 1.0  
-**Last Updated:** October 25, 2025  
+**Document Version:** 1.0
+**Last Updated:** October 25, 2025
 **Status:** ✅ Production Ready

@@ -28,22 +28,26 @@ LEO Kit is an open-source project and we welcome contributions from everyone:
 ### Setup Development Environment
 
 1. **Fork the repository**
+
    ```bash
    # On GitHub, click "Fork" button
    ```
 
 2. **Clone your fork**
+
    ```bash
    git clone https://github.com/YOUR_USERNAME/leo-kit.git
    cd leo-kit
    ```
 
 3. **Add upstream remote**
+
    ```bash
    git remote add upstream https://github.com/leonpagotto/leo-kit.git
    ```
 
 4. **Install dependencies**
+
    ```bash
    npm install
    ```
@@ -72,6 +76,7 @@ git checkout -b fix/your-bug-fix
 ```
 
 **Branch naming convention:**
+
 - `feat/` - New feature
 - `fix/` - Bug fix
 - `docs/` - Documentation
@@ -82,30 +87,38 @@ git checkout -b fix/your-bug-fix
 ### 2. Make Your Changes
 
 **Code style:**
+
 - Use 2-space indentation
 - Camelcase for variables
 - SCREAMING_SNAKE_CASE for constants
 - Descriptive names
 
 **Example:**
+
 ```javascript
 // Good
 const maxRetries = 3;
-const getUserById = async (id) => { /* ... */ };
+const getUserById = async (id) => {
+  /* ... */
+};
 
 // Bad
 const mr = 3;
-const get_user_by_id = async (id) => { /* ... */ };
+const get_user_by_id = async (id) => {
+  /* ... */
+};
 ```
 
 ### 3. Write Tests
 
 **Add tests for:**
+
 - New features
 - Bug fixes
 - API changes
 
 **Run tests:**
+
 ```bash
 npm test              # Run all tests
 npm test -- --watch  # Watch mode
@@ -113,6 +126,7 @@ npm test -- --coverage  # With coverage
 ```
 
 **Test requirements:**
+
 - 80%+ code coverage
 - All tests passing
 - No console warnings
@@ -120,12 +134,14 @@ npm test -- --coverage  # With coverage
 ### 4. Update Documentation
 
 **Update:**
+
 - README.md (if external API changes)
 - Inline code comments
 - JSDoc for public methods
 - Related guides in docs/
 
 **Example JSDoc:**
+
 ```javascript
 /**
  * Generate code from specification.
@@ -142,6 +158,7 @@ async function generateCode(spec, options) {
 ### 5. Commit Your Changes
 
 **Commit message format:**
+
 ```
 type(scope): brief description (#issue)
 
@@ -152,6 +169,7 @@ Closes #123
 ```
 
 **Types:**
+
 - `feat` - New feature
 - `fix` - Bug fix
 - `docs` - Documentation
@@ -160,6 +178,7 @@ Closes #123
 - `chore` - Maintenance
 
 **Examples:**
+
 ```bash
 git commit -m "feat(spec): add code generation (#42)"
 git commit -m "fix(api): resolve timeout issue (#89)"
@@ -167,6 +186,7 @@ git commit -m "docs(setup): improve installation guide"
 ```
 
 **Keep it short:**
+
 - Subject under 72 characters
 - Describe what changed, not why (unless complex)
 - Reference issue number
@@ -180,31 +200,39 @@ git push origin feat/your-feature-name
 ### 7. Create Pull Request
 
 **On GitHub:**
+
 1. Click "New Pull Request"
 2. Choose your branch → `main`
 3. Fill in PR template
 4. Click "Create Pull Request"
 
 **PR Title Format:**
+
 ```
 Brief description of changes (#issue)
 ```
 
 **PR Description Template:**
+
 ```markdown
 ## What
+
 Brief description of what was changed.
 
 ## Why
+
 Explain the reason for this change.
 
 ## How
+
 Describe how the change works.
 
 ## Testing
+
 How to test this change.
 
 ## Checklist
+
 - [ ] Tests passing
 - [ ] Documentation updated
 - [ ] No breaking changes
@@ -220,18 +248,21 @@ Closes #123
 ### What Happens Next
 
 1. **Automated Checks**
+
    - Tests must pass
    - Code coverage checked
    - Linting verified
    - No conflicts
 
 2. **Manual Review**
+
    - Code quality review
    - Architecture review
    - Performance review
    - Security review
 
 3. **Feedback**
+
    - Constructive comments
    - Suggestions for improvement
    - Questions about implementation
@@ -245,12 +276,14 @@ Closes #123
 ### Responding to Feedback
 
 **Be Respectful:**
+
 - Thank reviewers for feedback
 - Ask clarifying questions
 - Explain your approach
 - Be open to suggestions
 
 **Make Changes:**
+
 - Address all feedback
 - Push new commits
 - Don't force-push
@@ -273,30 +306,39 @@ Closes #123
    - Error messages
 
 **Bug Report Template:**
+
 ```markdown
 ## Description
+
 Clear description of the bug.
 
 ## Steps to Reproduce
+
 1. Do this
 2. Then do this
 3. See the bug
 
 ## Expected Behavior
+
 What should happen.
 
 ## Actual Behavior
+
 What actually happened.
 
 ## Environment
+
 - OS: macOS 12.6
 - Node: 18.0.0
 - LEO Kit: 5.0.0
 
 ## Error Message
 ```
+
 Error message here
+
 ```
+
 ```
 
 ### ✨ Feature Requests
@@ -312,20 +354,26 @@ Error message here
    - Example use case
 
 **Feature Request Template:**
+
 ```markdown
 ## Description
+
 What is the feature?
 
 ## Problem
+
 What problem does it solve?
 
 ## Solution
+
 How should it work?
 
 ## Example
+
 How would someone use it?
 
 ## Alternatives
+
 Other ways to solve it?
 ```
 
@@ -339,6 +387,7 @@ Other ways to solve it?
 4. Submit PR with changes
 
 **Documentation guidelines:**
+
 - Clear and concise
 - Practical examples
 - Accurate and up-to-date
@@ -356,6 +405,7 @@ Other ways to solve it?
 5. Approve or request changes
 
 **Review checklist:**
+
 - ✅ Code correctness
 - ✅ Tests included
 - ✅ Documentation updated
@@ -373,6 +423,7 @@ Other ways to solve it?
 4. Submit PR with tests
 
 **Test guidelines:**
+
 - Test happy path
 - Test error cases
 - Test edge cases
@@ -414,12 +465,14 @@ leo-kit/
 ### JavaScript Standards
 
 **Formatting:**
+
 - 2-space indentation
 - Single quotes for strings
 - Semicolons required
 - No trailing commas
 
 **Naming:**
+
 - Constants: `SCREAMING_SNAKE_CASE`
 - Variables: `camelCase`
 - Functions: `camelCase`
@@ -427,6 +480,7 @@ leo-kit/
 - Private methods: `_methodName`
 
 **Functions:**
+
 ```javascript
 // Arrow functions for callbacks
 const multiply = (a, b) => a * b;
@@ -444,6 +498,7 @@ async function fetchData(url) {
 ```
 
 **Comments:**
+
 ```javascript
 // Inline comment for single line
 // Use // not /* */ for clarity
@@ -461,6 +516,7 @@ function publicMethod(param) {
 ### Git Commit Style
 
 **Format:**
+
 ```
 type(scope): subject
 
@@ -470,6 +526,7 @@ footer
 ```
 
 **Example:**
+
 ```bash
 git commit -m "feat(spec): add code generation
 
@@ -510,23 +567,24 @@ npm test -- --testNamePattern="should create user"
 ### Writing Tests
 
 **Use Jest syntax:**
+
 ```javascript
-describe('SpecificationManager', () => {
+describe("SpecificationManager", () => {
   let manager;
 
   beforeEach(() => {
     manager = new SpecificationManager();
   });
 
-  it('should initialize specification', async () => {
-    const result = await manager.init('test');
+  it("should initialize specification", async () => {
+    const result = await manager.init("test");
     expect(result).toBeDefined();
-    expect(result.name).toBe('test');
+    expect(result.name).toBe("test");
   });
 
-  it('should throw error if already exists', async () => {
-    await manager.init('test');
-    await expect(manager.init('test')).rejects.toThrow();
+  it("should throw error if already exists", async () => {
+    await manager.init("test");
+    await expect(manager.init("test")).rejects.toThrow();
   });
 });
 ```
@@ -534,6 +592,7 @@ describe('SpecificationManager', () => {
 ### Test Coverage
 
 Current coverage:
+
 - API Server: 23/23 tests ✅
 - E2E Tests: 26/26 tests ✅
 - **Total: 49/49 tests ✅**
@@ -555,6 +614,7 @@ LEO Kit uses semantic versioning: `MAJOR.MINOR.PATCH`
 ### Release Checklist
 
 Before each release:
+
 - [ ] All tests passing (49/49)
 - [ ] Coverage verified (85%+)
 - [ ] Documentation updated
@@ -566,6 +626,7 @@ Before each release:
 ### Creating a Release
 
 Maintainers only:
+
 ```bash
 # Update version
 npm version minor
@@ -595,6 +656,7 @@ git push --tags
 ### Code of Conduct
 
 Be respectful and inclusive:
+
 - Respect different opinions
 - Support fellow contributors
 - No harassment or discrimination
@@ -646,6 +708,7 @@ npm test -- --verbose
 ## Recognition
 
 **All contributors are recognized:**
+
 - Listed in CONTRIBUTORS.md
 - Mentioned in release notes
 - Appreciated in community
@@ -665,5 +728,5 @@ npm test -- --verbose
 
 ---
 
-**Last Updated:** October 25, 2025  
+**Last Updated:** October 25, 2025
 **Status:** ✅ Production Ready

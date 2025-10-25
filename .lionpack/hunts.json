@@ -1,0 +1,79 @@
+[
+  {
+    "id": "hunt-1761341119494",
+    "featureName": "Dashboard",
+    "description": "Create admin dashboard",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/trio",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "charlie",
+    "startedAt": "2025-10-24T21:25:19.494Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "startTime": "2025-10-24T21:25:19.494Z",
+        "endTime": "2025-10-24T21:25:19.494Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T21:25:19.494Z",
+        "endTime": "2025-10-24T21:25:19.494Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "charlie",
+        "startTime": "2025-10-24T21:25:19.494Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  },
+  {
+    "id": "hunt-1761341119503",
+    "featureName": "Mobile App",
+    "description": "Release iOS app",
+    "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/pack",
+    "status": "in-progress",
+    "currentPhase": "testing",
+    "currentRole": "diana",
+    "startedAt": "2025-10-24T21:25:19.503Z",
+    "completedAt": null,
+    "phaseHistory": [
+      {
+        "phase": "spec",
+        "assignee": "bob",
+        "startTime": "2025-10-24T21:25:19.503Z",
+        "endTime": "2025-10-24T21:25:19.503Z",
+        "duration": 0
+      },
+      {
+        "phase": "implementation",
+        "startTime": "2025-10-24T21:25:19.503Z",
+        "endTime": "2025-10-24T21:25:19.503Z",
+        "duration": 0
+      },
+      {
+        "phase": "testing",
+        "assignee": "diana",
+        "startTime": "2025-10-24T21:25:19.503Z",
+        "endTime": null,
+        "duration": null
+      }
+    ],
+    "metrics": {
+      "totalDuration": 0,
+      "testCoverage": 0,
+      "qualityScore": 0,
+      "bugsFound": 0
+    }
+  }
+]
