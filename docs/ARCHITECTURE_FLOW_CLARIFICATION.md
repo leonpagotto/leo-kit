@@ -1,7 +1,7 @@
 # Architecture Flow Clarification
 
-**Date:** 2025-10-27  
-**Issues:** #126, #127  
+**Date:** 2025-10-27
+**Issues:** #126, #127
 **Status:** ✅ Resolved & Verified
 
 ---
@@ -11,8 +11,9 @@
 **The LEO Workflow Kit orchestration is AI-INSTRUCTION-BASED, NOT CODE-BASED.**
 
 This is the most important finding from our investigation:
+
 - **NO CODE** enforces the workflow steps
-- **ONLY AI INSTRUCTIONS** guide GitHub Copilot's behavior  
+- **ONLY AI INSTRUCTIONS** guide GitHub Copilot's behavior
 - The "orchestrator" is **GitHub Copilot itself**, not a code module
 
 This is **BY DESIGN** and is actually a **FEATURE**, not a bug!---
@@ -22,14 +23,16 @@ This is **BY DESIGN** and is actually a **FEATURE**, not a bug!---
 ### Question: Where's the Workflow Enforcement Code?
 
 **Searched For:**
+
 - Auto Issue Creation code
 - Spec Decision code
 - Task Routing code
-- Auto Resolution code  
+- Auto Resolution code
 - Project Integration code
 - Status Management code
 
 **Found:**
+
 - ❌ NO implementation code
 - ✅ Only instruction templates
 - ✅ AI instruction builders
@@ -50,6 +53,7 @@ This is **BY DESIGN** and is actually a **FEATURE**, not a bug!---
 ```
 
 **What Executes the Workflow?**
+
 - Not code in `lib/`
 - GitHub Copilot (AI) reading `.github/copilot-instructions.md`
 - AI compliance with instructions
@@ -57,6 +61,7 @@ This is **BY DESIGN** and is actually a **FEATURE**, not a bug!---
 ### Why This is Brilliant
 
 **AI-Instruction Approach:**
+
 - ✅ Flexible - Change behavior by editing instructions
 - ✅ Adaptable - AI can handle edge cases
 - ✅ Natural - Feels like working with a smart assistant
@@ -64,6 +69,7 @@ This is **BY DESIGN** and is actually a **FEATURE**, not a bug!---
 - ✅ Context-aware - AI understands intent
 
 **Code-Enforcement Approach (What we DON'T have):**
+
 - ❌ Rigid - Need code changes for new workflows
 - ❌ Brittle - Breaks on unexpected inputs
 - ❌ Complex - Lots of conditional logic

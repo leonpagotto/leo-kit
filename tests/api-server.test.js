@@ -3,16 +3,16 @@
  * Tests for Express server, REST API endpoints, and WebSocket
  */
 
-const APIServer = require('../../lib/team/api-server');
+const APIServer = require('../lib/team/api-server');
 const request = require('supertest');
 const path = require('path');
 const fs = require('fs');
 
 // Mock dependencies
-jest.mock('../../lib/team/tracker');
-jest.mock('../../lib/team/pack');
-jest.mock('../../lib/team/analytics');
-jest.mock('../../lib/team/config-manager');
+jest.mock('../lib/team/tracker');
+jest.mock('../lib/team/pack');
+jest.mock('../lib/team/analytics');
+jest.mock('../lib/team/config-manager');
 
 describe('APIServer - Constructor', () => {
   test('should initialize with default config', () => {

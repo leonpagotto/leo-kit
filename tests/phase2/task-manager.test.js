@@ -32,7 +32,7 @@ describe('TaskManager - Dual-Mode Task Management', () => {
       await manager.create(42, { createIssues: false });
 
       // Should update issue body with checklist
-      const updateCall = execSync.mock.calls.find(call => 
+      const updateCall = execSync.mock.calls.find(call =>
         call[0].includes('gh issue edit')
       );
       expect(updateCall).toBeDefined();
@@ -85,7 +85,7 @@ describe('TaskManager - Dual-Mode Task Management', () => {
       const result = await manager.create(42, { createIssues: true });
 
       expect(result.childIssues).toBeDefined();
-      
+
       // Should create issues via gh CLI
       const createCalls = execSync.mock.calls.filter(call =>
         call[0].includes('gh issue create')
