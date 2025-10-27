@@ -450,6 +450,7 @@ program
   .option('--no-post', 'Don\'t post tasks to GitHub (just show them)')
   .option('--no-label', 'Don\'t add has-tasks label')
   .option('--no-tdd', 'Disable TDD mode (tests before implementation)')
+  .option('--create-issues', 'Create child GitHub issues for each task (for full project board tracking)')
   .action(async (action, issueNumber, options) => {
     const TaskManager = require('../lib/tasks');
     const manager = new TaskManager();
@@ -465,13 +466,18 @@ program
         const result = await manager.create(issueNumber, {
           autoPost: options.post !== false,
           addLabel: options.label !== false,
-          tddMode: options.tdd !== false
+          tddMode: options.tdd !== false,
+          createIssues: options.createIssues === true
         });
 
         if (!options.post) {
           console.log(chalk.cyan('\n📋 Generated Tasks:\n'));
           console.log(result.comment);
           console.log(chalk.gray('\nTo post these tasks, run without --no-post flag'));
+        }
+
+        if (options.createIssues && result.childIssues && result.childIssues.length > 0) {
+          console.log(chalk.cyan(`\n✨ Created ${result.childIssues.length} child issues for GitHub Project tracking`));
         }
 
       } else if (action === 'status') {
@@ -489,8 +495,13 @@ program
         console.log(chalk.gray('  create <issue>  - Generate task checklist from plan'));
         console.log(chalk.gray('  status <issue>  - Show task completion status\n'));
         console.log(chalk.gray('\nExamples:'));
-        console.log(chalk.cyan('  leo tasks create 42'));
+        console.log(chalk.cyan('  leo tasks create 42                    # Simple checklist in comment'));
+        console.log(chalk.cyan('  leo tasks create 42 --create-issues    # Create child issues for each task'));
         console.log(chalk.cyan('  leo tasks status 42\n'));
+        console.log(chalk.gray('\nOptions:'));
+        console.log(chalk.gray('  --create-issues    Create child GitHub issues (full project board tracking)'));
+        console.log(chalk.gray('  --no-post          Preview without posting'));
+        console.log(chalk.gray('  --no-tdd           Disable TDD mode\n'));
       }
     } catch (error) {
       console.error(chalk.red(`\n❌ Error:`, error.message));
