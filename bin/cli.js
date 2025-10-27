@@ -510,6 +510,27 @@ program
     }
   });
 
+// Spec Diff command - Track spec evolution over time (Phase 2: Spec Evolution Tracking)
+program
+  .command('spec-diff <issue-number>')
+  .alias('diff')
+  .description('Show how a spec has evolved over time')
+  .option('--timeline', 'Show timeline view instead of diff')
+  .action(async (issueNumber, options) => {
+    const SpecDiffManager = require('../lib/spec-diff');
+    const manager = new SpecDiffManager();
+
+    try {
+      await manager.diff(issueNumber, {
+        timeline: options.timeline === true
+      });
+    } catch (error) {
+      console.error(chalk.red(`\n❌ Error:`, error.message));
+      if (process.env.DEBUG) console.error(error);
+      process.exit(1);
+    }
+  });
+
 // Dashboard command - Start real-time API server
 program
   .command('dashboard')
