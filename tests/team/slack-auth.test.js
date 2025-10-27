@@ -10,8 +10,11 @@ const path = require('path');
 // Mock fetch globally
 global.fetch = jest.fn();
 
+// Use a test token that doesn't match real Slack token patterns
+const MOCK_TEST_TOKEN = 'test_mock_slack_token_' + Date.now();
+
 describe('SlackAuth - Token Management', () => {
-  const mockToken = 'xoxb-1234567890-0987654321-abcdefghijklmnop';
+  const mockToken = MOCK_TEST_TOKEN;
   const tokenPath = path.join('.lionpack', 'slack-token');
 
   beforeEach(() => {
@@ -129,7 +132,7 @@ describe('SlackAuth - Token Management', () => {
 });
 
 describe('SlackAuth - Validation', () => {
-  const mockToken = 'xoxb-1234567890-0987654321-abcdefghijklmnop';
+  const mockToken = MOCK_TEST_TOKEN;
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -304,7 +307,7 @@ describe('SlackAuth - Validation', () => {
 });
 
 describe('SlackAuth - Rate Limiting', () => {
-  const mockToken = 'xoxb-1234567890-0987654321-abcdefghijklmnop';
+  const mockToken = MOCK_TEST_TOKEN;
 
   describe('getRateLimit', () => {
     test('should return default rate limit when not set', () => {
@@ -403,7 +406,7 @@ describe('SlackAuth - OAuth', () => {
         json: async () => ({
           ok: true,
           bot_user_id: 'U1234567890',
-          xoxb_token: 'xoxb-new-token',
+          xoxb_token: 'MOCK_NEW_TOKEN',
           scope: 'chat:write,channels:read,users:read,team:read',
           team: {
             id: 'T0987654321',
@@ -429,7 +432,7 @@ describe('SlackAuth - OAuth', () => {
         json: async () => ({
           ok: true,
           bot_user_id: 'U1234567890',
-          xoxb_token: 'xoxb-new-token',
+          xoxb_token: 'MOCK_NEW_TOKEN',
           scope: 'chat:write', // Missing other scopes
           team: {
             id: 'T0987654321',
@@ -475,7 +478,7 @@ describe('SlackAuth - OAuth', () => {
 });
 
 describe('SlackAuth - Constructor', () => {
-  const mockToken = 'xoxb-1234567890-0987654321-abcdefghijklmnop';
+  const mockToken = MOCK_TEST_TOKEN;
 
   test('should initialize with token', () => {
     const auth = new SlackAuth(mockToken);

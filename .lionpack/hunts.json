@@ -1,31 +1,31 @@
 [
   {
-    "id": "hunt-1761341119494",
+    "id": "hunt-1761562002296",
     "featureName": "Dashboard",
     "description": "Create admin dashboard",
     "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/trio",
     "status": "in-progress",
     "currentPhase": "testing",
     "currentRole": "charlie",
-    "startedAt": "2025-10-24T21:25:19.494Z",
+    "startedAt": "2025-10-27T10:46:42.296Z",
     "completedAt": null,
     "phaseHistory": [
       {
         "phase": "spec",
-        "startTime": "2025-10-24T21:25:19.494Z",
-        "endTime": "2025-10-24T21:25:19.494Z",
+        "startTime": "2025-10-27T10:46:42.296Z",
+        "endTime": "2025-10-27T10:46:42.296Z",
         "duration": 0
       },
       {
         "phase": "implementation",
-        "startTime": "2025-10-24T21:25:19.494Z",
-        "endTime": "2025-10-24T21:25:19.494Z",
+        "startTime": "2025-10-27T10:46:42.296Z",
+        "endTime": "2025-10-27T10:46:42.296Z",
         "duration": 0
       },
       {
         "phase": "testing",
         "assignee": "charlie",
-        "startTime": "2025-10-24T21:25:19.494Z",
+        "startTime": "2025-10-27T10:46:42.296Z",
         "endTime": null,
         "duration": null
       }
@@ -38,33 +38,33 @@
     }
   },
   {
-    "id": "hunt-1761341119503",
+    "id": "hunt-1761562002312",
     "featureName": "Mobile App",
     "description": "Release iOS app",
     "packName": "/Users/leo.de.souza1/leo-workflow-kit/.test-lionpack-e2e/pack",
     "status": "in-progress",
     "currentPhase": "testing",
     "currentRole": "diana",
-    "startedAt": "2025-10-24T21:25:19.503Z",
+    "startedAt": "2025-10-27T10:46:42.312Z",
     "completedAt": null,
     "phaseHistory": [
       {
         "phase": "spec",
         "assignee": "bob",
-        "startTime": "2025-10-24T21:25:19.503Z",
-        "endTime": "2025-10-24T21:25:19.503Z",
+        "startTime": "2025-10-27T10:46:42.312Z",
+        "endTime": "2025-10-27T10:46:42.312Z",
         "duration": 0
       },
       {
         "phase": "implementation",
-        "startTime": "2025-10-24T21:25:19.503Z",
-        "endTime": "2025-10-24T21:25:19.503Z",
+        "startTime": "2025-10-27T10:46:42.312Z",
+        "endTime": "2025-10-27T10:46:42.312Z",
         "duration": 0
       },
       {
         "phase": "testing",
         "assignee": "diana",
-        "startTime": "2025-10-24T21:25:19.503Z",
+        "startTime": "2025-10-27T10:46:42.312Z",
         "endTime": null,
         "duration": null
       }

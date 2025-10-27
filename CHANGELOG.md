@@ -21,7 +21,7 @@ Eliminates documentation clutter with automated organization and enforcement. Pr
 - ✅ **`leo organize-docs`**: Auto-organizes documentation files into proper directories
 - ✅ **`--dry-run`**: Preview what would be moved without making changes
 - ✅ **`--validate`**: Check documentation organization without moving files
-- ✅ **Smart Pattern Matching**: Auto-detects file patterns (SESSION_SUMMARY_*, PHASE_*, DAYS_*, DEPLOYMENT_*, etc.)
+- ✅ **Smart Pattern Matching**: Auto-detects file patterns (SESSION*SUMMARY*_, PHASE\__, DAYS*\*, DEPLOYMENT*\*, etc.)
 - ✅ **Directory Creation**: Automatically creates organized structure (docs/sessions/, docs/phases/, docs/stories/, docs/releases/, docs/guides/)
 
 ##### Pre-commit Hook
@@ -101,6 +101,7 @@ leo hooks status
 #### Files Changed
 
 - **New Files**:
+
   - `lib/commands/organize-docs.js` - Documentation organization command (300+ lines)
   - `lib/utils/git-hooks.js` - Git hooks management utilities (120+ lines)
   - `scripts/pre-commit-docs` - Pre-commit hook executable (90+ lines)

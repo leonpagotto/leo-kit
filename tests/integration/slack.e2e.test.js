@@ -17,7 +17,7 @@ function getTestConfig() {
     slack: {
       enabled: true,
       channelId: 'C1234567890',
-      botToken: 'xoxb-test-token'
+      botToken: 'MOCK_SLACK_TEST_TOKEN'
     },
     github: {
       enabled: true,
@@ -66,7 +66,7 @@ function getTestHunt(overrides = {}) {
 }
 
 describe('Slack Integration - Hunt Lifecycle', () => {
-  const mockToken = 'xoxb-test-token';
+  const mockToken = 'MOCK_SLACK_TEST_TOKEN';
   const mockChannelId = 'C1234567890';
   let slackAuth;
   let slackIntegration;
@@ -405,7 +405,7 @@ describe('Slack Integration - Rate Limiting', () => {
   });
 
   test('should handle multiple concurrent notifications', async () => {
-    const mockToken = 'xoxb-test-token';
+    const mockToken = 'MOCK_SLACK_TEST_TOKEN';
     const slackAuth = new SlackAuth(mockToken);
     const integration = new SlackIntegration(slackAuth, 'C1234567890');
 
@@ -439,7 +439,7 @@ describe('Slack Integration - Rate Limiting', () => {
   });
 
   test('should respect rate limits by tracking remaining calls', async () => {
-    const mockToken = 'xoxb-test-token';
+    const mockToken = 'MOCK_SLACK_TEST_TOKEN';
     const slackAuth = new SlackAuth(mockToken);
 
     slackAuth.rateLimit = { remaining: 600, limit: 600, reset: 1234567890 };
@@ -465,7 +465,7 @@ describe('Slack Integration - Token Management', () => {
   });
 
   test('should save and load token', () => {
-    const token = 'xoxb-test-token-123';
+    const token = 'MOCK_SLACK_TEST_TOKEN_123';
 
     SlackAuth.saveToken(token);
     expect(SlackAuth.hasToken()).toBe(true);
@@ -475,7 +475,7 @@ describe('Slack Integration - Token Management', () => {
   });
 
   test('should delete token', () => {
-    SlackAuth.saveToken('xoxb-test-token');
+    SlackAuth.saveToken('MOCK_SLACK_TEST_TOKEN');
     expect(SlackAuth.hasToken()).toBe(true);
 
     SlackAuth.deleteToken();
