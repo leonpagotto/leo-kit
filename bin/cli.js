@@ -215,6 +215,37 @@ program
     }
   });
 
+// Hooks command - Manage Git hooks
+program
+  .command('hooks <action>')
+  .description('Manage Git hooks (install, uninstall, status)')
+  .action(async (action) => {
+    const { installPreCommitHook, uninstallPreCommitHook, isHookInstalled } = require('../lib/utils/git-hooks');
+    
+    if (action === 'install') {
+      console.log(chalk.cyan('\n🪝 Installing Git hooks...\n'));
+      const result = await installPreCommitHook();
+      if (result.installed && !result.skipped) {
+        console.log(chalk.green('\n✅ Git hooks installed successfully!\n'));
+      }
+    } else if (action === 'uninstall') {
+      console.log(chalk.cyan('\n🪝 Uninstalling Git hooks...\n'));
+      await uninstallPreCommitHook();
+    } else if (action === 'status') {
+      console.log(chalk.cyan('\n🪝 Git Hooks Status\n'));
+      const installed = await isHookInstalled();
+      if (installed) {
+        console.log(chalk.green('  ✓ Pre-commit hook: Installed'));
+        console.log(chalk.gray('    Validates documentation organization before commit\n'));
+      } else {
+        console.log(chalk.yellow('  ✗ Pre-commit hook: Not installed'));
+        console.log(chalk.gray('    Run: leo hooks install\n'));
+      }
+    } else {
+      console.log(chalk.red('\n❌ Unknown action. Use: install, uninstall, or status\n'));
+    }
+  });
+
 // Dashboard command - Start real-time API server
 program
   .command('dashboard')

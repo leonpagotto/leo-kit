@@ -65,5 +65,20 @@
     "multi-agent-threshold": 3,
     "auto-handoff": true,
     "fallback-agent": "orchestrator"
+  },
+
+  "documentation": {
+    "enforce-organization": true,
+    "auto-organize": false,
+    "root-files-max": 6,
+    "allowed-root-files": [
+      "README.md",
+      "CONTRIBUTING.md",
+      "LICENSE",
+      "SECURITY.md",
+      "CHANGELOG.md",
+      "INDEX.md"
+    ],
+    "_comment": "Documentation organization settings. enforce-organization enables pre-commit hook validation."
   }
 }

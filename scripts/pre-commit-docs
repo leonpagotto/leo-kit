@@ -1,0 +1,82 @@
+#!/usr/bin/env node
+
+/**
+ * LEO Workflow Kit - Pre-commit Hook
+ * Validates documentation organization before commit
+ *
+ * This hook prevents markdown files from being committed to the root directory
+ * (except allowed files like README.md, CONTRIBUTING.md, etc.)
+ */
+
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
+
+// Load config
+let config = {};
+const configPath = path.join(process.cwd(), '.leorc.json');
+if (fs.existsSync(configPath)) {
+  config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+}
+
+// Check if enforcement is enabled
+const docConfig = config.documentation || {};
+const enforceOrganization = docConfig['enforce-organization'] !== false; // Default: true
+const allowedRootFiles = docConfig['allowed-root-files'] || [
+  'README.md',
+  'CONTRIBUTING.md',
+  'LICENSE',
+  'LICENSE.md',
+  'SECURITY.md',
+  'CHANGELOG.md',
+  'INDEX.md'
+];
+
+if (!enforceOrganization) {
+  // Enforcement disabled, allow commit
+  process.exit(0);
+}
+
+// Get staged markdown files in root directory
+let stagedFiles;
+try {
+  stagedFiles = execSync('git diff --cached --name-only --diff-filter=ACM', { encoding: 'utf8' })
+    .split('\n')
+    .filter(f => f.trim());
+} catch (error) {
+  // If git command fails, allow commit
+  process.exit(0);
+}
+
+// Filter for markdown files in root (not in subdirectories)
+const rootMarkdownFiles = stagedFiles.filter(file => {
+  return file.endsWith('.md') && !file.includes('/');
+});
+
+// Check for violations
+const violations = rootMarkdownFiles.filter(file => {
+  return !allowedRootFiles.some(allowed =>
+    file.toLowerCase() === allowed.toLowerCase()
+  );
+});
+
+if (violations.length > 0) {
+  console.error('\n\x1b[31m❌ ERROR: Markdown files not allowed in root directory\x1b[0m\n');
+  console.error('Files attempting to commit:');
+  violations.forEach(file => {
+    console.error(`  \x1b[33m- ${file}\x1b[0m`);
+  });
+  console.error('\n\x1b[36mLEO Workflow Documentation Organization:\x1b[0m');
+  console.error('  • Session summaries  → docs/sessions/YYYY-MM/');
+  console.error('  • Story docs         → docs/stories/');
+  console.error('  • Phase reports      → docs/phases/');
+  console.error('  • Release notes      → docs/releases/');
+  console.error('  • Guides             → docs/guides/');
+  console.error('\n\x1b[33mAuto-fix:\x1b[0m');
+  console.error('  leo organize-docs\n');
+  console.error('\x1b[90mTo disable this check, set documentation.enforce-organization: false in .leorc.json\x1b[0m\n');
+  process.exit(1);
+}
+
+// All checks passed
+process.exit(0);
