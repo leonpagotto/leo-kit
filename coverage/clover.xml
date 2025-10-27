@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1761562004592" clover="3.2.0">
-  <project timestamp="1761562004592" name="All files">
-    <metrics statements="3990" coveredstatements="789" conditionals="1622" coveredconditionals="374" methods="515" coveredmethods="180" elements="6127" coveredelements="1343" complexity="0" loc="3990" ncloc="3990" packages="2" files="31" classes="31"/>
+<coverage generated="1761562907755" clover="3.2.0">
+  <project timestamp="1761562907755" name="All files">
+    <metrics statements="3990" coveredstatements="788" conditionals="1622" coveredconditionals="373" methods="515" coveredmethods="180" elements="6127" coveredelements="1341" complexity="0" loc="3990" ncloc="3990" packages="2" files="31" classes="31"/>
     <package name="commands">
       <metrics statements="2724" coveredstatements="5" conditionals="975" coveredconditionals="0" methods="213" coveredmethods="0"/>
       <file name="agent.js" path="/Users/leo.de.souza1/leo-workflow-kit/lib/commands/agent.js">
@@ -2784,7 +2784,7 @@
       </file>
     </package>
     <package name="team">
-      <metrics statements="1266" coveredstatements="784" conditionals="647" coveredconditionals="374" methods="302" coveredmethods="180"/>
+      <metrics statements="1266" coveredstatements="783" conditionals="647" coveredconditionals="373" methods="302" coveredmethods="180"/>
       <file name="analytics.js" path="/Users/leo.de.souza1/leo-workflow-kit/lib/team/analytics.js">
         <metrics statements="134" coveredstatements="121" conditionals="49" coveredconditionals="29" methods="41" coveredmethods="38"/>
         <line num="6" count="5" type="stmt"/>
@@ -3757,14 +3757,14 @@
         <line num="207" count="5" type="stmt"/>
         <line num="208" count="5" type="stmt"/>
         <line num="210" count="0" type="stmt"/>
-        <line num="221" count="3" type="stmt"/>
-        <line num="223" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="221" count="4" type="stmt"/>
+        <line num="223" count="4" type="cond" truecount="2" falsecount="0"/>
         <line num="224" count="1" type="stmt"/>
-        <line num="227" count="2" type="stmt"/>
-        <line num="228" count="2" type="stmt"/>
-        <line num="229" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="227" count="3" type="stmt"/>
+        <line num="228" count="3" type="stmt"/>
+        <line num="229" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="230" count="1" type="stmt"/>
-        <line num="232" count="1" type="stmt"/>
+        <line num="232" count="2" type="stmt"/>
         <line num="234" count="1" type="stmt"/>
         <line num="245" count="8" type="stmt"/>
         <line num="246" count="8" type="stmt"/>
@@ -3908,23 +3908,23 @@
         <line num="566" count="2" type="stmt"/>
       </file>
       <file name="tracker.js" path="/Users/leo.de.souza1/leo-workflow-kit/lib/team/tracker.js">
-        <metrics statements="102" coveredstatements="63" conditionals="26" coveredconditionals="11" methods="28" coveredmethods="12"/>
+        <metrics statements="102" coveredstatements="62" conditionals="26" coveredconditionals="10" methods="28" coveredmethods="12"/>
         <line num="6" count="4" type="stmt"/>
         <line num="7" count="4" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
-        <line num="15" count="18" type="stmt"/>
-        <line num="16" count="18" type="stmt"/>
-        <line num="17" count="18" type="stmt"/>
-        <line num="18" count="18" type="stmt"/>
-        <line num="21" count="18" type="stmt"/>
-        <line num="22" count="18" type="stmt"/>
-        <line num="23" count="18" type="stmt"/>
-        <line num="26" count="18" type="stmt"/>
-        <line num="27" count="18" type="stmt"/>
-        <line num="30" count="18" type="stmt"/>
-        <line num="31" count="18" type="stmt"/>
-        <line num="32" count="18" type="stmt"/>
-        <line num="35" count="18" type="stmt"/>
+        <line num="15" count="32" type="stmt"/>
+        <line num="16" count="32" type="stmt"/>
+        <line num="17" count="32" type="stmt"/>
+        <line num="18" count="32" type="stmt"/>
+        <line num="21" count="32" type="stmt"/>
+        <line num="22" count="32" type="stmt"/>
+        <line num="23" count="32" type="stmt"/>
+        <line num="26" count="32" type="stmt"/>
+        <line num="27" count="32" type="stmt"/>
+        <line num="30" count="32" type="stmt"/>
+        <line num="31" count="32" type="stmt"/>
+        <line num="32" count="32" type="stmt"/>
+        <line num="35" count="32" type="stmt"/>
         <line num="47" count="6" type="stmt"/>
         <line num="55" count="6" type="stmt"/>
         <line num="56" count="6" type="stmt"/>
@@ -3957,24 +3957,24 @@
         <line num="167" count="7" type="stmt"/>
         <line num="169" count="7" type="stmt"/>
         <line num="170" count="7" type="stmt"/>
-        <line num="171" count="4" type="stmt"/>
-        <line num="172" count="7" type="stmt"/>
-        <line num="180" count="7" type="stmt"/>
-        <line num="181" count="7" type="stmt"/>
-        <line num="182" count="7" type="stmt"/>
-        <line num="183" count="7" type="stmt"/>
-        <line num="184" count="7" type="stmt"/>
-        <line num="185" count="7" type="stmt"/>
-        <line num="186" count="7" type="stmt"/>
-        <line num="188" count="7" type="stmt"/>
-        <line num="192" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="171" count="7" type="stmt"/>
+        <line num="172" count="21" type="stmt"/>
+        <line num="180" count="21" type="stmt"/>
+        <line num="181" count="21" type="stmt"/>
+        <line num="182" count="21" type="stmt"/>
+        <line num="183" count="21" type="stmt"/>
+        <line num="184" count="21" type="stmt"/>
+        <line num="185" count="21" type="stmt"/>
+        <line num="186" count="21" type="stmt"/>
+        <line num="188" count="21" type="stmt"/>
+        <line num="192" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="193" count="0" type="stmt"/>
         <line num="197" count="7" type="stmt"/>
         <line num="204" count="11" type="stmt"/>
         <line num="211" count="11" type="stmt"/>
         <line num="212" count="11" type="stmt"/>
         <line num="214" count="11" type="stmt"/>
-        <line num="221" count="22" type="stmt"/>
+        <line num="221" count="50" type="stmt"/>
         <line num="228" count="0" type="stmt"/>
         <line num="235" count="0" type="stmt"/>
         <line num="242" count="0" type="stmt"/>
@@ -3999,7 +3999,7 @@
         <line num="290" count="0" type="stmt"/>
         <line num="297" count="8" type="stmt"/>
         <line num="299" count="8" type="stmt"/>
-        <line num="301" count="15" type="stmt"/>
+        <line num="301" count="31" type="stmt"/>
         <line num="315" count="8" type="stmt"/>
         <line num="322" count="0" type="stmt"/>
         <line num="323" count="0" type="stmt"/>
