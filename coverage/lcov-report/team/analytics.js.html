@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.58% </span>
+                <span class="strong">83.44% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>127/145</span>
+                <span class='fraction'>121/145</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.18% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>29/49</span>
+                <span class='fraction'>28/49</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.68% </span>
+                <span class="strong">90.24% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>38/41</span>
+                <span class='fraction'>37/41</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.29% </span>
+                <span class="strong">85.82% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>121/134</span>
+                <span class='fraction'>115/134</span>
             </div>
         
             
@@ -435,9 +435,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -445,15 +445,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">35x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -728,19 +728,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -794,7 +794,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
@@ -1094,20 +1094,20 @@ class AnalyticsEngine {
   /**
    * Load metrics from file
    */
-  static async load(packName, projectPath = <span class="branch-0 cbranch-no" title="branch not covered" >'.')</span> {
-    const engine = new AnalyticsEngine(packName);
-    const analyticsPath = path.join(projectPath, '.lionpack', 'analytics.json');
+<span class="fstat-no" title="function not covered" >  st</span>atic async load(packName, projectPath = <span class="branch-0 cbranch-no" title="branch not covered" >'.')</span> {
+    const engine = <span class="cstat-no" title="statement not covered" >new AnalyticsEngine(packName);</span>
+    const analyticsPath = <span class="cstat-no" title="statement not covered" >path.join(projectPath, '.lionpack', 'analytics.json');</span>
 &nbsp;
-    try {
-      const data = await fs.readJson(analyticsPath);
+<span class="cstat-no" title="statement not covered" >    try {</span>
+      const data = <span class="cstat-no" title="statement not covered" >await fs.readJson(analyticsPath);</span>
 <span class="cstat-no" title="statement not covered" >      engine.metrics = data.metrics || [];</span>
     } catch (error) {
-      <span class="missing-if-branch" title="if path not taken" >I</span>if (error.code !== 'ENOENT') {
+<span class="cstat-no" title="statement not covered" >      if (error.code !== 'ENOENT') {</span>
 <span class="cstat-no" title="statement not covered" >        console.warn('Could not load analytics:', error.message);</span>
       }
     }
 &nbsp;
-    return engine;
+<span class="cstat-no" title="statement not covered" >    return engine;</span>
   }
 &nbsp;
   // Private helper methods
@@ -1171,7 +1171,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-10-27T19:53:28.070Z
+                at 2025-10-27T20:04:06.653Z
             </div>
         <script src="../prettify.js"></script>
         <script>

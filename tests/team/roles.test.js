@@ -79,7 +79,7 @@ describe('RoleManager', () => {
 
       const nextNextNext = RoleManager.getNextRole('implementation');
       expect(nextNextNext).toBe('testing');
-      
+
       const lastNext = RoleManager.getNextRole('testing');
       expect(lastNext).toBe('deploy');
     });
