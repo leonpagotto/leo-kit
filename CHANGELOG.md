@@ -6,6 +6,51 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.2.1] - 2025-10-27
+
+### Fixed
+
+- **README emoji rendering**: Fixed broken emoji character (� → 🔧) on line 20
+- **Architecture diagram clarity**: Redesigned GitHub Copilot Integration section to show correct workflow relationships
+- **AI-driven architecture documentation**: Clarified that orchestrator workflow is AI-instruction-based, not code-based
+
+### Documentation
+
+- **Architecture Flow Clarification**: Added comprehensive documentation explaining AI-driven vs code-driven architecture
+  - Orchestrator = GitHub Copilot reading `.github/copilot-instructions.md`
+  - Workflow steps = AI behavior (not code execution)
+  - Investigation results showing no workflow enforcement code (by design)
+- **Updated architecture diagram**:
+  - Changed subtitle to "(⚡ AI-Driven, Not Code-Driven)"
+  - Added 🤖 AI Behavior labels to all workflow steps
+  - Added warning "⚠️ Instructions Only" to Copilot Instructions node
+  - Clarified that "Orchestrator Workflow = GitHub Copilot Reads & Follows Instructions"
+- **Visual improvements**:
+  - Copilot Instructions now in yellow (configuration file color)
+  - Dotted line connection (configures vs executes)
+  - Workflow steps grouped and numbered 1-6
+  - Clear sequential flow documented
+
+### Technical Details
+
+**Key Finding**: The LEO Workflow Kit uses an AI-instruction-based architecture, not a code-based enforcement system. This is intentional and provides:
+
+- ✅ Flexibility - Change behavior by editing instructions
+- ✅ Adaptability - AI handles edge cases intelligently
+- ✅ Natural interaction - Feels like working with a smart assistant
+- ✅ No brittle code - No complex conditional workflow logic
+- ✅ Context-awareness - AI understands intent
+
+**What Changed**:
+
+- `diagrams/architecture.mmd` - Enhanced with AI-driven labels
+- `docs/ARCHITECTURE_FLOW_CLARIFICATION.md` - Added investigation findings
+- `README.md` - Fixed emoji rendering
+
+**Issues Resolved**: #126 (README + architecture flow), #127 (workflow verification)
+
+---
+
 ## [5.2.0] - 2025-10-27
 
 ### 🎯 Phase 2 Complete: Spec-First Development System
@@ -61,14 +106,14 @@ Complete GitHub-native specification workflow with evolution tracking, extension
 
 #### Why Specs as Issues? (vs File-Based)
 
-| **LEO (GitHub-Native)** | **File-Based Tools** |
-|-------------------------|----------------------|
-| ✅ Edit in browser | ❌ Requires Git/editor |
-| ✅ Real-time comments | ❌ Pull request delays |
-| ✅ Project board integration | ❌ Manual tracking |
-| ✅ No merge conflicts | ❌ Git conflicts on specs |
-| ✅ Fast iteration (<1 min) | ❌ Slower (commit→push) |
-| ✅ Non-technical stakeholders | ❌ Technical users only |
+| **LEO (GitHub-Native)**       | **File-Based Tools**      |
+| ----------------------------- | ------------------------- |
+| ✅ Edit in browser            | ❌ Requires Git/editor    |
+| ✅ Real-time comments         | ❌ Pull request delays    |
+| ✅ Project board integration  | ❌ Manual tracking        |
+| ✅ No merge conflicts         | ❌ Git conflicts on specs |
+| ✅ Fast iteration (<1 min)    | ❌ Slower (commit→push)   |
+| ✅ Non-technical stakeholders | ❌ Technical users only   |
 
 #### New Commands
 
@@ -149,7 +194,7 @@ Eliminates documentation clutter with automated organization and enforcement. Pr
 - ✅ **`leo organize-docs`**: Auto-organizes documentation files into proper directories
 - ✅ **`--dry-run`**: Preview what would be moved without making changes
 - ✅ **`--validate`**: Check documentation organization without moving files
-- ✅ **Smart Pattern Matching**: Auto-detects file patterns (SESSION*SUMMARY*_, PHASE\__, DAYS*\*, DEPLOYMENT*\*, etc.)
+- ✅ **Smart Pattern Matching**: Auto-detects file patterns (SESSION*SUMMARY*\_, PHASE\_\_, DAYS*\*, DEPLOYMENT*\*, etc.)
 - ✅ **Directory Creation**: Automatically creates organized structure (docs/sessions/, docs/phases/, docs/stories/, docs/releases/, docs/guides/)
 
 ##### Pre-commit Hook
