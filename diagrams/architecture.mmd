@@ -91,21 +91,19 @@ graph TB
             NPM[npm Registry<br/>Package Distribution]
         end
 
-        subgraph "GitHub Copilot Integration"
-            COPILOT_INST[.github/copilot-instructions.md<br/>AI Behavior Rules<br/>📋 Configuration File]
-            
-            subgraph "Orchestrator Workflow (Applies Rules Above)"
-                AUTO_ISSUE[Step 1: Auto Issue Creation<br/>Detects Work Intent]
-                SPEC_DECISION[Step 2: Spec-First Decision<br/>Complex vs Simple]
-                TASK_ROUTE[Step 3: Task Routing<br/>Route to Specialist Agent]
-                AUTO_RESOLVE[Step 4: Auto Resolution Check<br/>Start Now or Wait?]
-                AUTO_PROJECT[Step 5: Project Integration<br/>Auto-add to Board]
-                AUTO_STATUS[Step 6: Status Management<br/>Todo → In Progress → Done]
+        subgraph "GitHub Copilot Integration (⚡ AI-Driven, Not Code-Driven)"
+            COPILOT_INST[.github/copilot-instructions.md<br/>AI Behavior Rules<br/>📋 Configuration File<br/>⚠️ Instructions Only]
+
+            subgraph "Orchestrator Workflow = GitHub Copilot Reads & Follows Instructions Above"
+                AUTO_ISSUE[Step 1: Auto Issue Creation<br/>Detects Work Intent<br/>🤖 AI Behavior]
+                SPEC_DECISION[Step 2: Spec-First Decision<br/>Complex vs Simple<br/>🤖 AI Behavior]
+                TASK_ROUTE[Step 3: Task Routing<br/>Route to Specialist Agent<br/>🤖 AI Behavior]
+                AUTO_RESOLVE[Step 4: Auto Resolution Check<br/>Start Now or Wait?<br/>🤖 AI Behavior]
+                AUTO_PROJECT[Step 5: Project Integration<br/>Auto-add to Board<br/>🤖 AI Behavior]
+                AUTO_STATUS[Step 6: Status Management<br/>Todo → In Progress → Done<br/>🤖 AI Behavior]
             end
         end
-    end
-
-    CLI --> INIT
+    end    CLI --> INIT
     CLI --> ISSUE
     CLI --> LABELS
     CLI --> VSCODE
