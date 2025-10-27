@@ -1,401 +1,799 @@
-<div align="center">
+<div align="center"><div align="center">
 
-<img src="docs/assets/leo_kit_logo.png" alt="LEO Kit Logo" width="600" />
 
-<h3 style="color: #FF9933; font-weight: 600;">
+
+![LEO Workflow Kit](docs/assets/leo_logo.png)<img src="docs/assets/leo_kit_logo.png" alt="LEO Kit Logo" width="600" />
+
+
+
+<h3>Intelligent GitHub Workflow Automation</h3><h3 style="color: #FF9933; font-weight: 600;">
+
   <span style="color: #FF9933;">GitHub Workflow Automation with Multi-Agent AI Orchestration</span>
-</h3>
 
-<p><strong>Transform your development workflow with intelligent task routing, spec-first development, and automated GitHub Projects integration—all from your terminal.</strong></p>
+**Transform your development workflow with AI-powered task routing, spec-first development, and automated GitHub Projects—all from your terminal.**</h3>
 
-[![npm version](https://img.shields.io/npm/v/leo-workflow-kit.svg?style=flat-square&color=blue&logo=npm)](https://www.npmjs.com/package/leo-workflow-kit)
+
+
+[![npm version](https://img.shields.io/npm/v/leo-workflow-kit.svg?style=flat-square&color=blue&logo=npm)](https://www.npmjs.com/package/leo-workflow-kit)<p><strong>Transform your development workflow with intelligent task routing, spec-first development, and automated GitHub Projects integration—all from your terminal.</strong></p>
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+
+[![Node.js](https://img.shields.io/badge/Node.js-16%2B-green?style=flat-square&logo=node.js)](https://nodejs.org)[![npm version](https://img.shields.io/npm/v/leo-workflow-kit.svg?style=flat-square&color=blue&logo=npm)](https://www.npmjs.com/package/leo-workflow-kit)
+
+[![Tests](https://img.shields.io/badge/tests-462%2F521%20passing-green?style=flat-square)](https://github.com/leonpagotto/leo-kit)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+
 [![Node.js](https://img.shields.io/badge/Node.js-16%2B-green?style=flat-square&logo=node.js)](https://nodejs.org)
-[![GitHub Stars](https://img.shields.io/github/stars/leonpagotto/leo-kit?style=flat-square&color=yellow&logo=github)](https://github.com/leonpagotto/leo-kit/stargazers)
+
+[Quick Start](#-quick-start) • [Features](#-features) • [Documentation](../../wiki) • [Contributing](CONTRIBUTING.md)[![GitHub Stars](https://img.shields.io/github/stars/leonpagotto/leo-kit?style=flat-square&color=yellow&logo=github)](https://github.com/leonpagotto/leo-kit/stargazers)
+
 [![GitHub Issues](https://img.shields.io/github/issues/leonpagotto/leo-kit?style=flat-square&color=red&logo=github)](https://github.com/leonpagotto/leo-kit/issues)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
 
-[🚀 Quick Start](#-quick-start) • [📖 What is LEO?](#-what-is-leo-workflow-kit) • [✨ Features](#-core-features) • [🤖 Multi-Agent System](#-multi-agent-orchestration-system) • [📦 Installation](#-installation) • [🎯 Commands](#-command-reference)
+---[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
 
----
 
-### 🎉 Latest Release: **v5.0.0** - Multi-Model AI Code Generation & Enhanced Styling
 
-**Production-Ready Specification-Driven Development with Advanced Claude Support**
+### 🎉 **v5.0.1** - Production Ready with Automated Documentation[🚀 Quick Start](#-quick-start) • [📖 What is LEO?](#-what-is-leo-workflow-kit) • [✨ Features](#-core-features) • [🤖 Multi-Agent System](#-multi-agent-orchestration-system) • [📦 Installation](#-installation) • [🎯 Commands](#-command-reference)
 
-🤖 **Multi-Model Claude Support** (3.5 Sonnet • 4 • 4.5 • Haiku) • ✨ **Beautiful ASCII Gradients** • 📋 **Spec-Driven Development** • ⚖️ **Constitutional Governance** • 🎯 **REST API + WebSocket** • 🔌 **Plugin Architecture** • ✅ **49/49 Tests (100%)**
 
-**[📋 View All Releases](#-release-history)** • **[📚 Read v5.0.0 Release Notes](docs/README.md)** • **[🚀 Quick Start Guide](docs/QUICK_START.md)** • **[🤖 Claude Integration Guide](docs/CLAUDE_MULTI_MODEL_GUIDE.md)**
 
----
+✨ **Automated Docs Organization** • 🤖 **Multi-Agent AI** • 📋 **Spec-First Development** • 🔄 **GitHub Projects Sync** • 🎯 **Pre-commit Hooks**---
 
-</div>
 
-## 📖 What is LEO Workflow Kit?
 
-**LEO Workflow Kit** is an intelligent CLI tool that revolutionizes software development workflow management. Born from real-world development challenges, LEO combines **multi-agent AI orchestration**, **spec-driven development**, **automated GitHub Projects integration**, and **intelligent workflow automation** into a single, powerful command-line interface.
+**[View Release Notes](CHANGELOG.md)** • **[Full Documentation](../../wiki)**### 🎉 Latest Release: **v5.0.0** - Multi-Model AI Code Generation & Enhanced Styling
 
-### 🎯 The Problem We Solve
 
-Modern development teams face common challenges:
 
-- ⏰ **Time-consuming setup**: Hours spent configuring GitHub Projects, labels, and templates
+---**Production-Ready Specification-Driven Development with Advanced Claude Support**
+
+
+
+</div>🤖 **Multi-Model Claude Support** (3.5 Sonnet • 4 • 4.5 • Haiku) • ✨ **Beautiful ASCII Gradients** • 📋 **Spec-Driven Development** • ⚖️ **Constitutional Governance** • 🎯 **REST API + WebSocket** • 🔌 **Plugin Architecture** • ✅ **49/49 Tests (100%)**
+
+
+
+## What is LEO?**[📋 View All Releases](#-release-history)** • **[📚 Read v5.0.0 Release Notes](docs/README.md)** • **[🚀 Quick Start Guide](docs/QUICK_START.md)** • **[🤖 Claude Integration Guide](docs/CLAUDE_MULTI_MODEL_GUIDE.md)**
+
+
+
+**LEO Workflow Kit** is an intelligent CLI that automates your GitHub workflow. It combines multi-agent AI orchestration, spec-driven development, and seamless GitHub Projects integration into one powerful tool.---
+
+
+
+### The Problem</div>
+
+
+
+- ⏰ **Hours wasted** setting up GitHub Projects, labels, and templates## 📖 What is LEO Workflow Kit?
+
+- 🔀 **Inconsistent workflows** across team members
+
+- 📝 **Poor planning** leading to rework and missed requirements**LEO Workflow Kit** is an intelligent CLI tool that revolutionizes software development workflow management. Born from real-world development challenges, LEO combines **multi-agent AI orchestration**, **spec-driven development**, **automated GitHub Projects integration**, and **intelligent workflow automation** into a single, powerful command-line interface.
+
+- 🤖 **Generic AI** that lacks domain expertise
+
+- 📊 **Manual tracking** of issues and project status### 🎯 The Problem We Solve
+
+
+
+### The SolutionModern development teams face common challenges:
+
+
+
+LEO transforms these pain points into strengths:- ⏰ **Time-consuming setup**: Hours spent configuring GitHub Projects, labels, and templates
+
 - 🔀 **Inconsistent workflows**: Each developer follows different processes
-- 📝 **Poor documentation**: Features built without proper planning
-- 🤖 **Generic AI assistance**: One-size-fits-all AI that lacks domain expertise
-- � **Manual tracking**: Constantly updating issue statuses and project boards
 
-### 💡 The LEO Solution
+| Challenge | LEO Solution | Impact |- 📝 **Poor documentation**: Features built without proper planning
 
-LEO transforms these pain points into strengths:
+|-----------|-------------|--------|- 🤖 **Generic AI assistance**: One-size-fits-all AI that lacks domain expertise
 
-| Challenge                | LEO Solution                               | Time Saved                        |
+| Manual setup | One-command initialization | **2-4 hours → 5 minutes** |- � **Manual tracking**: Constantly updating issue statuses and project boards
+
+| Generic AI | 6 specialized AI agents | **60% faster development** |
+
+| Unclear requirements | Spec-first methodology | **50% fewer issues** |### 💡 The LEO Solution
+
+| Manual updates | Auto GitHub Projects sync | **100% automated** |
+
+| Documentation chaos | Automated organization | **98/100 health score** |LEO transforms these pain points into strengths:
+
+
+
+---| Challenge                | LEO Solution                               | Time Saved                        |
+
 | ------------------------ | ------------------------------------------ | --------------------------------- |
-| Manual GitHub setup      | One-command initialization                 | **2-4 hours → 5 minutes**         |
-| Inconsistent AI guidance | Multi-agent orchestration with specialists | **60% faster development**        |
-| Unclear requirements     | Spec-first decision making                 | **50% fewer missed requirements** |
-| Manual status updates    | Automatic GitHub Projects sync             | **100% automated**                |
-| Generic best practices   | Domain-specific expertise per agent        | **Higher code quality**           |
 
-### 🌟 Why Teams Choose LEO
+## ✨ Features| Manual GitHub setup      | One-command initialization                 | **2-4 hours → 5 minutes**         |
+
+| Inconsistent AI guidance | Multi-agent orchestration with specialists | **60% faster development**        |
+
+### 🤖 Multi-Agent Orchestration| Unclear requirements     | Spec-first decision making                 | **50% fewer missed requirements** |
+
+| Manual status updates    | Automatic GitHub Projects sync             | **100% automated**                |
+
+Six specialized AI agents provide expert guidance:| Generic best practices   | Domain-specific expertise per agent        | **Higher code quality**           |
+
+
+
+```### 🌟 Why Teams Choose LEO
+
+Your Request → Orchestrator → Routes to Specialist(s)
 
 - **🤖 Multi-Agent Intelligence**: 6 specialized AI agents (Orchestrator, Frontend, Backend, DevOps, Testing, Documentation) provide expert guidance for every task
-- **� Smart Task Routing**: Orchestrator analyzes your request and routes to the right specialist(s)
-- **📋 Spec-First Methodology**: Complex features get structured planning; simple tasks move fast
-- **⚡ Lightning Setup**: Complete workflow configuration in 5 minutes vs 2-4 hours manually
-- **� Zero-Touch Automation**: Issues automatically sync with GitHub Projects, statuses update as you work
-- **🎨 Best Practices Enforced**: Component-first architecture, performance optimization, SEO excellence—built into every agent
-- **🔧 Flexibility**: Enable only the agents you need for your project type
-- **🌍 Universal Compatibility**: Works with personal repos, organizations, and any project type
 
----
+🎨 Frontend  │ UI/UX, Components, Responsive Design- **� Smart Task Routing**: Orchestrator analyzes your request and routes to the right specialist(s)
 
-## 🏗️ System Architecture
+⚙️  Backend   │ APIs, Database, Authentication, Security- **📋 Spec-First Methodology**: Complex features get structured planning; simple tasks move fast
 
-### Multi-Agent Orchestration
+🚀 DevOps    │ CI/CD, Docker, Deployment, Monitoring- **⚡ Lightning Setup**: Complete workflow configuration in 5 minutes vs 2-4 hours manually
 
-LEO v5.0.0 includes an intelligent orchestration system that routes tasks to specialized AI agents based on domain expertise. **All 6 agents are enabled by default for immediate multi-agent power:**
+🧪 Testing   │ Unit, Integration, E2E, Coverage- **� Zero-Touch Automation**: Issues automatically sync with GitHub Projects, statuses update as you work
 
-```
+📚 Docs      │ API Reference, Guides, Comments- **🎨 Best Practices Enforced**: Component-first architecture, performance optimization, SEO excellence—built into every agent
+
+🎛️  Orchestrator │ Intelligent Task Routing- **🔧 Flexibility**: Enable only the agents you need for your project type
+
+```- **🌍 Universal Compatibility**: Works with personal repos, organizations, and any project type
+
+
+
+**[Learn More →](../../wiki/Multi-Agent-System)**---
+
+
+
+### 📋 Spec-First Development## 🏗️ System Architecture
+
+
+
+Smart decision-making based on complexity:### Multi-Agent Orchestration
+
+
+
+- **Simple tasks** (< 1 day): Direct to GitHub issueLEO v5.0.0 includes an intelligent orchestration system that routes tasks to specialized AI agents based on domain expertise. **All 6 agents are enabled by default for immediate multi-agent power:**
+
+- **Complex features** (> 1 week): Create specification first
+
+- **Automatic routing**: Orchestrator decides the best path```
+
                                     Your Development Request
-                                              │
+
+**[Learn More →](../../wiki/Spec-First-Development)**                                              │
+
                                               ▼
-                        ┌──────────────────────────────────────────┐
+
+### 📁 Automated Documentation Organization                        ┌──────────────────────────────────────────┐
+
                         │      🎛️  Orchestrator Agent             │
-                        │   Analyzes Keywords, Files & Intent      │
+
+New in v5.0.1! Automatically organizes markdown files:                        │   Analyzes Keywords, Files & Intent      │
+
                         └──────────┬───────────────────────────────┘
-                                   │
-        ┌──────────────┬───────────┼───────────┬──────────────┬──────────────┐
-        │              │           │           │              │              │
+
+```bash                                   │
+
+# Organize documentation        ┌──────────────┬───────────┼───────────┬──────────────┬──────────────┐
+
+leo organize-docs        │              │           │           │              │              │
+
         ▼              ▼           ▼           ▼              ▼              ▼
-   ┌─────────┐   ┌─────────┐ ┌─────────┐ ┌─────────┐   ┌──────────┐  ┌──────────┐
-   │ 🎨 Front│   │ ⚙️ Back │ │ 🚀 Dev  │ │ 🧪 Test │   │ � Docs  │  │ 🔧 Config│
+
+# Validate organization   ┌─────────┐   ┌─────────┐ ┌─────────┐ ┌─────────┐   ┌──────────┐  ┌──────────┐
+
+leo organize-docs --validate   │ 🎨 Front│   │ ⚙️ Back │ │ 🚀 Dev  │ │ 🧪 Test │   │ � Docs  │  │ 🔧 Config│
+
    │  -end   │   │  -end   │ │  Ops    │ │  -ing   │   │          │  │          │
-   │ Expert  │   │ Expert  │ │ Expert  │ │ Expert  │   │ Expert   │  │ Manager  │
-   └─────────┘   └─────────┘ └─────────┘ └─────────┘   └──────────┘  └──────────┘
-   UI/UX         APIs        CI/CD       Quality        Guides        Settings
+
+# Enable pre-commit hook   │ Expert  │   │ Expert  │ │ Expert  │ │ Expert  │   │ Expert   │  │ Manager  │
+
+leo hooks install   └─────────┘   └─────────┘ └─────────┘ └─────────┘   └──────────┘  └──────────┘
+
+```   UI/UX         APIs        CI/CD       Quality        Guides        Settings
+
    Components    Database    Deploy      Coverage       API Docs      Projects
-```
 
-**[📊 View Full Architecture Diagram](diagrams/architecture.mmd)**
+**Features:**```
 
-### Complete System Architecture
+- Automatic file organization by type (sessions, releases, guides)
 
-<details>
+- Pre-commit hook prevents documentation clutter**[📊 View Full Architecture Diagram](diagrams/architecture.mmd)**
+
+- Health check integration (+5 points)
+
+- Configurable allowed root files### Complete System Architecture
+
+
+
+**[Learn More →](../../wiki/Documentation-Organization)**<details>
+
 <summary><b>Click to view detailed architecture diagram</b></summary>
 
+### 🔄 GitHub Projects Integration
+
 ```mermaid
-graph LR
-    CLI[CLI Entry Point] --> COMMANDS[Core Commands]
 
-    COMMANDS --> INIT[leo init]
+- ✅ One-command setup with project boards, columns, and labelsgraph LR
+
+- ✅ Automatic issue creation with proper metadata    CLI[CLI Entry Point] --> COMMANDS[Core Commands]
+
+- ✅ Status updates as you work (Todo → In Progress → Done)
+
+- ✅ Smart commit message formatting    COMMANDS --> INIT[leo init]
+
     COMMANDS --> ISSUE[leo issue]
-    COMMANDS --> AGENT[leo agent 🆕]
+
+### ⚡ Best Practices Enforcement    COMMANDS --> AGENT[leo agent 🆕]
+
     COMMANDS --> GITHUB[leo github 🆕]
-    COMMANDS --> CONFIG[leo config]
 
-    AGENT --> ORCHESTRATOR[🎛️ Orchestrator<br/>Task Router]
+- Component-first architecture    COMMANDS --> CONFIG[leo config]
 
-    ORCHESTRATOR --> ROUTING{Intelligent<br/>Routing}
+- Performance optimization
 
-    ROUTING -->|UI Tasks| FRONTEND[🎨 Frontend<br/>UI/UX Expert]
+- SEO excellence    AGENT --> ORCHESTRATOR[🎛️ Orchestrator<br/>Task Router]
+
+- Security validation
+
+- Test coverage requirements    ORCHESTRATOR --> ROUTING{Intelligent<br/>Routing}
+
+
+
+---    ROUTING -->|UI Tasks| FRONTEND[🎨 Frontend<br/>UI/UX Expert]
+
     ROUTING -->|API Tasks| BACKEND[⚙️ Backend<br/>API Expert]
-    ROUTING -->|Deploy Tasks| DEVOPS[🚀 DevOps<br/>Infrastructure]
+
+## 🚀 Quick Start    ROUTING -->|Deploy Tasks| DEVOPS[🚀 DevOps<br/>Infrastructure]
+
     ROUTING -->|Test Tasks| TESTING[🧪 Testing<br/>QA Expert]
-    ROUTING -->|Doc Tasks| DOCS[📚 Documentation<br/>Writer]
 
-    INIT --> COPILOT[GitHub Copilot<br/>Instructions]
-    INIT --> GH_PROJECTS[GitHub Projects<br/>Integration]
-    INIT --> TEMPLATES[Templates &<br/>Labels]
+### Installation    ROUTING -->|Doc Tasks| DOCS[📚 Documentation<br/>Writer]
 
-    ISSUE --> GH_PROJECTS
+
+
+```bash    INIT --> COPILOT[GitHub Copilot<br/>Instructions]
+
+npm install -g leo-workflow-kit    INIT --> GH_PROJECTS[GitHub Projects<br/>Integration]
+
+```    INIT --> TEMPLATES[Templates &<br/>Labels]
+
+
+
+### Initialize Your Project    ISSUE --> GH_PROJECTS
+
     CONFIG --> SETTINGS[.leorc.json<br/>Configuration]
 
-    style ORCHESTRATOR fill:#ff69b4
-    style FRONTEND fill:#61dafb
+```bash
+
+# Navigate to your repo    style ORCHESTRATOR fill:#ff69b4
+
+cd your-project    style FRONTEND fill:#61dafb
+
     style BACKEND fill:#68a063
-    style DEVOPS fill:#326ce5
-    style TESTING fill:#94c748
+
+# Initialize LEO    style DEVOPS fill:#326ce5
+
+leo init    style TESTING fill:#94c748
+
     style DOCS fill:#f7931e
-    style ROUTING fill:#ffd700
-            COPILOT_INST[.github/copilot-instructions.md<br/>AI Behavior Rules]
+
+# Follow interactive setup    style ROUTING fill:#ffd700
+
+```            COPILOT_INST[.github/copilot-instructions.md<br/>AI Behavior Rules]
+
             AUTO_ISSUE[Automatic Issue Creation]
-            SPEC_DECISION[Spec-First Decision]
-            AUTO_PROJECT[Project Integration]
-            AUTO_STATUS[Status Management]
-        end
-    end
 
-    CLI --> INIT
+This creates:            SPEC_DECISION[Spec-First Decision]
+
+- `.leorc.json` - Configuration file            AUTO_PROJECT[Project Integration]
+
+- `.github/copilot-instructions.md` - AI behavior rules            AUTO_STATUS[Status Management]
+
+- GitHub Project with columns and labels        end
+
+- Issue templates and workflow files    end
+
+
+
+### Basic Usage    CLI --> INIT
+
     CLI --> ISSUE
-    CLI --> AGENT
-    CLI --> GITHUB
-    CLI --> CONFIG
 
-    AGENT --> ORCHESTRATOR
-    COPILOT_INST --> ORCHESTRATOR
+```bash    CLI --> AGENT
+
+# Create an issue    CLI --> GITHUB
+
+leo issue    CLI --> CONFIG
+
+
+
+# Organize documentation    AGENT --> ORCHESTRATOR
+
+leo organize-docs    COPILOT_INST --> ORCHESTRATOR
+
     ORCHESTRATOR --> AUTO_ISSUE
-    AUTO_ISSUE --> SPEC_DECISION
-    SPEC_DECISION --> AUTO_PROJECT
+
+# Check project health    AUTO_ISSUE --> SPEC_DECISION
+
+leo health    SPEC_DECISION --> AUTO_PROJECT
+
     AUTO_PROJECT --> AUTO_STATUS
 
-    style CLI fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
-    style ORCHESTRATOR fill:#E91E63,stroke:#880E4F,stroke-width:3px,color:#fff
-    style FRONTEND fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+# Enable/disable agents
+
+leo agent list    style CLI fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
+
+leo agent enable frontend    style ORCHESTRATOR fill:#E91E63,stroke:#880E4F,stroke-width:3px,color:#fff
+
+leo agent disable testing    style FRONTEND fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+
     style BACKEND fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
-    style DEVOPS fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
-    style TESTING fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+
+# Configure settings    style DEVOPS fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+
+leo config    style TESTING fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+
     style DOCS fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
-```
 
-</details>
+# View all commands```
 
-**💡 Learn More:** See [diagrams/README.md](diagrams/README.md) for viewing options and diagram guidelines
+leo --help
 
----
+```</details>
 
-## 🔄 Intelligent Workflow
 
-### Spec-First Decision Making with Multi-Agent Coordination
 
-LEO intelligently decides when to create specifications vs direct issues, then routes work to the appropriate specialized agents:
+---**💡 Learn More:** See [diagrams/README.md](diagrams/README.md) for viewing options and diagram guidelines
 
-```mermaid
-graph LR
-    START([👤 User Request]) --> ORCH[🎛️ Orchestrator<br/>Analyzes Task]
 
-    ORCH --> ROUTE{Route to<br/>Agent}
+
+## 📚 Documentation---
+
+
+
+### Essential Guides## 🔄 Intelligent Workflow
+
+
+
+- **[Getting Started](../../wiki/Getting-Started)** - Step-by-step setup### Spec-First Decision Making with Multi-Agent Coordination
+
+- **[Multi-Agent System](../../wiki/Multi-Agent-System)** - How AI agents work together
+
+- **[Spec-First Development](../../wiki/Spec-First-Development)** - Specification workflowLEO intelligently decides when to create specifications vs direct issues, then routes work to the appropriate specialized agents:
+
+- **[GitHub Integration](../../wiki/GitHub-Integration)** - Projects and automation
+
+- **[Configuration Guide](../../wiki/Configuration)** - Customize LEO for your project```mermaid
+
+- **[Documentation Organization](../../wiki/Documentation-Organization)** - Keep docs cleangraph LR
+
+- **[CLI Reference](../../wiki/CLI-Reference)** - All commands and options    START([👤 User Request]) --> ORCH[🎛️ Orchestrator<br/>Analyzes Task]
+
+
+
+### Advanced Topics    ORCH --> ROUTE{Route to<br/>Agent}
+
     ROUTE -->|UI| FE[🎨 Frontend]
-    ROUTE -->|API| BE[⚙️ Backend]
-    ROUTE -->|Multi| MULTI[🔄 Coordinate]
 
-    FE --> COMPLEX{Complexity?}
+- **[Plugin Development](../../wiki/Plugin-Development)** - Extend LEO with plugins    ROUTE -->|API| BE[⚙️ Backend]
+
+- **[REST API](../../wiki/REST-API)** - HTTP + WebSocket server    ROUTE -->|Multi| MULTI[🔄 Coordinate]
+
+- **[Constitutional Governance](../../wiki/Constitutional-Governance)** - Spec validation rules
+
+- **[Architecture](../../wiki/Architecture)** - System design and diagrams    FE --> COMPLEX{Complexity?}
+
     BE --> COMPLEX
-    MULTI --> COMPLEX
 
-    COMPLEX -->|< 1 day| ISSUE[📝 Create Issue]
-    COMPLEX -->|> 1 week| SPEC[� Create Spec]
+### Resources    MULTI --> COMPLEX
 
-    SPEC --> APPROVE{Approved?}
+
+
+- **[Troubleshooting](../../wiki/Troubleshooting)** - Common issues and solutions    COMPLEX -->|< 1 day| ISSUE[📝 Create Issue]
+
+- **[FAQ](../../wiki/FAQ)** - Frequently asked questions    COMPLEX -->|> 1 week| SPEC[� Create Spec]
+
+- **[Changelog](CHANGELOG.md)** - Release history
+
+- **[Contributing](CONTRIBUTING.md)** - How to contribute    SPEC --> APPROVE{Approved?}
+
     APPROVE -->|Yes| BREAKDOWN[Split Issues]
-    APPROVE -->|No| SPEC
+
+---    APPROVE -->|No| SPEC
+
     BREAKDOWN --> ISSUE
 
-    ISSUE --> CONFIG{auto-resolve?}
-    CONFIG -->|Yes| WORK[🚀 Start Work]
-    CONFIG -->|No| WAIT[⏸️ Wait Review]
-    WAIT --> WORK
+## 💡 Examples
 
-    WORK --> STATUS[📊 In Progress]
-    STATUS --> PR[Pull Request]
+    ISSUE --> CONFIG{auto-resolve?}
+
+### Multi-Agent Task Routing    CONFIG -->|Yes| WORK[🚀 Start Work]
+
+    CONFIG -->|No| WAIT[⏸️ Wait Review]
+
+```bash    WAIT --> WORK
+
+# Frontend task (UI component)
+
+"Add a dark mode toggle to the header"    WORK --> STATUS[📊 In Progress]
+
+→ Routed to Frontend Agent → Creates component with accessibility    STATUS --> PR[Pull Request]
+
     PR --> MERGE[✅ Done]
 
-    style START fill:#4CAF50
-    style ORCH fill:#E91E63
+# Backend task (API endpoint)
+
+"Add OAuth2 authentication with Google"    style START fill:#4CAF50
+
+→ Routed to Backend Agent → Creates secure endpoints    style ORCH fill:#E91E63
+
     style FE fill:#00BCD4
-    style BE fill:#00BCD4
-    style MULTI fill:#FF9800
-    style SPEC fill:#FF9800
-    style WORK fill:#4CAF50
-    style MERGE fill:#4CAF50
-```
 
-**[🔄 View Complete Workflow Diagram](diagrams/workflow.mmd)**
+# Multi-agent task    style BE fill:#00BCD4
 
-### Workflow Benefits
+"Add user login with social auth and responsive UI"    style MULTI fill:#FF9800
 
-| Stage                        | Benefit                              | Impact                          |
-| ---------------------------- | ------------------------------------ | ------------------------------- |
-| **Request Analysis**         | Orchestrator understands intent      | Routes to right expert(s)       |
-| **Task Classification**      | Smart complexity estimation          | Right process for right task    |
-| **Spec Creation**            | Structured planning for complex work | 50% fewer missed requirements   |
-| **Multi-Agent Coordination** | Specialists collaborate              | Higher quality, faster delivery |
-| **Auto-Resolution**          | Optional immediate work start        | 60% faster simple tasks         |
+→ Backend Agent: OAuth2 setup    style SPEC fill:#FF9800
+
+→ Frontend Agent: Login form UI    style WORK fill:#4CAF50
+
+→ Testing Agent: Auth flow tests    style MERGE fill:#4CAF50
+
+``````
+
+
+
+### Spec-First Workflow**[🔄 View Complete Workflow Diagram](diagrams/workflow.mmd)**
+
+
+
+```bash### Workflow Benefits
+
+# Complex feature request
+
+"Build an admin dashboard with analytics"| Stage                        | Benefit                              | Impact                          |
+
+→ Orchestrator detects complexity (> 1 week)| ---------------------------- | ------------------------------------ | ------------------------------- |
+
+→ Creates specification in docs/specs/| **Request Analysis**         | Orchestrator understands intent      | Routes to right expert(s)       |
+
+→ User reviews and approves spec| **Task Classification**      | Smart complexity estimation          | Right process for right task    |
+
+→ Breaks down into multiple issues| **Spec Creation**            | Structured planning for complex work | 50% fewer missed requirements   |
+
+→ Agents implement incrementally| **Multi-Agent Coordination** | Specialists collaborate              | Higher quality, faster delivery |
+
+```| **Auto-Resolution**          | Optional immediate work start        | 60% faster simple tasks         |
+
 | **Status Automation**        | Zero-touch GitHub Projects sync      | 100% tracking accuracy          |
+
+### Documentation Organization
 
 **💡 Key Insight:** Simple tasks (< 1 day) go straight to issues. Complex features (> 1 week) get specs for planning and approval before breaking into focused issues.
 
----
+```bash
+
+# Before: 45+ markdown files in root (unprofessional)---
+
+# After: Organized structure
 
 ## 🚀 Quick Start
 
-Get your entire workflow up and running in **5 minutes**:
+docs/
 
-```bash
-# Step 1: Install LEO globally
-npm install -g leo-workflow-kit
+  sessions/2025-10/     # Session summariesGet your entire workflow up and running in **5 minutes**:
 
-# Step 2: Navigate to your project
-cd your-project
+  releases/             # Release notes
 
-# Step 3: Initialize the complete workflow
+  guides/               # How-to guides```bash
+
+  phases/               # Project phases# Step 1: Install LEO globally
+
+  stories/              # User storiesnpm install -g leo-workflow-kit
+
+
+
+# Root: Only essential files (README, CHANGELOG, etc.)# Step 2: Navigate to your project
+
+```cd your-project
+
+
+
+---# Step 3: Initialize the complete workflow
+
 leo init
-```
 
-**That's it!** 🎉 Your project now has:
+## 🔧 Configuration```
 
-✅ **Documentation structure** (`docs/specs/` for planning)
-✅ **8 professional issue templates** (bug, feature, docs, deployment, etc.)
-✅ **22+ GitHub labels** (priorities, types, statuses, components)
-✅ **Multi-agent AI instructions** (specialized domain experts)
-✅ **VS Code configuration** (optimized settings + extensions)
-✅ **GitHub Projects integration** (automated tracking)
-✅ **Spec-first workflow** (intelligent complexity detection)
 
-### What Happens Next?
 
-1. **Create your first issue:**
+Configure LEO via `.leorc.json`:**That's it!** 🎉 Your project now has:
 
-   ```bash
-   leo issue
-   ```
 
-   Choose from 8 templates, LEO creates the GitHub issue automatically
 
-2. **Let AI analyze complexity:**
+```json✅ **Documentation structure** (`docs/specs/` for planning)
 
-   - **Simple task?** → Direct issue creation, ready to work
+{✅ **8 professional issue templates** (bug, feature, docs, deployment, etc.)
+
+  "github": {✅ **22+ GitHub labels** (priorities, types, statuses, components)
+
+    "project": "My Project",✅ **Multi-agent AI instructions** (specialized domain experts)
+
+    "owner": "username"✅ **VS Code configuration** (optimized settings + extensions)
+
+  },✅ **GitHub Projects integration** (automated tracking)
+
+  "agents": {✅ **Spec-first workflow** (intelligent complexity detection)
+
+    "enabled": ["orchestrator", "frontend", "backend"],
+
+    "auto-resolve": true### What Happens Next?
+
+  },
+
+  "documentation": {1. **Create your first issue:**
+
+    "enforce-organization": true,
+
+    "allowed-root-files": ["README.md", "CHANGELOG.md", "LICENSE"],   ```bash
+
+    "root-files-max": 5   leo issue
+
+  },   ```
+
+  "specs": {
+
+    "directory": "docs/specs",   Choose from 8 templates, LEO creates the GitHub issue automatically
+
+    "template": "default"
+
+  }2. **Let AI analyze complexity:**
+
+}
+
+```   - **Simple task?** → Direct issue creation, ready to work
+
    - **Complex feature?** → Spec file created for review first
+
+**[Full Configuration Reference →](../../wiki/Configuration)**
 
 3. **Enable agents you need:**
 
-   ```bash
-   leo agent enable frontend backend testing
-   ```
-
-4. **Work naturally:**
-   - Make commits → Statuses auto-update
-   - Merge PRs → Issues auto-close
-   - Zero manual tracking! 🎯
-
 ---
 
-## ✨ Core Features
+   ```bash
 
-### 🎉 Latest Release: **v5.0.0** - Agents Enabled by Default
+## 🧪 Testing   leo agent enable frontend backend testing
+
+   ```
+
+LEO has comprehensive test coverage:
+
+4. **Work naturally:**
+
+```bash   - Make commits → Statuses auto-update
+
+npm test              # Run all tests   - Merge PRs → Issues auto-close
+
+npm run test:watch   # Watch mode   - Zero manual tracking! 🎯
+
+npm run test:model   # Model selection tests only
+
+```---
+
+
+
+**Current Status:**## ✨ Core Features
+
+- ✅ 462 tests passing
+
+- ⚠️ 59 tests in progress### 🎉 Latest Release: **v5.0.0** - Agents Enabled by Default
+
+- 📊 Improving test coverage to 80%+
 
 **NEW:** All 6 specialized agents are now enabled by default! Better installation experience with improved UI.
 
+---
+
 **What's New in v5.0.0:**
 
+## 🤝 Contributing
+
 - ✅ **All agents enabled by default** - Full multi-agent power immediately after installation
-- ✅ **Improved installation UI** - "Unselect agents you don't need" instead of "select what you want"
+
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:- ✅ **Improved installation UI** - "Unselect agents you don't need" instead of "select what you want"
+
 - ✅ **Better documentation** - Comprehensive Multi-Agent Configuration guide
-- ✅ **Faster onboarding** - No need to manually enable agents anymore
-- ✅ **Fully customizable** - Users can still disable specific agents if needed
 
-**Before:**
+- Code of Conduct- ✅ **Faster onboarding** - No need to manually enable agents anymore
+
+- Development setup- ✅ **Fully customizable** - Users can still disable specific agents if needed
+
+- Pull request process
+
+- Coding standards**Before:**
+
+- Testing requirements
 
 ```
-"Which specialized agents would you like to enable?"
+
+**Quick Contribution:**"Which specialized agents would you like to enable?"
+
   ☐ Frontend Agent...     (need to select)
-  ☐ Backend Agent...      (need to select)
-```
+
+```bash  ☐ Backend Agent...      (need to select)
+
+# Fork and clone```
+
+git clone https://github.com/YOUR_USERNAME/leo-kit.git
 
 **After (v5.0.0):**
 
-```
+# Install dependencies
+
+npm install```
+
 "Keep these agents enabled (unselect to disable):"
-  ◉ Frontend Agent...     (ready to use)
-  ◉ Backend Agent...      (ready to use)
+
+# Create feature branch  ◉ Frontend Agent...     (ready to use)
+
+git checkout -b feature/amazing-feature  ◉ Backend Agent...      (ready to use)
+
 ```
 
-**[📖 Read v5.0.0 Installation Guide](wiki/Installation-Guide.md)** • **[📋 View Detailed Changes](AGENTS_DEFAULT_ENABLED_UPDATE.md)**
+# Make changes and test
 
----
+npm test**[📖 Read v5.0.0 Installation Guide](wiki/Installation-Guide.md)** • **[📋 View Detailed Changes](AGENTS_DEFAULT_ENABLED_UPDATE.md)**
+
+
+
+# Commit with conventional commits---
+
+git commit -m "feat: add amazing feature"
 
 ## ✨ Core Features
 
-### 🤖 Multi-Agent AI Orchestration
+# Push and create PR
+
+git push origin feature/amazing-feature### 🤖 Multi-Agent AI Orchestration
+
+```
 
 **6 specialized AI agents** provide expert guidance for every aspect of development:
 
+---
+
 | Agent                | Expertise                                 | Status in v5.0.0      | Use Cases                                |
-| -------------------- | ----------------------------------------- | --------------------- | ---------------------------------------- |
+
+## 📊 Project Status| -------------------- | ----------------------------------------- | --------------------- | ---------------------------------------- |
+
 | 🎛️ **Orchestrator**  | Task routing & coordination               | ✅ Always enabled     | All requests (always active)             |
-| 🎨 **Frontend**      | UI/UX, components, styling, accessibility | ✅ Enabled by default | React components, CSS, responsive design |
+
+### Current Release: v5.0.1| 🎨 **Frontend**      | UI/UX, components, styling, accessibility | ✅ Enabled by default | React components, CSS, responsive design |
+
 | ⚙️ **Backend**       | APIs, databases, auth, security           | ✅ Enabled by default | REST APIs, GraphQL, authentication       |
-| 🚀 **DevOps**        | CI/CD, Docker, infrastructure             | ✅ Enabled by default | Deployments, containers, monitoring      |
-| 🧪 **Testing**       | Unit/integration/E2E tests, TDD           | ✅ Enabled by default | Test suites, mocks, coverage             |
-| 📚 **Documentation** | README, API docs, guides                  | ✅ Enabled by default | Markdown docs, JSDoc, tutorials          |
 
-**Benefits:**
+**Key Features:**| 🚀 **DevOps**        | CI/CD, Docker, infrastructure             | ✅ Enabled by default | Deployments, containers, monitoring      |
 
-- ✅ **All agents ready immediately** - No need to select individual agents
-- ✅ **Domain Expertise** - Specialists produce higher quality code
+- ✅ Automated documentation organization| 🧪 **Testing**       | Unit/integration/E2E tests, TDD           | ✅ Enabled by default | Test suites, mocks, coverage             |
+
+- ✅ Pre-commit hooks for docs| 📚 **Documentation** | README, API docs, guides                  | ✅ Enabled by default | Markdown docs, JSDoc, tutorials          |
+
+- ✅ Health check integration
+
+- ✅ Multi-agent orchestration (6 agents)**Benefits:**
+
+- ✅ Spec-first development
+
+- ✅ GitHub Projects automation- ✅ **All agents ready immediately** - No need to select individual agents
+
+- ✅ Configuration management- ✅ **Domain Expertise** - Specialists produce higher quality code
+
 - ✅ **Faster Responses** - Smaller, focused instruction sets
-- ✅ **Flexible** - Disable only agents you don't need
-- ✅ **Coordinated** - Complex tasks automatically handled by multiple agents
 
-**[📖 Read Multi-Agent System Guide](docs/guides/multi-agent-system.md)** • **[🎯 Agent Customization](wiki/Installation-Guide.md#-multi-agent-configuration)**
+**In Progress:**- ✅ **Flexible** - Disable only agents you don't need
 
-**NEW:** Automatic AI model selection for optimal performance and cost efficiency!
+- 🔨 Test coverage improvements (59 remaining)- ✅ **Coordinated** - Complex tasks automatically handled by multiple agents
 
-LEO intelligently selects the best AI model for each task based on:
+- 🔨 Enhanced error handling
 
-- **Agent Role**: Different agents prefer different models
+- 🔨 Performance optimizations**[📖 Read Multi-Agent System Guide](docs/guides/multi-agent-system.md)** • **[🎯 Agent Customization](wiki/Installation-Guide.md#-multi-agent-configuration)**
+
+
+
+**Upcoming (v5.1.0):****NEW:** Automatic AI model selection for optimal performance and cost efficiency!
+
+- 🎯 Advanced model selection strategies
+
+- 🎯 Cost tracking and budgetsLEO intelligently selects the best AI model for each task based on:
+
+- 🎯 Team collaboration features
+
+- 🎯 Slack integration- **Agent Role**: Different agents prefer different models
+
 - **Task Complexity**: Simple tasks use cost-efficient models, complex tasks use powerful models
-- **Development Phase**: Development uses cost-optimized models, production uses performance models
 
-#### Supported Models
+**[View Roadmap →](../../wiki/Roadmap)**- **Development Phase**: Development uses cost-optimized models, production uses performance models
 
-| Model           | Provider  | Tier     | Best For                        | Cost |
+
+
+---#### Supported Models
+
+
+
+## 📝 License| Model           | Provider  | Tier     | Best For                        | Cost |
+
 | --------------- | --------- | -------- | ------------------------------- | ---- |
-| GPT-4           | OpenAI    | Premium  | Complex reasoning, architecture | $$$  |
+
+MIT © [Leo Pagotto](https://github.com/leonpagotto)| GPT-4           | OpenAI    | Premium  | Complex reasoning, architecture | $$$  |
+
 | GPT-4-turbo     | OpenAI    | High     | Fast complex tasks              | $$   |
-| GPT-3.5-turbo   | OpenAI    | Standard | General development             | $    |
+
+See [LICENSE](LICENSE) for details.| GPT-3.5-turbo   | OpenAI    | Standard | General development             | $    |
+
 | Claude-3-opus   | Anthropic | Premium  | Backend architecture, security  | $$$  |
-| Claude-3-sonnet | Anthropic | High     | Frontend code generation        | $$   |
+
+---| Claude-3-sonnet | Anthropic | High     | Frontend code generation        | $$   |
+
 | Claude-3-haiku  | Anthropic | Standard | Documentation, simple tasks     | $    |
+
+## 🙏 Acknowledgments
 
 #### Quick Commands
 
-```bash
-# View all models and their status
-leo model list
+Built with:
 
-# Check current usage and budgets
+- [Commander.js](https://github.com/tj/commander.js) - CLI framework```bash
+
+- [Inquirer.js](https://github.com/SBoudrias/Inquirer.js) - Interactive prompts# View all models and their status
+
+- [GitHub CLI](https://cli.github.com/) - GitHub integrationleo model list
+
+- [Chalk](https://github.com/chalk/chalk) - Terminal styling
+
+- [Jest](https://jestjs.io/) - Testing framework# Check current usage and budgets
+
 leo model status
 
+Special thanks to all [contributors](https://github.com/leonpagotto/leo-kit/graphs/contributors)!
+
 # Test model selection
-leo model test frontend complex
 
-# Configure budgets
+---leo model test frontend complex
+
+
+
+## 📞 Support# Configure budgets
+
 leo model budget daily 10
-leo model budget monthly 100
-```
 
-#### Budget Control
+- 💬 [GitHub Discussions](https://github.com/leonpagotto/leo-kit/discussions) - Community Q&Aleo model budget monthly 100
 
-LEO enforces spending limits to prevent unexpected costs:
+- 🐛 [Issue Tracker](https://github.com/leonpagotto/leo-kit/issues) - Bug reports and feature requests```
 
-- **Daily Budget**: $5 (default) - Resets every 24 hours
+- 📖 [Wiki](../../wiki) - Full documentation
+
+- 📧 Contact: [GitHub](https://github.com/leonpagotto)#### Budget Control
+
+
+
+---LEO enforces spending limits to prevent unexpected costs:
+
+
+
+<div align="center">- **Daily Budget**: $5 (default) - Resets every 24 hours
+
 - **Monthly Budget**: $50 (default) - Resets on 1st of each month
-- **Per-Agent Budget**: $10 (default) - Tracks spending per agent
 
-When budgets are exceeded, LEO automatically falls back to cost-efficient models.
+**Made with ❤️ for developers who value automation and best practices**- **Per-Agent Budget**: $10 (default) - Tracks spending per agent
 
-**Benefits:**
+
+
+**[⭐ Star this repo](https://github.com/leonpagotto/leo-kit)** if LEO helps your workflow!When budgets are exceeded, LEO automatically falls back to cost-efficient models.
+
+
+
+</div>**Benefits:**
+
 
 - ✅ **Cost Efficient** - Don't waste money on GPT-4 for simple tasks
 - ✅ **Smart Selection** - Right model for the right job
