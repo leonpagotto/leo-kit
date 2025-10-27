@@ -17,7 +17,7 @@
 
 ### 🎉 **v5.2.0** - Phase 2 Complete: Spec-First Development System
 
-✨ **Dual-Mode Tasks** • 📊 **Spec Evolution Tracking** • � **Spec Extensions** • 🤖 **GitHub-Native Specs** • 🎯 **Complete Workflow**
+✨ **Dual-Mode Tasks** • 📊 **Spec Evolution Tracking** • 🔧 **Spec Extensions** • 🤖 **GitHub-Native Specs** • 🎯 **Complete Workflow**
 
 **[View Release Notes](CHANGELOG.md#520---2025-10-27)** • **[Full Documentation](../../wiki)**
 

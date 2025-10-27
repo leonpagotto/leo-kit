@@ -92,12 +92,16 @@ graph TB
         end
 
         subgraph "GitHub Copilot Integration"
-            COPILOT_INST[.github/copilot-instructions.md<br/>AI Behavior Rules]
-            AUTO_ISSUE[Automatic Issue Creation<br/>Detects Work Intent]
-            SPEC_DECISION[Spec-First Decision<br/>Complex vs Simple]
-            AUTO_RESOLVE[Auto Resolution<br/>Configurable]
-            AUTO_PROJECT[Project Integration<br/>Auto-add to Boards]
-            AUTO_STATUS[Status Management<br/>Todo → In Progress → Done]
+            COPILOT_INST[.github/copilot-instructions.md<br/>AI Behavior Rules<br/>📋 Configuration File]
+            
+            subgraph "Orchestrator Workflow (Applies Rules Above)"
+                AUTO_ISSUE[Step 1: Auto Issue Creation<br/>Detects Work Intent]
+                SPEC_DECISION[Step 2: Spec-First Decision<br/>Complex vs Simple]
+                TASK_ROUTE[Step 3: Task Routing<br/>Route to Specialist Agent]
+                AUTO_RESOLVE[Step 4: Auto Resolution Check<br/>Start Now or Wait?]
+                AUTO_PROJECT[Step 5: Project Integration<br/>Auto-add to Board]
+                AUTO_STATUS[Step 6: Status Management<br/>Todo → In Progress → Done]
+            end
         end
     end
 
@@ -128,14 +132,17 @@ graph TB
     ISSUE --> GH
 
     AI_OUTPUT --> COPILOT_INST
-    COPILOT_INST --> ORCHESTRATOR
-    COPILOT_INST --> AUTO_ISSUE
+    COPILOT_INST -.->|Configures| ORCHESTRATOR
+    ORCHESTRATOR --> AUTO_ISSUE
     AUTO_ISSUE --> SPEC_DECISION
-    SPEC_DECISION -->|Complex| SPECS
-    SPEC_DECISION -->|Simple| AUTO_RESOLVE
-    SPECS --> AUTO_RESOLVE
+    SPEC_DECISION -->|Complex >1wk| SPECS
+    SPEC_DECISION -->|Simple| TASK_ROUTE
+    SPECS -->|After Approval| TASK_ROUTE
+    TASK_ROUTE --> AGENT_ROUTING
+    TASK_ROUTE --> AUTO_RESOLVE
     AUTO_RESOLVE -->|Enabled| AUTO_PROJECT
     AUTO_RESOLVE -->|Disabled| WAIT[Wait for User Review]
+    WAIT -->|Approved| AUTO_PROJECT
     AUTO_PROJECT --> AUTO_STATUS
 
     CONFIG_MGR -.->|Checks Config| AUTO_RESOLVE
@@ -171,9 +178,10 @@ graph TB
     style CONFIG fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
     style CONFIG_MGR fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
     style AGENT_CONFIG fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
-    style COPILOT_INST fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    style COPILOT_INST fill:#FFC107,stroke:#F57F17,stroke-width:3px,color:#000
     style AUTO_ISSUE fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
     style SPEC_DECISION fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    style TASK_ROUTE fill:#E91E63,stroke:#880E4F,stroke-width:2px,color:#fff
     style AUTO_RESOLVE fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
     style AUTO_PROJECT fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
     style AUTO_STATUS fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
