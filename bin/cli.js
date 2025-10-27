@@ -443,6 +443,62 @@ program
     }
   });
 
+// Tasks command - Generate task checklists from plans (Phase 2: Task Management)
+program
+  .command('tasks <action> [issue-number]')
+  .description('Manage implementation task checklists (create, status)')
+  .option('--no-post', 'Don\'t post tasks to GitHub (just show them)')
+  .option('--no-label', 'Don\'t add has-tasks label')
+  .option('--no-tdd', 'Disable TDD mode (tests before implementation)')
+  .action(async (action, issueNumber, options) => {
+    const TaskManager = require('../lib/tasks');
+    const manager = new TaskManager();
+
+    try {
+      if (action === 'create') {
+        if (!issueNumber) {
+          console.log(chalk.red('\n❌ Please provide an issue number'));
+          console.log(chalk.gray('\nUsage: ') + chalk.cyan('leo tasks create <issue-number>'));
+          return;
+        }
+
+        const result = await manager.create(issueNumber, {
+          autoPost: options.post !== false,
+          addLabel: options.label !== false,
+          tddMode: options.tdd !== false
+        });
+
+        if (!options.post) {
+          console.log(chalk.cyan('\n📋 Generated Tasks:\n'));
+          console.log(result.comment);
+          console.log(chalk.gray('\nTo post these tasks, run without --no-post flag'));
+        }
+
+      } else if (action === 'status') {
+        if (!issueNumber) {
+          console.log(chalk.red('\n❌ Please provide an issue number'));
+          console.log(chalk.gray('\nUsage: ') + chalk.cyan('leo tasks status <issue-number>'));
+          return;
+        }
+
+        await manager.status(issueNumber);
+
+      } else {
+        console.log(chalk.red(`\n❌ Unknown action: ${action}`));
+        console.log(chalk.gray('\nAvailable actions:'));
+        console.log(chalk.gray('  create <issue>  - Generate task checklist from plan'));
+        console.log(chalk.gray('  status <issue>  - Show task completion status\n'));
+        console.log(chalk.gray('\nExamples:'));
+        console.log(chalk.cyan('  leo tasks create 42'));
+        console.log(chalk.cyan('  leo tasks status 42\n'));
+      }
+    } catch (error) {
+      console.error(chalk.red(`\n❌ Error:`, error.message));
+      if (process.env.DEBUG) console.error(error);
+      process.exit(1);
+    }
+  });
+
 // Dashboard command - Start real-time API server
 program
   .command('dashboard')
