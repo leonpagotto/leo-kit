@@ -562,6 +562,97 @@ leo config
 leo --help
 \`\`\`
 
+### Spec-First Commands
+
+**Create Specifications:**
+\`\`\`bash
+leo spec new "Build user dashboard"
+
+# Creates GitHub issue with structured spec template
+
+# Includes: Requirements, User Stories, Acceptance Criteria
+
+\`\`\`
+
+**Clarify Requirements:**
+\`\`\`bash
+leo clarify 42
+
+# AI asks clarifying questions
+
+# Updates spec with answers
+
+\`\`\`
+
+**Generate Implementation Plan:**
+\`\`\`bash
+leo plan 42
+
+# Creates step-by-step task checklist
+
+# Adds to spec issue body
+
+\`\`\`
+
+**Task Management (Dual-Mode):**
+\`\`\`bash
+
+# Checklist mode (default) - tasks stay in spec
+
+leo tasks create 42
+
+# Child issues mode - tasks become separate issues
+
+leo tasks create 42 --create-issues
+
+# Check progress
+
+leo tasks status 42
+
+# Shows: 5/10 completed (50%)
+
+\`\`\`
+
+**Track Spec Evolution:**
+\`\`\`bash
+
+# Standard diff view
+
+leo spec-diff 42
+
+# Chronological timeline
+
+leo spec-diff 42 --timeline
+
+# Aggregate statistics
+
+leo spec-diff 42 --summary
+
+# Version range comparison
+
+leo spec-diff 42 --from 2 --to 5
+
+# Section-specific diff
+
+leo spec-diff 42 --section requirements
+\`\`\`
+
+**Extend Specifications:**
+\`\`\`bash
+
+# Basic extension (merge new requirements)
+
+leo spec-extend 42 "Add Slack notifications"
+
+# With child issues for the new work
+
+leo spec-extend 42 "Add OAuth2" --create-issues
+
+# Preview without updating
+
+leo spec-extend 42 "Add mobile app" --no-update
+\`\`\`
+
 ---
 
 ## 📚 Documentation
@@ -620,14 +711,40 @@ leo --help
 
 \`\`\`bash
 
-# Complex feature request
+# 1. Create specification issue (GitHub-native, no files!)
 
-"Build an admin dashboard with analytics"
-→ Orchestrator detects complexity (> 1 week)
-→ Creates specification in docs/specs/
-→ User reviews and approves spec
-→ Breaks down into multiple issues
-→ Agents implement incrementally
+leo spec new "Build user authentication system"
+→ Creates GitHub issue with structured template
+
+# 2. Clarify requirements (AI asks questions)
+
+leo clarify 42
+→ Updates spec with clarifications
+
+# 3. Generate implementation plan
+
+leo plan 42
+→ Creates task checklist in spec
+
+# 4. Create child issues for parallel work (optional)
+
+leo tasks create 42 --create-issues
+→ Converts tasks into separate GitHub issues
+
+# 5. Track evolution as spec changes
+
+leo spec-diff 42 --timeline
+→ Shows all versions with timestamps
+
+# 6. Extend with new requirements
+
+leo spec-extend 42 "Add OAuth2 support"
+→ Merges new requirements (preserves existing)
+
+# Complete workflow: spec → clarify → plan → tasks → track → extend
+
+# All operations on GitHub issues (no files, no commits)
+
 \`\`\`
 
 ### Documentation Organization

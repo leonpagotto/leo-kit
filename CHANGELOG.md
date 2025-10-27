@@ -6,6 +6,134 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.2.0] - 2025-10-27
+
+### 🎯 Phase 2 Complete: Spec-First Development System
+
+#### Overview
+
+Complete GitHub-native specification workflow with evolution tracking, extensions, and dual-mode task management. Specifications live as GitHub issues (not files) for faster iteration, real-time collaboration, and seamless integration with project boards.
+
+#### New Features
+
+##### Dual-Mode Task Management (Days 8-9)
+
+- ✅ **`leo tasks create <issue>`**: Convert spec plan into checklist (default mode)
+- ✅ **`leo tasks create <issue> --create-issues`**: Create child GitHub issues for parallel work
+- ✅ **`leo tasks status <issue>`**: Track completion percentage and remaining work
+- ✅ **Automatic Label Management**: Creates task, subtask labels if missing
+- ✅ **Parent-Child Linking**: Child issues reference parent spec
+- ✅ **Smart Mode Selection**: Checklist for small teams, child issues for parallel work
+
+**Impact**: Teams can choose workflow that fits their size (solo → checklist, team → child issues)
+
+##### Spec Evolution Tracking (Days 10-11)
+
+- ✅ **`leo spec-diff <issue>`**: Color-coded diff view (green=added, red=removed)
+- ✅ **`--timeline`**: Chronological history with timestamps and authors
+- ✅ **`--summary`**: Aggregate statistics (items added/removed, sections modified)
+- ✅ **`--from <version> --to <version>`**: Compare specific version ranges
+- ✅ **`--section <name>`**: Filter by section (requirements, user-stories, acceptance-criteria)
+- ✅ **`--max-length <chars>`**: Control text truncation
+- ✅ **GitHub Timeline API**: Parse issue edit history (no git diff needed)
+- ✅ **Version Numbering**: Automatic version tracking across edits
+
+**Impact**: See how requirements evolved, who changed what, when changes happened
+
+##### Spec Extensions (Days 12-13)
+
+- ✅ **`leo spec-extend <issue> <description>`**: Add new requirements to existing specs
+- ✅ **`--create-issues`**: Automatically create child issues for extension work
+- ✅ **`--no-update`**: Preview mode (show what would be added)
+- ✅ **`--no-track-history`**: Skip extension history comment
+- ✅ **Additive Merge**: Preserves all existing content (never overwrites)
+- ✅ **Extension History**: Track all extensions with timestamps
+- ✅ **Auto-Label Creation**: Creates extension, spec-extension labels
+- ✅ **AI-Generated Content**: Requirements, user stories, acceptance criteria
+
+**Impact**: Evolve specs without recreating them, track extension history
+
+#### Documentation
+
+- ✅ **docs/SPEC_DIFF_GUIDE.md**: 650+ lines, 68 sections, comprehensive guide
+- ✅ **README.md Updates**: LEO vs Spec Kit comparison table, command documentation
+- ✅ **Phase Completion Docs**: docs/phases/PHASE_2_DAYS_10-11_COMPLETE.md
+
+#### Why Specs as Issues? (vs File-Based)
+
+| **LEO (GitHub-Native)** | **File-Based Tools** |
+|-------------------------|----------------------|
+| ✅ Edit in browser | ❌ Requires Git/editor |
+| ✅ Real-time comments | ❌ Pull request delays |
+| ✅ Project board integration | ❌ Manual tracking |
+| ✅ No merge conflicts | ❌ Git conflicts on specs |
+| ✅ Fast iteration (<1 min) | ❌ Slower (commit→push) |
+| ✅ Non-technical stakeholders | ❌ Technical users only |
+
+#### New Commands
+
+```bash
+# Task management
+leo tasks create 42                      # Checklist mode
+leo tasks create 42 --create-issues      # Child issues mode
+leo tasks status 42                      # Progress tracking
+
+# Evolution tracking
+leo spec-diff 42                         # Standard diff
+leo spec-diff 42 --timeline              # History view
+leo spec-diff 42 --summary               # Statistics
+leo spec-diff 42 --from 2 --to 5         # Version range
+leo spec-diff 42 --section requirements  # Section filter
+
+# Spec extensions
+leo spec-extend 42 "Add OAuth2"                # Basic extension
+leo spec-extend 42 "Add Slack" --create-issues # With child issues
+leo spec-extend 42 "Add mobile" --no-update    # Preview mode
+```
+
+#### Complete Workflow Example
+
+```bash
+# 1. Create spec
+leo spec new "Build authentication system"
+
+# 2. Clarify requirements
+leo clarify 42
+
+# 3. Generate plan
+leo plan 42
+
+# 4. Create tasks (choose mode)
+leo tasks create 42 --create-issues  # Team: parallel work
+# OR
+leo tasks create 42                  # Solo: simple checklist
+
+# 5. Track evolution
+leo spec-diff 42 --timeline
+
+# 6. Extend later
+leo spec-extend 42 "Add SSO support"
+```
+
+#### Statistics
+
+- **Lines Added**: 2,666 (1,630 code + 1,036 docs)
+- **New Files**: 4 (spec-diff, spec-extend, guides, completion docs)
+- **Commands Added**: 8 (with 15 total options)
+- **Phase Duration**: Days 8-14 (7 days)
+- **Test Coverage**: 3 specs tested (#78, #79, #80, #98)
+
+#### Files Changed
+
+- **New**: `lib/spec-diff/index.js` (500+ lines)
+- **New**: `lib/spec-extend/index.js` (450+ lines)
+- **New**: `lib/tasks/index.js` (enhanced for dual-mode)
+- **New**: `docs/SPEC_DIFF_GUIDE.md` (650+ lines)
+- **Modified**: `bin/cli.js` (8 new commands)
+- **Modified**: `README.md` (comparison table, commands)
+
+---
+
 ## [5.0.1] - 2025-10-27
 
 ### 🎯 NEW FEATURE: Automated Documentation Organization
