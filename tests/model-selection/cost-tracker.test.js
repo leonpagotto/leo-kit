@@ -1,6 +1,6 @@
 /**
  * Unit Tests for CostTracker
- * 
+ *
  * Tests budget enforcement, usage tracking, and cost calculation
  */
 
@@ -13,8 +13,9 @@ jest.mock('fs-extra');
 
 describe('CostTracker', () => {
   let costTracker;
+  const currentMonth = new Date().toISOString().slice(0, 7); // e.g., '2025-10'
   const mockUsageData = {
-    month: '2025-01',
+    month: currentMonth,  // Use current month to avoid resets
     dailyUsage: {},
     monthlyUsage: {
       cost: 0,
@@ -31,7 +32,7 @@ describe('CostTracker', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    
+
     // Mock file operations
     fs.pathExists.mockResolvedValue(true);
     fs.readJson.mockResolvedValue(mockUsageData);
@@ -56,7 +57,7 @@ describe('CostTracker', () => {
         monthly: 100,
         perAgent: 20
       };
-      
+
       const tracker = new CostTracker(customBudgets);
       expect(tracker.budgets).toEqual(customBudgets);
     });
@@ -136,7 +137,7 @@ describe('CostTracker', () => {
       };
 
       const cost = costTracker.calculateCost('gpt-4', usage);
-      
+
       // GPT-4: $0.03 input + $0.06 output per 1K tokens
       // (1000 * 0.03 / 1000) + (500 * 0.06 / 1000) = 0.03 + 0.03 = 0.06
       expect(cost).toBeCloseTo(0.06, 4);
@@ -149,7 +150,7 @@ describe('CostTracker', () => {
       };
 
       const cost = costTracker.calculateCost('gpt-3.5-turbo', usage);
-      
+
       // GPT-3.5-turbo: $0.0005 input + $0.0015 output per 1K tokens
       // (1000 * 0.0005 / 1000) + (500 * 0.0015 / 1000) = 0.0005 + 0.00075 = 0.00125
       expect(cost).toBeCloseTo(0.00125, 5);
@@ -162,7 +163,7 @@ describe('CostTracker', () => {
       };
 
       const cost = costTracker.calculateCost('claude-3-opus', usage);
-      
+
       // Claude-3-opus: $0.015 input + $0.075 output per 1K tokens
       expect(cost).toBeCloseTo(0.0525, 4);
     });
@@ -199,7 +200,7 @@ describe('CostTracker', () => {
       await costTracker.recordUsage('frontend', 'gpt-4', 'Task', usage);
 
       expect(fs.writeJson).toHaveBeenCalled();
-      
+
       const today = new Date().toISOString().split('T')[0];
       expect(costTracker.usage.dailyUsage[today]).toBeDefined();
       expect(costTracker.usage.dailyUsage[today].requests).toBeGreaterThan(0);
@@ -372,7 +373,7 @@ describe('CostTracker', () => {
   describe('File Persistence', () => {
     test('should create usage file if not exists', async () => {
       fs.pathExists.mockResolvedValue(false);
-      
+
       const tracker = new CostTracker();
       await tracker.loadUsage();
 
@@ -392,7 +393,7 @@ describe('CostTracker', () => {
       };
 
       fs.readJson.mockResolvedValue(existingData);
-      
+
       const tracker = new CostTracker();
       await tracker.loadUsage();
 
@@ -402,7 +403,7 @@ describe('CostTracker', () => {
 
     test('should save usage to file', async () => {
       await costTracker.saveUsage();
-      
+
       expect(fs.writeJson).toHaveBeenCalled();
       const writeCall = fs.writeJson.mock.calls[0];
       expect(writeCall[0]).toContain('model-usage.json');
@@ -412,7 +413,7 @@ describe('CostTracker', () => {
   describe('Error Handling', () => {
     test('should handle file read errors gracefully', async () => {
       fs.readJson.mockRejectedValue(new Error('File read error'));
-      
+
       const tracker = new CostTracker();
       await tracker.loadUsage();
 
@@ -422,9 +423,9 @@ describe('CostTracker', () => {
 
     test('should handle file write errors gracefully', async () => {
       fs.writeJson.mockRejectedValue(new Error('File write error'));
-      
+
       const usage = { inputTokens: 100, outputTokens: 50 };
-      
+
       // Should not throw
       await expect(
         costTracker.recordUsage('frontend', 'gpt-4', 'Task', usage)
