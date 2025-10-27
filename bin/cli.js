@@ -246,6 +246,68 @@ program
     }
   });
 
+// Constitution command - Manage constitutional principles
+program
+  .command('constitution <action> [args...]')
+  .description('Manage project constitutional principles (init, show, add, remove, update)')
+  .option('-n, --non-interactive', 'Use default principles without prompts (for init)')
+  .option('-f, --force', 'Force operation (overwrite existing)')
+  .option('-j, --json', 'Output as JSON (for show)')
+  .action(async (action, args, options) => {
+    const { ConstitutionManager } = require('../lib/constitution');
+    const manager = new ConstitutionManager();
+
+    try {
+      if (action === 'init') {
+        const existing = await manager.load();
+        if (existing && !options.force) {
+          console.log(chalk.yellow('\n⚠️  Constitutional principles already exist'));
+          console.log(chalk.gray('   Use --force to overwrite\n'));
+          console.log('   View with: ' + chalk.cyan('leo constitution show'));
+          return;
+        }
+        await manager.init({ interactive: !options.nonInteractive });
+        console.log(chalk.green('\n🎉 Next steps:'));
+        console.log(`   1. Review: ${chalk.cyan('docs/CONSTITUTION.md')}`);
+        console.log(`   2. Share with team for feedback`);
+        console.log(`   3. Start using: ${chalk.cyan('leo spec new')}`);
+      } else if (action === 'show') {
+        const constitution = await manager.load();
+        if (!constitution) {
+          console.log(chalk.yellow('\n⚠️  No constitutional principles found'));
+          console.log(chalk.gray('   Initialize with: ') + chalk.cyan('leo constitution init\n'));
+          return;
+        }
+        if (options.json) {
+          console.log(JSON.stringify(constitution, null, 2));
+          return;
+        }
+        console.log(chalk.cyan.bold('\n📜 Constitutional Principles\n'));
+        console.log(chalk.gray(`Version: ${constitution.version}`));
+        console.log(chalk.gray(`Last Updated: ${new Date(constitution.lastUpdated).toLocaleDateString()}\n`));
+        constitution.principles.forEach((p, index) => {
+          console.log(chalk.bold(`${index + 1}. ${p.name}`));
+          console.log(chalk.gray(`   Rule: ${p.rule}`));
+          console.log(chalk.gray(`   Enforcement: ${p.enforcement}`));
+          console.log(chalk.gray(`   Rationale: ${p.rationale}\n`));
+        });
+        console.log(chalk.gray(`Total: ${constitution.principles.length} principles\n`));
+      } else {
+        console.log(chalk.red(`\n❌ Unknown action: ${action}`));
+        console.log(chalk.gray('\nAvailable actions:'));
+        console.log(chalk.gray('  init     - Initialize constitutional principles'));
+        console.log(chalk.gray('  show     - Display current principles'));
+        console.log(chalk.gray('  add      - Add a new principle'));
+        console.log(chalk.gray('  remove   - Remove a principle'));
+        console.log(chalk.gray('  update   - Update a principle\n'));
+      }
+    } catch (error) {
+      console.error(chalk.red(`\n❌ Error:`, error.message));
+      if (process.env.DEBUG) console.error(error);
+      process.exit(1);
+    }
+  });
+
 // Dashboard command - Start real-time API server
 program
   .command('dashboard')
