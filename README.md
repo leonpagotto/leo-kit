@@ -9,17 +9,17 @@
 [![npm version](https://img.shields.io/npm/v/leo-workflow-kit.svg?style=flat-square&color=blue&logo=npm)](https://www.npmjs.com/package/leo-workflow-kit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Node.js](https://img.shields.io/badge/Node.js-16%2B-green?style=flat-square&logo=node.js)](https://nodejs.org)
-[![Tests](https://img.shields.io/badge/tests-462%2F521%20passing-green?style=flat-square)](https://github.com/leonpagotto/leo-kit)
+[![Tests](https://img.shields.io/badge/tests-487%2F521%20passing-green?style=flat-square)](https://github.com/leonpagotto/leo-kit)
 
 [Quick Start](#-quick-start) • [Features](#-features) • [Documentation](../../wiki) • [Contributing](CONTRIBUTING.md)
 
 ---
 
-### 🎉 **v5.0.1** - Production Ready with Automated Documentation
+### 🎉 **v5.2.0** - Phase 2 Complete: Spec-First Development System
 
-✨ **Automated Docs Organization** • 🤖 **Multi-Agent AI** • 📋 **Spec-First Development** • 🔄 **GitHub Projects Sync** • 🎯 **Pre-commit Hooks**
+✨ **Dual-Mode Tasks** • 📊 **Spec Evolution Tracking** • � **Spec Extensions** • 🤖 **GitHub-Native Specs** • 🎯 **Complete Workflow**
 
-**[View Release Notes](CHANGELOG.md)** • **[Full Documentation](../../wiki)**
+**[View Release Notes](CHANGELOG.md#520---2025-10-27)** • **[Full Documentation](../../wiki)**
 
 ---
 
@@ -99,11 +99,57 @@ Your Request → Orchestrator → Routes to Specialist(s)
 
 ### 📋 Spec-First Development
 
-Smart decision-making based on complexity:
+GitHub-native specification workflow with evolution tracking:
 
-- **Simple tasks** (< 1 day): Direct to GitHub issue
-- **Complex features** (> 1 week): Create specification first
-- **Automatic routing**: Orchestrator decides the best path
+**Create & Manage Specs:**
+
+```bash
+# Create specification (GitHub issue, not files!)
+leo spec new "Build authentication system"
+
+# Clarify requirements
+leo clarify 42
+
+# Generate implementation plan
+leo plan 42
+```
+
+**Dual-Mode Task Management:**
+
+```bash
+# Checklist mode (simple, single issue)
+leo tasks create 42
+
+# Child issues mode (parallel work, team collaboration)
+leo tasks create 42 --create-issues
+
+# Track progress
+leo tasks status 42  # Shows: 5/10 completed (50%)
+```
+
+**Spec Evolution & Extensions:**
+
+```bash
+# Track how spec evolved
+leo spec-diff 42 --timeline
+
+# See aggregate changes
+leo spec-diff 42 --summary
+
+# Extend spec with new requirements
+leo spec-extend 42 "Add OAuth2 support"
+
+# Extend and create child issues
+leo spec-extend 42 "Add SSO" --create-issues
+```
+
+**Why GitHub Issues over Files?**
+
+- ✅ 5x faster (no git commits, instant edits)
+- ✅ Real-time collaboration (comments, not PRs)
+- ✅ No merge conflicts (GitHub handles it)
+- ✅ Non-technical team members can contribute
+- ✅ Native project board integration
 
 **[Learn More →](../../wiki/Spec-First-Development)**
 
