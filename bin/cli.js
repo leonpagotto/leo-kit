@@ -374,6 +374,75 @@ program
     }
   });
 
+// Clarify command - Generate clarifying questions for spec (Phase 1: Spec Kit integration)
+program
+  .command('clarify <issue-number>')
+  .description('Analyze spec and generate clarifying questions')
+  .option('--no-post', 'Don\'t post comment to GitHub (just show questions)')
+  .option('--no-label', 'Don\'t add needs-clarification label')
+  .option('-c, --categories <list>', 'Focus on specific categories (comma-separated)')
+  .option('--status', 'Show clarification status only (no questions)')
+  .action(async (issueNumber, options) => {
+    const ClarificationManager = require('../lib/clarify');
+    const manager = new ClarificationManager();
+
+    try {
+      if (options.status) {
+        // Show status only
+        await manager.showStatus(issueNumber);
+      } else {
+        // Generate clarifying questions
+        const categories = options.categories ? options.categories.split(',').map(c => c.trim().toUpperCase()) : null;
+
+        const result = await manager.clarify(issueNumber, {
+          autoPost: options.post !== false,
+          addLabel: options.label !== false,
+          categories
+        });
+
+        if (!options.post) {
+          console.log(chalk.cyan('\n📝 Generated Questions:\n'));
+          console.log(result.comment);
+          console.log(chalk.gray('\nTo post these questions, run without --no-post flag'));
+        }
+      }
+    } catch (error) {
+      console.error(chalk.red(`\n❌ Error:`, error.message));
+      if (process.env.DEBUG) console.error(error);
+      process.exit(1);
+    }
+  });
+
+// Plan command - Generate implementation plan for spec (Phase 1: Spec Kit integration)
+program
+  .command('plan <issue-number>')
+  .description('Generate detailed implementation plan for spec')
+  .option('--no-post', 'Don\'t post plan to GitHub (just show it)')
+  .option('--no-labels', 'Don\'t update labels')
+  .option('-f, --focus <area>', 'Focus on specific area: architecture, api, data, testing, deployment')
+  .action(async (issueNumber, options) => {
+    const PlanManager = require('../lib/plan');
+    const manager = new PlanManager();
+
+    try {
+      const result = await manager.plan(issueNumber, {
+        autoPost: options.post !== false,
+        updateLabels: options.labels !== false,
+        focus: options.focus
+      });
+
+      if (!options.post) {
+        console.log(chalk.cyan('\n📐 Generated Plan:\n'));
+        console.log(result.comment);
+        console.log(chalk.gray('\nTo post this plan, run without --no-post flag'));
+      }
+    } catch (error) {
+      console.error(chalk.red(`\n❌ Error:`, error.message));
+      if (process.env.DEBUG) console.error(error);
+      process.exit(1);
+    }
+  });
+
 // Dashboard command - Start real-time API server
 program
   .command('dashboard')
