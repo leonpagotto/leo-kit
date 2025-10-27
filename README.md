@@ -31,22 +31,22 @@
 
 ### 🆚 LEO vs GitHub Spec Kit
 
-Many developers ask: *"How is LEO different from GitHub Spec Kit?"* Here's the breakdown:
+Many developers ask: _"How is LEO different from GitHub Spec Kit?"_ Here's the breakdown:
 
-| Feature | GitHub Spec Kit | LEO Workflow Kit | Winner |
-|---------|----------------|------------------|--------|
-| **Philosophy** | Specs as Code | Specs as Issues | *Different approaches* |
-| **Storage** | Files (`specs/001/spec.md`) | GitHub Issues (#42, #80) | **LEO** (simpler) |
-| **Create Spec** | Create file → Commit → Push | `leo spec new "Feature"` | **LEO** (5x faster) |
-| **View Spec** | Clone repo → Read file | Click issue link | **LEO** (instant) |
-| **Edit Spec** | Edit file → Commit → Push | Edit issue on GitHub | **LEO** (no git needed) |
-| **Team Collab** | Pull requests → Merge | Real-time comments | **LEO** (no conflicts) |
-| **Non-Dev Access** | Requires Git knowledge | Just GitHub account | **LEO** (accessible) |
-| **Diff Tracking** | `git diff spec.md` | `leo spec-diff <issue>` | **LEO** (semantic) |
-| **Project Board** | Manual linking | Native integration | **LEO** (automatic) |
-| **Offline Work** | ✅ Yes (files local) | ❌ No (requires internet) | **Spec Kit** |
-| **Backup** | ✅ Git history | ⚠️ GitHub only | **Spec Kit** |
-| **Task Management** | Files (`tasks.md`) | Dual-mode (checklist OR child issues) | **LEO** (flexible) |
+| Feature             | GitHub Spec Kit             | LEO Workflow Kit                      | Winner                  |
+| ------------------- | --------------------------- | ------------------------------------- | ----------------------- |
+| **Philosophy**      | Specs as Code               | Specs as Issues                       | _Different approaches_  |
+| **Storage**         | Files (`specs/001/spec.md`) | GitHub Issues (#42, #80)              | **LEO** (simpler)       |
+| **Create Spec**     | Create file → Commit → Push | `leo spec new "Feature"`              | **LEO** (5x faster)     |
+| **View Spec**       | Clone repo → Read file      | Click issue link                      | **LEO** (instant)       |
+| **Edit Spec**       | Edit file → Commit → Push   | Edit issue on GitHub                  | **LEO** (no git needed) |
+| **Team Collab**     | Pull requests → Merge       | Real-time comments                    | **LEO** (no conflicts)  |
+| **Non-Dev Access**  | Requires Git knowledge      | Just GitHub account                   | **LEO** (accessible)    |
+| **Diff Tracking**   | `git diff spec.md`          | `leo spec-diff <issue>`               | **LEO** (semantic)      |
+| **Project Board**   | Manual linking              | Native integration                    | **LEO** (automatic)     |
+| **Offline Work**    | ✅ Yes (files local)        | ❌ No (requires internet)             | **Spec Kit**            |
+| **Backup**          | ✅ Git history              | ⚠️ GitHub only                        | **Spec Kit**            |
+| **Task Management** | Files (`tasks.md`)          | Dual-mode (checklist OR child issues) | **LEO** (flexible)      |
 
 **Use Spec Kit if:** You want specs as code, prefer file-based workflows, need offline access.
 

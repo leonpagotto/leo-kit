@@ -7,6 +7,7 @@ Track how your specs evolve over time with `leo spec-diff` - understand requirem
 ## 🎯 Overview
 
 Spec evolution tracking helps you:
+
 - **Understand Changes** - See exactly what changed in requirements, user stories, and acceptance criteria
 - **Audit Trail** - Complete history of who changed what and when
 - **Version Control** - Compare specific versions or ranges
@@ -18,16 +19,19 @@ Spec evolution tracking helps you:
 ## 🚀 Quick Start
 
 ### View All Changes
+
 ```bash
 leo spec-diff 42
 ```
 
 Shows all changes between all versions with color-coded diff:
+
 - 🟢 Green = Added
 - 🔴 Red = Removed
 - 🟡 Yellow = Version separator
 
 ### View Timeline
+
 ```bash
 leo spec-diff 42 --timeline
 ```
@@ -35,6 +39,7 @@ leo spec-diff 42 --timeline
 Shows chronological history of all edits with timestamps and authors.
 
 ### View Summary Statistics
+
 ```bash
 leo spec-diff 42 --summary
 ```
@@ -52,11 +57,13 @@ leo spec-diff <issue-number>
 ```
 
 **Example:**
+
 ```bash
 leo spec-diff 80
 ```
 
 **Output:**
+
 ```
 📊 Analyzing spec evolution for issue #80...
 
@@ -83,11 +90,13 @@ leo spec-diff <issue-number> --timeline
 ```
 
 **Example:**
+
 ```bash
 leo spec-diff 80 --timeline
 ```
 
 **Output:**
+
 ```
 📊 Analyzing spec evolution for issue #80...
 
@@ -113,11 +122,13 @@ leo spec-diff <issue-number> --summary
 ```
 
 **Example:**
+
 ```bash
 leo spec-diff 80 --summary
 ```
 
 **Output:**
+
 ```
 📊 Spec Evolution Summary
 
@@ -167,6 +178,7 @@ leo spec-diff 80 --from 2
 ```
 
 **Use Cases:**
+
 - Focus on recent changes only
 - Compare original spec to current state
 - Review changes during specific sprint
@@ -181,6 +193,7 @@ leo spec-diff <issue-number> --section <section-name>
 ```
 
 **Available Sections:**
+
 - `context` - Context section
 - `requirements` - Requirements list
 - `userStories` - User stories list
@@ -204,6 +217,7 @@ leo spec-diff 80 --section acceptanceCriteria
 ```
 
 **Use Cases:**
+
 - Product managers reviewing requirement changes
 - Developers focusing on acceptance criteria
 - QA checking test requirements
@@ -263,6 +277,7 @@ leo spec-diff 80 --section context --max-length 200
 ### Change Types
 
 **List Changes** (Requirements, User Stories, Acceptance Criteria):
+
 ```
 Requirements:
   + New requirement added
@@ -270,6 +285,7 @@ Requirements:
 ```
 
 **Text Changes** (Context, Technical Notes):
+
 ```
 Context:
   - Old context description
@@ -385,24 +401,31 @@ leo spec-diff 42 > spec-42-evolution.txt
 ## 💡 Best Practices
 
 ### 1. **Edit Mindfully**
+
 Each edit creates a new version. Group related changes into a single edit when possible.
 
 ### 2. **Use Section Diff for Reviews**
+
 When reviewing with team, focus on specific sections to avoid noise.
 
 ### 3. **Document Major Changes**
+
 Add a comment explaining why major requirements changed.
 
 ### 4. **Regular Timeline Reviews**
+
 During sprint reviews, show the timeline to highlight iteration.
 
 ### 5. **Export for Documentation**
+
 Save diff output to files for compliance or documentation:
+
 ```bash
 leo spec-diff 42 > docs/spec-42-evolution.md
 ```
 
 ### 6. **Combine with Git**
+
 Track spec evolution alongside code changes in your repository.
 
 ---
@@ -519,18 +542,21 @@ $ leo spec-diff 75 --timeline
 ## 🎓 Tips & Tricks
 
 ### Tip 1: Quick Recent Changes Check
+
 ```bash
 # See only the last edit
 leo spec-diff 42 --from 4 --to 5
 ```
 
 ### Tip 2: Find Who Changed What
+
 ```bash
 # Summary shows contributors
 leo spec-diff 42 --summary
 ```
 
 ### Tip 3: Export for Email/Slack
+
 ```bash
 # Copy output to clipboard (macOS)
 leo spec-diff 42 | pbcopy
@@ -540,6 +566,7 @@ leo spec-diff 42 > spec-changes.txt
 ```
 
 ### Tip 4: Compare Original vs Current
+
 ```bash
 # Full evolution from start to now
 leo spec-diff 42
@@ -549,6 +576,7 @@ leo spec-diff 42 --from 1 --to $(leo spec-diff 42 --timeline | grep -c "Version"
 ```
 
 ### Tip 5: Focus on User-Facing Changes
+
 ```bash
 # User stories and acceptance criteria only
 leo spec-diff 42 --section userStories

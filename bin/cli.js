@@ -510,6 +510,31 @@ program
     }
   });
 
+// Spec Extend command - Add requirements to existing specs (Phase 2: Spec Extensions)
+program
+  .command('spec-extend <issue-number> <description>')
+  .alias('extend')
+  .description('Extend an existing spec with new requirements')
+  .option('--no-update', 'Preview extension without updating issue')
+  .option('--create-issues', 'Create child GitHub issues for extension work')
+  .option('--no-track-history', 'Skip adding extension history comment')
+  .action(async (issueNumber, description, options) => {
+    const SpecExtendManager = require('../lib/spec-extend');
+    const manager = new SpecExtendManager();
+
+    try {
+      await manager.extend(issueNumber, description, {
+        autoUpdate: options.update !== false,
+        createIssues: options.createIssues === true,
+        trackHistory: options.trackHistory !== false
+      });
+    } catch (error) {
+      console.error(chalk.red(`\n❌ Error:`, error.message));
+      if (process.env.DEBUG) console.error(error);
+      process.exit(1);
+    }
+  });
+
 // Spec Diff command - Track spec evolution over time (Phase 2: Spec Evolution Tracking)
 program
   .command('spec-diff <issue-number>')
