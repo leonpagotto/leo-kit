@@ -516,13 +516,23 @@ program
   .alias('diff')
   .description('Show how a spec has evolved over time')
   .option('--timeline', 'Show timeline view instead of diff')
+  .option('--summary', 'Show summary statistics')
+  .option('--from <version>', 'Start from specific version (e.g., --from 1)')
+  .option('--to <version>', 'End at specific version (e.g., --to 5)')
+  .option('--section <name>', 'Focus on specific section (context, requirements, userStories, acceptanceCriteria)')
+  .option('--max-length <number>', 'Maximum length for text diffs (default: 100)')
   .action(async (issueNumber, options) => {
     const SpecDiffManager = require('../lib/spec-diff');
     const manager = new SpecDiffManager();
 
     try {
       await manager.diff(issueNumber, {
-        timeline: options.timeline === true
+        timeline: options.timeline === true,
+        summary: options.summary === true,
+        from: options.from,
+        to: options.to,
+        section: options.section,
+        maxLength: options.maxLength ? parseInt(options.maxLength) : 100
       });
     } catch (error) {
       console.error(chalk.red(`\n❌ Error:`, error.message));
