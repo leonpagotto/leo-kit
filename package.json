@@ -1,7 +1,7 @@
 {
   "name": "leo-workflow-kit",
-  "version": "5.0.0",
-  "description": "LEO Workflow Kit 5.0.0 - Specification-Driven Development with AI Code Generation. Features: Specification system with Constitutional Governance, Claude 3.5 Sonnet AI code generation, REST API with WebSocket, Plugin architecture, Multi-agent orchestration (Orchestrator, Frontend, Backend, DevOps, Testing, Documentation). Production-ready with 49/49 tests passing (100%)",
+  "version": "5.0.1",
+  "description": "LEO Workflow Kit 5.0.1 - Specification-Driven Development with AI Code Generation. Features: Automated Documentation Organization, Specification system with Constitutional Governance, Claude 3.5 Sonnet AI code generation, REST API with WebSocket, Plugin architecture, Multi-agent orchestration (Orchestrator, Frontend, Backend, DevOps, Testing, Documentation). Production-ready with 49/49 tests passing (100%)",
   "main": "dist/index.js",
   "bin": {
     "leo-workflow": "bin/cli.js",

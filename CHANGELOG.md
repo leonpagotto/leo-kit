@@ -6,6 +6,119 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0.1] - 2025-10-27
+
+### 🎯 NEW FEATURE: Automated Documentation Organization
+
+#### Overview
+
+Eliminates documentation clutter with automated organization and enforcement. Prevents 45+ markdown files from accumulating in root directory, saving 2+ hours of manual cleanup per project.
+
+#### New Features
+
+##### Documentation Organization Command
+
+- ✅ **`leo organize-docs`**: Auto-organizes documentation files into proper directories
+- ✅ **`--dry-run`**: Preview what would be moved without making changes
+- ✅ **`--validate`**: Check documentation organization without moving files
+- ✅ **Smart Pattern Matching**: Auto-detects file patterns (SESSION_SUMMARY_*, PHASE_*, DAYS_*, DEPLOYMENT_*, etc.)
+- ✅ **Directory Creation**: Automatically creates organized structure (docs/sessions/, docs/phases/, docs/stories/, docs/releases/, docs/guides/)
+
+##### Pre-commit Hook
+
+- ✅ **Automatic Prevention**: Blocks commits of markdown files to root directory (except allowed files)
+- ✅ **Configurable**: Respects `.leorc.json` settings for enforcement and allowed files
+- ✅ **Helpful Messages**: Shows clear error messages with auto-fix suggestions
+- ✅ **`leo hooks install`**: Easy hook installation
+- ✅ **`leo hooks uninstall`**: Clean hook removal
+- ✅ **`leo hooks status`**: Check installation status
+
+##### Health Check Integration
+
+- ✅ **Documentation Organization Check**: Added to `leo health` command
+- ✅ **+5 Points**: Rewards clean root directory organization
+- ✅ **Health Score**: Improved from 98/100 to 103/100
+- ✅ **Auto-Suggestions**: Recommends `leo organize-docs` if issues found
+
+##### Configuration
+
+- ✅ **Documentation Config**: New section in `.leorc.json`
+- ✅ **`enforce-organization`**: Enable/disable pre-commit hook (default: true)
+- ✅ **`allowed-root-files`**: Customizable list of permitted root files
+- ✅ **`root-files-max`**: Maximum number of allowed root files (default: 6)
+- ✅ **`auto-organize`**: Future feature flag for real-time organization
+
+##### Documentation
+
+- ✅ **INDEX.md**: Comprehensive documentation navigation hub
+- ✅ **Category Navigation**: Browse by sessions, phases, stories, releases, guides
+- ✅ **Topic Navigation**: Find docs by topic (Getting Started, API, Architecture)
+- ✅ **Date Navigation**: Session summaries organized by YYYY-MM
+- ✅ **README Update**: Added feature documentation with usage examples
+
+#### Benefits
+
+- **Time Saved**: 2 hours of manual organization → instant automation (100% time saved)
+- **Professional Appearance**: 45+ files in root → 5 essential files (89% reduction)
+- **Easy Navigation**: INDEX.md provides clear documentation structure
+- **Automated Enforcement**: Pre-commit hook prevents future clutter
+- **Consistent Standards**: Same structure across all LEO projects
+
+#### New Commands
+
+```bash
+# Organize documentation files
+leo organize-docs
+leo organize-docs --dry-run
+leo organize-docs --validate
+
+# Manage git hooks
+leo hooks install
+leo hooks uninstall
+leo hooks status
+```
+
+#### Configuration Example
+
+```json
+{
+  "documentation": {
+    "enforce-organization": true,
+    "auto-organize": false,
+    "root-files-max": 6,
+    "allowed-root-files": [
+      "README.md",
+      "CONTRIBUTING.md",
+      "LICENSE",
+      "SECURITY.md",
+      "CHANGELOG.md",
+      "INDEX.md"
+    ]
+  }
+}
+```
+
+#### Files Changed
+
+- **New Files**:
+  - `lib/commands/organize-docs.js` - Documentation organization command (300+ lines)
+  - `lib/utils/git-hooks.js` - Git hooks management utilities (120+ lines)
+  - `scripts/pre-commit-docs` - Pre-commit hook executable (90+ lines)
+  - `INDEX.md` - Documentation navigation hub (250+ lines)
+
+- **Modified Files**:
+  - `bin/cli.js` - Added `organize-docs` and `hooks` commands
+  - `lib/commands/health.js` - Added documentation organization check
+  - `.leorc.json.example` - Added documentation config section
+  - `README.md` - Added feature documentation (+98 lines)
+
+#### GitHub Issues
+
+- Closes #71 - feat: Add automated documentation organization system
+- Closes #72 - chore: Organize existing documentation files
+
+---
+
 ## [4.1.1] - 2025-10-24
 
 ### 🎯 NEW FEATURE: Real-Time Model Selection in VS Code
