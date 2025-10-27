@@ -312,8 +312,7 @@ program
 program
   .command('spec <action> [args...]')
   .description('Manage structured spec issues (new, list, show)')
-  .option('-i, --interactive', 'Use interactive mode for section editing', true)
-  .option('--no-interactive', 'Skip interactive prompts (auto-populate)')
+  .option('-i, --interactive', 'Use interactive mode for section editing')
   .option('-p, --priority <level>', 'Priority: high, medium, low (default: medium)', 'medium')
   .option('-t, --type <type>', 'Type: feature, bug, refactor, docs (default: feature)', 'feature')
   .option('--no-auto-populate', 'Disable AI auto-population')
