@@ -1,7 +1,7 @@
 /**
  * Constitution Command
  * Manages project constitutional principles
- * 
+ *
  * Commands:
  *   leo constitution init       - Initialize constitutional principles
  *   leo constitution show       - Display current principles
@@ -113,7 +113,7 @@ program
       // If no options provided, use interactive mode
       if (!options.name || !options.rule) {
         const customPrinciples = await manager.addCustomPrinciples();
-        
+
         for (const principle of customPrinciples) {
           await manager.addPrinciple(principle);
         }

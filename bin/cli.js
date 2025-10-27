@@ -308,6 +308,72 @@ program
     }
   });
 
+// Spec command - Structured issue creation for specs (Phase 1: Spec Kit integration)
+program
+  .command('spec <action> [args...]')
+  .description('Manage structured spec issues (new, list, show)')
+  .option('-i, --interactive', 'Use interactive mode for section editing', true)
+  .option('--no-interactive', 'Skip interactive prompts (auto-populate)')
+  .option('-p, --priority <level>', 'Priority: high, medium, low (default: medium)', 'medium')
+  .option('-t, --type <type>', 'Type: feature, bug, refactor, docs (default: feature)', 'feature')
+  .option('--no-auto-populate', 'Disable AI auto-population')
+  .action(async (action, args, options) => {
+    const SpecManager = require('../lib/spec');
+    const manager = new SpecManager();
+
+    try {
+      if (action === 'new') {
+        // Create new spec issue
+        const description = args.join(' ');
+        if (!description) {
+          console.log(chalk.red('\n❌ Please provide a description'));
+          console.log(chalk.gray('\nUsage: ') + chalk.cyan('leo spec new <description>'));
+          console.log(chalk.gray('\nExample: ') + chalk.cyan('leo spec new "Add OAuth2 authentication with Google and GitHub"'));
+          return;
+        }
+
+        await manager.create(description, {
+          interactive: options.interactive,
+          priority: options.priority,
+          type: options.type,
+          autoPopulate: options.autoPopulate !== false
+        });
+
+      } else if (action === 'list') {
+        // List spec issues
+        const status = args[0] || 'all'; // open, closed, all
+        const limit = parseInt(args[1]) || 30;
+        await manager.list({ status, limit });
+
+      } else if (action === 'show') {
+        // Show specific spec issue
+        const issueNumber = args[0];
+        if (!issueNumber) {
+          console.log(chalk.red('\n❌ Please provide an issue number'));
+          console.log(chalk.gray('\nUsage: ') + chalk.cyan('leo spec show <issue-number>'));
+          return;
+        }
+        await manager.show(issueNumber);
+
+      } else {
+        console.log(chalk.red(`\n❌ Unknown action: ${action}`));
+        console.log(chalk.gray('\nAvailable actions:'));
+        console.log(chalk.gray('  new <description>     - Create a new spec issue'));
+        console.log(chalk.gray('  list [status] [limit] - List spec issues (default: all, 30)'));
+        console.log(chalk.gray('  show <issue-number>   - Show spec issue details\n'));
+        console.log(chalk.gray('\nExamples:'));
+        console.log(chalk.cyan('  leo spec new "Add user authentication"'));
+        console.log(chalk.cyan('  leo spec new "Refactor database layer" --type refactor --priority high'));
+        console.log(chalk.cyan('  leo spec list open'));
+        console.log(chalk.cyan('  leo spec show 42\n'));
+      }
+    } catch (error) {
+      console.error(chalk.red(`\n❌ Error:`, error.message));
+      if (process.env.DEBUG) console.error(error);
+      process.exit(1);
+    }
+  });
+
 // Dashboard command - Start real-time API server
 program
   .command('dashboard')
