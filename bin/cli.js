@@ -19,6 +19,7 @@ const githubProjectCommand = require('../lib/commands/github-project');
 const modelCommand = require('../lib/commands/model');
 const DashboardCommands = require('../lib/commands/dashboard');
 const PluginCommands = require('../lib/commands/plugin');
+const { organizeDocs, validateDocs } = require('../lib/commands/organize-docs');
 
 // Check if this is the first run and show welcome message
 if (isFirstRun()) {
@@ -197,6 +198,21 @@ program
     const { exec } = require('child_process');
     console.log(chalk.cyan('\n📚 Opening documentation...\n'));
     exec('open https://github.com/leonpagotto/leo-kit#readme');
+  });
+
+// Organize-docs command - Auto-organize documentation files
+program
+  .command('organize-docs')
+  .alias('od')
+  .description('Organize documentation files into proper directories')
+  .option('--dry-run', 'Show what would be moved without moving files')
+  .option('--validate', 'Check documentation organization without moving files')
+  .action(async (options) => {
+    if (options.validate) {
+      await validateDocs();
+    } else {
+      await organizeDocs({ dryRun: options.dryRun });
+    }
   });
 
 // Dashboard command - Start real-time API server
