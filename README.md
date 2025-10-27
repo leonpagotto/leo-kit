@@ -120,6 +120,353 @@ leo hooks install
 
 ---
 
+## 🏗️ System Architecture
+
+### Multi-Agent Orchestration System
+
+LEO uses a sophisticated multi-agent architecture where specialized AI agents collaborate to deliver high-quality results:
+
+```mermaid
+graph TB
+    subgraph "LEO Workflow Kit Architecture v5.0.0"
+        CLI[CLI Entry Point<br/>bin/cli.js]
+
+        subgraph "Core Commands"
+            INIT[leo init<br/>Project Setup]
+            ISSUE[leo issue<br/>Interactive Issue Creator]
+            LABELS[leo labels<br/>Label Management]
+            VSCODE[leo vscode<br/>VS Code Integration]
+            CONFIG[leo config<br/>Configuration Manager]
+            STATUS[leo status<br/>Workflow Status]
+            HEALTH[leo health<br/>System Health Check]
+            AGENT[leo agent<br/>🆕 Agent Management]
+            GITHUB[leo github<br/>🆕 Repository Settings]
+            ORGANIZE[leo organize-docs<br/>🆕 Documentation Organization]
+        end
+
+        subgraph "🤖 Multi-Agent Orchestration System"
+            ORCHESTRATOR[Orchestrator Agent<br/>Task Routing & Coordination]
+
+            subgraph "Specialized Agents"
+                FRONTEND[Frontend Agent<br/>UI/UX, Components, Styling]
+                BACKEND[Backend Agent<br/>APIs, Database, Auth]
+                DEVOPS[DevOps Agent<br/>CI/CD, Infrastructure]
+                TESTING[Testing Agent<br/>Unit, E2E, Coverage]
+                DOCS[Documentation Agent<br/>Guides, API Docs]
+            end
+
+            AGENT_CONFIG[Agent Configuration<br/>.leorc.json → agents]
+            AGENT_ROUTING{Intelligent Routing<br/>Keywords, Files, Intent}
+
+            ORCHESTRATOR --> AGENT_ROUTING
+            AGENT_ROUTING -->|UI Task| FRONTEND
+            AGENT_ROUTING -->|API Task| BACKEND
+            AGENT_ROUTING -->|Deploy Task| DEVOPS
+            AGENT_ROUTING -->|Test Task| TESTING
+            AGENT_ROUTING -->|Docs Task| DOCS
+            AGENT_ROUTING -->|Multi-Agent| MULTI[Coordinate Multiple Agents]
+
+            AGENT_CONFIG -.->|Controls| FRONTEND
+            AGENT_CONFIG -.->|Controls| BACKEND
+            AGENT_CONFIG -.->|Controls| DEVOPS
+            AGENT_CONFIG -.->|Controls| TESTING
+            AGENT_CONFIG -.->|Controls| DOCS
+        end
+
+        subgraph "Configuration System"
+            CONFIG_MGR[Config Manager<br/>lib/utils/config-manager.js]
+            LOCAL_CFG[.leorc.json<br/>Project Config]
+            GLOBAL_CFG[~/.leorc.json<br/>User Config]
+            CONFIG_KEYS[Config Keys:<br/>auto-resolve, auto-init,<br/>project-type, agents]
+            CONFIG_MGR --> LOCAL_CFG
+            CONFIG_MGR --> GLOBAL_CFG
+            CONFIG_MGR --> CONFIG_KEYS
+        end
+
+        subgraph "AI Instructions System"
+            AI_BUILDER[AI Instructions Builder<br/>lib/ai-instructions/builder.js]
+            AI_CORE[Core Instructions<br/>Orchestrator Logic]
+            AI_ADAPTERS[Agent Adapters<br/>Per-Agent Instructions]
+            AI_OUTPUT[.github/copilot-instructions.md<br/>Combined AI Rules]
+
+            AI_BUILDER --> AI_CORE
+            AI_BUILDER --> AI_ADAPTERS
+            AI_BUILDER --> AI_OUTPUT
+            AGENT_CONFIG -.->|Configures| AI_BUILDER
+        end
+
+        subgraph "GitHub Copilot Integration"
+            COPILOT_INST[.github/copilot-instructions.md<br/>AI Behavior Rules]
+            AUTO_ISSUE[Automatic Issue Creation<br/>Detects Work Intent]
+            SPEC_DECISION[Spec-First Decision<br/>Complex vs Simple]
+            AUTO_RESOLVE[Auto Resolution<br/>Configurable]
+            AUTO_PROJECT[Project Integration<br/>Auto-add to Boards]
+            AUTO_STATUS[Status Management<br/>Todo → In Progress → Done]
+        end
+
+        subgraph "External Dependencies"
+            GH[GitHub CLI<br/>gh]
+            GHAPI[GitHub API<br/>REST & GraphQL]
+            GHPROJECTS[GitHub Projects v2<br/>Project Boards]
+        end
+    end
+
+    CLI --> INIT
+    CLI --> ISSUE
+    CLI --> LABELS
+    CLI --> VSCODE
+    CLI --> CONFIG
+    CLI --> STATUS
+    CLI --> HEALTH
+    CLI --> AGENT
+    CLI --> GITHUB
+    CLI --> ORGANIZE
+
+    AGENT --> ORCHESTRATOR
+    AGENT --> AGENT_CONFIG
+    CONFIG --> CONFIG_MGR
+    GITHUB --> GHAPI
+
+    INIT --> AI_BUILDER
+    VSCODE --> AI_BUILDER
+
+    AI_OUTPUT --> COPILOT_INST
+    COPILOT_INST --> ORCHESTRATOR
+    COPILOT_INST --> AUTO_ISSUE
+    AUTO_ISSUE --> SPEC_DECISION
+    SPEC_DECISION -->|Complex| SPECS[Spec Files]
+    SPEC_DECISION -->|Simple| AUTO_RESOLVE
+    SPECS --> AUTO_RESOLVE
+    AUTO_RESOLVE -->|Enabled| AUTO_PROJECT
+    AUTO_RESOLVE -->|Disabled| WAIT[Wait for User Review]
+    AUTO_PROJECT --> AUTO_STATUS
+
+    CONFIG_MGR -.->|Checks Config| AUTO_RESOLVE
+    CONFIG_MGR --> AGENT_CONFIG
+
+    INIT --> GH
+    GITHUB --> GH
+    GH --> GHAPI
+    GHAPI --> GHPROJECTS
+
+    style CLI fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
+    style AGENT fill:#9C27B0,stroke:#4A148C,stroke-width:3px,color:#fff
+    style GITHUB fill:#9C27B0,stroke:#4A148C,stroke-width:3px,color:#fff
+    style ORGANIZE fill:#9C27B0,stroke:#4A148C,stroke-width:3px,color:#fff
+    style ORCHESTRATOR fill:#E91E63,stroke:#880E4F,stroke-width:3px,color:#fff
+    style AGENT_ROUTING fill:#E91E63,stroke:#880E4F,stroke-width:2px,color:#fff
+    style FRONTEND fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style BACKEND fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style DEVOPS fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style TESTING fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style DOCS fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style MULTI fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    style AI_BUILDER fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
+    style AI_OUTPUT fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
+    style CONFIG fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
+    style CONFIG_MGR fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
+    style AGENT_CONFIG fill:#9C27B0,stroke:#4A148C,stroke-width:2px,color:#fff
+    style COPILOT_INST fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    style AUTO_ISSUE fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    style SPEC_DECISION fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    style AUTO_RESOLVE fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    style AUTO_PROJECT fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    style AUTO_STATUS fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    style SPECS fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    style WAIT fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
+    style GHPROJECTS fill:#1976D2,stroke:#0D47A1,stroke-width:2px,color:#fff
+    style GH fill:#1976D2,stroke:#0D47A1,stroke-width:2px,color:#fff
+```
+
+### Automated Workflow
+
+From task description to GitHub issue with full automation:
+
+```mermaid
+graph TB
+    START([User Describes Work])
+
+    subgraph "🤖 Multi-Agent Orchestration"
+        ORCHESTRATOR[Orchestrator Agent<br/>Analyzes Request]
+        CLASSIFY{Classify Task Type}
+
+        ROUTE_FRONTEND[Route to Frontend Agent<br/>UI/Components/Styling]
+        ROUTE_BACKEND[Route to Backend Agent<br/>API/Database/Auth]
+        ROUTE_DEVOPS[Route to DevOps Agent<br/>CI/CD/Infrastructure]
+        ROUTE_TESTING[Route to Testing Agent<br/>Tests/Coverage/QA]
+        ROUTE_DOCS[Route to Documentation Agent<br/>Guides/API Docs/Comments]
+        ROUTE_MULTI[Multi-Agent Coordination<br/>Multiple Specialists]
+    end
+
+    subgraph "📋 Spec-First Decision Making"
+        COMPLEXITY{Estimate Complexity}
+
+        SIMPLE_PATH[Simple Task<br/>< 1 day effort]
+        COMPLEX_PATH[Complex Feature<br/>> 1 week effort]
+
+        subgraph "Complex Spec Path"
+            CREATE_SPEC[Create Spec File<br/>docs/specs/feature-name.md]
+            ASK_REVIEW[🚨 STOP: Ask User to Review Spec]
+            USER_REVIEWS{User Reviews<br/>& Approves?}
+            BREAK_DOWN[Break Down into Multiple Issues]
+        end
+
+        subgraph "Simple Issue Path"
+            EXTRACT_INFO[Extract: Title, Description,<br/>Type, Priority, Component]
+            DIRECT_ISSUE[Create Single Issue]
+        end
+    end
+
+    subgraph "Issue Creation & Management"
+        CREATE_ISSUE[gh issue create<br/>--title --body --label]
+        ADD_PROJECT[gh project item-add<br/>Add to Project Board]
+        SET_STATUS_TODO[Set Status: Todo]
+        ISSUE_CREATED[✓ Issue Created & Tracked]
+    end
+
+    subgraph "⚙️ Auto-Resolution Check"
+        CHECK_CONFIG{Check .leorc.json:<br/>auto-resolve?}
+        AUTO_START[✅ Auto-Start Work<br/>Default: Enabled]
+        WAIT_REVIEW[⏸️ Wait for User Review<br/>Optional: Disabled]
+        USER_APPROVES{User<br/>Approves?}
+    end
+
+    subgraph "🚀 Development Workflow"
+        AGENT_WORK[Specialized Agent Implements]
+        START_WORK[Start Working on Issue]
+        COMMENT_START[gh issue comment<br/>"🚀 Starting work..."]
+        CREATE_BRANCH[Create Feature Branch<br/>feature/issue-42]
+        IMPLEMENT[Write Code<br/>Follow Agent Guidelines]
+        COMMIT[Commit Code<br/>⚠️ Message < 72 chars<br/>Include #issue-number]
+        AUTO_STATUS_IP[Auto-Update Status:<br/>In Progress]
+        PUSH[Push to GitHub]
+        CREATE_PR[Create Pull Request<br/>Include "Closes #42"]
+        CODE_REVIEW[Code Review Process]
+        MERGE_PR[Merge PR to Main]
+        AUTO_STATUS_DONE[Auto-Update Status: Done]
+        AUTO_CLOSE[Auto-Close Issue]
+    end
+
+    subgraph "📊 GitHub Projects Board"
+        TODO[📋 Todo<br/>New Issues]
+        INPROGRESS[🚧 In Progress<br/>Active Work]
+        DONE[✅ Done<br/>Completed & Merged]
+    end
+
+    subgraph "🔄 Multi-Agent Coordination Example"
+        MULTI_STEP1[Step 1: Backend Agent<br/>Creates API Endpoints]
+        MULTI_STEP2[Step 2: Frontend Agent<br/>Builds UI Components]
+        MULTI_STEP3[Step 3: Testing Agent<br/>Writes Test Coverage]
+        MULTI_STEP4[Step 4: Documentation Agent<br/>Updates API Docs]
+        MULTI_COMPLETE[All Agents Complete<br/>Integrated Solution]
+    end
+
+    START --> ORCHESTRATOR
+    ORCHESTRATOR --> CLASSIFY
+
+    CLASSIFY -->|Frontend Keywords| ROUTE_FRONTEND
+    CLASSIFY -->|Backend Keywords| ROUTE_BACKEND
+    CLASSIFY -->|DevOps Keywords| ROUTE_DEVOPS
+    CLASSIFY -->|Testing Keywords| ROUTE_TESTING
+    CLASSIFY -->|Documentation Keywords| ROUTE_DOCS
+    CLASSIFY -->|Multiple Domains| ROUTE_MULTI
+
+    ROUTE_FRONTEND --> COMPLEXITY
+    ROUTE_BACKEND --> COMPLEXITY
+    ROUTE_DEVOPS --> COMPLEXITY
+    ROUTE_TESTING --> COMPLEXITY
+    ROUTE_DOCS --> COMPLEXITY
+
+    ROUTE_MULTI --> MULTI_STEP1
+    MULTI_STEP1 --> MULTI_STEP2
+    MULTI_STEP2 --> MULTI_STEP3
+    MULTI_STEP3 --> MULTI_STEP4
+    MULTI_STEP4 --> MULTI_COMPLETE
+    MULTI_COMPLETE --> COMPLEXITY
+
+    COMPLEXITY -->|< 1 day: Bug, Task,<br/>Quick Fix, Docs| SIMPLE_PATH
+    COMPLEXITY -->|> 1 week: Feature,<br/>Architecture, Refactor| COMPLEX_PATH
+
+    SIMPLE_PATH --> EXTRACT_INFO
+    EXTRACT_INFO --> DIRECT_ISSUE
+    DIRECT_ISSUE --> CREATE_ISSUE
+
+    COMPLEX_PATH --> CREATE_SPEC
+    CREATE_SPEC --> ASK_REVIEW
+    ASK_REVIEW --> USER_REVIEWS
+    USER_REVIEWS -->|✅ Approved| BREAK_DOWN
+    USER_REVIEWS -->|❌ Needs Changes| CREATE_SPEC
+    BREAK_DOWN --> CREATE_ISSUE
+
+    CREATE_ISSUE --> ADD_PROJECT
+    ADD_PROJECT --> SET_STATUS_TODO
+    SET_STATUS_TODO --> TODO
+    SET_STATUS_TODO --> ISSUE_CREATED
+
+    ISSUE_CREATED --> CHECK_CONFIG
+    CHECK_CONFIG -->|true (default)| AUTO_START
+    CHECK_CONFIG -->|false| WAIT_REVIEW
+
+    WAIT_REVIEW --> USER_APPROVES
+    USER_APPROVES -->|✅ Proceed| START_WORK
+    USER_APPROVES -->|❌ Changes Needed| WAIT_REVIEW
+
+    AUTO_START --> START_WORK
+    START_WORK --> AGENT_WORK
+    AGENT_WORK --> COMMENT_START
+    COMMENT_START --> CREATE_BRANCH
+    CREATE_BRANCH --> IMPLEMENT
+    IMPLEMENT --> COMMIT
+    COMMIT --> AUTO_STATUS_IP
+    AUTO_STATUS_IP --> INPROGRESS
+    COMMIT --> PUSH
+    PUSH --> CREATE_PR
+    CREATE_PR --> CODE_REVIEW
+    CODE_REVIEW --> MERGE_PR
+    MERGE_PR --> AUTO_STATUS_DONE
+    AUTO_STATUS_DONE --> DONE
+    MERGE_PR --> AUTO_CLOSE
+
+    style START fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
+    style ORCHESTRATOR fill:#E91E63,stroke:#880E4F,stroke-width:3px,color:#fff
+    style CLASSIFY fill:#E91E63,stroke:#880E4F,stroke-width:2px,color:#fff
+    style ROUTE_FRONTEND fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style ROUTE_BACKEND fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style ROUTE_DEVOPS fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style ROUTE_TESTING fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style ROUTE_DOCS fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style ROUTE_MULTI fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    style COMPLEXITY fill:#9C27B0,stroke:#4A148C,stroke-width:3px,color:#fff
+    style COMPLEX_PATH fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    style CREATE_SPEC fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    style ASK_REVIEW fill:#FF9800,stroke:#E65100,stroke-width:3px,color:#fff
+    style BREAK_DOWN fill:#FF9800,stroke:#E65100,stroke-width:2px,color:#fff
+    style CHECK_CONFIG fill:#2196F3,stroke:#0D47A1,stroke-width:3px,color:#fff
+    style AUTO_START fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#fff
+    style WAIT_REVIEW fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
+    style AGENT_WORK fill:#00BCD4,stroke:#006064,stroke-width:2px,color:#fff
+    style CREATE_ISSUE fill:#FF6B6B,stroke:#C92A2A,stroke-width:2px,color:#fff
+    style AUTO_STATUS_IP fill:#2196F3,stroke:#0D47A1,stroke-width:2px,color:#fff
+    style AUTO_STATUS_DONE fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#fff
+    style TODO fill:#FFC107,stroke:#F57F17,stroke-width:2px,color:#000
+    style INPROGRESS fill:#2196F3,stroke:#0D47A1,stroke-width:2px,color:#fff
+    style DONE fill:#4CAF50,stroke:#2E7D32,stroke-width:2px,color:#fff
+    style MULTI_STEP1 fill:#673AB7,stroke:#311B92,stroke-width:2px,color:#fff
+    style MULTI_STEP2 fill:#673AB7,stroke:#311B92,stroke-width:2px,color:#fff
+    style MULTI_STEP3 fill:#673AB7,stroke:#311B92,stroke-width:2px,color:#fff
+    style MULTI_STEP4 fill:#673AB7,stroke:#311B92,stroke-width:2px,color:#fff
+    style MULTI_COMPLETE fill:#673AB7,stroke:#311B92,stroke-width:2px,color:#fff
+```
+
+**Key Features:**
+- 🎯 **Intelligent Routing**: Orchestrator analyzes tasks and routes to the right specialist
+- 📋 **Spec-First Decisions**: Complexity detection ensures proper planning for large features
+- 🔄 **Full Automation**: From description to GitHub Projects with zero manual steps
+- 🤖 **Multi-Agent Coordination**: Complex tasks utilize multiple specialists working together
+- ⚙️ **Configurable Auto-Resolution**: Choose between immediate execution or manual review
+
+---
+
 ## 🚀 Quick Start
 
 ### Installation
