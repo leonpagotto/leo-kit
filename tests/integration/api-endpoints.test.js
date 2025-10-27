@@ -190,7 +190,10 @@ describe('APIServer - API Integration Tests', () => {
         description: "It's a \"test\""
       };
 
-      server.tracker = { hunts: [hunt] };
+      server.tracker = {
+        hunts: [hunt],
+        getHunt: jest.fn((id) => hunt)
+      };
 
       const response = await request(server.app).get('/api/hunts/1');
 
@@ -199,14 +202,17 @@ describe('APIServer - API Integration Tests', () => {
     });
 
     test('should preserve data types in responses', async () => {
+      const hunt = {
+        id: '1',
+        title: 'Test',
+        priority: 5,
+        active: true,
+        createdAt: new Date('2024-01-01').toISOString()
+      };
+
       server.tracker = {
-        hunts: [{
-          id: '1',
-          title: 'Test',
-          priority: 5,
-          active: true,
-          createdAt: new Date('2024-01-01').toISOString()
-        }]
+        hunts: [hunt],
+        getHunt: jest.fn((id) => hunt)
       };
 
       const response = await request(server.app).get('/api/hunts/1');
