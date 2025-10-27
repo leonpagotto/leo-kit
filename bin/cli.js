@@ -221,7 +221,7 @@ program
   .description('Manage Git hooks (install, uninstall, status)')
   .action(async (action) => {
     const { installPreCommitHook, uninstallPreCommitHook, isHookInstalled } = require('../lib/utils/git-hooks');
-    
+
     if (action === 'install') {
       console.log(chalk.cyan('\n🪝 Installing Git hooks...\n'));
       const result = await installPreCommitHook();

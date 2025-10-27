@@ -415,7 +415,7 @@ LEO prevents documentation clutter by enforcing a clean root directory structure
 
 #### Organized Structure
 
-````
+```
 Root/ (Only essential files)
 ├── README.md
 ├── CONTRIBUTING.md
@@ -426,11 +426,11 @@ Root/ (Only essential files)
 
 docs/
 ├── sessions/YYYY-MM/     # Session summaries
-├── stories/              # Story documentation  
+├── stories/              # Story documentation
 ├── phases/               # Phase reports
 ├── releases/             # Release notes
 └── guides/               # Tutorials & guides
-````
+```
 
 #### Features
 
