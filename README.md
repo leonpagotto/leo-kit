@@ -407,6 +407,104 @@ When budgets are exceeded, LEO automatically falls back to cost-efficient models
 
 ---
 
+### 📁 Automated Documentation Organization (v5.0.1+)
+
+**NEW:** Keep your repository professional with automated documentation organization!
+
+LEO prevents documentation clutter by enforcing a clean root directory structure. No more 45+ markdown files in your root—everything has its place!
+
+#### Organized Structure
+
+````
+Root/ (Only essential files)
+├── README.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── SECURITY.md
+├── CHANGELOG.md
+└── INDEX.md
+
+docs/
+├── sessions/YYYY-MM/     # Session summaries
+├── stories/              # Story documentation  
+├── phases/               # Phase reports
+├── releases/             # Release notes
+└── guides/               # Tutorials & guides
+````
+
+#### Features
+
+- **🪝 Pre-commit Hook**: Prevents markdown files in root (except allowed files)
+- **⚡ Auto-Organization**: `leo organize-docs` moves files to correct locations
+- **📋 Validation**: Integrated into `leo health` check
+- **⚙️ Configurable**: Customize allowed files and enforcement via `.leorc.json`
+- **📖 INDEX.md**: Auto-generated documentation navigation
+
+#### Quick Commands
+
+```bash
+# Organize all documentation files automatically
+leo organize-docs
+
+# Preview what would be moved (dry run)
+leo organize-docs --dry-run
+
+# Validate current organization
+leo organize-docs --validate
+
+# Install pre-commit hook
+leo hooks install
+
+# Check hook status
+leo hooks status
+```
+
+#### Configuration
+
+Add to your `.leorc.json`:
+
+```json
+{
+  "documentation": {
+    "enforce-organization": true,
+    "auto-organize": false,
+    "root-files-max": 6,
+    "allowed-root-files": [
+      "README.md",
+      "CONTRIBUTING.md",
+      "LICENSE",
+      "SECURITY.md",
+      "CHANGELOG.md",
+      "INDEX.md"
+    ]
+  }
+}
+```
+
+#### Health Check Integration
+
+Documentation organization is now part of your project health score:
+
+```bash
+$ leo health
+
+Documentation:
+  ✓ docs/ directory structure (3 pts)
+  ✓ Root Directory Clean - 5 allowed files (5 pts)
+
+Overall Score: 103/100 (103%) - Grade A
+```
+
+**Benefits:**
+
+- ✅ **Professional Appearance** - Clean root directory
+- ✅ **Easy Navigation** - INDEX.md guides users
+- ✅ **Automated Enforcement** - Pre-commit hook prevents clutter
+- ✅ **Time Saved** - 2 hours of manual organization → instant
+- ✅ **Consistent Standards** - Same structure across all projects
+
+---
+
 ### 🎯 GitHub-Native Issue Creation (v3.0.0+)
 
 **NEW:** Modern issue management using GitHub's native features instead of label-based workarounds!
