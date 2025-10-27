@@ -7,9 +7,9 @@ const { RoleManager } = require('../../lib/team/roles');
 
 describe('RoleManager', () => {
   describe('Role Definitions', () => {
-    test('should have 4 roles defined', () => {
+    test('should have 5 roles defined', () => {
       const roles = RoleManager.getAllRoles();
-      expect(roles).toHaveLength(4);
+      expect(roles).toHaveLength(5);
     });
 
     test('should have requirements role', () => {
@@ -65,7 +65,8 @@ describe('RoleManager', () => {
         'requirements',
         'spec',
         'implementation',
-        'testing'
+        'testing',
+        'deploy'
       ]);
     });
 
@@ -78,10 +79,13 @@ describe('RoleManager', () => {
 
       const nextNextNext = RoleManager.getNextRole('implementation');
       expect(nextNextNext).toBe('testing');
+      
+      const lastNext = RoleManager.getNextRole('testing');
+      expect(lastNext).toBe('deploy');
     });
 
     test('should return null for last role in sequence', () => {
-      const next = RoleManager.getNextRole('testing');
+      const next = RoleManager.getNextRole('deploy');
       expect(next).toBeNull();
     });
 
@@ -214,7 +218,8 @@ describe('RoleManager', () => {
     });
 
     test('should check if role is last in sequence', () => {
-      expect(RoleManager.isLastInSequence('testing')).toBe(true);
+      expect(RoleManager.isLastInSequence('deploy')).toBe(true);
+      expect(RoleManager.isLastInSequence('testing')).toBe(false);
       expect(RoleManager.isLastInSequence('requirements')).toBe(false);
       expect(RoleManager.isLastInSequence('implementation')).toBe(false);
     });
@@ -270,13 +275,14 @@ describe('RoleManager', () => {
   });
 
   describe('getAllRoles', () => {
-    test('should return all 4 roles in sequence', () => {
+    test('should return all 5 roles in sequence', () => {
       const roles = RoleManager.getAllRoles();
-      expect(roles).toHaveLength(4);
+      expect(roles).toHaveLength(5);
       expect(roles[0].id).toBe('requirements');
       expect(roles[1].id).toBe('spec');
       expect(roles[2].id).toBe('implementation');
       expect(roles[3].id).toBe('testing');
+      expect(roles[4].id).toBe('deploy');
     });
 
     test('all returned roles should be valid', () => {
