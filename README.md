@@ -41,13 +41,13 @@
 
 LEO transforms these pain points into strengths:
 
-| Challenge | LEO Solution | Impact |
-|-----------|-------------|--------|
-| Manual setup | One-command initialization | **2-4 hours → 5 minutes** |
-| Generic AI | 6 specialized AI agents | **60% faster development** |
-| Unclear requirements | Spec-first methodology | **50% fewer issues** |
-| Manual updates | Auto GitHub Projects sync | **100% automated** |
-| Documentation chaos | Automated organization | **98/100 health score** |
+| Challenge            | LEO Solution               | Impact                     |
+| -------------------- | -------------------------- | -------------------------- |
+| Manual setup         | One-command initialization | **2-4 hours → 5 minutes**  |
+| Generic AI           | 6 specialized AI agents    | **60% faster development** |
+| Unclear requirements | Spec-first methodology     | **50% fewer issues**       |
+| Manual updates       | Auto GitHub Projects sync  | **100% automated**         |
+| Documentation chaos  | Automated organization     | **98/100 health score**    |
 
 ---
 
@@ -60,12 +60,12 @@ Six specialized AI agents provide expert guidance:
 \`\`\`
 Your Request → Orchestrator → Routes to Specialist(s)
 
-🎨 Frontend  │ UI/UX, Components, Responsive Design
-⚙️  Backend   │ APIs, Database, Authentication, Security
-🚀 DevOps    │ CI/CD, Docker, Deployment, Monitoring
-🧪 Testing   │ Unit, Integration, E2E, Coverage
-📚 Docs      │ API Reference, Guides, Comments
-🎛️  Orchestrator │ Intelligent Task Routing
+🎨 Frontend │ UI/UX, Components, Responsive Design
+⚙️ Backend │ APIs, Database, Authentication, Security
+🚀 DevOps │ CI/CD, Docker, Deployment, Monitoring
+🧪 Testing │ Unit, Integration, E2E, Coverage
+📚 Docs │ API Reference, Guides, Comments
+🎛️ Orchestrator │ Intelligent Task Routing
 \`\`\`
 
 **[Learn More →](../../wiki/Multi-Agent-System)**
@@ -85,17 +85,22 @@ Smart decision-making based on complexity:
 New in v5.0.1! Automatically organizes markdown files:
 
 \`\`\`bash
+
 # Organize documentation
+
 leo organize-docs
 
 # Validate organization
+
 leo organize-docs --validate
 
 # Enable pre-commit hook
+
 leo hooks install
 \`\`\`
 
 **Features:**
+
 - Automatic file organization by type (sessions, releases, guides)
 - Pre-commit hook prevents documentation clutter
 - Health check integration (+5 points)
@@ -459,6 +464,7 @@ graph TB
 ```
 
 **Key Features:**
+
 - 🎯 **Intelligent Routing**: Orchestrator analyzes tasks and routes to the right specialist
 - 📋 **Spec-First Decisions**: Complexity detection ensures proper planning for large features
 - 🔄 **Full Automation**: From description to GitHub Projects with zero manual steps
@@ -478,16 +484,21 @@ npm install -g leo-workflow-kit
 ### Initialize Your Project
 
 \`\`\`bash
+
 # Navigate to your repo
+
 cd your-project
 
 # Initialize LEO
+
 leo init
 
 # Follow interactive setup
+
 \`\`\`
 
 This creates:
+
 - \`.leorc.json\` - Configuration file
 - \`.github/copilot-instructions.md\` - AI behavior rules
 - GitHub Project with columns and labels
@@ -496,24 +507,31 @@ This creates:
 ### Basic Usage
 
 \`\`\`bash
+
 # Create an issue
+
 leo issue
 
 # Organize documentation
+
 leo organize-docs
 
 # Check project health
+
 leo health
 
 # Enable/disable agents
+
 leo agent list
 leo agent enable frontend
 leo agent disable testing
 
 # Configure settings
+
 leo config
 
 # View all commands
+
 leo --help
 \`\`\`
 
@@ -552,15 +570,19 @@ leo --help
 ### Multi-Agent Task Routing
 
 \`\`\`bash
+
 # Frontend task (UI component)
+
 "Add a dark mode toggle to the header"
 → Routed to Frontend Agent → Creates component with accessibility
 
 # Backend task (API endpoint)
+
 "Add OAuth2 authentication with Google"
 → Routed to Backend Agent → Creates secure endpoints
 
 # Multi-agent task
+
 "Add user login with social auth and responsive UI"
 → Backend Agent: OAuth2 setup
 → Frontend Agent: Login form UI
@@ -570,7 +592,9 @@ leo --help
 ### Spec-First Workflow
 
 \`\`\`bash
+
 # Complex feature request
+
 "Build an admin dashboard with analytics"
 → Orchestrator detects complexity (> 1 week)
 → Creates specification in docs/specs/
@@ -582,17 +606,20 @@ leo --help
 ### Documentation Organization
 
 \`\`\`bash
+
 # Before: 45+ markdown files in root (unprofessional)
+
 # After: Organized structure
 
 docs/
-  sessions/2025-10/     # Session summaries
-  releases/             # Release notes
-  guides/               # How-to guides
-  phases/               # Project phases
-  stories/              # User stories
+sessions/2025-10/ # Session summaries
+releases/ # Release notes
+guides/ # How-to guides
+phases/ # Project phases
+stories/ # User stories
 
 # Root: Only essential files (README, CHANGELOG, etc.)
+
 \`\`\`
 
 ---
@@ -603,23 +630,23 @@ Configure LEO via \`.leorc.json\`:
 
 \`\`\`json
 {
-  "github": {
-    "project": "My Project",
-    "owner": "username"
-  },
-  "agents": {
-    "enabled": ["orchestrator", "frontend", "backend"],
-    "auto-resolve": true
-  },
-  "documentation": {
-    "enforce-organization": true,
-    "allowed-root-files": ["README.md", "CHANGELOG.md", "LICENSE"],
-    "root-files-max": 5
-  },
-  "specs": {
-    "directory": "docs/specs",
-    "template": "default"
-  }
+"github": {
+"project": "My Project",
+"owner": "username"
+},
+"agents": {
+"enabled": ["orchestrator", "frontend", "backend"],
+"auto-resolve": true
+},
+"documentation": {
+"enforce-organization": true,
+"allowed-root-files": ["README.md", "CHANGELOG.md", "LICENSE"],
+"root-files-max": 5
+},
+"specs": {
+"directory": "docs/specs",
+"template": "default"
+}
 }
 \`\`\`
 
@@ -632,12 +659,13 @@ Configure LEO via \`.leorc.json\`:
 LEO has comprehensive test coverage:
 
 \`\`\`bash
-npm test              # Run all tests
-npm run test:watch   # Watch mode
-npm run test:model   # Model selection tests only
+npm test # Run all tests
+npm run test:watch # Watch mode
+npm run test:model # Model selection tests only
 \`\`\`
 
 **Current Status:**
+
 - ✅ 462 tests passing
 - ⚠️ 59 tests in progress
 - 📊 Improving test coverage to 80%+
@@ -657,22 +685,29 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 **Quick Contribution:**
 
 \`\`\`bash
+
 # Fork and clone
+
 git clone https://github.com/YOUR_USERNAME/leo-kit.git
 
 # Install dependencies
+
 npm install
 
 # Create feature branch
+
 git checkout -b feature/amazing-feature
 
 # Make changes and test
+
 npm test
 
 # Commit with conventional commits
+
 git commit -m "feat: add amazing feature"
 
 # Push and create PR
+
 git push origin feature/amazing-feature
 \`\`\`
 
@@ -683,6 +718,7 @@ git push origin feature/amazing-feature
 ### Current Release: v5.0.1
 
 **Key Features:**
+
 - ✅ Automated documentation organization
 - ✅ Pre-commit hooks for docs
 - ✅ Health check integration
@@ -692,11 +728,13 @@ git push origin feature/amazing-feature
 - ✅ Configuration management
 
 **In Progress:**
+
 - 🔨 Test coverage improvements (59 remaining)
 - 🔨 Enhanced error handling
 - 🔨 Performance optimizations
 
 **Upcoming (v5.1.0):**
+
 - 🎯 Advanced model selection strategies
 - 🎯 Cost tracking and budgets
 - 🎯 Team collaboration features
@@ -717,6 +755,7 @@ See [LICENSE](LICENSE) for details.
 ## 🙏 Acknowledgments
 
 Built with:
+
 - [Commander.js](https://github.com/tj/commander.js) - CLI framework
 - [Inquirer.js](https://github.com/SBoudrias/Inquirer.js) - Interactive prompts
 - [GitHub CLI](https://cli.github.com/) - GitHub integration
