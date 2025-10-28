@@ -42,8 +42,18 @@ describe('APIServer - Middleware Setup', () => {
     server._setupMiddleware();
   });
 
-  test('should have CORS middleware', () => {
-    expect(server.app._router).toBeDefined();
+  test('should have CORS middleware', async () => {
+    // Test CORS by making an actual request with Origin header
+    server.app.get('/test-cors', (req, res) => {
+      res.json({ ok: true });
+    });
+
+    const response = await request(server.app)
+      .get('/test-cors')
+      .set('Origin', 'http://localhost:8080');
+
+    // CORS should add Access-Control-Allow-Origin header
+    expect(response.headers['access-control-allow-origin']).toBeDefined();
   });
 
   test('should parse JSON body', async () => {
@@ -66,7 +76,7 @@ describe('APIServer - Middleware Setup', () => {
     });
 
     const response = await request(server.app).get('/error');
-    expect(response.status).toBe(500); // Error handler converts to 500
+    expect(response.status).toBe(400); // Error handler preserves err.status
   });
 });
 
