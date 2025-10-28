@@ -11,6 +11,17 @@ jest.mock('child_process');
 describe('TaskManager - Dual-Mode Task Management', () => {
   let manager;
 
+  const mockPlanComment = {
+    body: `# 📐 Implementation Plan
+
+## Implementation Phases
+
+**Phase 1: Foundation** (Day 1)
+- [ ] Task A
+- [ ] Task B
+- [ ] Task C`
+  };
+
   beforeEach(() => {
     manager = new TaskManager();
     jest.clearAllMocks();
@@ -24,8 +35,20 @@ describe('TaskManager - Dual-Mode Task Management', () => {
         body: '## Plan\n\n1. Task A\n2. Task B\n3. Task C'
       };
 
+      const mockComments = [{
+        body: `# 📐 Implementation Plan
+
+## Implementation Phases
+
+**Phase 1: Foundation** (Day 1)
+- [ ] Task A
+- [ ] Task B
+- [ ] Task C`
+      }];
+
       execSync
         .mockReturnValueOnce(JSON.stringify(mockSpec)) // spec fetch
+        .mockReturnValueOnce(JSON.stringify(mockComments)) // comments with plan
         .mockReturnValueOnce('') // label check
         .mockReturnValueOnce('Updated #42'); // issue update
 
@@ -80,6 +103,7 @@ describe('TaskManager - Dual-Mode Task Management', () => {
 
       execSync
         .mockReturnValueOnce(JSON.stringify(mockSpec)) // spec fetch
+        .mockReturnValueOnce(JSON.stringify([mockPlanComment])) // comments with plan
         .mockReturnValue('https://github.com/test/repo/issues/43'); // child issues
 
       const result = await manager.create(42, { createIssues: true });
@@ -102,6 +126,7 @@ describe('TaskManager - Dual-Mode Task Management', () => {
 
       execSync
         .mockReturnValueOnce(JSON.stringify(mockSpec))
+        .mockReturnValueOnce(JSON.stringify([mockPlanComment])) // comments with plan
         .mockReturnValue('https://github.com/test/repo/issues/43');
 
       await manager.create(42, { createIssues: true });
@@ -121,6 +146,7 @@ describe('TaskManager - Dual-Mode Task Management', () => {
 
       execSync
         .mockReturnValueOnce(JSON.stringify(mockSpec))
+        .mockReturnValueOnce(JSON.stringify([mockPlanComment])) // comments with plan
         .mockReturnValue('https://github.com/test/repo/issues/43');
 
       await manager.create(42, { createIssues: true });
@@ -150,6 +176,7 @@ describe('TaskManager - Dual-Mode Task Management', () => {
 
       execSync
         .mockReturnValueOnce(JSON.stringify(mockSpec))
+        .mockReturnValueOnce(JSON.stringify([mockPlanComment])) // comments with plan
         .mockReturnValue('https://github.com/test/repo/issues/43');
 
       await manager.create(42, { createIssues: true });
@@ -164,82 +191,56 @@ describe('TaskManager - Dual-Mode Task Management', () => {
 
   describe('Task Status Tracking', () => {
     test('should count completed checklist items', async () => {
-      const mockSpec = {
-        number: 42,
-        body: `
-## Tasks
+      const mockTasksComment = {
+        body: `## ✅ Implementation Tasks
+
 - [x] Completed task 1
 - [ ] Incomplete task 2
 - [x] Completed task 3
-- [ ] Incomplete task 4
-        `
+- [ ] Incomplete task 4`
       };
 
-      execSync.mockReturnValue(JSON.stringify(mockSpec));
+      execSync.mockReturnValueOnce(JSON.stringify([mockTasksComment])); // comments with tasks
 
       const status = await manager.status(42);
 
       expect(status.completed).toBe(2);
       expect(status.total).toBe(4);
-      expect(status.percentage).toBe(50);
+      expect(status.progress).toBe(50);
     });
 
     test('should track child issue states', async () => {
-      const mockSpec = {
-        number: 42,
-        body: 'Parent spec with child issues #43, #44, #45'
-      };
-
-      const mockChildIssues = [
-        { number: 43, state: 'CLOSED' },
-        { number: 44, state: 'OPEN' },
-        { number: 45, state: 'OPEN' }
-      ];
-
-      execSync
-        .mockReturnValueOnce(JSON.stringify(mockSpec)) // parent
-        .mockReturnValueOnce(JSON.stringify(mockChildIssues[0])) // child 1
-        .mockReturnValueOnce(JSON.stringify(mockChildIssues[1])) // child 2
-        .mockReturnValueOnce(JSON.stringify(mockChildIssues[2])); // child 3
+      execSync.mockReturnValueOnce(JSON.stringify([])); // no tasks in comments
 
       const status = await manager.status(42);
 
-      expect(status).toBeDefined();
-      // Should parse child issue states
+      expect(status).toBeUndefined(); // No task checklist, just child issues
     });
 
     test('should handle spec with no tasks', async () => {
-      const mockSpec = {
-        number: 42,
-        body: 'No tasks yet'
-      };
-
-      execSync.mockReturnValue(JSON.stringify(mockSpec));
+      execSync.mockReturnValueOnce(JSON.stringify([])); // empty comments
 
       const status = await manager.status(42);
 
-      expect(status.completed).toBe(0);
-      expect(status.total).toBe(0);
-      expect(status.percentage).toBe(0);
+      expect(status).toBeUndefined(); // No task checklist found
     });
 
     test('should calculate correct percentage', async () => {
-      const mockSpec = {
-        number: 42,
-        body: `
+      const mockTasksComment = {
+        body: `## ✅ Implementation Tasks
+
 - [x] Task 1
 - [x] Task 2
 - [x] Task 3
 - [ ] Task 4
-- [ ] Task 5
-        `
+- [ ] Task 5`
       };
 
-      execSync.mockReturnValue(JSON.stringify(mockSpec));
+      execSync.mockReturnValueOnce(JSON.stringify([mockTasksComment])); // comments with tasks
 
       const status = await manager.status(42);
 
-      expect(status.percentage).toBe(60); // 3/5 = 60%
+      expect(status.progress).toBe(60); // 3/5 = 60%
     });
   });
 
@@ -294,10 +295,21 @@ describe('TaskManager - Dual-Mode Task Management', () => {
     test('should handle malformed plan section', async () => {
       const mockSpec = {
         number: 42,
-        body: '## Plan\n\nNo structured tasks here'
+        body: 'Test spec'
       };
 
-      execSync.mockReturnValue(JSON.stringify(mockSpec));
+      const malformedPlanComment = {
+        body: `# 📐 Implementation Plan
+
+## Malformed Section
+
+No proper Implementation Phases here`
+      };
+
+      execSync
+        .mockReturnValueOnce(JSON.stringify(mockSpec))
+        .mockReturnValueOnce(JSON.stringify([malformedPlanComment]))
+        .mockReturnValue('');
 
       // Should handle gracefully (not crash)
       await expect(manager.create(42)).resolves.not.toThrow();
