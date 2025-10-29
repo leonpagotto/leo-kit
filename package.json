@@ -1,7 +1,7 @@
 {
   "name": "leo-workflow-kit",
-  "version": "5.2.1",
-  "description": "LEO Workflow Kit 5.2.1 - Specification-Driven Development with GitHub-Native Specs. Features: Specs as Issues (not files), Dual-mode task management, Spec evolution tracking, Spec extensions, AI clarification & planning, Constitutional Governance, Claude 3.5 Sonnet code generation, REST API with WebSocket, Multi-agent orchestration. Complete Phase 2: Spec-First Development System. v5.2.1: Architecture clarifications (AI-driven workflow documentation).",
+  "version": "5.2.2",
+  "description": "LEO Workflow Kit 5.2.2 - Visual Workflow Documentation & Spec-Driven Development. Features: Kid-friendly ASCII diagrams (5 workflows), Fixed broken links, Simplified README, Verified spec workflow (6 commands), Specs as Issues, Dual-mode task management, Spec evolution tracking, Constitutional Governance, Claude 3.5 Sonnet, Multi-agent orchestration. Complete Phase 2 + Documentation Excellence.",
   "main": "dist/index.js",
   "bin": {
     "leo-workflow": "bin/cli.js",

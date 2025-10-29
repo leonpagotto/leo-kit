@@ -6,6 +6,58 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.2.2] - 2025-10-29
+
+### Added
+
+- **📊 Visual Workflow Diagrams**: Created comprehensive `docs/WORKFLOW_DIAGRAMS.md` with 5 kid-friendly ASCII art diagrams
+  - **Diagram 1**: Orchestrator Routing - Shows keyword-based agent selection
+  - **Diagram 2**: Spec-First Decision - Simple vs complex work decision tree
+  - **Diagram 3**: Simple Issue Creation - 5-step workflow from description to GitHub
+  - **Diagram 4**: Complete Spec Workflow - 6-step process with real commands
+  - **Diagram 5**: Complete LEO Journey - From install to done
+  - **Quick Command Reference**: Table showing all key commands
+  - All diagrams use simple ASCII art (renders everywhere, no dependencies)
+  - Kid-friendly language makes workflows accessible to everyone
+
+### Fixed
+
+- **🔗 README Links**: Fixed 18 broken `../../wiki/` references
+  - Replaced all wiki links with actual documentation paths
+  - Updated navigation links to point to `docs/` files
+  - All links now functional and accessible
+
+### Changed
+
+- **📖 README Simplification**: Major simplification for better accessibility
+  - Removed 2 large complex Mermaid diagrams (~400 lines)
+  - Added simple "How LEO Works" section (5 clear steps)
+  - Added "Spec-First Development" section with real command examples
+  - Simplified "System Architecture" to 3-layer explanation
+  - Replaced complex diagrams with links to `docs/WORKFLOW_DIAGRAMS.md`
+  - Updated Quick Start and Features sections with visual diagram links
+
+### Documentation
+
+- **✅ Spec Workflow Verification**: Verified all spec commands work correctly
+  - `leo spec new "..."` - Creates GitHub issue with spec template
+  - `leo clarify 42` - AI generates clarifying questions
+  - `leo plan 42` - Generates implementation plan
+  - `leo tasks create 42` - Creates checklist or child issues
+  - `leo tasks status 42` - Shows progress tracking
+  - `leo spec-extend 42 "..."` - Extends existing spec with new requirements
+  - All 6 commands confirmed functional and well-documented
+
+### Benefits
+
+- **📚 Accessibility**: Complex workflows now explained with simple visual diagrams
+- **🎯 Clarity**: ASCII art renders everywhere (GitHub, terminals, text editors)
+- **🔗 Reliability**: No more broken links in documentation
+- **📖 Simplicity**: README went from technical to beginner-friendly
+- **✅ Confidence**: Spec workflow verified and documented with examples
+
+---
+
 ## [5.2.1] - 2025-10-27
 
 ### Fixed

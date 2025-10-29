@@ -16,30 +16,26 @@ LEO Workflow Kit is a powerful CLI tool that revolutionizes software development
 - **📊 Intelligent Project Management**: Auto-sync with GitHub Projects with smart status updates
 - **⚡ Zero Configuration**: Works out-of-the-box - literally just `npm install`
 
-**Current Version:** 4.1.1 🎉
-**Latest Stable:** 4.1.1
-**Released:** October 24, 2025
+**Current Version:** 5.2.2 🎉
+**Latest Stable:** 5.2.2
+**Released:** October 29, 2025
+
+**What's New in 5.2.2:** 📚 DOCUMENTATION EXCELLENCE
+
+- 📊 **Visual Workflow Diagrams**: 5 kid-friendly ASCII art diagrams in `docs/WORKFLOW_DIAGRAMS.md`
+  - Orchestrator Routing - Keyword-based agent selection
+  - Spec-First Decision - Simple vs complex work decision tree
+  - Simple Issue Creation - 5-step workflow visualization
+  - Complete Spec Workflow - 6-step process with real commands
+  - Complete LEO Journey - From install to done
+- � **Fixed All Broken Links**: 18 broken wiki references in README.md now working
+- 📖 **Simplified README**: Removed complex Mermaid diagrams, added clear explanations
+- ✅ **Verified Spec Workflow**: All 6 spec commands tested and documented
 
 **What's New in 4.1.1:** ✨ REAL-TIME MODEL SELECTION IN VS CODE
 
-- � **Real-Time Model Display**: Watch AI models change in VS Code status bar as agents execute
-- 🔄 **Automatic Model Switching**: Intelligent model selection based on task complexity
-- 📊 **Status Manager Events**: Event emission system for tracking model changes
-- 🔌 **VS Code Extension**: Full integration with status bar and commands
-- 📁 **File Watching**: Real-time updates via `~/.leo-model-status.json`
-- ⚡ **100ms Max Latency**: Super-fast status bar updates
-- 💰 **Cost-Conscious Routing**: Automatic model selection optimizing for cost vs power
-
-**Example Real-Time Display:**
-
-```
-⊘ LEO Ready                    (idle)
-↻ 🎨 designer → Claude-S       (designer working)
-✓ 🎨 designer complete         (designer done)
-↻ 💻 frontend → Claude-S       (frontend working)
-↻ 🔧 backend → Claude-Opus     (backend - upgraded model!)
-↻ 📚 documentation → GPT-3.5    (docs - cheapest model)
-```
+- 🔄 **Real-Time Model Display**: Watch AI models change in VS Code status bar
+- � **Cost-Conscious Routing**: Automatic model selection optimizing for cost vs power
 
 **What's New in 4.0.0:** 🎯 Multi-Agent Orchestration System
 
@@ -66,6 +62,7 @@ LEO Workflow Kit is a powerful CLI tool that revolutionizes software development
 
 ### Getting Started
 
+- [Visual Workflow Guide](../docs/WORKFLOW_DIAGRAMS.md) - Simple diagrams explaining LEO 🎉 NEW v5.2.2
 - [Installation Guide](./Installation-Guide) - Get up and running in 5 minutes
 - [Quick Start Tutorial](./Quick-Start) - Your first LEO project
 - [Configuration](./Configuration) - Customize LEO for your workflow
