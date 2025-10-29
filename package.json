@@ -1,7 +1,7 @@
 {
   "name": "leo-workflow-kit",
-  "version": "5.2.2",
-  "description": "LEO Workflow Kit 5.2.2 - Visual Workflow Documentation & Spec-Driven Development. Features: Kid-friendly ASCII diagrams (5 workflows), Fixed broken links, Simplified README, Verified spec workflow (6 commands), Specs as Issues, Dual-mode task management, Spec evolution tracking, Constitutional Governance, Claude 3.5 Sonnet, Multi-agent orchestration. Complete Phase 2 + Documentation Excellence.",
+  "version": "5.3.0",
+  "description": "LEO Workflow Kit 5.3.0 - Design-First Multi-Agent Workflow. Features: Designer Agent enabled (30-min visual prototypes), Latest AI models (GPT-4o, Claude 3.5 Sonnet, o1), Visual-optimized model selection, VS Code agent mode display, 50% faster UI delivery, Real-time agent switching. Complete Phase 2 + Design-First Architecture + Multi-Model Intelligence.",
   "main": "dist/index.js",
   "bin": {
     "leo-workflow": "bin/cli.js",

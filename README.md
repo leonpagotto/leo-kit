@@ -15,11 +15,11 @@
 
 ---
 
-### 🎉 **v5.2.2** - Documentation Excellence
+### 🎉 **v5.3.0** - Design-First Multi-Agent Workflow
 
-✨ **Visual Workflow Diagrams** • 📚 **Fixed Broken Links** • 📖 **Simplified README** • ✅ **Verified Spec Workflow**
+✨ **Designer Agent** • 🤖 **Latest AI Models** (GPT-4o, Claude 3.5) • 🎨 **30-Min Visual Prototypes** • ⚡ **50% Faster UI**
 
-**[View Release Notes](CHANGELOG.md#522)** • **[Visual Workflow Guide](docs/WORKFLOW_DIAGRAMS.md)**
+**[View Release Notes](CHANGELOG.md#530)** • **[Design-First Guide](DESIGNER_AGENT_ENABLED_SUMMARY.md)**
 
 ---
 
