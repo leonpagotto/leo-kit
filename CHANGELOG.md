@@ -6,6 +6,39 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.5] - 2025-10-29
+
+### 🧹 Refactor: Remove LionPack Branding
+
+**Problem:** Old "LionPack" branding references were still present throughout the codebase, tests, and user-facing messages, causing confusion.
+
+**Solution:** Complete rebranding to "LEO Workflow Kit" across all code, tests, and documentation.
+
+### Changed
+
+- **Test Display Name**: Changed from "LionPack Tests" to "LEO Workflow Kit Tests"
+- **Directory Structure**: Changed `.lionpack/` directory to `.leo/`
+- **Command References**: Updated all `lionpack` command references to `leo`
+- **Error Messages**: All user-facing messages now say "LEO Workflow Kit" instead of "LionPack"
+- **Code Comments**: Updated all file headers and documentation strings
+- **Test Files**: Updated all test descriptions and error messages
+
+### Files Updated
+
+- `jest.config.js`: Test display name
+- `.gitignore`: Directory references
+- All files in `lib/commands/` (hunt.js, team.js)
+- All files in `lib/team/` (12 files)
+- All test files in `tests/team/` and `tests/integration/`
+
+### Verification
+
+- ✅ Zero mentions of "LionPack" in test output
+- ✅ All 583 tests passing
+- ✅ Consistent "LEO Workflow Kit" branding throughout
+
+---
+
 ## [5.3.4] - 2025-10-29
 
 ### 🚀 Added: Custom/Enterprise Model Support
