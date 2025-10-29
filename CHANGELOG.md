@@ -17,11 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **🎯 Custom Model Support**
+
   - Accept ANY model name in configuration (e.g., `claude-4.5-sonnet`, `gpt-5`, etc.)
   - Perfect for beta testers, enterprise customers, or users with special API access
   - System validates at API provider level, not at LEO level
-  
+
 - **📝 Custom Model Documentation**
+
   - New section in MODEL_QUALITY_CONTROL.md for enterprise/beta models
   - Examples for common enterprise scenarios
   - Optional metadata registration for better tracking
@@ -45,6 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Configuration Examples
 
 **Use Enterprise Beta Model:**
+
 ```json
 {
   "model-selection": {
@@ -56,6 +59,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ```
 
 **Define Custom Model Metadata:**
+
 ```json
 {
   "model-selection": {

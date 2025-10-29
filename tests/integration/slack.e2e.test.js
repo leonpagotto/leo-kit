@@ -456,7 +456,7 @@ describe('Slack Integration - Rate Limiting', () => {
 });
 
 describe('Slack Integration - Token Management', () => {
-  const tokenPath = path.join('.lionpack', 'slack-token');
+  const tokenPath = path.join('.leo', 'slack-token');
 
   afterEach(() => {
     if (fs.existsSync(tokenPath)) {

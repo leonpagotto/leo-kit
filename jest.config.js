@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'LionPack Tests',
+  displayName: 'LEO Workflow Kit Tests',
   testEnvironment: 'node',
   testMatch: ['**/tests/**/*.test.js'],
   collectCoverageFrom: [

@@ -12,7 +12,7 @@ describe('ConfigurationManager', () => {
   let tempDir;
 
   beforeEach(async () => {
-    tempDir = path.join(os.tmpdir(), `lionpack-test-${Date.now()}`);
+    tempDir = path.join(os.tmpdir(), `leo-test-${Date.now()}`);
     await fs.ensureDir(tempDir);
   });
 
@@ -103,7 +103,7 @@ describe('ConfigurationManager', () => {
   });
 
   describe('Configuration Persistence', () => {
-    test('should save configuration to .lionpack.json', async () => {
+    test('should save configuration to .leo.json', async () => {
       const manager = new ConfigurationManager(tempDir);
       await manager.initialize({
         name: 'Test Project',
@@ -113,7 +113,7 @@ describe('ConfigurationManager', () => {
         members: [{ username: 'alice', role: 'requirements' }]
       });
 
-      const configPath = path.join(tempDir, '.lionpack.json');
+      const configPath = path.join(tempDir, '.leo.json');
       const exists = await fs.pathExists(configPath);
       expect(exists).toBe(true);
     });

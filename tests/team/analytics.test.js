@@ -372,7 +372,7 @@ describe('AnalyticsEngine', () => {
       const markdown = engine.formatReportAsMarkdown(report);
 
       expect(typeof markdown).toBe('string');
-      expect(markdown).toContain('LionPack Team Report');
+      expect(markdown).toContain('LEO Workflow Kit Team Report');
       expect(markdown).toContain(engine.packName);
     });
 

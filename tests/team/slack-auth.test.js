@@ -15,7 +15,7 @@ const MOCK_TEST_TOKEN = 'test_mock_slack_token_' + Date.now();
 
 describe('SlackAuth - Token Management', () => {
   const mockToken = MOCK_TEST_TOKEN;
-  const tokenPath = path.join('.lionpack', 'slack-token');
+  const tokenPath = path.join('.leo', 'slack-token');
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -38,9 +38,9 @@ describe('SlackAuth - Token Management', () => {
     });
 
     test('should return true when token file exists', () => {
-      const lionpackDir = '.lionpack';
-      if (!fs.existsSync(lionpackDir)) {
-        fs.mkdirSync(lionpackDir, { recursive: true });
+      const leoDir = '.leo';
+      if (!fs.existsSync(leoDir)) {
+        fs.mkdirSync(leoDir, { recursive: true });
       }
       fs.writeFileSync(tokenPath, mockToken);
 
@@ -65,15 +65,15 @@ describe('SlackAuth - Token Management', () => {
       expect(mode).toBe(parseInt('600', 8));
     });
 
-    test('should create .lionpack directory if needed', () => {
-      const lionpackDir = '.lionpack';
-      if (fs.existsSync(lionpackDir)) {
-        fs.rmSync(lionpackDir, { recursive: true });
+    test('should create .leo directory if needed', () => {
+      const leoDir = '.leo';
+      if (fs.existsSync(leoDir)) {
+        fs.rmSync(leoDir, { recursive: true });
       }
 
       SlackAuth.saveToken(mockToken);
 
-      expect(fs.existsSync(lionpackDir)).toBe(true);
+      expect(fs.existsSync(leoDir)).toBe(true);
     });
 
     test('should throw error if token is empty', () => {
@@ -101,9 +101,9 @@ describe('SlackAuth - Token Management', () => {
     });
 
     test('should throw error if token file is empty', () => {
-      const lionpackDir = '.lionpack';
-      if (!fs.existsSync(lionpackDir)) {
-        fs.mkdirSync(lionpackDir, { recursive: true });
+      const leoDir = '.leo';
+      if (!fs.existsSync(leoDir)) {
+        fs.mkdirSync(leoDir, { recursive: true });
       }
       fs.writeFileSync(tokenPath, '   ');
 

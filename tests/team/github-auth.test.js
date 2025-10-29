@@ -139,7 +139,7 @@ describe('GitHubAuth', () => {
       expect(callArgs[1]).toBe(mockToken);
     });
 
-    test('should create .lionpack directory if missing', () => {
+    test('should create .leo directory if missing', () => {
       fs.existsSync.mockReturnValue(false);
       fs.mkdirSync.mockImplementation(() => {});
       fs.writeFileSync.mockImplementation(() => {});

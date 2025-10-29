@@ -11,9 +11,8 @@ dist/
 # LEO config files (user preferences)
 .leorc.json
 
-# LionPack references (deprecated)
-.lionpack/
-LIONPACK*.md
+# LEO team data directory (deprecated team features)
+.leo/
 
 # Package tarballs
 *.tgz

@@ -40,7 +40,7 @@ jest.mock('../../lib/team/github-api');describe('GitHub Integration E2E Tests', 
     mockAPI = {
       createProjectBoard: jest.fn().mockResolvedValue({
         id: 'P1',
-        name: 'LionPack Board',
+        name: 'LEO Workflow Kit Board',
         columns: [
           { id: 'C1', name: 'discovery' },
           { id: 'C2', name: 'design' },
@@ -120,7 +120,7 @@ jest.mock('../../lib/team/github-api');describe('GitHub Integration E2E Tests', 
       const auth = new GitHubAuth('test_token');
       const api = new GitHubAPI(auth);
 
-      const board = await api.createProjectBoard('LionPack Board', [
+      const board = await api.createProjectBoard('LEO Workflow Kit Board', [
         'discovery',
         'design',
         'development'
@@ -128,12 +128,12 @@ jest.mock('../../lib/team/github-api');describe('GitHub Integration E2E Tests', 
 
       // Then board should be created with columns
       expect(api.createProjectBoard).toHaveBeenCalledWith(
-        'LionPack Board',
+        'LEO Workflow Kit Board',
         ['discovery', 'design', 'development']
       );
       expect(board).toEqual({
         id: 'P1',
-        name: 'LionPack Board',
+        name: 'LEO Workflow Kit Board',
         columns: [
           { id: 'C1', name: 'discovery' },
           { id: 'C2', name: 'design' },
@@ -179,7 +179,7 @@ jest.mock('../../lib/team/github-api');describe('GitHub Integration E2E Tests', 
         `${config.org}/${config.repo}`,
         `🦁 ${hunt.featureName}`,
         `${hunt.description}\n\nHunt ID: ${hunt.id}`,
-        ['hunt', 'lionpack']
+        ['hunt', 'leo']
       );
 
       // Then issue should be created
@@ -187,7 +187,7 @@ jest.mock('../../lib/team/github-api');describe('GitHub Integration E2E Tests', 
         'testorg/testrepo',
         '🦁 Test Feature',
         'A test feature\n\nHunt ID: hunt-1',
-        ['hunt', 'lionpack']
+        ['hunt', 'leo']
       );
       expect(issue).toEqual({
         id: 'I1',
