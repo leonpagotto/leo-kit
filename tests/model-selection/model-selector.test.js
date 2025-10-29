@@ -16,6 +16,7 @@ jest.mock('../../lib/model-selection/cost-tracker');
 
 describe('ModelSelector', () => {
   let modelSelector;
+  let balancedModelSelector;
 
   beforeEach(() => {
     // Reset mocks before each test
@@ -28,7 +29,11 @@ describe('ModelSelector', () => {
       calculateCost: jest.fn().mockReturnValue(0.05)
     }));
 
-    modelSelector = new ModelSelector();
+    // Default: upgrade-defaults: true (uses best models)
+    modelSelector = new ModelSelector({ 'upgrade-defaults': true });
+
+    // Balanced: upgrade-defaults: false (cost-optimized)
+    balancedModelSelector = new ModelSelector({ 'upgrade-defaults': false });
   });
 
   describe('Model Registry', () => {
@@ -80,10 +85,11 @@ describe('ModelSelector', () => {
     });
 
     test('should select cost-efficient model for simple tasks', async () => {
-      const model = await modelSelector.selectModel('testing', 'Write unit test', 'simple');
+      // Test balanced mode (upgrade-defaults: false)
+      const model = await balancedModelSelector.selectModel('testing', 'Write unit test', 'simple');
 
-      // Simple tasks should use standard tier models
-      expect(['gpt-3.5-turbo', 'claude-3-haiku']).toContain(model);
+      // Simple tasks in balanced mode should use standard tier models
+      expect(['gpt-3.5-turbo', 'claude-3-haiku', 'claude-3.5-sonnet']).toContain(model);
     });
 
     test('should select appropriate model for orchestrator complex tasks', async () => {
@@ -104,18 +110,26 @@ describe('ModelSelector', () => {
 
   describe('Default Model Selection', () => {
     test('should select default model for orchestrator', () => {
-      const model = modelSelector.selectDefaultModel('orchestrator', 'moderate');
-      // v5.3.1: Orchestrator uses Claude Haiku for moderate tasks
-      expect(['claude-3-haiku', 'gpt-4', 'gpt-4-turbo']).toContain(model);
+      // With upgrade-defaults: true, orchestrator uses Claude 3.5 Sonnet
+      const upgraded = modelSelector.selectDefaultModel('orchestrator', 'moderate');
+      expect(['claude-3.5-sonnet', 'gpt-4', 'gpt-4-turbo']).toContain(upgraded);
+
+      // With upgrade-defaults: false, orchestrator uses Claude Haiku
+      const balanced = balancedModelSelector.selectDefaultModel('orchestrator', 'moderate');
+      expect(['claude-3-haiku', 'gpt-4', 'gpt-4-turbo']).toContain(balanced);
     });
 
     test('should select default model based on complexity', () => {
+      // Test upgraded defaults
       const simple = modelSelector.selectDefaultModel('frontend', 'simple');
       const complex = modelSelector.selectDefaultModel('frontend', 'complex');
 
-      expect(['gpt-3.5-turbo', 'claude-3-haiku']).toContain(simple);
-      // v5.3.1: Frontend uses Claude 3.5 Sonnet for complex
+      expect(['claude-3.5-sonnet', 'gpt-4', 'claude-3-haiku']).toContain(simple);
       expect(['claude-3.5-sonnet', 'gpt-4', 'claude-3-opus']).toContain(complex);
+
+      // Test balanced defaults
+      const simpleBalanced = balancedModelSelector.selectDefaultModel('frontend', 'simple');
+      expect(['gpt-3.5-turbo', 'claude-3-haiku']).toContain(simpleBalanced);
     });
 
     test('should handle invalid complexity levels', () => {

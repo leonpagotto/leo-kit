@@ -6,11 +6,136 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.3] - 2025-10-29
+
+### 🎯 CRITICAL FIX: Model Quality Control
+
+**Problem:** v5.3.1 introduced cost optimization that downgraded Orchestrator and Documentation agents to Claude 3 Haiku. For users coming from GitHub Copilot (using GPT-4/Claude 3.5 Sonnet), this was a **quality regression** that blocked adoption.
+
+**Solution:** Added comprehensive configuration options for quality vs cost control:
+
+### Added
+
+- **🎛️ Quality-First Mode** (`upgrade-defaults: true` - NEW DEFAULT)
+
+  - All agents use best available models (Claude 3.5 Sonnet or better)
+  - Orchestrator: `claude-3.5-sonnet` (was `claude-3-haiku`)
+  - Documentation: `claude-3.5-sonnet` (was `claude-3-haiku`)
+  - Frontend: `claude-3.5-sonnet` for all tasks
+  - No quality regression from Copilot/high-quality baselines
+
+- **🔒 Fixed Model Mode** (`fixed-model: "model-name"`)
+
+  - Use single model for ALL agents regardless of complexity
+  - Example: `"fixed-model": "claude-3.5-sonnet"`
+  - Perfect for consistency, testing, or specific model preferences
+
+- **⚡ Dynamic Selection Toggle** (`enabled: true/false`)
+
+  - Turn model selection on/off completely
+  - When disabled, always uses `claude-3.5-sonnet` as default
+
+- **💰 Balanced Mode** (`upgrade-defaults: false`)
+
+  - Original v5.3.1 cost optimization (~40% savings)
+  - Uses Claude 3 Haiku for simple/moderate orchestrator/docs tasks
+  - Still available for budget-conscious users
+
+- **📊 Verbose Configuration Display**
+
+  - Shows enabled/disabled status on startup
+  - Shows strategy (dynamic/fixed)
+  - Shows fixed model when set
+  - Shows upgrade-defaults setting
+
+- **📚 Comprehensive Documentation**
+  - New guide: `docs/MODEL_QUALITY_CONTROL.md`
+  - Use case recommendations
+  - Cost analysis
+  - Real-world examples
+  - Migration guide for Copilot users
+
+### Changed
+
+- **Default behavior is now quality-first** (breaking change from v5.3.1)
+
+  - `upgrade-defaults: true` by default
+  - Users can opt-in to cost optimization with `upgrade-defaults: false`
+  - Rationale: Quality should be default, cost optimization opt-in
+
+- **Model selection strategy labeling**
+  - "Optimized" → "Balanced" (more accurate)
+  - "Upgraded" → "Upgraded Defaults" (clearer intent)
+
+### Fixed
+
+- **Quality regression for Copilot users** (blocking issue)
+
+  - Users can now match or exceed Copilot quality
+  - No more forced downgrade to Claude Haiku
+  - Full control over quality vs cost trade-offs
+
+- **Test suite updated for new configuration**
+  - Tests now account for both upgraded and balanced modes
+  - All 24 model selection tests passing ✅
+
+### Configuration Examples
+
+**Quality-First (NEW DEFAULT):**
+
+```json
+{
+  "model-selection": {
+    "upgrade-defaults": true,
+    "verbose": true
+  }
+}
+```
+
+**Fixed Model:**
+
+```json
+{
+  "model-selection": {
+    "fixed-model": "claude-3.5-sonnet",
+    "verbose": true
+  }
+}
+```
+
+**Cost-Optimized:**
+
+```json
+{
+  "model-selection": {
+    "upgrade-defaults": false,
+    "verbose": true
+  }
+}
+```
+
+### Migration from v5.3.1/v5.3.2
+
+If you were happy with v5.3.1's cost optimization, set:
+
+```json
+{
+  "model-selection": {
+    "upgrade-defaults": false
+  }
+}
+```
+
+Otherwise, no action needed - quality-first is now the default!
+
+---
+
 ## [5.3.2] - 2025-10-29
 
 ### Fixed
 
 - **🧪 Test Suite**: Fixed failing model selection tests
+
   - Updated tests to expect 10 models (was expecting 6)
   - Updated model names to match v5.3.0+ registry (GPT-4o, Claude 3.5 Sonnet, o1 models)
   - Updated expected model selections to match v5.3.1 optimization strategy
@@ -38,22 +163,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **🎯 Optimized Model Selection Strategy**: Using best available models per agent role
 
   - **Designer Agent**: Now uses **GPT-4o exclusively** for all complexity levels (simple → critical)
+
     - Best visual understanding and multimodal capabilities
     - Consistent experience for all design work
 
   - **Frontend Agent**: Upgraded to **Claude 3.5 Sonnet** for moderate/complex/critical tasks
+
     - Better code generation and UI implementation
     - Only uses Claude 3 Haiku for simple components
 
   - **Backend Agent**: Upgraded to **Claude 3.5 Sonnet** for moderate/complex tasks
+
     - Enhanced API development and architecture
     - Claude 3 Opus reserved for critical backend only
 
   - **Orchestrator Agent**: Now uses **Claude 3 Haiku** for simple/moderate routing
+
     - Fast and cost-effective for orchestration decisions
     - GPT-4 Turbo and o1 models for complex/critical only
 
   - **Documentation Agent**: Now uses **Claude 3 Haiku** for simple/moderate docs
+
     - Fast, high-quality documentation generation
     - Cost-effective for standard documentation tasks
 
@@ -64,6 +194,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Performance
 
 - **💰 Cost Optimization**: 40% cost reduction for common tasks
+
   - Simple orchestration: GPT-3.5 Turbo → Claude 3 Haiku
   - Simple documentation: GPT-3.5 Turbo → Claude 3 Haiku
   - Moderate frontend: Claude 3 Sonnet → Claude 3.5 Sonnet (same cost, better quality)
