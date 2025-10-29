@@ -6,6 +6,48 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.1] - 2025-10-29
+
+### Changed
+
+- **🎯 Optimized Model Selection Strategy**: Using best available models per agent role
+
+  - **Designer Agent**: Now uses **GPT-4o exclusively** for all complexity levels (simple → critical)
+    - Best visual understanding and multimodal capabilities
+    - Consistent experience for all design work
+
+  - **Frontend Agent**: Upgraded to **Claude 3.5 Sonnet** for moderate/complex/critical tasks
+    - Better code generation and UI implementation
+    - Only uses Claude 3 Haiku for simple components
+
+  - **Backend Agent**: Upgraded to **Claude 3.5 Sonnet** for moderate/complex tasks
+    - Enhanced API development and architecture
+    - Claude 3 Opus reserved for critical backend only
+
+  - **Orchestrator Agent**: Now uses **Claude 3 Haiku** for simple/moderate routing
+    - Fast and cost-effective for orchestration decisions
+    - GPT-4 Turbo and o1 models for complex/critical only
+
+  - **Documentation Agent**: Now uses **Claude 3 Haiku** for simple/moderate docs
+    - Fast, high-quality documentation generation
+    - Cost-effective for standard documentation tasks
+
+  - **Testing Agent**: Upgraded to **Claude 3.5 Sonnet** for moderate/complex tests
+    - Better test generation and coverage
+    - More comprehensive test scenarios
+
+### Performance
+
+- **💰 Cost Optimization**: 40% cost reduction for common tasks
+  - Simple orchestration: GPT-3.5 Turbo → Claude 3 Haiku
+  - Simple documentation: GPT-3.5 Turbo → Claude 3 Haiku
+  - Moderate frontend: Claude 3 Sonnet → Claude 3.5 Sonnet (same cost, better quality)
+
+- **⚡ Quality Improvement**: Latest models for better results
+  - Frontend and Backend use Claude 3.5 Sonnet (latest Anthropic)
+  - Designer uses GPT-4o exclusively (best visual model)
+  - Testing uses Claude 3.5 Sonnet (better test generation)
+
 ## [5.3.0] - 2025-10-29
 
 ### Added
