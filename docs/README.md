@@ -10,7 +10,7 @@ All project documentation is organized here.
 - **development/** - Development documentation and architecture
 - **archive/** - Historical documentation and completed work
 
-## LEO Workflow
+## LEO workflow
 
 ### Phase 1: Specification
 Write detailed specification files in `specs/` folder. Include problem statement, solution approach, technical details, and acceptance criteria.

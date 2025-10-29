@@ -1,6 +1,6 @@
 /**
  * Unit Tests for ModelSelector
- * 
+ *
  * Tests the core model selection logic including:
  * - Model registration and availability
  * - Strategy-based selection
@@ -20,7 +20,7 @@ describe('ModelSelector', () => {
   beforeEach(() => {
     // Reset mocks before each test
     jest.clearAllMocks();
-    
+
     // Mock CostTracker methods
     CostTracker.mockImplementation(() => ({
       canAfford: jest.fn().mockResolvedValue(true),
@@ -32,13 +32,17 @@ describe('ModelSelector', () => {
   });
 
   describe('Model Registry', () => {
-    test('should have 6 models registered by default', () => {
+    test('should have 10 models registered by default', () => {
       const models = modelSelector.models;
-      expect(models.size).toBe(6);
+      expect(models.size).toBe(10);
       expect(models.has('gpt-4')).toBe(true);
       expect(models.has('gpt-4-turbo')).toBe(true);
+      expect(models.has('gpt-4o')).toBe(true);
       expect(models.has('gpt-3.5-turbo')).toBe(true);
+      expect(models.has('o1-preview')).toBe(true);
+      expect(models.has('o1-mini')).toBe(true);
       expect(models.has('claude-3-opus')).toBe(true);
+      expect(models.has('claude-3.5-sonnet')).toBe(true);
       expect(models.has('claude-3-sonnet')).toBe(true);
       expect(models.has('claude-3-haiku')).toBe(true);
     });
@@ -63,35 +67,35 @@ describe('ModelSelector', () => {
   describe('Model Selection', () => {
     test('should select model based on agent-specific strategy', async () => {
       const model = await modelSelector.selectModel('frontend', 'Create login component', 'moderate');
-      
-      // Frontend agent prefers Claude-3-sonnet for moderate tasks
-      expect(['claude-3-sonnet', 'gpt-4-turbo', 'claude-3-opus']).toContain(model);
+
+      // Frontend agent prefers Claude-3.5-sonnet for moderate tasks (v5.3.1)
+      expect(['claude-3.5-sonnet', 'claude-3-haiku', 'gpt-4-turbo', 'claude-3-opus']).toContain(model);
     });
 
     test('should select premium model for complex tasks', async () => {
       const model = await modelSelector.selectModel('backend', 'Design authentication system', 'complex');
-      
-      // Complex backend tasks should use premium models
-      expect(['gpt-4', 'claude-3-opus']).toContain(model);
+
+      // Complex backend tasks should use Claude 3.5 Sonnet or Opus (v5.3.1)
+      expect(['claude-3.5-sonnet', 'claude-3-opus', 'gpt-4']).toContain(model);
     });
 
     test('should select cost-efficient model for simple tasks', async () => {
       const model = await modelSelector.selectModel('testing', 'Write unit test', 'simple');
-      
+
       // Simple tasks should use standard tier models
       expect(['gpt-3.5-turbo', 'claude-3-haiku']).toContain(model);
     });
 
-    test('should select GPT-4 for orchestrator complex tasks', async () => {
+    test('should select appropriate model for orchestrator complex tasks', async () => {
       const model = await modelSelector.selectModel('orchestrator', 'Analyze multi-agent coordination', 'complex');
-      
-      // Orchestrator prefers GPT-4 for complex reasoning
-      expect(model).toBe('gpt-4');
+
+      // Orchestrator uses GPT-4 Turbo for complex tasks (v5.3.1)
+      expect(['gpt-4-turbo', 'gpt-4', 'o1-mini']).toContain(model);
     });
 
     test('should handle unknown agent gracefully', async () => {
       const model = await modelSelector.selectModel('unknown-agent', 'Some task', 'moderate');
-      
+
       // Should fall back to default strategy
       expect(model).toBeTruthy();
       expect(modelSelector.isModelAvailable(model)).toBe(true);
@@ -101,20 +105,22 @@ describe('ModelSelector', () => {
   describe('Default Model Selection', () => {
     test('should select default model for orchestrator', () => {
       const model = modelSelector.selectDefaultModel('orchestrator', 'moderate');
-      expect(['gpt-4', 'gpt-4-turbo']).toContain(model);
+      // v5.3.1: Orchestrator uses Claude Haiku for moderate tasks
+      expect(['claude-3-haiku', 'gpt-4', 'gpt-4-turbo']).toContain(model);
     });
 
     test('should select default model based on complexity', () => {
       const simple = modelSelector.selectDefaultModel('frontend', 'simple');
       const complex = modelSelector.selectDefaultModel('frontend', 'complex');
-      
+
       expect(['gpt-3.5-turbo', 'claude-3-haiku']).toContain(simple);
-      expect(['gpt-4', 'claude-3-opus']).toContain(complex);
+      // v5.3.1: Frontend uses Claude 3.5 Sonnet for complex
+      expect(['claude-3.5-sonnet', 'gpt-4', 'claude-3-opus']).toContain(complex);
     });
 
     test('should handle invalid complexity levels', () => {
       const model = modelSelector.selectDefaultModel('frontend', 'invalid-complexity');
-      
+
       // Should default to moderate tier
       expect(model).toBeTruthy();
     });
@@ -123,7 +129,7 @@ describe('ModelSelector', () => {
   describe('Fallback Selection', () => {
     test('should select fallback model for agent', () => {
       const fallback = modelSelector.selectFallback('frontend');
-      
+
       // Should return a cost-efficient model
       expect(['gpt-3.5-turbo', 'claude-3-haiku']).toContain(fallback);
     });
@@ -154,7 +160,7 @@ describe('ModelSelector', () => {
       };
 
       modelSelector.registerStrategy('custom', customStrategy);
-      
+
       // This would require modifying selectModel to use custom strategy
       // For now, just verify registration works
       expect(modelSelector.strategies.get('custom')).toBe(customStrategy);
@@ -204,7 +210,7 @@ describe('ModelSelector', () => {
       };
 
       const selector = new ModelSelector(config);
-      
+
       // Disabled models should not be available for selection
       // This would require implementing model enabling/disabling in ModelSelector
       expect(selector.config).toBeDefined();
@@ -238,8 +244,12 @@ describe('ModelSelector', () => {
     test('should return correct tier for each model', () => {
       expect(modelSelector.models.get('gpt-4').tier).toBe('premium');
       expect(modelSelector.models.get('gpt-4-turbo').tier).toBe('high');
+      expect(modelSelector.models.get('gpt-4o').tier).toBe('premium');
+      expect(modelSelector.models.get('o1-preview').tier).toBe('ultra-premium');
+      expect(modelSelector.models.get('o1-mini').tier).toBe('premium');
       expect(modelSelector.models.get('gpt-3.5-turbo').tier).toBe('standard');
       expect(modelSelector.models.get('claude-3-opus').tier).toBe('premium');
+      expect(modelSelector.models.get('claude-3.5-sonnet').tier).toBe('ultra-premium');
       expect(modelSelector.models.get('claude-3-sonnet').tier).toBe('high');
       expect(modelSelector.models.get('claude-3-haiku').tier).toBe('standard');
     });
@@ -247,8 +257,12 @@ describe('ModelSelector', () => {
     test('should return correct provider for each model', () => {
       expect(modelSelector.models.get('gpt-4').provider).toBe('openai');
       expect(modelSelector.models.get('gpt-4-turbo').provider).toBe('openai');
+      expect(modelSelector.models.get('gpt-4o').provider).toBe('openai');
+      expect(modelSelector.models.get('o1-preview').provider).toBe('openai');
+      expect(modelSelector.models.get('o1-mini').provider).toBe('openai');
       expect(modelSelector.models.get('gpt-3.5-turbo').provider).toBe('openai');
       expect(modelSelector.models.get('claude-3-opus').provider).toBe('anthropic');
+      expect(modelSelector.models.get('claude-3.5-sonnet').provider).toBe('anthropic');
       expect(modelSelector.models.get('claude-3-sonnet').provider).toBe('anthropic');
       expect(modelSelector.models.get('claude-3-haiku').provider).toBe('anthropic');
     });
