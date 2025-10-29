@@ -54,7 +54,94 @@ LEO Workflow Kit v5.3.3+ gives you complete control over which AI models are use
 
 ---
 
-### Option 3: Balanced Mode (Cost-Optimized)
+### Option 3: Custom/Beta/Enterprise Models
+
+**Perfect for:** Users with access to beta models, enterprise agreements, or unreleased models
+
+```json
+{
+  "model-selection": {
+    "fixed-model": "claude-4.5-sonnet",
+    "verbose": true,
+    "show-reasoning": true
+  }
+}
+```
+
+✅ **Result:** Uses your custom model (e.g., Claude 4.5, GPT-5, etc.)
+
+**Important Notes:**
+
+- ⚠️ LEO accepts ANY model name - validation happens at the API provider level
+- ✅ Perfect for beta testers, enterprise customers, or users with special access
+- ✅ System shows warnings but doesn't block you from using the model
+- 🔑 Make sure you have API credentials with access to the model
+
+**Example Enterprise Models:**
+
+```json
+{
+  "model-selection": {
+    "fixed-model": "claude-4.5-sonnet", // Anthropic Enterprise/Beta
+    // OR
+    "fixed-model": "gpt-5", // OpenAI Enterprise/Beta
+    // OR
+    "fixed-model": "o1-preview", // OpenAI Reasoning Models
+    // OR any other model your API key has access to
+    "verbose": true
+  }
+}
+```
+
+**What you'll see:**
+
+```
+⚙️  Model Selection Configuration:
+   Fixed Model: claude-4.5-sonnet (all agents will use this)
+   ℹ️  Custom model (not in default registry)
+
+🔒 Fixed Model Mode:
+   ✓ Using fixed model: claude-4.5-sonnet
+   Provider: Unknown (custom model)
+   Type: Custom/Beta/Enterprise model
+   ℹ️  This model is not in the default registry
+   ℹ️  Ensure you have API access to: claude-4.5-sonnet
+```
+
+**Advanced: Define Custom Model Metadata (Optional)**
+
+For better visibility and organization:
+
+```json
+{
+  "model-selection": {
+    "custom-models": {
+      "claude-4.5-sonnet": {
+        "provider": "anthropic",
+        "tier": "ultra-premium",
+        "description": "Claude 4.5 Sonnet (Enterprise Beta)",
+        "cost": "very-high",
+        "speed": "fast"
+      },
+      "gpt-5": {
+        "provider": "openai",
+        "tier": "ultra-premium",
+        "description": "GPT-5 (Private Beta)",
+        "cost": "very-high",
+        "speed": "medium"
+      }
+    },
+    "fixed-model": "claude-4.5-sonnet",
+    "verbose": true
+  }
+}
+```
+
+This adds your custom models to LEO's internal registry with metadata for better tracking.
+
+---
+
+### Option 4: Balanced Mode (Cost-Optimized)
 
 **Perfect for:** Budget-conscious projects, development environments
 

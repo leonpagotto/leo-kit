@@ -6,6 +6,73 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.4] - 2025-10-29
+
+### 🚀 Added: Custom/Enterprise Model Support
+
+**Problem:** Users with enterprise agreements or beta access to unreleased models (Claude 4.5, GPT-5, etc.) were blocked by LEO's hardcoded model registry. The system would reject models it didn't recognize, even though the API providers would accept them.
+
+**Solution:** Removed model validation barrier - LEO now accepts ANY model name and lets the API providers handle validation.
+
+### Added
+
+- **🎯 Custom Model Support**
+  - Accept ANY model name in configuration (e.g., `claude-4.5-sonnet`, `gpt-5`, etc.)
+  - Perfect for beta testers, enterprise customers, or users with special API access
+  - System validates at API provider level, not at LEO level
+  
+- **📝 Custom Model Documentation**
+  - New section in MODEL_QUALITY_CONTROL.md for enterprise/beta models
+  - Examples for common enterprise scenarios
+  - Optional metadata registration for better tracking
+
+- **💡 Enhanced Verbose Output**
+  - Shows "Custom/Beta/Enterprise model" indicator for non-registry models
+  - Warns users to ensure API access
+  - Graceful handling of unknown model metadata
+
+### Changed
+
+- `isModelAvailable()` now always returns `true` - validation happens at API level
+- `showReasoning` configuration now supports kebab-case (`show-reasoning`) in addition to camelCase
+- Fixed-model verbose output includes warnings for custom models
+
+### Fixed
+
+- Test suite updated to reflect new behavior (all 583 tests passing)
+- Model metadata display handles missing registry entries gracefully
+
+### Configuration Examples
+
+**Use Enterprise Beta Model:**
+```json
+{
+  "model-selection": {
+    "fixed-model": "claude-4.5-sonnet",
+    "verbose": true,
+    "show-reasoning": true
+  }
+}
+```
+
+**Define Custom Model Metadata:**
+```json
+{
+  "model-selection": {
+    "custom-models": {
+      "claude-4.5-sonnet": {
+        "provider": "anthropic",
+        "tier": "ultra-premium",
+        "description": "Claude 4.5 Sonnet (Enterprise Beta)"
+      }
+    },
+    "fixed-model": "claude-4.5-sonnet"
+  }
+}
+```
+
+---
+
 ## [5.3.3] - 2025-10-29
 
 ### 🎯 CRITICAL FIX: Model Quality Control

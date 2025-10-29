@@ -1,6 +1,6 @@
 {
   "name": "leo-workflow-kit",
-  "version": "5.3.3",
+  "version": "5.3.4",
   "description": "LEO Workflow Kit - AI-Powered Multi-Agent Development System. Design-First Multi-Agent Workflow, Optimized Model Selection (GPT-4o Designer, Claude 3.5 Sonnet Frontend/Backend, Claude 3 Haiku for speed), 40% cost reduction, VS Code agent mode display, 50% faster UI delivery. Automates GitHub issues, project boards, commits, and AI-assisted development with specialized agents for frontend, backend, DevOps, testing, and documentation.",
   "main": "dist/index.js",
   "bin": {

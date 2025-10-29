@@ -65,7 +65,11 @@ describe('ModelSelector', () => {
 
     test('should check model availability correctly', () => {
       expect(modelSelector.isModelAvailable('gpt-4')).toBe(true);
-      expect(modelSelector.isModelAvailable('nonexistent-model')).toBe(false);
+      // Changed in v5.3.4: isModelAvailable now accepts ANY model name
+      // This allows users with beta/enterprise access to use custom models
+      expect(modelSelector.isModelAvailable('nonexistent-model')).toBe(true);
+      expect(modelSelector.isModelAvailable('claude-4.5-sonnet')).toBe(true); // Custom model
+      expect(modelSelector.isModelAvailable('gpt-5')).toBe(true); // Enterprise model
     });
   });
 
