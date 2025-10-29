@@ -114,14 +114,6 @@ Integration guides, tutorials, and best practices:
 - [Claude Integration Guide](docs/guides/CLAUDE_INTEGRATION_GUIDE.md)
 - [Copilot Instructions Verification](docs/guides/COPILOT_INSTRUCTIONS_VERIFICATION_AND_FIX.md)
 
-**LionPack Guides:**
-
-- [LionPack Launch Package](docs/guides/LIONPACK_LAUNCH_PACKAGE.md)
-- [LionPack Quick Reference](docs/guides/LIONPACK_QUICK_REFERENCE.md)
-- [LionPack Rebranding Checklist](docs/guides/LIONPACK_REBRANDING_CHECKLIST.md)
-- [LionPack Technical Guide](docs/guides/LIONPACK_TECHNICAL_GUIDE.md)
-- [LionPack Transformation Strategy](docs/guides/LIONPACK_TRANSFORMATION_STRATEGY.md)
-
 **Agent Configuration:**
 
 - [Agents Default Enabled Update](docs/guides/AGENTS_DEFAULT_ENABLED_UPDATE.md)

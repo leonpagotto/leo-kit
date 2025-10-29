@@ -11,6 +11,13 @@ dist/
 # LEO config files (user preferences)
 .leorc.json
 
+# LionPack references (deprecated)
+.lionpack/
+LIONPACK*.md
+
+# Package tarballs
+*.tgz
+
 # Test and verification scripts (development only)
 smoke-test.sh
 test-*.js
