@@ -6,7 +6,7 @@
 
 ## 📌 Diagram 1: How the Orchestrator Routes Tasks
 
-When you describe work to LEO, the Orchestrator Agent analyzes it and sends it to the right specialist:
+When you describe work to LEO, the Orchestrator Agent creates an issue FIRST, then routes to the right specialist:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -16,17 +16,19 @@ When you describe work to LEO, the Orchestrator Agent analyzes it and sends it t
                      ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  🎛️  ORCHESTRATOR AGENT                                         │
-│  ├─ Reads your request                                          │
-│  ├─ Looks for keywords: "button", "homepage" = UI work          │
-│  └─ Routes to → FRONTEND AGENT 🎨                               │
+│  ├─ 1. Analyzes keywords: "button", "homepage" = UI work        │
+│  ├─ 2. Creates GitHub issue #42 immediately                     │
+│  │    gh issue create --title "Add login button" --label "fe"  │
+│  └─ 3. Routes to → FRONTEND AGENT 🎨                            │
 └────────────────────┬────────────────────────────────────────────┘
                      │
                      ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│  🎨 FRONTEND AGENT                                               │
-│  ├─ Creates button component                                    │
-│  ├─ Adds styling & accessibility                                │
-│  └─ Creates GitHub issue with proper labels                     │
+│  🎨 FRONTEND AGENT (Specialist)                                 │
+│  ├─ 1. Comments on issue: "🚀 Starting work on #42"            │
+│  ├─ 2. Creates LoginButton component                            │
+│  ├─ 3. Adds styling & accessibility                             │
+│  └─ 4. Commits: "feat(ui): add login button (#42)"             │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -91,7 +93,7 @@ LEO decides whether to create a detailed specification or go straight to work:
 
 ## 📌 Diagram 3: Simple Issue Creation Workflow
 
-For simple tasks, LEO creates an issue and you start working immediately:
+For simple tasks, the Orchestrator creates an issue, then routes to the specialist:
 
 ```
 Step 1: YOU DESCRIBE WORK
@@ -105,33 +107,44 @@ Step 2: ORCHESTRATOR ANALYZES
 │ Type: Bug                               │
 │ Priority: Medium                        │
 │ Component: Documentation                │
-│ Agent: Documentation Agent 📚           │
+│ Target Agent: Documentation Agent 📚    │
 └────────────────┬────────────────────────┘
                  │
                  ▼
-Step 3: CREATE GITHUB ISSUE
+Step 3: ORCHESTRATOR CREATES GITHUB ISSUE
 ┌─────────────────────────────────────────┐
 │ gh issue create                         │
 │ --title "Fix broken footer link"       │
 │ --label "bug,documentation,P2"          │
 │ --body "Description with context"       │
+│                                         │
+│ ✅ Issue #42 created                    │
 └────────────────┬────────────────────────┘
                  │
                  ▼
-Step 4: ADD TO PROJECT BOARD
+Step 4: ORCHESTRATOR ADDS TO PROJECT BOARD
 ┌─────────────────────────────────────────┐
 │ Column: 📋 Todo                         │
 │ Status: Todo                            │
-│ Issue #42 created ✅                    │
+│ Ready for specialist                    │
 └────────────────┬────────────────────────┘
                  │
                  ▼
-Step 5: CHECK AUTO-RESOLVE SETTING
+Step 5: ORCHESTRATOR CHECKS AUTO-RESOLVE
 ┌─────────────────────────────────────────┐
 │ Is auto-resolve enabled? (default: YES) │
 │                                         │
-│ YES ✅ → Start work immediately         │
+│ YES ✅ → Route to Documentation Agent   │
 │ NO  ⏸️  → Wait for your approval       │
+└────────────────┬────────────────────────┘
+                 │
+                 ▼ (if auto-resolve: true)
+Step 6: DOCUMENTATION AGENT IMPLEMENTS
+┌─────────────────────────────────────────┐
+│ 1. Comments: "🚀 Starting work on #42" │
+│ 2. Fixes the broken link                │
+│ 3. Commits: "fix(docs): footer link"   │
+│ 4. Creates PR that closes #42           │
 └─────────────────────────────────────────┘
 ```
 
@@ -264,6 +277,18 @@ From installation to done - the full picture:
                      │
                      ▼
 ┌─────────────────────────────────────────────────────────┐
+│ ORCHESTRATOR ANALYZES & CREATES ISSUE                   │
+│ 1. Analyzes keywords and determines agent type          │
+│ 2. Creates GitHub issue IMMEDIATELY:                    │
+│    gh issue create --title "..." --label "frontend"    │
+│ 3. Adds to project board (📋 Todo column)               │
+│ 4. Sets priority, component, estimates                  │
+│                                                         │
+│ ✅ Issue #42 created and ready                          │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────┐
 │ ORCHESTRATOR ROUTES TO SPECIALIST                       │
 │                                                         │
 │  🎨 Frontend → UI/Components/Styling                   │
@@ -276,20 +301,19 @@ From installation to done - the full picture:
                      │
                      ▼
 ┌─────────────────────────────────────────────────────────┐
-│ GITHUB ISSUE CREATED                                    │
-│ ✓ Title, description, labels                           │
-│ ✓ Added to project board (📋 Todo column)              │
-│ ✓ Priority, component, estimates set                   │
+│ SPECIALIST AGENT STARTS WORKING                         │
+│ 1. Comments on #42: "🚀 Starting work..."              │
+│ 2. Creates branch: feature/issue-42                    │
+│ 3. Writes code (agent guides implementation)           │
+│ 4. Auto-updates status: 📋 Todo → 🚧 In Progress       │
 └────────────────────┬────────────────────────────────────┘
                      │
                      ▼
 ┌─────────────────────────────────────────────────────────┐
-│ START WORKING                                           │
-│ 1. Create branch: feature/issue-42                     │
-│ 2. Write code (agent guides you)                       │
-│ 3. Commit: "feat: add dark mode (#42)"                │
-│    ⚠️ Keep message < 72 characters!                    │
-│ 4. Auto-update status: 📋 Todo → 🚧 In Progress        │
+│ SPECIALIST AGENT COMMITS CODE                           │
+│ • Commit: "feat: add dark mode (#42)"                  │
+│   ⚠️ Keep message < 72 characters!                     │
+│ • References issue number in commit                    │
 └────────────────────┬────────────────────────────────────┘
                      │
                      ▼
