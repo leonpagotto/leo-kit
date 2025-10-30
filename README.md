@@ -11,15 +11,15 @@
 [![Node.js](https://img.shields.io/badge/Node.js-16%2B-green?style=flat-square&logo=node.js)](https://nodejs.org)
 [![Tests](https://img.shields.io/badge/tests-487%2F521%20passing-green?style=flat-square)](https://github.com/leonpagotto/leo-kit)
 
-[Quick Start](#-quick-start) • [Features](#-features) • [Visual Guide](docs/WORKFLOW_DIAGRAMS.md) • [Contributing](CONTRIBUTING.md)
+[Quick Start](#-quick-start) • [Features](#-features) • [Visual Guide](docs/WORKFLOW_DIAGRAMS.md) • [Contributing](CONTRIBUTING.md) • [API Reference](docs/guides/API_REFERENCE.md)
 
 ---
 
-### 🎉 **v5.3.1** - Optimized Model Selection
+### 🎉 **v5.3.5** - Custom Model Support & Clean Codebase
 
-🎯 **GPT-4o Designer** • 🚀 **Claude 3.5 Sonnet** (Frontend/Backend) • ⚡ **Claude 3 Haiku** (Speed) • 💰 **40% Cost Reduction**
+🎯 **Custom Model Support** • 🚀 **Enterprise Model Access** • ⚡ **Clean LEO Branding** • 💰 **Flexible Model Selection**
 
-**[View Release Notes](CHANGELOG.md#531)** • **[Design-First Guide](DESIGNER_AGENT_ENABLED_SUMMARY.md)**
+**[View Release Notes](CHANGELOG.md#535)** • **[Quick Start Guide](docs/guides/QUICK_START.md)**
 
 ---
 
