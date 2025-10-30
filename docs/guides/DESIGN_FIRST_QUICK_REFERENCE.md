@@ -455,7 +455,7 @@ Alignment: Excellent
 
 ```
 788b51c feat: implement design-first architecture v5.0.0 with Designer agent
-15d5364 chore: remove ingvarrc config references and cleanup
+15d5364 chore: remove deprecated config references and cleanup
 ```
 
 ---

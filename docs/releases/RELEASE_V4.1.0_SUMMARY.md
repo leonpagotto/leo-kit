@@ -21,11 +21,13 @@ LEO Kit v3.0.0 transforms issue management by migrating from a label-based worka
 ### Old System (< v3.0.0)
 
 Issues were created with mixed-purpose labels:
+
 ```bash
 gh issue create --title "Fix login bug" --label "bug,P1,frontend,backend,mobile"
 ```
 
 **Problems:**
+
 - ❌ Types and priorities mixed in labels
 - ❌ Can't filter by component without seeing types
 - ❌ No effort estimation
@@ -35,10 +37,11 @@ gh issue create --title "Fix login bug" --label "bug,P1,frontend,backend,mobile"
 ### New System (v3.0.0+)
 
 Issues use GitHub native features with component-only labels:
+
 ```bash
 cat > .gh-issue-body.md << 'EOF'
 **Priority:** 🔴 Critical
-**Estimate:** 3 story points  
+**Estimate:** 3 story points
 **Components:** frontend, backend, mobile
 
 ---
@@ -55,6 +58,7 @@ gh issue create --title "Fix login bug" --body-file .gh-issue-body.md --label "f
 ```
 
 **Benefits:**
+
 - ✅ Native GitHub issue types (Bug/Enhancement/Task)
 - ✅ Visual priority indicators (🔴🟠🟡🟢)
 - ✅ Story point estimation (1-21)
@@ -65,14 +69,14 @@ gh issue create --title "Fix login bug" --body-file .gh-issue-body.md --label "f
 
 ## 📊 Feature Comparison
 
-| Feature | v2.x (Old) | v3.0.0 (New) | Improvement |
-|---------|------------|--------------|-------------|
-| **Issue Type** | Label: `bug`, `enhancement` | Native GitHub type | Standards-compliant |
-| **Priority** | Label: `P0`, `P1`, `P2`, `P3` | Body: 🔴🟠🟡🟢 | Visual, filterable |
-| **Components** | Mixed with types | Dedicated labels | Clean filtering |
-| **Estimation** | Not supported | Story points (1-21) | Sprint planning |
-| **Status** | Manual updates | Auto-transitions | Workflow automation |
-| **Label Filtering** | Cluttered (10+ labels) | Clean (3-4 labels) | Better UX |
+| Feature             | v2.x (Old)                    | v3.0.0 (New)        | Improvement         |
+| ------------------- | ----------------------------- | ------------------- | ------------------- |
+| **Issue Type**      | Label: `bug`, `enhancement`   | Native GitHub type  | Standards-compliant |
+| **Priority**        | Label: `P0`, `P1`, `P2`, `P3` | Body: 🔴🟠🟡🟢      | Visual, filterable  |
+| **Components**      | Mixed with types              | Dedicated labels    | Clean filtering     |
+| **Estimation**      | Not supported                 | Story points (1-21) | Sprint planning     |
+| **Status**          | Manual updates                | Auto-transitions    | Workflow automation |
+| **Label Filtering** | Cluttered (10+ labels)        | Clean (3-4 labels)  | Better UX           |
 
 ---
 
@@ -81,6 +85,7 @@ gh issue create --title "Fix login bug" --body-file .gh-issue-body.md --label "f
 ### Priority Levels
 
 Displayed in issue body (not labels):
+
 - 🔴 **Critical** - Production down, security issues, data loss
 - 🟠 **High** - Major features, significant bugs
 - 🟡 **Medium** - Standard work, minor bugs
@@ -89,6 +94,7 @@ Displayed in issue body (not labels):
 ### Story Point Scale (Fibonacci)
 
 Effort estimation for sprint planning:
+
 - **1 point** - Trivial (< 1 hour)
 - **2 points** - Simple (1-2 hours)
 - **3 points** - Small (2-4 hours)
@@ -100,6 +106,7 @@ Effort estimation for sprint planning:
 ### Component Labels
 
 Reserved ONLY for components:
+
 - `backend` - Backend/API changes
 - `frontend` - Frontend/UI changes
 - `database` - Database changes
@@ -118,6 +125,7 @@ Reserved ONLY for components:
 **Purpose:** Automated GitHub Projects v2 configuration
 
 **Features:**
+
 - Auto-detects GitHub Projects
 - Scans for custom fields (Priority, Estimate, Status)
 - Generates `.env` configuration file
@@ -125,11 +133,13 @@ Reserved ONLY for components:
 - Interactive setup wizard
 
 **Usage:**
+
 ```bash
 node scripts/setup-github-project.js
 ```
 
 **Output:**
+
 ```bash
 GH_PROJECT_NUMBER=4
 GH_PROJECT_ID=PVT_kwHODW-f-M4BF5lC
@@ -144,6 +154,7 @@ GH_PROJECT_OPTION_DONE=98236657
 **Purpose:** Modern issue creation with native GitHub features
 
 **Features:**
+
 - Interactive prompts for type, priority, estimate, components
 - Template-based descriptions (Bug/Enhancement/Task/Documentation)
 - Temp file approach for proper markdown rendering
@@ -151,6 +162,7 @@ GH_PROJECT_OPTION_DONE=98236657
 - Status automation framework
 
 **Usage:**
+
 ```bash
 # Interactive mode
 leo issue --interactive
@@ -164,6 +176,7 @@ leo issue --title "Add feature" --type enhancement --priority "🟡 Medium" --es
 **Purpose:** Complete setup guide for GitHub Projects v2
 
 **Contents:**
+
 - Prerequisites and authentication
 - Project creation steps
 - Custom field configuration
@@ -177,18 +190,21 @@ leo issue --title "Add feature" --type enhancement --priority "🟡 Medium" --es
 ### Updated Files
 
 1. **`lib/copilot-instructions-template.js`**
+
    - All examples use new format
    - Shows `--body-file` approach with temp files
    - Component labels only
    - Priority/estimate in body
 
 2. **`README.md`**
+
    - New "GitHub-Native Issue Creation (v3.0.0+)" section
    - Feature comparison table
    - Benefits list
    - Example commands
 
 3. **`wiki/Home.md`**
+
    - "What's New in 3.0.0" highlights
    - New features list
    - Visual priority indicators
@@ -206,11 +222,13 @@ leo issue --title "Add feature" --type enhancement --priority "🟡 Medium" --es
 ### For Existing Users
 
 **Step 1:** Update to v3.0.0
+
 ```bash
 npm install -g leo-workflow-kit@3.0.0
 ```
 
 **Step 2:** Create Component Labels
+
 ```bash
 gh label create "backend" --description "Backend/API changes" --color "0E8A16"
 gh label create "frontend" --description "Frontend/UI changes" --color "1D76DB"
@@ -223,11 +241,13 @@ gh label create "infrastructure" --description "Infrastructure" --color "5319E7"
 ```
 
 **Step 3:** Setup GitHub Projects (Optional)
+
 ```bash
 node scripts/setup-github-project.js
 ```
 
 **Step 4:** Update Issue Creation
+
 ```bash
 # OLD (deprecated)
 leo issue  # Don't use - opens interactive CLI
@@ -250,11 +270,13 @@ leo issue --interactive  # Uses new format automatically
 ### Test Results
 
 **Test Issues Created:**
+
 - ✅ Issue #47: Test with backend/frontend labels
 - ✅ Issue #48: Test with proper markdown rendering
 - ✅ Both render correctly with priority, estimate, and components visible
 
 **Validation Checks:**
+
 - ✅ Component labels created successfully
 - ✅ Markdown renders properly (no escaping issues)
 - ✅ Priority emojis display correctly
@@ -300,7 +322,7 @@ leo issue --interactive  # Uses new format automatically
 6. ⏳ Update package.json to v3.0.0
 7. ⏳ Test interactive mode
 8. ⏳ Publish to NPM
-9. ⏳ Sync to Ingvar Kit
+9. ⏳ Future enhancements
 
 ### Future Enhancements
 
