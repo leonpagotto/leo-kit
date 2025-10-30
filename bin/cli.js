@@ -9,6 +9,7 @@ const { isFirstRun, markFirstRunComplete } = require('../lib/utils/first-run');
 // Import commands
 const initCommand = require('../lib/commands/init');
 const issueCommand = require('../lib/commands/issue');
+const startCommand = require('../lib/commands/start');
 const labelsCommand = require('../lib/commands/labels');
 const vscodeCommand = require('../lib/commands/vscode');
 const configCommand = require('../lib/commands/config');
@@ -66,6 +67,15 @@ program
   .option('--no-interactive', 'Skip interactive prompts')
   .action((options) => {
     issueCommand(options);
+  });
+
+// Start command - Start work on an issue
+program
+  .command('start <issue>')
+  .description('Start work on an issue (create branch, update status)')
+  .option('-f, --force', 'Force start even if already assigned')
+  .action((issue, options) => {
+    startCommand(issue, options);
   });
 
 // Labels command - Set up GitHub labels
