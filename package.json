@@ -1,11 +1,10 @@
 {
-  "name": "leo-workflow-kit",
-  "version": "5.3.5",
-  "description": "LEO Workflow Kit - AI-Powered Multi-Agent Development System. Design-First Multi-Agent Workflow, Optimized Model Selection (GPT-4o Designer, Claude 3.5 Sonnet Frontend/Backend, Claude 3 Haiku for speed), 40% cost reduction, VS Code agent mode display, 50% faster UI delivery. Automates GitHub issues, project boards, commits, and AI-assisted development with specialized agents for frontend, backend, DevOps, testing, and documentation.",
+  "name": "ingvar-kit",
+  "version": "5.4.0",
+  "description": "Ingvar Kit - AI-Powered Multi-Agent Development System with Official IKEA Ingka Skapa Design System. Design-First Multi-Agent Workflow, 75+ Official IKEA Components, Optimized Model Selection (GPT-4o Designer, Claude 3.5 Sonnet Frontend/Backend, Claude 3 Haiku for speed), 40% cost reduction, VS Code agent mode display, 50% faster UI delivery. Automates GitHub issues, project boards, commits, and AI-assisted development with specialized agents for frontend, backend, DevOps, testing, and documentation.",
   "main": "dist/index.js",
   "bin": {
-    "leo-workflow": "bin/cli.js",
-    "leo": "bin/cli.js"
+    "ingvar": "bin/cli.js"
   },
   "scripts": {
     "start": "node bin/cli.js",
@@ -36,12 +35,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leonpagotto/leo-kit.git"
+    "url": "git+https://github.com/leopagotto/ingvar-kit.git"
   },
   "bugs": {
-    "url": "https://github.com/leonpagotto/leo-kit/issues"
+    "url": "https://github.com/leopagotto/ingvar-kit/issues"
   },
-  "homepage": "https://github.com/leonpagotto/leo-kit#readme",
+  "homepage": "https://github.com/leopagotto/ingvar-kit#readme",
   "files": [
     "bin/",
     "lib/",

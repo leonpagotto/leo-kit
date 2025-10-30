@@ -29,8 +29,8 @@ if (isFirstRun()) {
 }
 
 program
-  .name('leo-workflow')
-  .description('LEO Workflow Kit - CLI tool for setting up GitHub Projects workflow with spec-driven development following spec-driven development workflow')
+  .name('ingvar')
+  .description('Ingvar Kit - CLI tool for setting up GitHub Projects workflow with spec-driven development following spec-driven development workflow')
   .version(packageJson.version);
 
 // Get responsive banner
@@ -39,7 +39,7 @@ const banner = getBanner();
 // Init command - Set up complete workflow in current project
 program
   .command('init')
-  .description('Initialize LEO workflow in current project')
+  .description('Initialize Ingvar workflow in current project')
   .option('-o, --org <organization>', 'GitHub organization name (optional for personal repos)')
   .option('-p, --project <number>', 'GitHub project number (optional)')
   .option('--skip-project', 'Skip GitHub Project setup entirely')
@@ -143,7 +143,21 @@ program
     modelCommand(subcommand, ...args);
   });
 
-// Status command - Check workflow setup status (simple)
+// Spark command - Rapid app generation from prompts
+program
+  .command('spark')
+  .description('🚀 Generate complete React apps from prompts using Spark template + Ingvar AI')
+  .option('-p, --prompt <text>', 'Describe the app you want to build')
+  .option('-n, --name <name>', 'App name (will be slugified)')
+  .option('-d, --dir <directory>', 'Output directory', './spark-apps')
+  .option('--no-install', 'Skip npm install')
+  .option('--no-start', 'Skip starting dev server')
+  .action(async (options) => {
+    console.log(banner);
+    const SparkGenerator = require('../lib/commands/spark-generator');
+    const generator = new SparkGenerator();
+    await generator.create(options);
+  });// Status command - Check workflow setup status (simple)
 program
   .command('status')
   .alias('s')
@@ -197,7 +211,7 @@ program
   .action(() => {
     const { exec } = require('child_process');
     console.log(chalk.cyan('\n📚 Opening documentation...\n'));
-    exec('open https://github.com/leonpagotto/leo-kit#readme');
+    exec('open https://github.com/leopagotto/ingvar-kit#readme');
   });
 
 // Organize-docs command - Auto-organize documentation files
@@ -597,7 +611,7 @@ program
 // Plugin command - Manage dashboard plugins
 program
   .command('plugin [subcommand] [arg]')
-  .description('Manage LEO Dashboard plugins (list, info, install, start, stop, create)')
+  .description('Manage Ingvar Dashboard plugins (list, info, install, start, stop, create)')
   .action((subcommand, arg, options) => {
     const cmd = subcommand || 'list';
 

@@ -1,10 +1,116 @@
 ````markdown
 # Changelog
 
-All notable changes to LEO Workflow Kit will be documented in this file.
+All notable changes to Ingvar Kit will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [5.4.0] - 2025-10-30
+
+### 🇸🇪 Added: IKEA Ingka Skapa Design System Integration
+
+**Problem:** Previous Ingka integration relied on PDF files that AI assistants couldn't read directly. Manual extraction was required every time, specifications weren't machine-readable, and documentation was difficult to maintain.
+
+**Solution:** Complete documentation restructure from PDF-based to AI-readable format following multi-agent architecture.
+
+### Added
+
+- **Dedicated AI Instructions**: Created `lib/ai-instructions/frontend-agent-ingka.instructions.md` (1,300+ lines)
+
+  - Complete design foundations (colors, spacing, typography, elevation)
+  - 10+ component specifications with code examples
+  - Implementation patterns for forms, grids, modals
+  - Accessibility guidelines (WCAG 2.1 AA)
+  - Quality checklist extracted from 83 official PDFs
+
+- **Implementation Guide**: Created `docs/guides/INGKA_IMPLEMENTATION_GUIDE.md` (280+ lines)
+
+  - Documentation hierarchy explanation
+  - Step-by-step developer workflow
+  - Common tasks with code examples
+  - Design foundations quick reference
+
+- **Ingka Section in README**: Showcasing official IKEA design system integration
+  - 75+ official `@ingka/*` components
+  - Swedish design (IKEA Blue #0051BA, Yellow #FFDA1A)
+  - Documentation structure overview
+  - Links to all guides
+
+### Changed
+
+- **Copilot Instructions**: Refactored `.github/copilot-instructions.md`
+  - Replaced ~200 lines of embedded Ingka content with clean reference
+  - Added quick links to all Ingka resources
+  - Improved maintainability
+
+### Documentation Structure
+
+```
+lib/ai-instructions/
+└── frontend-agent-ingka.instructions.md  (PRIMARY - AI reads this)
+
+docs/guides/
+├── INGKA_IMPLEMENTATION_GUIDE.md         (Developer workflow)
+├── SKAPA_COMPONENT_INDEX.md              (Quick lookup)
+├── Skapa-components/                     (60+ PDFs)
+└── Skapa-foundations/                    (23 PDFs)
+```
+
+### Benefits
+
+**For AI Assistants:**
+
+- Single comprehensive reference file (no PDF parsing needed)
+- All specifications in machine-readable markdown format
+- Consistent responses every time
+- Complete context in one place
+
+**For Developers:**
+
+- Clear documentation hierarchy
+- Faster component lookup
+- Better maintainability
+- Version controlled guidelines
+
+**For Teams:**
+
+- Everyone follows same official IKEA standards
+- Easy to add new components
+- Clear organization
+- Documentation lives with code
+
+### Statistics
+
+- **3 new documentation files** created (1,580+ lines total)
+- **83 PDF files** cataloged and indexed
+- **75+ Ingka components** documented with specifications
+- **10+ code examples** with best practices
+- **2 existing files** updated (copilot instructions, README)
+
+### Related Issues
+
+- #132 - Epic: Ingka Design System documentation restructure
+- #129 - Create Ingka implementation guide for developers
+- #130 - Update copilot instructions to reference Ingka guide
+- #131 - Add Ingka Design System section to README
+
+### Migration Guide
+
+**For Developers:**
+
+- No breaking changes - all existing `--style ingka` functionality preserved
+- GitHub Copilot now reads comprehensive Ingka specifications automatically
+- New documentation provides better guidance for manual implementation
+
+**For AI Assistants:**
+
+- Consult `lib/ai-instructions/frontend-agent-ingka.instructions.md` first
+- Use exact prop names from specifications (e.g., `variant`, not `type`)
+- Follow 8px grid system for all spacing
+- Import colors from `@ingka/colours` design tokens
+
+---
 
 ## [5.3.5] - 2025-10-29
 
@@ -12,14 +118,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **Problem:** Old "LionPack" branding references were still present throughout the codebase, tests, and user-facing messages, causing confusion.
 
-**Solution:** Complete rebranding to "LEO Workflow Kit" across all code, tests, and documentation.
+**Solution:** Complete rebranding to "Ingvar Kit" across all code, tests, and documentation.
 
 ### Changed
 
-- **Test Display Name**: Changed from "LionPack Tests" to "LEO Workflow Kit Tests"
+- **Test Display Name**: Changed from "LionPack Tests" to "Ingvar Kit Tests"
 - **Directory Structure**: Changed `.lionpack/` directory to `.leo/`
 - **Command References**: Updated all `lionpack` command references to `leo`
-- **Error Messages**: All user-facing messages now say "LEO Workflow Kit" instead of "LionPack"
+- **Error Messages**: All user-facing messages now say "Ingvar Kit" instead of "LionPack"
 - **Code Comments**: Updated all file headers and documentation strings
 - **Test Files**: Updated all test descriptions and error messages
 
@@ -35,7 +141,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - ✅ Zero mentions of "LionPack" in test output
 - ✅ All 583 tests passing
-- ✅ Consistent "LEO Workflow Kit" branding throughout
+- ✅ Consistent "Ingvar Kit" branding throughout
 
 ---
 
@@ -43,9 +149,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 🚀 Added: Custom/Enterprise Model Support
 
-**Problem:** Users with enterprise agreements or beta access to unreleased models (Claude 4.5, GPT-5, etc.) were blocked by LEO's hardcoded model registry. The system would reject models it didn't recognize, even though the API providers would accept them.
+**Problem:** Users with enterprise agreements or beta access to unreleased models (Claude 4.5, GPT-5, etc.) were blocked by Ingvar's hardcoded model registry. The system would reject models it didn't recognize, even though the API providers would accept them.
 
-**Solution:** Removed model validation barrier - LEO now accepts ANY model name and lets the API providers handle validation.
+**Solution:** Removed model validation barrier - Ingvar now accepts ANY model name and lets the API providers handle validation.
 
 ### Added
 
@@ -53,7 +159,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
   - Accept ANY model name in configuration (e.g., `claude-4.5-sonnet`, `gpt-5`, etc.)
   - Perfect for beta testers, enterprise customers, or users with special API access
-  - System validates at API provider level, not at LEO level
+  - System validates at API provider level, not at Ingvar level
 
 - **📝 Custom Model Documentation**
 
@@ -255,7 +361,7 @@ Otherwise, no action needed - quality-first is now the default!
 ### Added
 
 - **📚 Contributor Package Update Guide**: Created `CONTRIBUTOR_PACKAGE_UPDATE_GUIDE.md`
-  - Instructions for updating leo-workflow-kit after pulling changes
+  - Instructions for updating ingvar-kit after pulling changes
   - Common issues and solutions
   - Installation verification steps
   - Troubleshooting guide for contributors
@@ -341,7 +447,7 @@ Otherwise, no action needed - quality-first is now the default!
   - Status bar shows current agent emoji and model
   - Active state: `↻ 🎨 designer → GPT-4o` (teal, spinning)
   - Complete state: `✓ 💻 frontend complete` (green)
-  - Inactive state: `⊘ LEO Ready` (gray)
+  - Inactive state: `⊘ Ingvar Ready` (gray)
   - 100ms polling for real-time updates
   - Commands: Show model info, select preference, view history
 
@@ -412,7 +518,7 @@ Otherwise, no action needed - quality-first is now the default!
   - **Diagram 2**: Spec-First Decision - Simple vs complex work decision tree
   - **Diagram 3**: Simple Issue Creation - 5-step workflow from description to GitHub
   - **Diagram 4**: Complete Spec Workflow - 6-step process with real commands
-  - **Diagram 5**: Complete LEO Journey - From install to done
+  - **Diagram 5**: Complete Ingvar Journey - From install to done
   - **Quick Command Reference**: Table showing all key commands
   - All diagrams use simple ASCII art (renders everywhere, no dependencies)
   - Kid-friendly language makes workflows accessible to everyone
@@ -428,7 +534,7 @@ Otherwise, no action needed - quality-first is now the default!
 
 - **📖 README Simplification**: Major simplification for better accessibility
   - Removed 2 large complex Mermaid diagrams (~400 lines)
-  - Added simple "How LEO Works" section (5 clear steps)
+  - Added simple "How Ingvar Works" section (5 clear steps)
   - Added "Spec-First Development" section with real command examples
   - Simplified "System Architecture" to 3-layer explanation
   - Replaced complex diagrams with links to `docs/WORKFLOW_DIAGRAMS.md`
@@ -437,12 +543,12 @@ Otherwise, no action needed - quality-first is now the default!
 ### Documentation
 
 - **✅ Spec Workflow Verification**: Verified all spec commands work correctly
-  - `leo spec new "..."` - Creates GitHub issue with spec template
-  - `leo clarify 42` - AI generates clarifying questions
-  - `leo plan 42` - Generates implementation plan
-  - `leo tasks create 42` - Creates checklist or child issues
-  - `leo tasks status 42` - Shows progress tracking
-  - `leo spec-extend 42 "..."` - Extends existing spec with new requirements
+  - `ingvar spec new "..."` - Creates GitHub issue with spec template
+  - `ingvar clarify 42` - AI generates clarifying questions
+  - `ingvar plan 42` - Generates implementation plan
+  - `ingvar tasks create 42` - Creates checklist or child issues
+  - `ingvar tasks status 42` - Shows progress tracking
+  - `ingvar spec-extend 42 "..."` - Extends existing spec with new requirements
   - All 6 commands confirmed functional and well-documented
 
 ### Benefits
@@ -482,7 +588,7 @@ Otherwise, no action needed - quality-first is now the default!
 
 ### Technical Details
 
-**Key Finding**: The LEO Workflow Kit uses an AI-instruction-based architecture, not a code-based enforcement system. This is intentional and provides:
+**Key Finding**: The Ingvar Kit uses an AI-instruction-based architecture, not a code-based enforcement system. This is intentional and provides:
 
 - ✅ Flexibility - Change behavior by editing instructions
 - ✅ Adaptability - AI handles edge cases intelligently
@@ -512,9 +618,9 @@ Complete GitHub-native specification workflow with evolution tracking, extension
 
 ##### Dual-Mode Task Management (Days 8-9)
 
-- ✅ **`leo tasks create <issue>`**: Convert spec plan into checklist (default mode)
-- ✅ **`leo tasks create <issue> --create-issues`**: Create child GitHub issues for parallel work
-- ✅ **`leo tasks status <issue>`**: Track completion percentage and remaining work
+- ✅ **`ingvar tasks create <issue>`**: Convert spec plan into checklist (default mode)
+- ✅ **`ingvar tasks create <issue> --create-issues`**: Create child GitHub issues for parallel work
+- ✅ **`ingvar tasks status <issue>`**: Track completion percentage and remaining work
 - ✅ **Automatic Label Management**: Creates task, subtask labels if missing
 - ✅ **Parent-Child Linking**: Child issues reference parent spec
 - ✅ **Smart Mode Selection**: Checklist for small teams, child issues for parallel work
@@ -523,7 +629,7 @@ Complete GitHub-native specification workflow with evolution tracking, extension
 
 ##### Spec Evolution Tracking (Days 10-11)
 
-- ✅ **`leo spec-diff <issue>`**: Color-coded diff view (green=added, red=removed)
+- ✅ **`ingvar spec-diff <issue>`**: Color-coded diff view (green=added, red=removed)
 - ✅ **`--timeline`**: Chronological history with timestamps and authors
 - ✅ **`--summary`**: Aggregate statistics (items added/removed, sections modified)
 - ✅ **`--from <version> --to <version>`**: Compare specific version ranges
@@ -536,7 +642,7 @@ Complete GitHub-native specification workflow with evolution tracking, extension
 
 ##### Spec Extensions (Days 12-13)
 
-- ✅ **`leo spec-extend <issue> <description>`**: Add new requirements to existing specs
+- ✅ **`ingvar spec-extend <issue> <description>`**: Add new requirements to existing specs
 - ✅ **`--create-issues`**: Automatically create child issues for extension work
 - ✅ **`--no-update`**: Preview mode (show what would be added)
 - ✅ **`--no-track-history`**: Skip extension history comment
@@ -550,12 +656,12 @@ Complete GitHub-native specification workflow with evolution tracking, extension
 #### Documentation
 
 - ✅ **docs/SPEC_DIFF_GUIDE.md**: 650+ lines, 68 sections, comprehensive guide
-- ✅ **README.md Updates**: LEO vs Spec Kit comparison table, command documentation
+- ✅ **README.md Updates**: Ingvar vs Spec Kit comparison table, command documentation
 - ✅ **Phase Completion Docs**: docs/phases/PHASE_2_DAYS_10-11_COMPLETE.md
 
 #### Why Specs as Issues? (vs File-Based)
 
-| **LEO (GitHub-Native)**       | **File-Based Tools**      |
+| **Ingvar (GitHub-Native)**    | **File-Based Tools**      |
 | ----------------------------- | ------------------------- |
 | ✅ Edit in browser            | ❌ Requires Git/editor    |
 | ✅ Real-time comments         | ❌ Pull request delays    |
@@ -568,45 +674,45 @@ Complete GitHub-native specification workflow with evolution tracking, extension
 
 ```bash
 # Task management
-leo tasks create 42                      # Checklist mode
-leo tasks create 42 --create-issues      # Child issues mode
-leo tasks status 42                      # Progress tracking
+ingvar tasks create 42                      # Checklist mode
+ingvar tasks create 42 --create-issues      # Child issues mode
+ingvar tasks status 42                      # Progress tracking
 
 # Evolution tracking
-leo spec-diff 42                         # Standard diff
-leo spec-diff 42 --timeline              # History view
-leo spec-diff 42 --summary               # Statistics
-leo spec-diff 42 --from 2 --to 5         # Version range
-leo spec-diff 42 --section requirements  # Section filter
+ingvar spec-diff 42                         # Standard diff
+ingvar spec-diff 42 --timeline              # History view
+ingvar spec-diff 42 --summary               # Statistics
+ingvar spec-diff 42 --from 2 --to 5         # Version range
+ingvar spec-diff 42 --section requirements  # Section filter
 
 # Spec extensions
-leo spec-extend 42 "Add OAuth2"                # Basic extension
-leo spec-extend 42 "Add Slack" --create-issues # With child issues
-leo spec-extend 42 "Add mobile" --no-update    # Preview mode
+ingvar spec-extend 42 "Add OAuth2"                # Basic extension
+ingvar spec-extend 42 "Add Slack" --create-issues # With child issues
+ingvar spec-extend 42 "Add mobile" --no-update    # Preview mode
 ```
 
 #### Complete Workflow Example
 
 ```bash
 # 1. Create spec
-leo spec new "Build authentication system"
+ingvar spec new "Build authentication system"
 
 # 2. Clarify requirements
-leo clarify 42
+ingvar clarify 42
 
 # 3. Generate plan
-leo plan 42
+ingvar plan 42
 
 # 4. Create tasks (choose mode)
-leo tasks create 42 --create-issues  # Team: parallel work
+ingvar tasks create 42 --create-issues  # Team: parallel work
 # OR
-leo tasks create 42                  # Solo: simple checklist
+ingvar tasks create 42                  # Solo: simple checklist
 
 # 5. Track evolution
-leo spec-diff 42 --timeline
+ingvar spec-diff 42 --timeline
 
 # 6. Extend later
-leo spec-extend 42 "Add SSO support"
+ingvar spec-extend 42 "Add SSO support"
 ```
 
 #### Statistics
@@ -640,7 +746,7 @@ Eliminates documentation clutter with automated organization and enforcement. Pr
 
 ##### Documentation Organization Command
 
-- ✅ **`leo organize-docs`**: Auto-organizes documentation files into proper directories
+- ✅ **`ingvar organize-docs`**: Auto-organizes documentation files into proper directories
 - ✅ **`--dry-run`**: Preview what would be moved without making changes
 - ✅ **`--validate`**: Check documentation organization without moving files
 - ✅ **Smart Pattern Matching**: Auto-detects file patterns (SESSION*SUMMARY*\_, PHASE\_\_, DAYS*\*, DEPLOYMENT*\*, etc.)
@@ -651,16 +757,16 @@ Eliminates documentation clutter with automated organization and enforcement. Pr
 - ✅ **Automatic Prevention**: Blocks commits of markdown files to root directory (except allowed files)
 - ✅ **Configurable**: Respects `.leorc.json` settings for enforcement and allowed files
 - ✅ **Helpful Messages**: Shows clear error messages with auto-fix suggestions
-- ✅ **`leo hooks install`**: Easy hook installation
-- ✅ **`leo hooks uninstall`**: Clean hook removal
-- ✅ **`leo hooks status`**: Check installation status
+- ✅ **`ingvar hooks install`**: Easy hook installation
+- ✅ **`ingvar hooks uninstall`**: Clean hook removal
+- ✅ **`ingvar hooks status`**: Check installation status
 
 ##### Health Check Integration
 
-- ✅ **Documentation Organization Check**: Added to `leo health` command
+- ✅ **Documentation Organization Check**: Added to `ingvar health` command
 - ✅ **+5 Points**: Rewards clean root directory organization
 - ✅ **Health Score**: Improved from 98/100 to 103/100
-- ✅ **Auto-Suggestions**: Recommends `leo organize-docs` if issues found
+- ✅ **Auto-Suggestions**: Recommends `ingvar organize-docs` if issues found
 
 ##### Configuration
 
@@ -684,20 +790,20 @@ Eliminates documentation clutter with automated organization and enforcement. Pr
 - **Professional Appearance**: 45+ files in root → 5 essential files (89% reduction)
 - **Easy Navigation**: INDEX.md provides clear documentation structure
 - **Automated Enforcement**: Pre-commit hook prevents future clutter
-- **Consistent Standards**: Same structure across all LEO projects
+- **Consistent Standards**: Same structure across all Ingvar projects
 
 #### New Commands
 
 ```bash
 # Organize documentation files
-leo organize-docs
-leo organize-docs --dry-run
-leo organize-docs --validate
+ingvar organize-docs
+ingvar organize-docs --dry-run
+ingvar organize-docs --validate
 
 # Manage git hooks
-leo hooks install
-leo hooks uninstall
-leo hooks status
+ingvar hooks install
+ingvar hooks uninstall
+ingvar hooks status
 ```
 
 #### Configuration Example
@@ -897,7 +1003,7 @@ rm .gh-issue-body.md
 
 ### ✅ Verification
 
-- CLI commands working: `leo --version`, `leo health`, `leo agent list`
+- CLI commands working: `ingvar --version`, `ingvar health`, `ingvar agent list`
 - No syntax errors in template
 - Global installation successful
 
@@ -916,7 +1022,7 @@ rm .gh-issue-body.md
 
 - **ENHANCED**: Copilot instructions now enforce 100% automated issue creation
   - ✅ Always uses `gh issue create --title "..." --body "..." --label "..."` with ALL parameters
-  - ❌ Never uses `leo issue` command (prevents interactive CLI prompts)
+  - ❌ Never uses `ingvar issue` command (prevents interactive CLI prompts)
   - ✅ Provides complete issue details in ONE command
   - ✅ No manual user input required
 
@@ -985,26 +1091,26 @@ rm .gh-issue-body.md
 - ✅ **Maintainability** - Modular agent templates instead of monolithic instructions
 - ✅ **Scalability** - Easy to add new agent types in future versions
 
-### ⚡ New `leo agent` Command Suite
+### ⚡ New `ingvar agent` Command Suite
 
 Complete CLI for managing specialized agents:
 
 ```bash
 # List all agents and their status
-leo agent list
+ingvar agent list
 
 # Enable a specialized agent
-leo agent enable frontend
-leo agent enable backend
+ingvar agent enable frontend
+ingvar agent enable backend
 
 # Disable an agent
-leo agent disable devops
+ingvar agent disable devops
 
 # Show detailed agent information
-leo agent info testing
+ingvar agent info testing
 
 # Regenerate AI instruction files
-leo agent sync
+ingvar agent sync
 ```
 
 #### Features
@@ -1033,7 +1139,7 @@ leo agent sync
 }
 ```
 
-#### Agent Selection During `leo init`
+#### Agent Selection During `ingvar init`
 
 - **NEW**: Interactive agent selection based on project type
 - **Recommended Agents** shown for each project type:
@@ -1189,7 +1295,7 @@ Each agent activates based on:
 - `lib/ai-instructions/adapters/cline-adapter.js` - Flexible validation
 - `lib/ai-instructions/adapters/codeium-adapter.js` - Flexible validation
 - `lib/commands/init.js` - Agent selection prompts (~85 lines added)
-- `bin/cli.js` - Added `leo agent` command
+- `bin/cli.js` - Added `ingvar agent` command
 - `README.md` - v4.0.0 announcement and multi-agent section
 - `lib/copilot-instructions-template.js` - Fixed code block escaping
 
@@ -1199,13 +1305,13 @@ Each agent activates based on:
 
 - **Changed**: AI instruction files now use multi-agent template structure
 - **Impact**: Custom edits to `.github/copilot-instructions.md` will be overwritten
-- **Migration**: Back up custom changes before running `leo agent sync`
+- **Migration**: Back up custom changes before running `ingvar agent sync`
 
 #### Configuration Schema
 
 - **Added**: New `agents` section in `.leorc.json`
 - **Impact**: Minimal - v3.x configs work without agents section (all agents disabled)
-- **Migration**: Run `leo init` to add agent selection, or manually add agents section
+- **Migration**: Run `ingvar init` to add agent selection, or manually add agents section
 
 ### 🔄 Backward Compatibility
 
@@ -1218,10 +1324,10 @@ Each agent activates based on:
 
 ### 📊 Migration Guide (v3.x → v4.0.0)
 
-#### Step 1: Update LEO
+#### Step 1: Update Ingvar
 
 ```bash
-npm install -g leo-workflow-kit@latest
+npm install -g ingvar-kit@latest
 ```
 
 #### Step 2: Backup Existing Config
@@ -1233,7 +1339,7 @@ cp .leorc.json .leorc.json.backup
 #### Step 3: Re-run Init with Agent Selection
 
 ```bash
-leo init
+ingvar init
 ```
 
 Select agents when prompted.
@@ -1241,7 +1347,7 @@ Select agents when prompted.
 #### Step 4: Regenerate AI Files
 
 ```bash
-leo agent sync
+ingvar agent sync
 ```
 
 #### Step 5: Restart AI Assistant
@@ -1300,11 +1406,11 @@ Special thanks to all contributors and users who provided feedback that shaped t
 
 #### AI Instruction Generation Fixed
 
-- **Fixed**: AI instruction files not being generated during `leo init`
+- **Fixed**: AI instruction files not being generated during `ingvar init`
   - **Root Cause**: Missing `success: true` flag in result objects from `generateForAI()` method
   - **Solution**: Added `success: true` to return value in `lib/ai-instructions/builder.js` (line 78)
-  - **Impact**: All users running `leo init` now correctly receive AI instruction files
-  - **Affected Commands**: `leo init`, `leo ai sync`
+  - **Impact**: All users running `ingvar init` now correctly receive AI instruction files
+  - **Affected Commands**: `ingvar init`, `ingvar ai sync`
 
 ### 🔒 Enhanced AI Enforcement
 
@@ -1355,7 +1461,7 @@ Special thanks to all contributors and users who provided feedback that shaped t
 
 ### 🔧 Improved Verification
 
-- **Enhanced**: Post-generation verification in `leo init`
+- **Enhanced**: Post-generation verification in `ingvar init`
   - Shows file size confirmation for each AI instruction file
   - Provides VS Code reload instructions
   - Better error messages when generation fails
@@ -1390,11 +1496,11 @@ No action required! This is a bug fix and enhancement release.
 
 ```bash
 # Update to latest version
-npm install -g leo-workflow-kit@latest
+npm install -g ingvar-kit@latest
 
 # Regenerate AI instruction files (optional, recommended)
 cd your-project
-leo ai sync
+ingvar ai sync
 ```
 
 **What's improved:**
@@ -1410,30 +1516,30 @@ leo ai sync
 
 ### Added
 
-- **Smart AI Instruction Merging**: When existing AI instruction files are detected, LEO now intelligently merges content instead of skipping
+- **Smart AI Instruction Merging**: When existing AI instruction files are detected, Ingvar now intelligently merges content instead of skipping
   - Detects existing `.github/copilot-instructions.md`, `.cursorrules`, `.clinerules`, or `.codeium/instructions.md`
   - Preserves user's project-specific conventions and custom content
-  - Prepends LEO's workflow standards with clear section markers
+  - Prepends Ingvar's workflow standards with clear section markers
   - Creates backup files before merging (`.backup` extension)
   - Prompts user for confirmation before merging
   - Works with all supported AI assistants
 
 ### Changed
 
-- **`leo init` behavior**: Now offers to merge with existing AI instructions instead of skipping generation
-- **`leo ai sync` behavior**: Intelligently merges updates while preserving custom sections
+- **`ingvar init` behavior**: Now offers to merge with existing AI instructions instead of skipping generation
+- **`ingvar ai sync` behavior**: Intelligently merges updates while preserving custom sections
 - **File structure**: AI instruction files now have clear section markers:
-  - `<!-- LEO WORKFLOW STANDARDS (Auto-generated) -->`
+  - `<!-- Ingvar WORKFLOW STANDARDS (Auto-generated) -->`
   - `<!-- PROJECT-SPECIFIC INSTRUCTIONS -->`
 
 ### Improved
 
-- **Onboarding experience**: Projects with existing AI instructions can now adopt LEO without losing customizations
+- **Onboarding experience**: Projects with existing AI instructions can now adopt Ingvar without losing customizations
 - **Documentation**: Updated guides with merging workflow examples
 
 ### Fixed
 
-- Issue #15: LEO now merges existing AI instructions instead of skipping generation
+- Issue #15: Ingvar now merges existing AI instructions instead of skipping generation
 
 ---
 
@@ -1456,7 +1562,7 @@ leo ai sync
 
 - **Documentation**: Comprehensive updates for v3.0.0
   - Updated wiki Home.md with v3.0.0 release information
-  - Added full `leo ai` command documentation to Commands-Reference.md
+  - Added full `ingvar ai` command documentation to Commands-Reference.md
   - Updated navigation links for Multi-AI sections
   - All documentation now reflects v3.0.0 multi-AI capabilities
 
@@ -1471,7 +1577,7 @@ leo ai sync
 
 ### 🎉 Major Release: Multi-AI Assistant Support
 
-LEO Workflow Kit now supports **4 AI coding assistants** beyond GitHub Copilot! This major release enables teams to use their preferred AI tools while maintaining consistent LEO workflow standards.
+Ingvar Kit now supports **4 AI coding assistants** beyond GitHub Copilot! This major release enables teams to use their preferred AI tools while maintaining consistent Ingvar workflow standards.
 
 ### Added
 
@@ -1489,17 +1595,17 @@ LEO Workflow Kit now supports **4 AI coding assistants** beyond GitHub Copilot! 
   - Individual adapters for each AI with optimized content
   - `AIInstructionsBuilder` orchestrator for generation and management
 
-- **⚡ New `leo ai` Command**:
+- **⚡ New `ingvar ai` Command**:
 
-  - `leo ai list` - Show configured AI assistants with file paths
-  - `leo ai add <name>` - Add new AI assistant and generate instructions
-  - `leo ai remove <name>` - Remove AI assistant and delete files
-  - `leo ai sync` - Regenerate all AI instruction files
-  - `leo ai diff <ai1> <ai2>` - Compare two AI configs (coming soon)
+  - `ingvar ai list` - Show configured AI assistants with file paths
+  - `ingvar ai add <name>` - Add new AI assistant and generate instructions
+  - `ingvar ai remove <name>` - Remove AI assistant and delete files
+  - `ingvar ai sync` - Regenerate all AI instruction files
+  - `ingvar ai diff <ai1> <ai2>` - Compare two AI configs (coming soon)
 
 - **🚀 Init Integration**:
 
-  - AI assistant selection during `leo init` (checkbox prompt)
+  - AI assistant selection during `ingvar init` (checkbox prompt)
   - Generate instruction files for all selected AIs
   - Set primary AI for multi-AI setups
   - Non-interactive mode defaults to Copilot only
@@ -1514,7 +1620,7 @@ LEO Workflow Kit now supports **4 AI coding assistants** beyond GitHub Copilot! 
 - **📚 Documentation**:
   - Comprehensive Migration Guide (v2.x → v3.0.0) in `docs/MIGRATION_V3.md`
   - Multi-AI Support section in README
-  - `leo ai` command documentation
+  - `ingvar ai` command documentation
   - AI assistant comparison table
 
 ### Changed
@@ -1527,7 +1633,7 @@ LEO Workflow Kit now supports **4 AI coding assistants** beyond GitHub Copilot! 
 ### Technical Details
 
 - Each AI adapter generates ~40KB instruction file with:
-  - Full LEO workflow standards (spec-driven, issue creation, commit guidelines)
+  - Full Ingvar workflow standards (spec-driven, issue creation, commit guidelines)
   - AI-specific tips and keyboard shortcuts
   - Best practices for that tool's strengths
   - Component-first development patterns
@@ -1547,8 +1653,8 @@ LEO Workflow Kit now supports **4 AI coding assistants** beyond GitHub Copilot! 
 Existing v2.x users can:
 
 1. **Do nothing**: Continue using Copilot-only setup (fully supported)
-2. **Add AIs**: Run `leo ai add <name>` to add more assistants
-3. **Fresh init**: Re-run `leo init` to select multiple AIs
+2. **Add AIs**: Run `ingvar ai add <name>` to add more assistants
+3. **Fresh init**: Re-run `ingvar init` to select multiple AIs
 
 See [Migration Guide](docs/MIGRATION_V3.md) for detailed instructions.
 
@@ -1558,7 +1664,7 @@ See [Migration Guide](docs/MIGRATION_V3.md) for detailed instructions.
 
 ### Changed
 
-- **Golden gradient banner**: LEO_KIT ASCII art now features a beautiful golden gradient
+- **Golden gradient banner**: Ingvar_KIT ASCII art now features a beautiful golden gradient
   - Transitions from bright gold (#FFD700) at top to darker orange-gold (#FF8C00) at bottom
   - Creates a more visually striking and professional appearance
   - Applied to both main banner and installation banner
@@ -1581,7 +1687,7 @@ See [Migration Guide](docs/MIGRATION_V3.md) for detailed instructions.
 - **Dynamic version display**: Banner and postinstall script now read version from `package.json` instead of hardcoded value
   - Fixed `lib/banner.js` to dynamically read version
   - Fixed `scripts/postinstall.js` to display correct version during installation
-  - Users now see accurate version number when installing or running `leo welcome`
+  - Users now see accurate version number when installing or running `ingvar welcome`
 
 ### Changed
 
@@ -1602,10 +1708,10 @@ See [Migration Guide](docs/MIGRATION_V3.md) for detailed instructions.
 
 #### Workflow Configuration System
 
-- **`leo config` command**: Manage workflow settings via CLI
+- **`ingvar config` command**: Manage workflow settings via CLI
 - **Auto-resolution toggle**: Control whether Copilot automatically works on created issues
-  - `leo config set auto-resolve false` - Create issues but wait for review
-  - `leo config set auto-resolve true` - Auto-work on issues (default)
+  - `ingvar config set auto-resolve false` - Create issues but wait for review
+  - `ingvar config set auto-resolve true` - Auto-work on issues (default)
 - **Local and global config**: Project-specific (`.leorc.json`) or global (`~/.leorc.json`) settings
 - **Configuration priority**: Local > Global > Default
 - **Smart Copilot integration**: Template checks config before proceeding with work
@@ -1650,7 +1756,7 @@ See [Migration Guide](docs/MIGRATION_V3.md) for detailed instructions.
   - **Updated Quick Reference Card with issue comment length reminder**
   - **Added "Keep It Short" to Key Mantras**
 - **.gitignore**: Added `.leorc.json` to exclude user configs
-- **CLI**: Registered `leo config` command with `cfg` alias
+- **CLI**: Registered `ingvar config` command with `cfg` alias
 
 ### Documentation
 
@@ -1666,10 +1772,10 @@ See [Migration Guide](docs/MIGRATION_V3.md) for detailed instructions.
 
 #### Automatic Initialization
 
-- **Auto-init on install**: Set `LEO_AUTO_INIT=true` to automatically initialize projects on install
-- **Non-interactive mode**: `leo init --non-interactive` for CI/CD and automated setups
+- **Auto-init on install**: Set `Ingvar_AUTO_INIT=true` to automatically initialize projects on install
+- **Non-interactive mode**: `ingvar init --non-interactive` for CI/CD and automated setups
 - **Smart detection**: Automatically detects if in git repo and not already initialized
-- **Zero-configuration**: Works with `npm install leo-workflow-kit` - no manual steps needed
+- **Zero-configuration**: Works with `npm install ingvar-kit` - no manual steps needed
 
 #### Smart Project-Type Based Copilot Instructions (Foundation)
 
@@ -1692,8 +1798,8 @@ See [Migration Guide](docs/MIGRATION_V3.md) for detailed instructions.
 
 ### Added
 
-- `LEO_AUTO_INIT` environment variable for automatic initialization
-- `--non-interactive` flag for `leo init` command
+- `Ingvar_AUTO_INIT` environment variable for automatic initialization
+- `--non-interactive` flag for `ingvar init` command
 - `lib/copilot-instructions/` modular system (config, builder, index)
 - Auto-detection rules for project types (React → frontend, Express → backend, etc.)
 - Comprehensive implementation plan for Phase 2-7
@@ -1744,15 +1850,15 @@ No action required! However, to take advantage of new features:
 
 # In your project or CI/CD
 
-export LEO_AUTO_INIT=true
-npm install leo-workflow-kit
+export Ingvar_AUTO_INIT=true
+npm install ingvar-kit
 \`\`\`
 
 **Or in package.json:**
 \`\`\`json
 {
 "config": {
-"LEO_AUTO_INIT": "true"
+"Ingvar_AUTO_INIT": "true"
 }
 }
 \`\`\`
@@ -1762,14 +1868,14 @@ npm install leo-workflow-kit
 
 # Will be available in upcoming releases
 
-leo init --project-type frontend
-leo config --project-type backend
+ingvar init --project-type frontend
+ingvar config --project-type backend
 \`\`\`
 
 ### Credits
 
 - Core development: Leo de Souza (@leonpagotto)
-- Testing and feedback: LEO community
+- Testing and feedback: Ingvar community
 - Inspiration: spec-kit, GitHub Projects, modern CLI tools
 
 ---
@@ -1890,7 +1996,7 @@ This release enables GitHub Copilot to automatically create issues when you desc
 ### Added
 
 - **Automatic Issue Creation Instructions**: Added comprehensive Copilot instructions for detecting when users describe work and automatically creating GitHub issues
-- **GitHub Authentication Flow**: Added interactive GitHub CLI authentication during `leo init` setup
+- **GitHub Authentication Flow**: Added interactive GitHub CLI authentication during `ingvar init` setup
 - **Smart Intent Detection**: Copilot now recognizes patterns like "We need to fix...", "Let's add...", "There's a bug..." and creates issues automatically
 - **Context Extraction**: Automatically extracts priority, type, component from user descriptions
 
@@ -1918,7 +2024,7 @@ Copilot will automatically:
 
 1. Detect you're describing work
 2. Extract key details (priority, type, component)
-3. Run `leo issue` with smart defaults
+3. Run `ingvar issue` with smart defaults
 4. Confirm issue creation with link
 
 No more interrupting your flow to fill out forms!
@@ -1929,13 +2035,13 @@ No more interrupting your flow to fill out forms!
 
 - **Package Publishing**: Added explicit `files` field to package.json to ensure all templates are included in npm package
 - **Installation Flow**: Enhanced postinstall.js to detect local vs global installs and guide users accordingly
-- **Smart Setup**: Postinstall now detects if you're in a git repo and prompts to run `leo init` for quick setup
+- **Smart Setup**: Postinstall now detects if you're in a git repo and prompts to run `ingvar init` for quick setup
 - **Package Size**: Reduced package size from 94.1 KB to 45.3 KB by excluding unnecessary documentation files via .npmignore
 
 ### Added
 
 - `.npmignore` file to exclude development documentation and keep package lean
-- Auto-detection of existing LEO setup to avoid duplicate initialization
+- Auto-detection of existing Ingvar setup to avoid duplicate initialization
 - Context-aware installation messages based on install type (global/local) and repository status
 
 ### Changed
@@ -1947,7 +2053,7 @@ No more interrupting your flow to fill out forms!
 
 ### Changed
 
-- **Brand Refresh**: Updated banner from "LEO WORKFLOW KIT" to "LEO-KIT" for cleaner, more memorable branding
+- **Brand Refresh**: Updated banner from "Ingvar WORKFLOW KIT" to "Ingvar-KIT" for cleaner, more memorable branding
 - **Visual Enhancement**: Redesigned ASCII art banner with bold block letters for outstanding visual appeal
 - **Compact Design**: Simplified compact banner for better readability on smaller terminals
 
@@ -1962,7 +2068,7 @@ No more interrupting your flow to fill out forms!
 
 ### 🎉 Major Release: Development Best Practices & Enhanced Project Management
 
-This major release transforms LEO Workflow Kit from a simple setup tool into a comprehensive development best practices platform.
+This major release transforms Ingvar Kit from a simple setup tool into a comprehensive development best practices platform.
 
 ### Added
 
@@ -2006,7 +2112,7 @@ This major release transforms LEO Workflow Kit from a simple setup tool into a c
 
 - **Flexible Project Setup**: Choose between creating new GitHub Projects or connecting to existing ones
 - **Interactive Project Creation**: Guided workflow for setting up new projects with proper structure
-- **Pre-configured Columns**: Automatic setup of LEO workflow columns (Backlog, Ready, In Progress, Review, Done)
+- **Pre-configured Columns**: Automatic setup of Ingvar workflow columns (Backlog, Ready, In Progress, Review, Done)
 - **Custom Fields**: Automatic Priority and Component field creation for new projects
 - **Smart Detection**: Automatic detection of organization vs. personal repositories
 
@@ -2022,7 +2128,7 @@ This major release transforms LEO Workflow Kit from a simple setup tool into a c
 
 - **Version**: Bumped to 2.0.0 to reflect major feature additions
 - **Package Description**: Updated to highlight new component-first and optimization features
-- **Init Flow**: Enhanced `leo init` command with interactive project setup options
+- **Init Flow**: Enhanced `ingvar init` command with interactive project setup options
 - **Project Configuration**: More flexible project setup supporting both new and existing scenarios
 - **Keywords**: Added component-first, best-practices, seo-optimization, performance, frontend, code-quality
 
@@ -2044,7 +2150,7 @@ This major release transforms LEO Workflow Kit from a simple setup tool into a c
 
 ### Added
 
-- Initial release of LEO Workflow Kit
+- Initial release of Ingvar Kit
 - Core CLI framework with 4 main commands
 - 8 professional issue templates
 - 22+ GitHub labels configuration
@@ -2054,12 +2160,12 @@ This major release transforms LEO Workflow Kit from a simple setup tool into a c
 
 ### Features
 
-- `leo init` - Initialize workflow in current project
-- `leo issue` - Create issues from templates
-- `leo labels` - Manage GitHub labels
-- `leo vscode` - Configure VS Code settings
-- `leo status` - Check workflow status
-- `leo docs` - Open documentation
+- `ingvar init` - Initialize workflow in current project
+- `ingvar issue` - Create issues from templates
+- `ingvar labels` - Manage GitHub labels
+- `ingvar vscode` - Configure VS Code settings
+- `ingvar status` - Check workflow status
+- `ingvar docs` - Open documentation
 
 ---
 
@@ -2068,7 +2174,7 @@ This major release transforms LEO Workflow Kit from a simple setup tool into a c
 If you're upgrading from version 1.x:
 
 1. **No Breaking Changes**: Version 2.0 is fully backward compatible
-2. **New Features**: Simply run `leo init` in existing projects to get new Copilot instructions
+2. **New Features**: Simply run `ingvar init` in existing projects to get new Copilot instructions
 3. **Project Setup**: New projects can now choose between creating or connecting to GitHub Projects
 4. **Best Practices**: All new best practices are embedded in Copilot instructions automatically
 
@@ -2076,11 +2182,11 @@ If you're upgrading from version 1.x:
 
 ```bash
 # Update to latest version
-npm install -g leo-workflow-kit@latest
+npm install -g ingvar-kit@latest
 
 # Re-run init to update Copilot instructions (optional)
 cd your-project
-leo vscode --project
+ingvar vscode --project
 ```
 
 Your existing setup will remain intact, and new best practices will be available through updated Copilot instructions.
@@ -2091,6 +2197,6 @@ Your existing setup will remain intact, and new best practices will be available
 
 For issues, questions, or suggestions:
 
-- GitHub Issues: https://github.com/leonpagotto/leo-kit/issues
-- Documentation: https://github.com/leonpagotto/leo-kit#readme
+- GitHub Issues: https://github.com/leopagotto/ingvar-kit/issues
+- Documentation: https://github.com/leopagotto/ingvar-kit#readme
 ````
