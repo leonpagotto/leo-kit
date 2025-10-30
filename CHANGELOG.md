@@ -6,6 +6,80 @@ All notable changes to LEO Workflow Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.4.0] - 2025-01-30
+
+### 🎯 Added: `leo start` Command
+
+**Problem:** Starting work on a GitHub issue required multiple manual steps: fetching issue details, creating a branch with the right naming convention, and updating issue status.
+
+**Solution:** New `leo start <issue>` command automates the entire workflow.
+
+### Added
+
+- **New Command**: `leo start <issue-number>`
+  - Fetches issue details from GitHub
+  - Creates conventional branch name (feat/fix/docs/refactor/test)
+  - Checks out new branch
+  - Updates issue status to "In Progress"
+  - Posts "🚀 Starting work..." comment
+
+### Features
+
+- Smart branch naming based on issue labels
+- Validates issue exists before creating branch
+- Prevents duplicate branch creation
+- Seamless integration with GitHub CLI
+
+### Example
+
+```bash
+leo start 18
+# ✓ Fetched issue #18: Add quick start command
+# ✓ Created branch: feat/quick-start-command-18
+# ✓ Updated issue status to In Progress
+# ✓ Posted comment on issue
+```
+
+---
+
+### 🏗️ Refactor: Modular AI Instructions System
+
+**Problem:** AI instructions were duplicated in both `.github/copilot-instructions.md` (4069 lines monolithic) and `lib/ai-instructions/` (modular markdown files). Changes required updates in two places, causing maintenance issues and configuration was ignored.
+
+**Solution:** Refactored `AIInstructionsBuilder` to dynamically load instructions from markdown files, eliminating duplication.
+
+### Changed
+
+- **Builder Architecture**: 
+  - Removed hardcoded template function imports
+  - Added `async loadAgentContent(agentName)` method to read markdown files
+  - Made `generateMultiAgentContent()` async to support file I/O
+  - Updated `getUniversalTemplate()` to use markdown files as fallback
+
+- **File Structure**: Single source of truth in `lib/ai-instructions/*.md`
+  - orchestrator-main.md
+  - frontend-agent.md
+  - backend-agent.md
+  - devops-agent.md
+  - testing-agent.md
+  - documentation-agent.md
+  - designer-agent.md
+
+- **Generated Files**: `.github/copilot-instructions.md` now dynamically generated
+  - Reduced from 4068 lines to 3844 lines
+  - Respects `.leorc.json` agent configuration
+  - Automatically includes enabled agents only
+
+### Benefits
+
+- ✅ Single source of truth for AI instructions
+- ✅ Configuration-driven agent selection
+- ✅ Easier maintenance (edit markdown files once)
+- ✅ Consistent across all AI tools (Copilot, Cursor, Cline, Codeium)
+- ✅ All 583 tests passing
+
+---
+
 ## [5.3.5] - 2025-10-29
 
 ### 🧹 Refactor: Remove LionPack Branding
